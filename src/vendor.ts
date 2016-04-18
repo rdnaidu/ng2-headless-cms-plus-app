@@ -26,6 +26,11 @@ import 'rxjs/add/operator/mergeMap';
 // import '@angular2-material/card';
 // look in platform/directives and platform/providers
 
+import 'jquery';
+import 'bootstrap-loader';
+import 'font-awesome-webpack';
+import 'angular2-google-maps/core';
+    
 if ('production' === ENV) {
   // Production
 

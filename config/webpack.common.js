@@ -12,6 +12,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 /*
  * Webpack Constants
  */
@@ -167,12 +168,23 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      }
+      },
+
+      { test: /\.scss$/, loaders: [ 'style', 'css', 'postcss', 'sass' ] },
+      //{ test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+      
+      // the url-loader uses DataUrls. 
+      // the file-loader emits files. 
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+      
+      // Use one of these to serve jQuery for Bootstrap scripts:
+      // Bootstrap 3
+      { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
 
     ]
 
   },
-
   /*
    * Add additional plugins to the compiler.
    *
@@ -207,7 +219,8 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor'])
+      name: helpers.reverse(['polyfills', 'vendor', 'main']),
+      minChunks: Infinity
     }),
 
     /*
@@ -234,8 +247,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
-    })
+    }),
 
+    // var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+        // require the plugin
+    new ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery',
+            "Tether": 'tether',
+            "window.Tether": "tether"
+    })
   ],
 
   /*
