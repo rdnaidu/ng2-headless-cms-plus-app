@@ -70,7 +70,8 @@
     "bootstrap-sass": "*",
     "font-awesome-webpack": "*",
     "lodash": "^4.11.1",
-    "angular2-google-maps":"*"
+    "angular2-google-maps":"*",
+    "ng2-translate": "^1.11.1"
   },
   "devDependencies": {
     "angular2-hmr": "~0.5.5",

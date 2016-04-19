@@ -5,7 +5,7 @@ import {bootstrap}    from 'angular2/platform/browser';
 import {provide, ComponentRef} from 'angular2/core';
 import {ROUTER_PROVIDERS , LocationStrategy, PathLocationStrategy } from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
-
+import {Http} from 'angular2/http';
 /*
 * Platform and Environment
 * our providers/directives/pipes
@@ -17,6 +17,7 @@ import {AppComponent} from './app.component';
 import {appInjectorRef} from './shared/appInjectorRef';
 import {AuthService} from './auth/auth.service';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import {TRANSLATE_PROVIDERS, TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 /*
 bootstrap(AppComponent,[
@@ -52,13 +53,17 @@ export function main(initialHmrState?: any): Promise<any> {
     ANGULAR2_GOOGLE_MAPS_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
+    provide(TranslateLoader, {
+        useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+        deps: [Http]
+    }),
+    // use TranslateService here, and not TRANSLATE_PROVIDERS (which will define a default TranslateStaticLoader)
+    TranslateService,
     provide(LocationStrategy, {useClass: PathLocationStrategy })
     ]).then((appRef: ComponentRef) => {
         // store a reference to the application injector
         appInjectorRef(appRef.injector);
-    })
-    .catch(err => console.error(err));
-
+    }).catch(err => console.error(err));
 }
 
 

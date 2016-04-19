@@ -30,6 +30,7 @@ import 'jquery';
 import 'bootstrap-loader';
 import 'font-awesome-webpack';
 import 'angular2-google-maps/core';
+import 'ng2-translate/ng2-translate';
     
 if ('production' === ENV) {
   // Production

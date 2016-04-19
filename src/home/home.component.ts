@@ -4,6 +4,8 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {MapsAPILoader,
 	NoOpMapsAPILoader,
 	MouseEvent,ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
+	
+import {TranslateDemoComponent} from '../translate-demo/translate-demo.component';
 
 //import {GoogleMapComponent} from '../shared/google-map.component';
 interface marker {
@@ -15,7 +17,7 @@ interface marker {
 
 @Component({
 	selector: 'my-home',
-	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES], // this loads all angular2-google-maps directives in this component
+	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES,TranslateDemoComponent], // this loads all angular2-google-maps directives in this component
 	// the following line sets the height of the map - Important: if you don't set a height, you won't see a map!!
 	styles: [`
     .sebm-google-map-container {
@@ -50,6 +52,9 @@ interface marker {
         (dragEnd)="markerDragEnd(m, $event)"></sebm-google-map-marker>
 
     </sebm-google-map>
+		<div>
+			<translate-demo></translate-demo>
+		</div>
   `
 })
 export class HomeComponent {
