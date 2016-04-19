@@ -3,6 +3,7 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from 'angular2/router';
 import {FORM_PROVIDERS, FORM_DIRECTIVES, Control} from 'angular2/common';
 import {Http} from 'angular2/http';
 import {GitUsersComponent} from './gitUsers.component';
+import {GitUsersInfo} from './gitUser';
 /*
     Inspired from https://auth0.com/blog/2016/01/25/angular-2-series-part-4-component-router-in-depth/
 */
@@ -20,7 +21,7 @@ import {GitUsersComponent} from './gitUsers.component';
     
 ])
 export class GitExplorerComponent {
-  users: Array<Object> = [];
+  users: Array<GitUsersInfo> = [];
   searchTerm: Control = new Control();
 
   constructor(public http: Http) {}

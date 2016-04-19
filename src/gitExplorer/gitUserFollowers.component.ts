@@ -1,7 +1,7 @@
 import {Component, Injector} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {RouteParams, OnActivate, ComponentInstruction} from 'angular2/router';
-
+import {GitUsersInfo} from './gitUser';
 
 @Component({
     template: ` 
@@ -13,7 +13,7 @@ import {RouteParams, OnActivate, ComponentInstruction} from 'angular2/router';
 })
 export class GitUserFollowersComponent implements OnActivate {
     userLogin: string;
-    followers: Array<Object> = [];
+    followers: Array<GitUsersInfo> = [];
 
 
     constructor(public http: Http, injector: Injector, params: RouteParams) {

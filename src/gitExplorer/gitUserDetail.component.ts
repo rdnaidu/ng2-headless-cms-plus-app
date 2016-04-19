@@ -1,7 +1,8 @@
-import {Component, Injector} from 'angular2/core';
+import {Component, Injector, OnInit} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {ROUTER_DIRECTIVES, Router, RouteParams, RouteConfig} from 'angular2/router';
 import {GitUserFollowersComponent} from './GitUserFollowers.component';
+import {GitUser} from './gitUser';
 
 
 @Component({
@@ -14,10 +15,10 @@ import {GitUserFollowersComponent} from './GitUserFollowers.component';
 @RouteConfig([
     { path: '/followers', component: GitUserFollowersComponent, name: 'GitUserFollowers' }
 ])
-export class GitUserDetailComponent {
+export class GitUserDetailComponent implements OnInit {
     params: RouteParams;
     userLogin: string;
-    userData: Object = {};
+    userData = new GitUser();
 
 
     constructor(public http: Http, params: RouteParams, injector: Injector, private _router: Router) {
