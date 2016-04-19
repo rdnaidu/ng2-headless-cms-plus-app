@@ -10,7 +10,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'navbar',
-    templateUrl: './nav-bar/navbar.component.html',
+    template: require('./navbar.component.html'),
     directives: [ROUTER_DIRECTIVES]
 })
 export class NavBarComponent implements OnInit {

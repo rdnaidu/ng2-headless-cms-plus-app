@@ -6,7 +6,7 @@ import {GitUserFollowersComponent} from './GitUserFollowers.component';
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
-    templateUrl: './gitExplorer/gitUserDetail.component.html',
+    template: require('./gitUserDetail.component.html'),
     styles: [` 
      img { width: 100px; margin-bottom: 10px; } 
    `]

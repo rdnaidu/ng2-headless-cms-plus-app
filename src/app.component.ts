@@ -26,7 +26,7 @@ import {GitExplorerComponent} from './gitExplorer/gitExplorer.component';
 ])
 @Component({
     selector: 'my-app',
-    templateUrl: './app.component.html',
+    template: require('./app.component.html'),
      encapsulation: ViewEncapsulation.None,
     styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css')

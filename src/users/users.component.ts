@@ -6,7 +6,7 @@ import {SpinnerComponent} from '../shared/spinner.component';
 import {AlertComponent} from '../shared/alert.component';
 
 @Component({
-	templateUrl: './users/users.component.html',
+	template: require('./users.component.html'),
 	providers: [UserService],
 	directives: [RouterLink,SpinnerComponent,AlertComponent]
 })

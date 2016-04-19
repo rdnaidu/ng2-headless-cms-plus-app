@@ -11,7 +11,7 @@ import {Post} from './post';
 import * as _ from 'lodash';
 
 @Component({ 
-	templateUrl: './posts/posts.component.html',
+	template: require('./posts.component.html'),
 	styles: [`
 		.posts li { cursor: default; }
         .posts li:hover { background: #ecf0f1; } 

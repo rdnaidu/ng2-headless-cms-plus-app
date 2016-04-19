@@ -8,7 +8,7 @@ import {SearchPipe} from './search.pipe';
 
 @Component({
     selector: 'phones',
-	templateUrl: './phones/phones.component.html',
+	template: require('./phones.component.html'),
 	providers: [PhoneService],
 	directives: [RouterLink,SpinnerComponent,AlertComponent],
     pipes: [SearchPipe]

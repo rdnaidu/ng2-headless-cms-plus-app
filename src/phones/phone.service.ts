@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PhoneService {
-	private _url = "./phones/phones-json";
+	private _url = "/assets/phones-json";
 
 	constructor(private _http: Http) {
 

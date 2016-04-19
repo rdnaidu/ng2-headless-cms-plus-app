@@ -7,7 +7,7 @@ import {CheckmarkPipe} from '../shared/checkmark.pipe';
 
 
 @Component({
-    templateUrl: './phones/phone.component.html',
+    template: require('./phone.component.html'),
     providers: [PhoneService],
     directives: [CarouselComponent],
     pipes: [CheckmarkPipe]

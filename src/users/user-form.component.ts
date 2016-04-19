@@ -7,7 +7,7 @@ import {UserService} from '../users/user.service';
 import {User} from './user';
 
 @Component({
-	templateUrl: './users/user-form.component.html',
+	template: require('./user-form.component.html'),
 	providers: [UserService]
 
 })

@@ -4,7 +4,7 @@ import {LoginValidators} from '../shared/loginValidators';
 
 @Component({
     selector: 'login-form',
-    templateUrl: './login-form/login-form.component.html'
+    template: require('./login-form.component.html')
 })
 export class LoginFormComponent {
 

@@ -11,7 +11,7 @@ import {GitUsersComponent} from './gitUsers.component';
   providers: [ FORM_PROVIDERS ],
   directives: [ ROUTER_DIRECTIVES, FORM_DIRECTIVES ],
   pipes: [],
-  templateUrl: './gitExplorer/gitExplorer.component.html',
+  template: require('./gitExplorer.component.html'),
   styles: [require('assets/css/GitExplorer.css')]
  // styleUrls: ['assets/stylesheets/gitExplorer.css']
 })
