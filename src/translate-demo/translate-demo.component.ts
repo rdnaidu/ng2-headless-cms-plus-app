@@ -1,33 +1,41 @@
 import {Component, Injectable, provide} from 'angular2/core'; 
 import {TranslateService, TranslatePipe, TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
- 
+import {DropdownComponent} from '../shared/drop-down.component';
+ import {DropdownValue} from '../shared/drop-downValue';
  
 @Injectable() 
 @Component({ 
     selector: 'translate-demo', 
-     template: ` 
-         <h1>Hello, {{name}}!</h1> 
-         Say "<b>{{ 'HELLO' | translate:'{value: "world"}' }}</b>" to: <input [value]="name" (input)="name = $event.target.value"> 
-         <br/> 
-         Change language: 
-         <select (change)="translate.use($event.target.value)"> 
-             <option *ngFor="#lang of ['fr', 'en']" [selected]="lang === translate.currentLang">{{lang}}</option> 
-         </select> 
-     `, 
-     pipes: [TranslatePipe] 
+     template: require('./translate-demo.components.html'), 
+     pipes: [TranslatePipe],
+     directives: [DropdownComponent] 
 }) 
 export class TranslateDemoComponent { 
      name: string = 'World'; 
- 
- 
+     dropdownValues: DropdownValue[];
+     labelText: string ="Select Language";
+     runTranslate(str: string) {
+         console.log(str);
+         this.translate.use(str);
+     }
      constructor(public translate: TranslateService) { 
+         this.dropdownValues = [new DropdownValue('en','English'),
+                                 new DropdownValue('fr','French')];
          // use navigator lang if available 
          var userLang = navigator.language.split('-')[0]; 
          userLang = /(fr|en)/gi.test(userLang) ? userLang : 'en'; 
  
  
          // this trigger the use of the french or english language after setting the translations 
-         translate.use(userLang); 
+         this.translate.use(userLang); 
      } 
+     
+     runTr($event) {
+        // console.log($event.selectedValue.value);
+      //   alert($event.selectedValue.value);
+         var userLang = $event.selectedValue.value; 
+         userLang = /(fr|en)/gi.test(userLang) ? userLang : 'en'; 
+         this.translate.use(userLang); 
+     }
  }
  

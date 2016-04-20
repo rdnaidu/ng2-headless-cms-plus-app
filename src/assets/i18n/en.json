@@ -1,3 +1,5 @@
 {
-  "HELLO": "hello {{value}}"
+  "HELLO": "hello {{value}}",
+  "google_map_heading": "Google Map en",
+  "translate_demo_heading": "Translate Demo en"
 }
