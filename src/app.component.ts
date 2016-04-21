@@ -10,6 +10,7 @@ import {LoginComponent} from './login/login.component';
 import {PhonesComponent} from './phones/phones.component';
 import {PhoneComponent} from './phones/phone.component';
 import {GitExplorerComponent} from './gitExplorer/gitExplorer.component';
+import {TweetsComponent} from './tweets/tweets.component';
 
 @RouteConfig([
     { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
@@ -21,6 +22,7 @@ import {GitExplorerComponent} from './gitExplorer/gitExplorer.component';
     { path: '/phones/:id', name: 'Phone', component: PhoneComponent },
     { path: '/not-found', name: 'NotFound', component: NotFoundComponent },
     { path: '/git-explorer/...', name: 'GitExplorer', component: GitExplorerComponent },
+    { path: '/tweets', name: 'Tweets', component: TweetsComponent },
     { path: '/login', name: 'Login', component: LoginComponent },
     { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])

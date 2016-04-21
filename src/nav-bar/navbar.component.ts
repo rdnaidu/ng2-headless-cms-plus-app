@@ -18,7 +18,8 @@ export class NavBarComponent implements OnInit {
         new MenuItem("users","Users","Users"),
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),
-        new MenuItem("git-explorer","GitExplorer","Git User Explorer")
+        new MenuItem("git-explorer","GitExplorer","Git User Explorer"),
+        new MenuItem("tweets","Tweets","Tweets")
         
     ];
    	constructor(private _router: Router,
