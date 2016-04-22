@@ -1,4 +1,4 @@
-<div *ngIf="userLogin != null">
+<div *ngIf="!error && userLogin != null">
     <div class="col-sm-3">
         <img class="img-circle" src="{{userData.avatar_url}}" />
         <p *ngIf="userData.name">
@@ -14,5 +14,10 @@
     <div class="col-sm-9">
         <button class="btn btn-primary" (click)="getFollowers()">Load Followers</button>
         <router-outlet></router-outlet>
+    </div>
+</div>
+<div *ngIf="error">
+    <div class="alert alert-info">
+        <strong>Error in getting user details!</strong> {{errorDetails}} . TODO - This works on firefox and chrome but there are issues on IE.
     </div>
 </div>

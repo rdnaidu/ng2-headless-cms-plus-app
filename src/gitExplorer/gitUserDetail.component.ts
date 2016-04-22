@@ -1,6 +1,6 @@
 import {Component, Injector, OnInit} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {ROUTER_DIRECTIVES, Router, RouteParams, RouteConfig} from 'angular2/router';
+import {ROUTER_DIRECTIVES, Router, RouteParams, RouteConfig, OnActivate, ComponentInstruction} from 'angular2/router';
 import {GitUserFollowersComponent} from './GitUserFollowers.component';
 import {GitUser} from './gitUser';
 
@@ -15,11 +15,12 @@ import {GitUser} from './gitUser';
 @RouteConfig([
     { path: '/followers', component: GitUserFollowersComponent, name: 'GitUserFollowers' }
 ])
-export class GitUserDetailComponent implements OnInit {
+export class GitUserDetailComponent implements OnActivate {
     params: RouteParams;
     userLogin: string;
     userData = new GitUser();
-
+    error: boolean;
+    errorDetails: string;
 
     constructor(public http: Http, params: RouteParams, injector: Injector, private _router: Router) {
         this.params = injector.parent.parent.get(RouteParams);
@@ -27,15 +28,27 @@ export class GitUserDetailComponent implements OnInit {
     }
 
 
-    ngOnInit() {
-        this.http.get(`http://api.github.com/users/${this.userLogin}`)
-            .map(response => response.json())
-            .subscribe(
-            data => this.userData = data,
-            err => console.log(err)
-            );
+    routerOnActivate(to: ComponentInstruction, from: ComponentInstruction) {
+        return new Promise((resolve) => {
+            this.http.get(`http://api.github.com/users/${this.userLogin}`)
+                .map(response => response.json())
+                .subscribe(
+                    data => {
+                        this.userData = data;
+                        this.error = false;
+                        console.log(data);
+                        resolve(true);
+                    }
+                    ,
+                    err => {
+                        //console.log(err)
+                        this.error = true;
+                        this.errorDetails = err.message;
+                        resolve(false);
+                    }
+                );
+        });
     }
-
 
     getFollowers() {
         this._router.navigate(['GitUserFollowers', { userLogin: this.userLogin }]);
