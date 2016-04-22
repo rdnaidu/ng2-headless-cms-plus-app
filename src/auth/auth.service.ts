@@ -9,7 +9,7 @@ import {Injectable} from 'angular2/core';
 export class AuthService {
     public loggedIn;
     token: string;
-    public username: string;
+    public username: String;
     constructor() {
         this.loggedIn = false;
         localStorage.removeItem('token');
