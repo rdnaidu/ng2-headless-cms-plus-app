@@ -9,7 +9,7 @@ import {Injectable} from 'angular2/core';
 export class AuthService {
     public loggedIn;
     token: string;
-    
+    public username: string;
     constructor() {
         this.loggedIn = false;
         localStorage.removeItem('token');
@@ -35,7 +35,7 @@ export class AuthService {
             });
 
         */
-        
+        this.username=username;
         // simulate successfull login call
         if (username === 'test' && password === 'test') {
             this.token = 'token'; // dummy token

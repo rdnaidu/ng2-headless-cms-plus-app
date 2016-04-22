@@ -12,12 +12,21 @@ import {Router} from 'angular2/router';
    <!-- Logged in: {{ auth.loggedIn }}<br> -->
     <br>
     <login-form (formEvent)="login($event)" *ngIf="!auth.loggedIn" [error]="error"></login-form>
-    <button class="btn btn-primary" (click)="logout()" *ngIf="auth.loggedIn">Logout</button>
+    <div class="container" *ngIf="auth.loggedIn">
+        <div class="row">
+            <div>
+                <label>User : {{auth.username}}</label>&nbsp;
+                <button class="btn btn-primary" (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    
   `
 })
 
 export class LoginComponent {
     error: boolean = false;
+    
     constructor(public auth: AuthService,
                 public router: Router) {
     }
@@ -25,6 +34,7 @@ export class LoginComponent {
     login($event) {
       //  console.log($event.loginForm.username + ":" + $event.loginForm.password);
         //this.auth.login($event.loginForm.username,$event.loginForm.password);
+        
         this.auth.login($event.loginForm.username,$event.loginForm.password)
             .subscribe(
                 (token: any) => this.router.navigate(['Home']),
