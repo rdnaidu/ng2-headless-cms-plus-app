@@ -73,7 +73,8 @@
     "lodash": "^4.11.1",
     "angular2-google-maps":"*",
     "ng2-translate": "^1.11.1",
-    "angular2-notifications": "^0.1.46"
+    "angular2-notifications": "^0.1.46",
+    "ng2-bootstrap":"^1.0.13"
   },
   "devDependencies": {
     "angular2-hmr": "~0.5.5",

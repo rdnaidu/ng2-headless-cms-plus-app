@@ -1,15 +1,15 @@
 
 import {Component, Input} from 'angular2/core';
 import {LikeComponent} from '../shared/like.component';
+import {RatingDemoComponent} from '../shared/rating-demo.component';
 
 @Component({
     selector: 'tweet',
     template: `
+<div class="panel panel-default">
 <div class="media">
   <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="{{ data.imageUrl }}">
-    </a>
+    <img class="media-object thumbnail" src="{{ data.imageUrl }}" alt="...">
   </div>
   <div class="media-body">
     <h4 class="media-heading">
@@ -17,29 +17,18 @@ import {LikeComponent} from '../shared/like.component';
     </h4>
     {{ data.body }}
     <div>
-        <like [totalLikes]="data.totalLikes" [iLike]="data.iLike"></like>
+        <like [totalLikes]="data.totalLikes" [iLike]="data.iLike"></like>&nbsp;
+        <rating-demo></rating-demo>
     </div>
   </div>
-</div>    
+</div> 
+</div>   
     `,
-    styles: [`
-        .handle {
-            color: #ccc;
-        }
-        
-        .media {
-            margin-bottom: 20px;
-        }
-        
-        .media-object {
-            border-radius: 10px;
-        }
-    `],
-    directives: [LikeComponent]
+    directives: [LikeComponent,RatingDemoComponent]
 })
 export class TweetComponent {
     constructor() {
-        console.log(this.data);
+     //   console.log(this.data);
     }
     @Input() data;
 }
