@@ -13,7 +13,6 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {PortalDemo} from './portal/portal-demo';
 import {ToolbarDemo} from './toolbar/toolbar-demo';
-import {OverlayDemo} from './overlay/overlay-demo';
 import {ListDemo} from './list/list-demo';
 import {InputDemo} from './input/input-demo';
 
@@ -49,7 +48,6 @@ export class Home {}
   new Route({path: '/sidenav', name: 'SidenavDemo', component: SidenavDemo}),
   new Route({path: '/progress-circle', name: 'ProgressCircleDemo', component: ProgressCircleDemo}),
   new Route({path: '/portal', name: 'PortalDemo', component: PortalDemo}),
-  new Route({path: '/overlay', name: 'OverlayDemo', component: OverlayDemo}),
   new Route({path: '/checkbox', name: 'CheckboxDemo', component: CheckboxDemo}),
   new Route({path: '/input', name: 'InputDemo', component: InputDemo}),
   new Route({path: '/toolbar', name: 'ToolbarDemo', component: ToolbarDemo}),
