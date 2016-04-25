@@ -170,7 +170,13 @@ module.exports = {
         exclude: [helpers.root('src/index.html')]
       },
 
-      { test: /\.scss$/, loaders: [ 'style', 'css', 'postcss', 'sass' ] },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+      },
+
+      //{ test: /\.scss$/, loaders: [ 'style', 'css', 'postcss', 'sass' ] },
       //{ test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
       
       // the url-loader uses DataUrls. 

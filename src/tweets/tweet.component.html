@@ -1,0 +1,36 @@
+<!--<div class="panel panel-default">
+    <div class="media">
+        <div class="media-left">
+            <img class="media-object thumbnail" src="{{ data.imageUrl }}" alt="...">
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+        {{ data.author }} <span class="handle">{{ data.handle }}</span>
+    </h4> {{ data.body }}
+            <div>
+                <like [totalLikes]="data.totalLikes" [iLike]="data.iLike"></like>&nbsp;
+                <rating-demo></rating-demo>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<div class="demo-card-container">
+  <md-card>
+    <md-card-header>
+      <img src="{{ data.imageUrl }}" md-card-avatar>
+      <md-card-title>{{ data.author }}</md-card-title>
+      <md-card-subtitle>{{ data.handle }}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      {{ data.body }}
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+      <like [totalLikes]="data.totalLikes" [iLike]="data.iLike"></like>&nbsp;
+                <rating-demo></rating-demo>
+    </md-card-actions>
+  </md-card>
+
+</div>
