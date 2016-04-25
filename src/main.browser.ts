@@ -13,7 +13,7 @@ import {Http} from 'angular2/http';
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ENV_PROVIDERS} from './platform/environment';
 
-import {AppComponent} from './app.component';
+import {AppComponent} from './my-app/app.component';
 import {appInjectorRef} from './shared/appInjectorRef';
 import {AuthService} from './auth/auth.service';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';

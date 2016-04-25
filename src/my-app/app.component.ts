@@ -1,16 +1,16 @@
 import {Component,ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {NavBarComponent} from './nav-bar/navbar.component';
-import {HomeComponent} from './home/home.component';
-import {UsersComponent} from './users/users.component';
-import {UserFormComponent} from './users/user-form.component';
-import {PostsComponent} from './posts/posts.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {LoginComponent} from './login/login.component';
-import {PhonesComponent} from './phones/phones.component';
-import {PhoneComponent} from './phones/phone.component';
-import {GitExplorerComponent} from './gitExplorer/gitExplorer.component';
-import {TweetsComponent} from './tweets/tweets.component';
+import {NavBarComponent} from '../nav-bar/navbar.component';
+import {HomeComponent} from '../home/home.component';
+import {UsersComponent} from '../users/users.component';
+import {UserFormComponent} from '../users/user-form.component';
+import {PostsComponent} from '../posts/posts.component';
+import {NotFoundComponent} from '../not-found/not-found.component';
+import {LoginComponent} from '../login/login.component';
+import {PhonesComponent} from '../phones/phones.component';
+import {PhoneComponent} from '../phones/phone.component';
+import {GitExplorerComponent} from '../gitExplorer/gitExplorer.component';
+import {TweetsComponent} from '../tweets/tweets.component';
 
 @RouteConfig([
     { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
