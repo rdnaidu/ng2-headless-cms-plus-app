@@ -13,7 +13,8 @@ exports.config = {
     helpers.root('src/**/**.e2e.ts'),
     helpers.root('src/**/*.e2e.ts')
   ],
-  exclude: [],
+  exclude: ['src/app/home/**.e2e.ts',
+            'src/app/app.e2e.ts'],
 
   framework: 'jasmine2',
 
