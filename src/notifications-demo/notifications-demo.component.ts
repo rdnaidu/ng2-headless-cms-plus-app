@@ -1,9 +1,12 @@
 import {Component} from "angular2/core";
 import {NotificationsService} from "angular2-notifications/components";
 import {SimpleNotificationsComponent} from "angular2-notifications/components";
+import {DropdownComponent} from '../shared/drop-down.component';
+import {DropdownValue} from '../shared/drop-downValue';
+
 @Component({
     selector: 'notifications-demo',
-    directives: [SimpleNotificationsComponent],
+    directives: [SimpleNotificationsComponent,DropdownComponent],
     providers: [NotificationsService],
     template: ` 
          <form class="form-group" (ngSubmit)="create()"> 
@@ -19,14 +22,7 @@ import {SimpleNotificationsComponent} from "angular2-notifications/components";
              </div> 
              <div> 
                  <label>Type</label> 
-                 <p>The type of the notification.</p> 
-                 <select class="form-control"> 
-                     <option value="success" selected (click)=selectItem($event.target.value)>Success</option> 
-                     <option value="error" (click)=selectItem($event.target.value)>Error</option> 
-                     <option value="alert" (click)=selectItem($event.target.value)>Alert</option> 
-                     <option value="info" (click)=selectItem($event.target.value)>Info</option> 
-                     <option value="bare" (click)=selectItem($event.target.value)>Bare</option> 
-                 </select> 
+                 <drop-down [labelText]="labelText" [values]="dropdownValues" (select)="selectItem($event)"></drop-down>
              </div> 
              <button class="btn btn-primary" type="submit">Create Notification</button> 
          </form> 
@@ -42,9 +38,19 @@ import {SimpleNotificationsComponent} from "angular2-notifications/components";
      `
 })
 export class NotificationsDemoComponent {
+    dropdownValues: DropdownValue[];
+    labelText: string="The type of the notification.";
     constructor(
         private _service: NotificationsService
-    ) { this.type="success"; }
+    ) { 
+        this.type="success"; 
+         this.dropdownValues = [new DropdownValue('success','Success'),
+                                 new DropdownValue('error','Error'),
+                                 new DropdownValue('alert','Alert'),
+                                 new DropdownValue('info','Info'),
+                                 new DropdownValue('bare','Bare')
+                                 ];
+    }
 
     public title: string = 'just a title';
     public content: string = 'just content';
@@ -66,8 +72,8 @@ export class NotificationsDemoComponent {
         preventLastDuplicates: false
     };
 
-    selectItem(value) {
-        this.type=value;
+    selectItem($event) {
+        this.type=$event.selectedValue;
     }
     create() {
        // console.log(this.type);

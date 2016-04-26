@@ -1,7 +1,7 @@
 import {Component, Injectable, provide} from 'angular2/core'; 
 import {TranslateService, TranslatePipe, TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
 import {DropdownComponent} from '../shared/drop-down.component';
- import {DropdownValue} from '../shared/drop-downValue';
+import {DropdownValue} from '../shared/drop-downValue';
  
 @Injectable() 
 @Component({ 
@@ -33,7 +33,7 @@ export class TranslateDemoComponent {
      runTr($event) {
         // console.log($event.selectedValue.value);
       //   alert($event.selectedValue.value);
-         var userLang = $event.selectedValue.value; 
+         var userLang = $event.selectedValue; 
          userLang = /(fr|en)/gi.test(userLang) ? userLang : 'en'; 
          this.translate.use(userLang); 
      }

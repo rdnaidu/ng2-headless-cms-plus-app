@@ -25,8 +25,8 @@ import {DropdownValue} from './drop-downValue';
   <div class="col-xs-3">
     <div class="form-group">
       <label class="control-label" *ngIf="labelText">{{labelText}}</label>
-      <select class="form-control input-medium">
-        <option *ngFor="#value of values" (click)=selectItem(value)>{{value.label}}</option> 
+      <select class="form-control input-medium" (change)="selectItem($event.target.value)">
+      <option *ngFor="#value of values" [value]="value.value">{{value.label}}</option>
       </select>
     </div>
   </div>
