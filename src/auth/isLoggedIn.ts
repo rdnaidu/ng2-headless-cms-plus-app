@@ -15,8 +15,7 @@ export const isLoggedIn = (next: ComponentInstruction, prev: ComponentInstructio
             .subscribe((result) => {
                 if (result) {
                     resolve(true);
-                }
-                else {
+                } else {
                     resolve(false);
                     router.navigate(['Login']);
                 }

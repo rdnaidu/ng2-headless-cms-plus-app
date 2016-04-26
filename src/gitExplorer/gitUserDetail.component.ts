@@ -1,6 +1,11 @@
 import {Component, Injector, OnInit} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {ROUTER_DIRECTIVES, Router, RouteParams, RouteConfig, OnActivate, ComponentInstruction} from 'angular2/router';
+import {ROUTER_DIRECTIVES,
+        Router,
+        RouteParams,
+        RouteConfig,
+        OnActivate,
+        ComponentInstruction} from 'angular2/router';
 import {GitUserFollowersComponent} from './GitUserFollowers.component';
 import {GitUser} from './gitUser';
 
@@ -22,7 +27,9 @@ export class GitUserDetailComponent implements OnActivate {
     error: boolean;
     errorDetails: string;
 
-    constructor(public http: Http, params: RouteParams, injector: Injector, private _router: Router) {
+    constructor(public http: Http,
+                params: RouteParams,
+                injector: Injector, private _router: Router) {
         this.params = injector.parent.parent.get(RouteParams);
         this.userLogin = this.params.get('userLogin');
     }
@@ -41,7 +48,7 @@ export class GitUserDetailComponent implements OnActivate {
                     }
                     ,
                     err => {
-                        //console.log(err)
+                        // console.log(err)
                         this.error = true;
                         this.errorDetails = err.message;
                         resolve(false);
@@ -53,4 +60,4 @@ export class GitUserDetailComponent implements OnActivate {
     getFollowers() {
         this._router.navigate(['GitUserFollowers', { userLogin: this.userLogin }]);
     }
-} 
+}

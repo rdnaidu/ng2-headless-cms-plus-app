@@ -37,7 +37,7 @@ export class Home {}
     MdButton,
     MD_SIDENAV_DIRECTIVES,
     MD_LIST_DIRECTIVES,
-    MdToolbar,
+    MdToolbar
   ],
   pipes: []
 })
@@ -53,6 +53,6 @@ export class Home {}
   new Route({path: '/checkbox', name: 'CheckboxDemo', component: CheckboxDemo}),
   new Route({path: '/input', name: 'InputDemo', component: InputDemo}),
   new Route({path: '/toolbar', name: 'ToolbarDemo', component: ToolbarDemo}),
-  new Route({path: '/list', name: 'ListDemo', component: ListDemo}),
+  new Route({path: '/list', name: 'ListDemo', component: ListDemo})
 ])
 export class DemoApp { }

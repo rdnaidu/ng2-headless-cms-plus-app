@@ -1,8 +1,9 @@
 import {Component} from 'angular2/core';
-import {MapsAPILoader,
-	NoOpMapsAPILoader,
-	MouseEvent,ANGULAR2_GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core';
-	
+import { MapsAPILoader, 
+		 NoOpMapsAPILoader,
+		 MouseEvent,
+		 ANGULAR2_GOOGLE_MAPS_DIRECTIVES } from 'angular2-google-maps/core';
+		 
 interface marker {
 	lat: number;
 	lng: number;

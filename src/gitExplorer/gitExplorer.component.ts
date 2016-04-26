@@ -5,7 +5,8 @@ import {Http} from 'angular2/http';
 import {GitUsersComponent} from './gitUsers.component';
 import {GitUsersInfo} from './gitUser';
 /*
-    Inspired from https://auth0.com/blog/2016/01/25/angular-2-series-part-4-component-router-in-depth/
+    Inspired from 
+    https://auth0.com/blog/2016/01/25/angular-2-series-part-4-component-router-in-depth/
 */
 @Component({
   selector: 'git-explorer',
@@ -18,7 +19,6 @@ import {GitUsersInfo} from './gitUser';
 })
 @RouteConfig([
      { path: '/users/...', name: 'GitUsers', component: GitUsersComponent, useAsDefault: true}
-    
 ])
 export class GitExplorerComponent {
   users: Array<GitUsersInfo> = [];

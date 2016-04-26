@@ -35,7 +35,8 @@ export class AuthService {
             });
 
         */
-        this.username=username;
+
+        this.username = username;
         // simulate successfull login call
         if (username === 'test' && password === 'test') {
             this.token = 'token'; // dummy token
@@ -61,7 +62,7 @@ export class AuthService {
                 localStorage.removeItem('token');
             });
      */
-    
+
         this.loggedIn = false;
         this.token = undefined;
         localStorage.removeItem('token');
@@ -73,5 +74,5 @@ export class AuthService {
       //  return Observable.of(this.loggedIn);
       return Observable.of(!!localStorage.getItem('token'));
     }
-    
+
 }

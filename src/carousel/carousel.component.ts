@@ -1,11 +1,11 @@
 // Import Component form the angular core package
-import {Component,Input} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 
 // Compoent Decorator
 @Component({
-  //Name of our tag
+  // Name of our tag
   selector: 'carousel',
-  //Template for the tag
+  // Template for the tag
   template: `
  <div class="carousel">
 
@@ -19,10 +19,10 @@ import {Component,Input} from 'angular2/core';
 
 </div>
   `,
-  styles: [require('assets/css/carousel.css'),``]
+  styles: [require('assets/css/carousel.css')]
 })
-//Carousel Component itself
+// Carousel Component itself
 export class CarouselComponent {
-  //images data to be bound to the template
+  // images data to be bound to the template
   @Input('images') images: string[];
 }

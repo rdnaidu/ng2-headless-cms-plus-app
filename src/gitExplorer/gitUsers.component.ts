@@ -19,7 +19,6 @@ import {GitUserFollowersComponent} from './gitUserFollowers.component';
 })
 @RouteConfig([
      { path: '/detail/...', name: 'GitUsers', component: GitUserDetailComponent, useAsDefault: true}
-    
 ])
 export class GitUsersComponent {
   userLogin: Object;
