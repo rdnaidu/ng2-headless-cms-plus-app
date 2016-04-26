@@ -19,6 +19,7 @@ export class LoginFormComponent {
 					), null
 					],
 				password: ['',Validators.required],
+				remember: ['',null,null]
 			})
 		}
 		login() {

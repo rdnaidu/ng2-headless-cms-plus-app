@@ -1,4 +1,4 @@
-import {Component,ViewEncapsulation} from 'angular2/core';
+import {Component,ViewEncapsulation,OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {NavBarComponent} from '../nav-bar/navbar.component';
 import {HomeComponent} from '../home/home.component';
@@ -13,6 +13,9 @@ import {GitExplorerComponent} from '../gitExplorer/gitExplorer.component';
 import {TweetsComponent} from '../tweets/tweets.component';
 
 import {DemoApp} from '../demo-app/demo-app';
+
+declare var jQuery: any;
+
 
 @RouteConfig([
     { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
@@ -34,10 +37,16 @@ import {DemoApp} from '../demo-app/demo-app';
     template: require('./app.component.html'),
      encapsulation: ViewEncapsulation.None,
     styles: [ require('assets/css/bootstrap.css'),
-              require('assets/css/styles.css')
+              require('assets/css/styles.css'),
+              require('assets/bootstrap-material-design/css/bootstrap-material-design.min.css'),
+              require('assets/bootstrap-material-design/css/ripples.min.css')
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+    
+    ngOnInit(){
+        jQuery.material.init();
+    }
 }
