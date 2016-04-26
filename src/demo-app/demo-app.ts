@@ -5,6 +5,7 @@ import {ButtonDemo} from './button/button-demo';
 import {RadioDemo} from './radio/radio-demo';
 import {SidenavDemo} from './sidenav/sidenav-demo';
 import {ProgressCircleDemo} from './progress-circle/progress-circle-demo';
+import {ProgressBarDemo} from './progress-bar/progress-bar-demo';
 import {CheckboxDemo} from './checkbox/checkbox-demo';
 import {Dir} from '@angular2-material/core';
 import {MdButton} from '@angular2-material/button';
@@ -47,6 +48,7 @@ export class Home {}
   new Route({path: '/radio', name: 'RadioDemo', component: RadioDemo}),
   new Route({path: '/sidenav', name: 'SidenavDemo', component: SidenavDemo}),
   new Route({path: '/progress-circle', name: 'ProgressCircleDemo', component: ProgressCircleDemo}),
+  new Route({path: '/progress-bar', name: 'ProgressBarDemo', component: ProgressBarDemo}),
   new Route({path: '/portal', name: 'PortalDemo', component: PortalDemo}),
   new Route({path: '/checkbox', name: 'CheckboxDemo', component: CheckboxDemo}),
   new Route({path: '/input', name: 'InputDemo', component: InputDemo}),
