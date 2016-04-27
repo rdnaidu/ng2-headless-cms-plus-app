@@ -9,7 +9,8 @@ import {GitUsersInfo} from './gitUser';
       <h3>Followers</h3> 
       <li class="list-group-item" *ngFor="#follower of followers">{{follower.login}}</li> 
      </ul> 
-   `
+   `,
+   styles: [require('assets/css/GitExplorer.css')]
 })
 export class GitUserFollowersComponent implements OnActivate {
     userLogin: string;

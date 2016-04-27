@@ -15,6 +15,10 @@ import * as _ from 'lodash';
 	styles: [`
 		.posts li { cursor: default; }
         .posts li:hover { background: #ecf0f1; } 
+		.list-group-item {
+			margin-top: 8px;
+  			margin-left: 4px;	
+		}
         .list-group-item.active, 
         .list-group-item.active:hover, 
         .list-group-item.active:focus { 

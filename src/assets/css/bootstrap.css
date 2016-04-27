@@ -4958,6 +4958,7 @@ a.badge:focus {
 }
 .list-group-item > .badge + .badge {
   margin-right: 5px;
+  margin-top: 5px;
 }
 .nav-pills > li > a > .badge {
   margin-left: 3px;
