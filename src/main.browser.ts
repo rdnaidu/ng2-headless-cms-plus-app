@@ -17,7 +17,11 @@ import {AppComponent} from './my-app/app.component';
 import {appInjectorRef} from './shared/appInjectorRef';
 import {AuthService} from './auth/auth.service';
 import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
-import {TRANSLATE_PROVIDERS, TranslateService, TranslatePipe, TranslateLoader, TranslateStaticLoader} from 'ng2-translate/ng2-translate';
+import {TRANSLATE_PROVIDERS,
+        TranslateService,
+        TranslatePipe,
+        TranslateLoader,
+        TranslateStaticLoader} from 'ng2-translate/ng2-translate';
 
 /*
 bootstrap(AppComponent,[
@@ -35,7 +39,7 @@ bootstrap(AppComponent,[
 * App Component
 * our top level component that holds all of our components
 */
-//import {App, APP_PROVIDERS} from './app';
+// import {App, APP_PROVIDERS} from './app';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -57,7 +61,9 @@ export function main(initialHmrState?: any): Promise<any> {
         useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
         deps: [Http]
     }),
-    // use TranslateService here, and not TRANSLATE_PROVIDERS (which will define a default TranslateStaticLoader)
+    /* use TranslateService here, and not TRANSLATE_PROVIDERS 
+    * (which will define a default TranslateStaticLoader)
+    */
     TranslateService,
     provide(LocationStrategy, {useClass: PathLocationStrategy })
     ]).then((appRef: ComponentRef) => {
@@ -65,9 +71,6 @@ export function main(initialHmrState?: any): Promise<any> {
         appInjectorRef(appRef.injector);
     }).catch(err => console.error(err));
 }
-
-
-
 
 
 /*

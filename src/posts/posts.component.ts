@@ -10,7 +10,7 @@ import {Post} from './post';
 
 import * as _ from 'lodash';
 
-@Component({ 
+@Component({
 	template: require('./posts.component.html'),
 	styles: [`
 		.posts li { cursor: default; }
