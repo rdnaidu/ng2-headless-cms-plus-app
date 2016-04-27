@@ -1,13 +1,18 @@
 import {Component,Output , Input, EventEmitter} from 'angular2/core';
 import {ControlGroup, Control, Validators, FormBuilder} from 'angular2/common';
 import {LoginValidators} from '../shared/loginValidators';
+import {MdCheckbox} from '@angular2-material/checkbox';
 
 @Component({
     selector: 'login-form',
-    template: require('./login-form.component.html')
+    template: require('./login-form.component.html'),
+	directives: [MdCheckbox]
 })
 export class LoginFormComponent {
-
+		isIndeterminate: boolean = false;
+  		isChecked: boolean = false;
+  		isDisabled: boolean = false;
+  		alignment: string = 'start';
 		form: ControlGroup;
         @Output() formEvent = new EventEmitter();
         @Input() error: boolean;

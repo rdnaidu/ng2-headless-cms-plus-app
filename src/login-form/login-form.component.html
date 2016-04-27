@@ -31,8 +31,8 @@
                                     <div *ngIf="password.touched && !password.valid" class="alert alert-danger">Password is required.</div>
                                 </div>
                                 <div class="form-group text-center">
-                                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                    <label for="remember"> Remember Me</label>
+                                    <md-checkbox [(ngModel)]="isChecked" (change)="isIndeterminate = false" [indeterminate]="isIndeterminate" [disabled]="isDisabled"
+                                        [align]="alignment">Remember me</md-checkbox>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

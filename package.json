@@ -67,6 +67,7 @@
     "angular2-google-maps": "*",
     "angular2-notifications": "^0.1.46",
     "bootstrap-loader": "^1.0.10",
+    "bootstrap-material-design": "^0.5.9",
     "bootstrap-sass": "*",
     "core-js": "^2.2.2",
     "font-awesome": "^4.4.0",

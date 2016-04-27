@@ -34,8 +34,9 @@ import 'ng2-translate/ng2-translate';
 import 'angular2-notifications/components';
 import 'ng2-bootstrap/ng2-bootstrap';
 
-import 'assets/bootstrap-material-design/js/material.min.js';
-import 'assets/bootstrap-material-design/js/ripples.min.js';
+import 'bootstrap-material-design';
+//import 'assets/bootstrap-material-design/js/material.min.js';
+//import 'assets/bootstrap-material-design/js/ripples.min.js';
 
 
 if ('production' === ENV) {
