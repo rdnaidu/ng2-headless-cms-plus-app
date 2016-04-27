@@ -56,7 +56,6 @@ import {RouterActive} from './router-active';
         </nav>
       </md-toolbar>
     </header>
-    <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>
 
     <main>
       <router-outlet></router-outlet>
@@ -84,11 +83,7 @@ export class App {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState,
-    public router: Router) {
-
-  }
+  constructor(public appState: AppState) {} 
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
