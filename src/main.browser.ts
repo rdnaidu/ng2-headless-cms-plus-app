@@ -3,7 +3,8 @@
  */
 import {bootstrap}    from 'angular2/platform/browser';
 import {provide, ComponentRef} from 'angular2/core';
-import {ROUTER_PROVIDERS , LocationStrategy, PathLocationStrategy } from 'angular2/router';
+import {LocationStrategy, HashLocationStrategy, PathLocationStrategy} from 'angular2/platform/common';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Http} from 'angular2/http';
 /*

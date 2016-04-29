@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from 'angular2/core';
+import {Component, ReflectiveInjector, Injector, OnInit} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {ROUTER_DIRECTIVES,
         Router,
@@ -30,8 +30,10 @@ export class GitUserDetailComponent implements OnActivate {
     constructor(public http: Http,
                 params: RouteParams,
                 injector: Injector, private _router: Router) {
-        this.params = injector.parent.parent.get(RouteParams);
-        this.userLogin = this.params.get('userLogin');
+       // TODO - Fix this
+       // let reflectiveInjector: ReflectiveInjector = <ReflectiveInjector>injector;            
+       // this.params = reflectiveInjector.parent.get(RouteParams);
+        this.userLogin = "null"; //this.params.get('userLogin');
     }
 
 
