@@ -2,14 +2,14 @@
 
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {Rating} from 'ng2-bootstrap/ng2-bootstrap';
+import {RatingComponent} from 'ng2-bootstrap/ng2-bootstrap';
 
 // webpack html imports
 let template = require('./rating-demo.component.html');
 
 @Component({
   selector: 'rating-demo',
-  directives: [Rating, FORM_DIRECTIVES, CORE_DIRECTIVES],
+  directives: [RatingComponent, FORM_DIRECTIVES, CORE_DIRECTIVES],
   template: template
 })
 export class RatingDemoComponent {
