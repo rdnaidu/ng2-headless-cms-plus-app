@@ -33,7 +33,7 @@ export class GitUserDetailComponent implements OnActivate {
        // TODO - Fix this
        // let reflectiveInjector: ReflectiveInjector = <ReflectiveInjector>injector;            
        // this.params = reflectiveInjector.parent.get(RouteParams);
-        this.userLogin = "null"; //this.params.get('userLogin');
+        this.userLogin = 'null'; // this.params.get('userLogin');
     }
 
 
