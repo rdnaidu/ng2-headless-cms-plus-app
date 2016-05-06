@@ -1,20 +1,29 @@
 /*
  * Providers provided by Angular
  */
-import {bootstrap}    from 'angular2/platform/browser';
-import {provide, ComponentRef} from 'angular2/core';
-import {LocationStrategy,
-        HashLocationStrategy,
-        PathLocationStrategy} from 'angular2/platform/common';
-import {ROUTER_PROVIDERS} from 'angular2/router';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {Http} from 'angular2/http';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 /*
 * Platform and Environment
 * our providers/directives/pipes
 */
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ENV_PROVIDERS} from './platform/environment';
+
+/*
+* App Component
+* our top level component that holds all of our components
+*/
+//import {App, APP_PROVIDERS} from './app';
+
+
+import {FORM_PROVIDERS, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {ComponentRef} from '@angular/core/index';
+// Angular 2 Http
+import {HTTP_PROVIDERS, Http} from '@angular/http';
+// Angular 2 Router
+import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+
+import {PLATFORM_DIRECTIVES} from '@angular/core'; 
 
 import {AppComponent} from './my-app/app.component';
 import {appInjectorRef} from './shared/appInjectorRef';
@@ -25,25 +34,7 @@ import {TRANSLATE_PROVIDERS,
         TranslatePipe,
         TranslateLoader,
         TranslateStaticLoader} from 'ng2-translate/ng2-translate';
-
-/*
-bootstrap(AppComponent,[
-    AuthService,
-    ROUTER_PROVIDERS,
-    HTTP_PROVIDERS,
-    provide(LocationStrategy, {useClass: PathLocationStrategy })
-    ]).then((appRef: ComponentRef) => {
-        // store a reference to the application injector
-        appInjectorRef(appRef.injector);
-});
-
-
-/*
-* App Component
-* our top level component that holds all of our components
-*/
-// import {App, APP_PROVIDERS} from './app';
-
+        
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
@@ -52,29 +43,26 @@ export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
     AuthService,
-    ...ENV_PROVIDERS,
     ...PROVIDERS,
+    ...ENV_PROVIDERS,
     ...DIRECTIVES,
     ...PIPES,
-//    ...APP_PROVIDERS,
-    ANGULAR2_GOOGLE_MAPS_PROVIDERS,
+ //   ...APP_PROVIDERS,
+     ANGULAR2_GOOGLE_MAPS_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
-    provide(TranslateLoader, {
-        useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
+    { provide: TranslateLoader, 
+        useFactory: (http: any) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
         deps: [Http]
-    }),
-    /* use TranslateService here, and not TRANSLATE_PROVIDERS 
-    * (which will define a default TranslateStaticLoader)
-    */
+    },
+     {provide: LocationStrategy, useClass: HashLocationStrategy },
     TranslateService,
-    provide(LocationStrategy, {useClass: PathLocationStrategy })
-    ]).then((appRef: ComponentRef) => {
+  ]).then((appRef: any) => {
         // store a reference to the application injector
         appInjectorRef(appRef.injector);
     }).catch(err => console.error(err));
-}
 
+}
 
 /*
  * Vendors
@@ -96,3 +84,4 @@ if ('development' === ENV && HMR === true) {
   // bootstrap when documetn is ready
   document.addEventListener('DOMContentLoaded', () => main());
 }
+
