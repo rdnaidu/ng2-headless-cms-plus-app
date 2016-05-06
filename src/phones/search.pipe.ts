@@ -6,11 +6,12 @@ import {Phone} from './phone';
 })
 export class SearchPipe implements PipeTransform {
     transform(value,args: string[]) {
-         if(value && args[0] === 'searchTerm'){
-             console.log(args[0]);
-             if (args[1] != null) 
+        //console.log(args[1]);
+         if(value){
+        //     console.log(args);
+             if (args != null) 
                 return value.filter((item) =>
-                        item.name.startsWith(args[1]))
+                        item.name.startsWith(args))
          }
         return value;
     }   

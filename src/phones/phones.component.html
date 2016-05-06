@@ -9,7 +9,7 @@
 </div>
 <br>
 <div class="row">
-<div class="media" *ngFor="#phone of phones | search:'searchTerm':searchTerm">
+<div class="media" *ngFor="#phone of (phones | search:searchTerm)">
     <div class="panel panel-default">
         <div class="panel-body">
 

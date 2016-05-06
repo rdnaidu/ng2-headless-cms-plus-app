@@ -16,7 +16,7 @@ import {ENV_PROVIDERS} from './platform/environment';
 //import {App, APP_PROVIDERS} from './app';
 
 
-import {FORM_PROVIDERS, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import {ComponentRef} from '@angular/core/index';
 // Angular 2 Http
 import {HTTP_PROVIDERS, Http} from '@angular/http';
@@ -55,7 +55,7 @@ export function main(initialHmrState?: any): Promise<any> {
         useFactory: (http: any) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
         deps: [Http]
     },
-     {provide: LocationStrategy, useClass: HashLocationStrategy },
+     {provide: LocationStrategy, useClass: PathLocationStrategy  },
     TranslateService,
   ]).then((appRef: any) => {
         // store a reference to the application injector
