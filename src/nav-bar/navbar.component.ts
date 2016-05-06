@@ -1,5 +1,5 @@
-import {Component,OnInit} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
+import {Component,OnInit} from '@angular/core';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 import {Observable,Scheduler} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuthService} from '../auth/auth.service';

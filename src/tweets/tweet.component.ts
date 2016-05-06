@@ -1,5 +1,5 @@
 
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {LikeComponent} from '../shared/like.component';
 import {RatingDemoComponent} from '../shared/rating-demo.component';
 import {MdButton} from '@angular2-material/button';

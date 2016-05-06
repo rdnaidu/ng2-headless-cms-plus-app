@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES, RouteConfig, Router} from 'angular2/router';
-import {FORM_PROVIDERS, FORM_DIRECTIVES, Control} from 'angular2/common';
-import {Http} from 'angular2/http';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES, RouteConfig, Router} from '@angular/router-deprecated';
+import {FORM_PROVIDERS, FORM_DIRECTIVES, Control} from '@angular/common';
+import {Http} from '@angular/http';
 import {GitUsersComponent} from './gitUsers.component';
 import {GitUsersInfo} from './gitUser';
 /*

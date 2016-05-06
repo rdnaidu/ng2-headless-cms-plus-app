@@ -1,4 +1,4 @@
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {NotificationsService} from "angular2-notifications/components";
 import {SimpleNotificationsComponent} from "angular2-notifications/components";
 import {DropdownComponent} from '../shared/drop-down.component';

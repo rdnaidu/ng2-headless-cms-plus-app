@@ -1,5 +1,5 @@
 // Import Component form the angular core package
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 // Compoent Decorator
 @Component({

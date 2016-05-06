@@ -1,5 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {CanActivate, ComponentInstruction} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CanActivate, ComponentInstruction} from '@angular/router-deprecated';
 
 import {PostService} from './post.service';
 import {UserService} from '../users/user.service';

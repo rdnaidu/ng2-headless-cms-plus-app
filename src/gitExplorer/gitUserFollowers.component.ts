@@ -1,6 +1,6 @@
-import {Component, Injector} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {RouteParams, OnActivate, ComponentInstruction} from 'angular2/router';
+import {Component, Injector} from '@angular/core';
+import {Http} from '@angular/http';
+import {RouteParams, OnActivate, ComponentInstruction} from '@angular/router-deprecated';
 import {GitUsersInfo} from './gitUser';
 
 @Component({

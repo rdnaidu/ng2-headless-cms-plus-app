@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {ROUTER_DIRECTIVES, RouteParams, RouteConfig} from 'angular2/router';
+import {Component} from '@angular/core';
+import {Http} from '@angular/http';
+import {ROUTER_DIRECTIVES, RouteParams, RouteConfig} from '@angular/router-deprecated';
 import {GitUserDetailComponent} from './gitUserDetail.component';
 import {GitUserFollowersComponent} from './gitUserFollowers.component';
 

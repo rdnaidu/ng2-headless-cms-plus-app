@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 /* Authentication Service for
       1) Storing the current auth token (if loggedIn)
       2) Handle login and logout methods
@@ -16,7 +16,7 @@ export class AuthService {
         this.token = localStorage.getItem('token');
     }
 
-    public login(username?: String, password?: String) {
+    public login(username?: String, password?: String): Observable<string> {
         /*
             // sample code for a login server call
 

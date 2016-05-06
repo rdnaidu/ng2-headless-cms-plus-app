@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
+import {HTTP_PROVIDERS} from '@angular/http';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {TranslateService, TranslatePipe, TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
 
 import {TranslateDemoComponent} from '../translate-demo/translate-demo.component';

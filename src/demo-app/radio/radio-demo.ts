@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 import {MdRadioDispatcher} from '@angular2-material/radio';
 

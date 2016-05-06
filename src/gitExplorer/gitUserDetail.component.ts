@@ -1,11 +1,11 @@
-import {Component, ReflectiveInjector, Injector, OnInit} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Component, ReflectiveInjector, Injector, OnInit} from '@angular/core';
+import {Http} from '@angular/http';
 import {ROUTER_DIRECTIVES,
         Router,
         RouteParams,
         RouteConfig,
         OnActivate,
-        ComponentInstruction} from 'angular2/router';
+        ComponentInstruction} from '@angular/router-deprecated';
 import {GitUserFollowersComponent} from './GitUserFollowers.component';
 import {GitUser} from './gitUser';
 

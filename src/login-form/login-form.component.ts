@@ -1,5 +1,5 @@
-import {Component,Output , Input, EventEmitter} from 'angular2/core';
-import {ControlGroup, Control, Validators, FormBuilder} from 'angular2/common';
+import {Component,Output , Input, EventEmitter} from '@angular/core';
+import {ControlGroup, Control, Validators, FormBuilder} from '@angular/common';
 import {LoginValidators} from '../shared/loginValidators';
 import {MdCheckbox} from '@angular2-material/checkbox';
 

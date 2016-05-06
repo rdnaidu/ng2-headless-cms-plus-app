@@ -1,5 +1,5 @@
-import {Injector} from 'angular2/core';
-import {Router, ComponentInstruction} from 'angular2/router';
+import {Injector} from '@angular/core';
+import {Router, ComponentInstruction} from '@angular/router-deprecated';
 
 import {appInjectorRef} from '../shared/appInjectorRef';
 import {AuthService} from './auth.service';

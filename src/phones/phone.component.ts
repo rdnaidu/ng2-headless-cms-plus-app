@@ -1,5 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {Router, RouteParams} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouteParams} from '@angular/router-deprecated';
 import {PhoneService} from "./phone.service";
 import {Phone} from './phone';
 import {CarouselComponent} from '../carousel/carousel.component';
