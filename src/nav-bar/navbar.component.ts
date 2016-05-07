@@ -4,6 +4,7 @@ import {Observable,Scheduler} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuthService} from '../auth/auth.service';
 import {MenuItem} from './menu-item';
+import {RouterActive} from '../app/router-active';
 
 declare var jQuery: any;
 
@@ -11,16 +12,17 @@ declare var jQuery: any;
 @Component({
     selector: 'navbar',
     template: require('./navbar.component.html'),
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES,RouterActive]
 })
 export class NavBarComponent implements OnInit {
     menuItems: MenuItem[]= [
-        new MenuItem("users","Users","Users"),
+        new MenuItem("users","Users","Users")
+        /*,
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),
         new MenuItem("git-explorer","GitExplorer","Git User Explorer"),
         new MenuItem("tweets","Tweets","Tweets"),
-        new MenuItem("material","Material","Material")        
+        new MenuItem("material","Material","Material")    */    
     ];
    	constructor(private _router: Router,
                 public auth: AuthService) {
