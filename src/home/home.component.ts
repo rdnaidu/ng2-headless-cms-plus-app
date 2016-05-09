@@ -8,6 +8,10 @@ import {TranslateDemoComponent} from '../translate-demo/translate-demo.component
 import {GoogleMapsDemoComponent} from '../google-maps-demo/google-maps-demo.component';
 
 import {NotificationsDemoComponent} from '../notifications-demo/notifications-demo.component';
+
+import {ListDemo} from '../demo-app/list/list-demo';
+import {SidenavDemo} from '../demo-app/sidenav/sidenav-demo';
+
 interface marker {
 	lat: number;
 	lng: number;
@@ -17,7 +21,7 @@ interface marker {
 
 @Component({
 	selector: 'my-home',
-	directives: [GoogleMapsDemoComponent,TranslateDemoComponent,NotificationsDemoComponent], // this loads all angular2-google-maps directives in this component
+	directives: [GoogleMapsDemoComponent,TranslateDemoComponent,NotificationsDemoComponent,ListDemo,SidenavDemo], // this loads all angular2-google-maps directives in this component
 	// the following line sets the height of the map - Important: if you don't set a height, you won't see a map!!
 	template: require('./home.component.html'),
     pipes: [TranslatePipe] 

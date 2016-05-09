@@ -1,11 +1,36 @@
 .demo-sidenav-layout {
-  border: 3px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  border: 0px solid rgba(0,0,0,0.12);
 
   md-sidenav {
-    padding: 10px;
+    padding: 1px;
   }
 }
 
 .demo-sidenav-content {
   padding: 15px;
+}
+
+.demo {
+  display: flex;
+  flex-flow: row wrap;
+
+  md-list, md-nav-list {
+    border: 1px solid rgba(0,0,0,0.12);
+    width: 350px;
+    margin: 20px 20px 0 0;
+
+  }
+  h2 {
+    margin-top: 20px;
+  }
+
+  i {
+    color: rgba(0,0,0,0.12);
+  }
+}
+
+.demo-secondary-text {
+  color: rgba(0, 0, 0, 0.54);
 }

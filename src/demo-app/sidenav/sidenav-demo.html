@@ -6,11 +6,23 @@
     <br>
     <button md-button (click)="end.open()">Open End Side</button>
     <br>
-    <button md-button
-            (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+    <button md-button (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
     <div>Mode: {{start.mode}}</div>
     <br>
     <input #myinput>
+    <div class="demo">
+      <div>
+        <md-list dense>
+          <h3 md-subheader>Today</h3>
+          <md-list-item *ngFor="#message of messages">
+            <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
+            <h4 md-line>{{message.from}}</h4>
+            <p md-line> {{message.subject}} </p>
+            <a md-line class="demo-secondary-text" href="http://www.google.com">{{message.message}} </a>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
   </md-sidenav>
 
   <md-sidenav #end align="end">
@@ -33,5 +45,3 @@
     <button md-fab class="md-accent">HI</button>
   </div>
 </md-sidenav-layout>
-
-<h2>Content after Sidenav</h2>
