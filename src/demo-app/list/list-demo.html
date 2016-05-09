@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-4">
     <!-- Subscribe to my feed widget -->
-    <div class="demo text-center">
+    <div class="well text-center">
         <p class="lead">
             Don't want to miss updates? Please click the below button!
         </p>
@@ -13,16 +13,36 @@
     <div class="demo">
       
       <md-list dense>
-        <button md-raised-button (click)="thirdLine=!thirdLine" class="demo-button">Show third line</button>
+       <!-- <button md-raised-button (click)="thirdLine=!thirdLine" class="demo-button">Show third line</button> -->
         <h3 md-subheader>Today</h3>
         <md-list-item *ngFor="#message of messages">
           <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
           <h4 md-line>{{message.from}}</h4>
           <p md-line> {{message.subject}} </p>
-          <a md-line class="demo-secondary-text" href="http://www.google.com" *ngIf="thirdLine">{{message.message}} </a>
+          <a md-line class="demo-secondary-text" href="http://www.google.com" >{{message.message}} </a>
         </md-list-item>
       </md-list>
     </div>
+    
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Tags</h4>
+    </div>
+    <div class="panel-body">
+        <ul class="list-inline">
+            <li><a href="#">Aries</a></li>
+            <li><a href="#">Fire</a></li>
+            <li><a href="#">Mars</a></li>
+            <li><a href="#">Taurus</a></li>
+            <li><a href="#">Earth</a></li>
+            <li><a href="#">Moon</a></li>
+            <li><a href="#">Gemini</a></li>
+            <li><a href="#">Air</a></li>
+            <li><a href="#">Mercury</a></li>
+            <li><a href="#">Cancer</a></li>
+        </ul>
+    </div>
+</div>
   </div>
   <div class="col-md-8">
     <article>
