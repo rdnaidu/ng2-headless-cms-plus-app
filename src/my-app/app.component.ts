@@ -6,6 +6,7 @@ import {UsersComponent} from '../users/users.component';
 import {UserFormComponent} from '../users/user-form.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
 import {LoginComponent} from '../login/login.component';
+import {BlogComponent} from '../blog/blog.component';
 
 import {DemoApp} from '../demo-app/demo-app';
 
@@ -17,6 +18,7 @@ declare var jQuery: any;
     { path: '/users', name: 'Users', component: UsersComponent },
     { path: '/users/:id', name: 'EditUser', component: UserFormComponent },
     { path: '/users/new', name: 'NewUser', component: UserFormComponent },
+    { path: '/blog/:id', name: 'Blog', component: BlogComponent},
     { path: '/login', name: 'Login', component: LoginComponent },
     { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])
@@ -24,7 +26,7 @@ declare var jQuery: any;
     selector: 'my-app',
     template: require('./app.component.html'),
      encapsulation: ViewEncapsulation.None,
-    styles: [ require('assets/css/bootstrap.min.css'),
+    styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),
               require('assets/bootstrap-material-design/css/bootstrap-material-design.min.css'),
               require('assets/bootstrap-material-design/css/ripples.min.css')

@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
 @Component({
   selector: 'list-demo',
   template: require('./list-demo.html'),
   styles: [ require('./list-demo.scss')],
-  directives: [MD_LIST_DIRECTIVES, MdButton]
+  directives: [ROUTER_DIRECTIVES,MD_LIST_DIRECTIVES, MdButton]
 })
 export class ListDemo {
   items: string[] = [
