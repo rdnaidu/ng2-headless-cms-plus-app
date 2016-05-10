@@ -13,7 +13,7 @@ import {ENV_PROVIDERS} from './platform/environment';
 * App Component
 * our top level component that holds all of our components
 */
-//import {App, APP_PROVIDERS} from './app';
+import {AppComponent, APP_PROVIDERS} from './app';
 
 
 import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -25,9 +25,8 @@ import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 import {PLATFORM_DIRECTIVES} from '@angular/core'; 
 
-import {AppComponent} from './my-app/app.component';
-import {appInjectorRef} from './shared/appInjectorRef';
-import {AuthService} from './auth/auth.service';
+import {appInjectorRef} from './app/shared/appInjectorRef';
+import {AuthService} from './app/auth/auth.service';
 import {TRANSLATE_PROVIDERS,
         TranslateService,
         TranslatePipe,
@@ -46,7 +45,7 @@ export function main(initialHmrState?: any): Promise<any> {
     ...ENV_PROVIDERS,
     ...DIRECTIVES,
     ...PIPES,
- //   ...APP_PROVIDERS,
+    ...APP_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     { provide: TranslateLoader, 
