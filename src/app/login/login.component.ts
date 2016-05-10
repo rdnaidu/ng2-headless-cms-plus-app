@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-
 import {AuthService} from '../auth/auth.service';
-import {LoginFormComponent} from "../login-form/login-form.component";
+import {LoginFormComponent} from '../login-form/login-form.component';
 import {Router} from '@angular/router-deprecated';
 
 @Component({
@@ -26,16 +25,16 @@ import {Router} from '@angular/router-deprecated';
 
 export class LoginComponent {
     error: boolean = false;
-    
+
     constructor(public auth: AuthService,
                 public router: Router) {
     }
 
     login($event) {
       //  console.log($event.loginForm.username + ":" + $event.loginForm.password);
-        //this.auth.login($event.loginForm.username,$event.loginForm.password);
-        
-        this.auth.login($event.loginForm.username,$event.loginForm.password)
+      // this.auth.login($event.loginForm.username,$event.loginForm.password);
+
+        this.auth.login($event.loginForm.username, $event.loginForm.password)
             .subscribe(
                 (token: any) => this.router.navigate(['Home']),
                 () => { this.error = true; }
@@ -48,7 +47,5 @@ export class LoginComponent {
             () => this.router.navigate(['Home'])
         );
     }
-    
-    
 
 }

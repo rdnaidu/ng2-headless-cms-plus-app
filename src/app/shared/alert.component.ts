@@ -11,6 +11,6 @@ import {Component, Input} from '@angular/core';
 export class AlertComponent {
 
 	@Input() visible = true;
-	@Input('alert-message') message = "";
-	
+	@Input('alert-message') message = '';
+
 }

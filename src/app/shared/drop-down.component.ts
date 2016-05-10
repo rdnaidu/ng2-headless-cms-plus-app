@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 import {DropdownValue} from './drop-downValue';
-   
+
 
 
 @Component({
@@ -10,7 +10,8 @@ import {DropdownValue} from './drop-downValue';
 <!--
 <div class="btn-group">
     <button type="button" class="btn btn-primary">Language</button>
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-primary dropdown-toggle" 
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
   </button>
@@ -41,7 +42,7 @@ export class DropdownComponent {
 
     @Input()
     labelText: string;
-    
+
     @Output()
     select = new EventEmitter();
 

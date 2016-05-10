@@ -13,7 +13,8 @@ import {OnChanges} from '@angular/core';
                 <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li [class.active]="currentPage == page" *ngFor="#page of pages" (click)="changePage(page)">
+            <li [class.active]="currentPage == page" 
+				*ngFor="let page of pages" (click)="changePage(page)">
                 <a>{{ page }}</a>
             </li>
             <li [class.disabled]="currentPage == pages.length">
@@ -27,16 +28,16 @@ import {OnChanges} from '@angular/core';
 })
 
 export class PaginationComponent implements OnChanges {
-	@Input() items=[];
-	@Input('page-size') pageSize=10;
+	@Input() items = [];
+	@Input('page-size') pageSize = 10;
 	@Output('page-changed') pageChanged= new EventEmitter();
 	pages: any[];
 	currentPage;
 
-	ngOnChanges(){
-		var pageCount = this.items.length / this.pageSize;
-		this.pages= [];
-		for (var i=1; i < pageCount;i++)
+	ngOnChanges() {
+		let pageCount = this.items.length / this.pageSize;
+		this.pages = [];
+		for (let i = 1; i < pageCount; i++)
 			this.pages.push(i);
 	}
 
@@ -46,15 +47,15 @@ export class PaginationComponent implements OnChanges {
 	}
 
 	previous() {
-		if (this.currentPage == 1)
+		if (this.currentPage === 1)
 			return;
 
 		this.currentPage--;
 		this.pageChanged.emit(this.currentPage);
 	}
 
-	next(){
-		if (this.currentPage = this.pages.length)
+	next() {
+		if (this.currentPage === this.pages.length)
 			return;
 
 		this.currentPage++;

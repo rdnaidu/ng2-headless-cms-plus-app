@@ -16,19 +16,19 @@ let template = require('./rating-demo.component.html');
   template: template
 })
 export class RatingDemoComponent {
-  public max:number = 5;
-  public rate:number = 5;
-  public isReadonly:boolean = false;
+  public max: number = 5;
+  public rate: number = 5;
+  public isReadonly: boolean = false;
 
-  public overStar:number;
-  public percent:number;
+  public overStar: number;
+  public percent: number;
 
-  public hoveringOver(value:number):void {
+  public hoveringOver(value: number): void {
     this.overStar = value;
     this.percent = 100 * (value / this.max);
   };
 
-  public resetStar():void {
+  public resetStar(): void {
     this.overStar = void 0;
   }
 }
