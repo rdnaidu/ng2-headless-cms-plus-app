@@ -28,7 +28,6 @@ import {PLATFORM_DIRECTIVES} from '@angular/core';
 import {AppComponent} from './my-app/app.component';
 import {appInjectorRef} from './shared/appInjectorRef';
 import {AuthService} from './auth/auth.service';
-import {ANGULAR2_GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
 import {TRANSLATE_PROVIDERS,
         TranslateService,
         TranslatePipe,
@@ -48,7 +47,6 @@ export function main(initialHmrState?: any): Promise<any> {
     ...DIRECTIVES,
     ...PIPES,
  //   ...APP_PROVIDERS,
-     ANGULAR2_GOOGLE_MAPS_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     { provide: TranslateLoader, 
