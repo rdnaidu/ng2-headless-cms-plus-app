@@ -4,7 +4,7 @@ import {Observable,Scheduler} from 'rxjs/Rx';
 import {Observer} from 'rxjs/Observer';
 import {AuthService} from '../auth/auth.service';
 import {MenuItem} from './menu-item';
-import {RouterActive} from '../app/router-active';
+import {RouterActive} from '../router-active';
 import {MdButton, MdAnchor} from '@angular2-material/button';
 
 declare var jQuery: any;
