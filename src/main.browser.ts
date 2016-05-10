@@ -23,7 +23,7 @@ import {HTTP_PROVIDERS, Http} from '@angular/http';
 // Angular 2 Router
 import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
-import {PLATFORM_DIRECTIVES} from '@angular/core'; 
+import {PLATFORM_DIRECTIVES} from '@angular/core';
 
 import {appInjectorRef} from './app/shared/appInjectorRef';
 import {AuthService} from './app/auth/auth.service';
@@ -32,7 +32,7 @@ import {TRANSLATE_PROVIDERS,
         TranslatePipe,
         TranslateLoader,
         TranslateStaticLoader} from 'ng2-translate/ng2-translate';
-        
+
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
@@ -48,12 +48,12 @@ export function main(initialHmrState?: any): Promise<any> {
     ...APP_PROVIDERS,
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
-    { provide: TranslateLoader, 
+    { provide: TranslateLoader,
         useFactory: (http: any) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
         deps: [Http]
     },
      {provide: LocationStrategy, useClass: PathLocationStrategy  },
-    TranslateService,
+    TranslateService
   ]).then((appRef: any) => {
         // store a reference to the application injector
         appInjectorRef(appRef.injector);

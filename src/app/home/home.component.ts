@@ -5,11 +5,10 @@ import {BlogListComponent} from '../blog-list/blog-list.component';
 
 @Component({
 	selector: 'my-home',
-	directives: [BlogListComponent], 
+	directives: [BlogListComponent],
 	template: require('./home.component.html')
 })
 export class HomeComponent {
 	constructor() {
-		
 	}
 }

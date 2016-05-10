@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Pipe,PipeTransform} from '@angular/core';
 import {Phone} from './phone';
 

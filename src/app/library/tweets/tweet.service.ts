@@ -1,4 +1,4 @@
-
+/* tslint:disable */
 export class TweetService {
     getTweets() {
         return [

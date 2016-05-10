@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Component, OnInit} from '@angular/core';
 import {Router, RouteParams} from '@angular/router-deprecated';
 import {PhoneService} from "./phone.service";

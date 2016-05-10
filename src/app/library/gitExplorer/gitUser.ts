@@ -1,3 +1,4 @@
+/* tslint:disable */ 
 export class GitUser {
     login: string;
     id: number;

@@ -19,13 +19,13 @@ export class LoginFormComponent {
 		constructor(fb: FormBuilder) {
 
 			this.form = fb.group ({
-				username: ['',Validators.compose(
-					[Validators.required,LoginValidators.cannotContainSpace]
-					), null
+				username: ['', Validators.compose(
+					[Validators.required, LoginValidators.cannotContainSpace]
+					), undefined
 					],
-				password: ['',Validators.required],
-				remember: ['',null,null]
-			})
+				password: ['', Validators.required],
+				remember: ['', undefined, undefined]
+			});
 		}
 		login() {
 			/*var result = authService.login(this.form.value)
@@ -35,6 +35,5 @@ export class LoginFormComponent {
 			});
 			*/
             this.formEvent.emit( { loginForm: this.form.value});
-	//		console.log(this.form.value);
 		}
 }

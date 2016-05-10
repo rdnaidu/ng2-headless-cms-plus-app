@@ -14,8 +14,8 @@ import {TweetComponent} from './tweet.component';
 })
 export class TweetsComponent {
     tweets: any[];
-    
+
     constructor(tweetService: TweetService) {
         this.tweets = tweetService.getTweets();
     }
-} 
+}

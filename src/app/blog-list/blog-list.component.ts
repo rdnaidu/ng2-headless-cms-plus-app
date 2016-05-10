@@ -6,7 +6,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated
 @Component({
   selector: 'blog-list',
   template: require('./blog-list.component.html'),
-  styles: [ require('./blog-list.scss')],
+  styles: [require('./blog-list.scss')],
   directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
 })
 export class BlogListComponent {

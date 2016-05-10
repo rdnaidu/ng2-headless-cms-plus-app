@@ -7,7 +7,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated
   selector: 'list-demo',
   template: require('./list-demo.html'),
   styles: [ require('./list-demo.scss')],
-  directives: [ROUTER_DIRECTIVES,MD_LIST_DIRECTIVES, MdButton]
+  directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
 })
 export class ListDemo {
   items: string[] = [

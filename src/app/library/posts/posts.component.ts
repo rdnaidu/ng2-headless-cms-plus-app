@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Component, OnInit} from '@angular/core';
 import {CanActivate, ComponentInstruction} from '@angular/router-deprecated';
 

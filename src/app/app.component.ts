@@ -1,8 +1,8 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component,ViewEncapsulation,OnInit} from '@angular/core';
-import {Router,RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {NavBarComponent} from './nav-bar/navbar.component';
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './users/users.component';
@@ -40,16 +40,16 @@ declare var jQuery: any;
               require('assets/bootstrap-material-design/css/bootstrap-material-design.min.css'),
               require('assets/bootstrap-material-design/css/ripples.min.css')
               ],
-    directives: [ROUTER_DIRECTIVES, NavBarComponent,RouterActive]
+    directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive]
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     constructor (
     public appState: AppState,
     public router: Router) {
 
   }
-    ngOnInit(){
+    ngOnInit() {
         jQuery.material.init();
         console.log('Initial App State', this.appState.state);
     }
