@@ -12,7 +12,7 @@ export class BlogService {
 	}
 
 	getBlogs(filter?) {
-		var url = this._url;
+		let url = this._url;
 
 		if (filter && filter.phoneId) {
             url += '/' + filter.phoneId;
