@@ -65,6 +65,7 @@ export class AuthService {
 
         this.loggedIn = false;
         this.token = undefined;
+        this.username = undefined;
         localStorage.removeItem('token');
 
         return Observable.of(true);
