@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
 
   }
     ngOnInit() {
+        jQuery.material.options.validate = false;
         jQuery.material.init();
         console.log('Initial App State', this.appState.state);
     }

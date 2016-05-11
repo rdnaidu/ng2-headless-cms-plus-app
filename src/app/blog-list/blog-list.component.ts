@@ -51,6 +51,19 @@ export class BlogListComponent {
 
   ];
 
+  tags: any[] = [
+    {name: 'Aries'},
+    {name: 'Fire'},
+    {name: 'Mars'},
+    {name: 'Taurus'},
+    {name: 'Earth'},
+    {name: 'Moon'},
+    {name: 'Gemini'},
+    {name: 'Air'},
+    {name: 'Mercury'},
+    {name: 'Cancer'}
+  ];
+
   thirdLine: boolean = false;
   infoClicked: boolean = false;
 }

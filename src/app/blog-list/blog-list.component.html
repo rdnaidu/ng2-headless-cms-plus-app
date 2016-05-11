@@ -1,48 +1,68 @@
-
 <h2> Posts </h2>
 <div class="row">
   <div class="col-md-4">
-    <!-- Subscribe to my feed widget -->
-    <div class="well text-center">
-        <p class="lead">
-            Don't want to miss updates? Please click the below button!
-        </p>
-        <button class="btn btn-primary btn-lg">Subscribe to my feed</button>
-    </div>
- 
-    <div class="demo">
-      
+
+
+    <div class="col-lg-12">
+
       <md-list dense>
-       <h3 md-subheader>Today</h3>
+        <h3 md-subheader>Today</h3>
         <md-list-item *ngFor="let message of messages">
           <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
           <h4 md-line>{{message.from}}</h4>
           <p md-line> {{message.subject}} </p>
-          <a md-line class="demo-secondary-text" href="http://www.google.com" >{{message.message}} </a>
+          <a md-line class="demo-secondary-text" href="http://www.google.com">{{message.message}} </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <h3 md-subheader>Older</h3>
+        <md-list-item *ngFor="let message of messages">
+          <h4 md-line>{{message.from}}</h4>
+          <p md-line> {{message.subject}} </p>
+          <p md-line class="demo-secondary-text">{{message.message}} </p>
         </md-list-item>
       </md-list>
     </div>
-    
-    <div class="panel panel-default">
-    <div class="panel-heading">
-        <h4>Tags</h4>
+
+    <!-- Subscribe to my feed widget -->
+    <div class="col-lg-12">
+    <div class="well text-center">
+      <p class="lead">
+        Get involved and contribute.
+      </p>
+      <button class="btn btn-primary btn-lg">Create a Blogpost</button>
     </div>
-    <div class="panel-body">
-        <ul class="list-inline">
-            <li><a href="#">Aries</a></li>
-            <li><a href="#">Fire</a></li>
-            <li><a href="#">Mars</a></li>
-            <li><a href="#">Taurus</a></li>
-            <li><a href="#">Earth</a></li>
-            <li><a href="#">Moon</a></li>
-            <li><a href="#">Gemini</a></li>
-            <li><a href="#">Air</a></li>
-            <li><a href="#">Mercury</a></li>
-            <li><a href="#">Cancer</a></li>
-        </ul>
     </div>
-</div>
+
+    <div class="col-lg-12">
+      <div class="input-group">
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+        </span>
+        <input class="form-control" placeholder="Search for a tag ..." type="text">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="tag-list well">
+        <h5 md-subheader>Trending Tags</h5>
+        <a href="#" class="btn btn-primary" role="button"><b>FPS</b> <small>(12)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Battle</b> <small>(2)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-star"></span>
+        <b>Championnat</b> <small>(45)</small>
+      </a>
+        <a href="#" class="btn btn-primary" role="button"><b>Football</b> <small>(8)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-star-empty"></span>
+        <b>FIFA 2014</b> <small>(25)</small>
+      </a>
+        <a href="#" class="btn btn-primary" role="button"><b>Vidéo</b> <small>(6)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Arma 3</b> <small>(2)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Grid</b> <small>(1)</small></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Aries</b></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Fire</b></a>
+        <a href="#" class="btn btn-primary" role="button"><b>Earth</b></a>
+      </div>
+    </div>
   </div>
+
   <div class="col-md-8">
     <article>
       <h2><a href="singlepost.html">Aries Sun Sign March 21 - April 19</a></h2>
@@ -86,38 +106,50 @@
 
       <hr>
     </article>
-    
+
     <article>
-					<h2><a href="singlepost.html">Taurus Sun Sign April 20 - May 20</a></h2>
+      <h2><a href="singlepost.html">Taurus Sun Sign April 20 - May 20</a></h2>
 
-			        <div class="row">
-			          	<div class="col-sm-6 col-md-6">
-			          		<span class="glyphicon glyphicon-folder-open"></span> &nbsp;<a href="#">Signs</a>
-			          		&nbsp;&nbsp;<span class="glyphicon glyphicon-bookmark"></span> <a href="#">Aries</a>, <a href="#">Fire</a>, <a href="#">Mars</a>
-			          	</div>
-			          	<div class="col-sm-6 col-md-6">
-			          		<span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20 Comments</a>			          		
-			          		&nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> August 24, 2013 9:00 PM			          		
-			          	</div>
-			          </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <span class="glyphicon glyphicon-folder-open"></span> &nbsp;<a href="#">Signs</a> &nbsp;&nbsp;
+          <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Aries</a>, <a href="#">Fire</a>, <a href="#">Mars</a>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20 Comments</a> &nbsp;&nbsp;
+          <span class="glyphicon glyphicon-time"></span> August 24, 2013 9:00 PM
+        </div>
+      </div>
 
-			          <hr>
+      <hr>
 
-			          <img src="http://placehold.it/900x300" class="img-responsive">
+      <img src="http://placehold.it/900x300" class="img-responsive">
 
-			          <br />
+      <br />
 
-			          <p class="lead">Taurus, the second sign of the zodiac, is all about reward. Unlike the Aries love of the game, Taurus loves the rewards of the game. Think physical pleasures and material goods, for those born under this sign revel in delicious excess. They are also a tactile lot, enjoying a tender, even sensual, touch. Taurus adores comfort and likes being surrounded by pleasing, soothing things. Along these lines, they also favor a good meal and a fine wine. The good life in all its guises, whether it's the arts or art of their own making (yes, these folks are artistic as well), is heaven on Earth to the Taurus-born.</p>
+      <p class="lead">Taurus, the second sign of the zodiac, is all about reward. Unlike the Aries love of the game, Taurus loves the rewards
+        of the game. Think physical pleasures and material goods, for those born under this sign revel in delicious excess.
+        They are also a tactile lot, enjoying a tender, even sensual, touch. Taurus adores comfort and likes being surrounded
+        by pleasing, soothing things. Along these lines, they also favor a good meal and a fine wine. The good life in all
+        its guises, whether it's the arts or art of their own making (yes, these folks are artistic as well), is heaven on
+        Earth to the Taurus-born.</p>
 
-			          <p>It's the Bull that serves as the Taurus's mascot, and along with that comes the expectation that these folks are bull-headed and stubborn. Yes, they are. Hey, this sign has a Fixed Quality attached to it after all, so expect that things will occasionally grind to a halt. That said, Taurus doesnÕt start out with the intention of getting stuck. They simply want to get things done, and it's that steady, dogged persistence that winds up being viewed as stubbornness. Bulls are actually among the most practical and reliable members of the zodiac, and they are happy to plod along, as it were, in pursuit of their goals. The good news for Bulls is that once they get to the finish line, they'll swaddle themselves in material goods. A self-indulgent beast? Perhaps, but if you toiled as laboriously as these folks do, you'd need some goodies, too.</p>
+      <p>It's the Bull that serves as the Taurus's mascot, and along with that comes the expectation that these folks are bull-headed
+        and stubborn. Yes, they are. Hey, this sign has a Fixed Quality attached to it after all, so expect that things will
+        occasionally grind to a halt. That said, Taurus doesnÕt start out with the intention of getting stuck. They simply
+        want to get things done, and it's that steady, dogged persistence that winds up being viewed as stubbornness. Bulls
+        are actually among the most practical and reliable members of the zodiac, and they are happy to plod along, as it
+        were, in pursuit of their goals. The good news for Bulls is that once they get to the finish line, they'll swaddle
+        themselves in material goods. A self-indulgent beast? Perhaps, but if you toiled as laboriously as these folks do,
+        you'd need some goodies, too.</p>
 
-					  <p class="text-right">
-				          <a href="singlepost.html">
+      <p class="text-right">
+        <a href="singlepost.html">
 				          	continue reading...
 				          </a>
-				      </p>				          
+      </p>
 
-			          <hr>
-				</article>
+      <hr>
+    </article>
   </div>
 </div>

@@ -5,28 +5,27 @@
                 <div class="panel-heading">
                     <h2>Login</h2>
                     <br>
-                    <div *ngIf="error" class="alert alert-danger">Check your username & password. Use test/test</div>
+                    <div *ngIf="error" class="alert alert-dismissible alert-danger">
+                        Check your username & password. Use test/test
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <form id="login-form" [ngFormModel]="form" (ngSubmit)="login()" style="display: block;">
-                                <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" ngControl="username"
-                                        #username="ngForm">
+                        <div class="inputs col-lg-12">
+                            <form id="login-form" [ngFormModel]="form" (ngSubmit)="login()">
+                                <div class="form-group  label-floating" [ngClass]="{'has-error': username.touched && username.errors }">
+                                    <label for="u2" class="control-label">Username</label>
+                                    <input type="text" id="u2" tabindex="1" class="form-control" ngControl="username" #username="ngForm">
                                     <div *ngIf="username.touched && username.errors">
-                                        <div *ngIf="username.errors.invalidLogin" class="alert alert-danger">Username or password is invalid.
-                                        </div>
-                                        <div *ngIf="username.errors.required" class="alert alert-danger">Username is required.
-                                        </div>
-                                        <div *ngIf="username.errors.cannotContainSpace" class="alert alert-danger">Username cannot contain space.
-                                        </div>
+                                        <span *ngIf="username.errors.invalidLogin" class="help-block">Username or password is invalid.</span>
+                                        <span *ngIf="username.errors.required" class="help-block">Username is required.</span>
+                                        <span *ngIf="username.errors.cannotContainSpace" class="help-block">Username cannot contain space.</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ngControl="password"
-                                        #password="ngForm">
-                                    <div *ngIf="password.touched && !password.valid" class="alert alert-danger">Password is required.</div>
+                                <div class="form-group label-floating" [ngClass]="{'has-error': password.touched && !password.valid }">
+                                    <label for="p2" class="control-label">Password</label>
+                                    <input type="password" id="password" tabindex="2" class="form-control" ngControl="password" #password="ngForm">
+                                    <span *ngIf="password.touched && !password.valid" class="help-block">Password is required.</span>
                                 </div>
                                 <div class="form-group text-center">
                                     <md-checkbox [(ngModel)]="isChecked" (change)="isIndeterminate = false" [indeterminate]="isIndeterminate" [disabled]="isDisabled"
@@ -35,7 +34,8 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!form.valid" tabindex="4">Log In</button>
+                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!form.valid"
+                                                tabindex="4">Log In</button>
                                         </div>
                                     </div>
                                 </div>
