@@ -17,8 +17,7 @@ declare var jQuery: any;
 })
 export class NavBarComponent implements OnInit {
     menuItems: MenuItem[]= [
-        new MenuItem('users', 'Users', 'Users'),
-        new MenuItem('About', 'About', 'About')
+        new MenuItem('users', 'Users', 'Users', 'fa fa-users')
         /*,
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),

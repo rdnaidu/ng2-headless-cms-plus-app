@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<div class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,20 +9,36 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" [routerLink]="['Home']">
-                <p><img src="assets/img/blogger_32.png" alt="" style="float:left;margin:0 5px 0 0;"> Blogger</p></a>
+                <span><img src="assets/img/blogger_32.png" alt="" style="img-responsive center-block">Blogger</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse navbar-responsive-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" *ngFor="let menuItem of menuItems">
-                <li router-active (click)="clicked()" id={{menuItem.id}}><a [routerLink]="[menuItem.alias]" >{{menuItem.name}}</a></li>
+                <li router-active (click)="clicked()" id={{menuItem.id}}><a [routerLink]="[menuItem.alias]">
+                    <i *ngIf="menuItem.iconClass !== undefined" class='{{menuItem.iconClass}}' aria-hidden="true"></i>
+                    {{menuItem.name}}</a></li>
             </ul>
-            <ul class="nav navbar-nav">
-                <li [class.active]="isCurrentRoute(['Login'])" (click)="clicked()" id="login"><a [routerLink]="['Login']" >{{!auth.loggedIn ? "Log In" : "Log Out"}}</a></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li [class.active]="isCurrentRoute(['About'])" (click)="clicked()" id="about"><a [routerLink]="['About']"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                        <li class="divider"></li>
+                        <li [class.active]="isCurrentRoute(['Login'])" (click)="clicked()" id="login"><a [routerLink]="['Login']"><i class="fa fa-key" aria-hidden="true"></i> {{!auth.loggedIn ? "Log In" : "Log Out"}}</a></li>
+                    </ul>
+                </li>
             </ul>
-
+            <form class="navbar-form">
+                <div class="form-group">
+                   <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" class="form-control col-md-8" placeholder="Search">
+                </div>
+            </form>
         </div>
+
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
-</nav>
+</div>
