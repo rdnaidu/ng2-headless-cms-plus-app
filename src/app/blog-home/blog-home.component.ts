@@ -3,11 +3,23 @@ import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
+import {TagListComponent} from '../tag-list/tag-list.component';
+import {BlogAbstractListComponent} from '../blog-list/blog-abstract-list.component';
+import {BlogCreateComponent} from '../blog-create/blog-create.component';
+import {BlogSummaryListComponent} from '../blog-summary-list/blog-summary-list.component';
+
 @Component({
   selector: 'blog-home',
   template: require('./blog-home.component.html'),
   styles: [require('./blog-home.scss')],
-  directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
+  directives: [ ROUTER_DIRECTIVES,
+                MD_LIST_DIRECTIVES,
+                MdButton,
+                TagListComponent,
+                BlogAbstractListComponent,
+                BlogCreateComponent,
+                BlogSummaryListComponent
+                ]
 })
 export class BlogHomeComponent {
   items: string[] = [

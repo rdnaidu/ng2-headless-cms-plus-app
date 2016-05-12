@@ -62,7 +62,7 @@ export class BlogTypeaheadComponent {
     return this;
   }
 
-  public getAsyncData(context:any):Function {
+  public getAsyncData(context: any): Function {
     if (this._prevContext === context) {
       return this._cache;
     }

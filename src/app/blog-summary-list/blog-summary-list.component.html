@@ -1,0 +1,19 @@
+<div class="col-lg-12">
+
+    <md-list dense>
+        <h3 md-subheader>Today</h3>
+        <md-list-item *ngFor="let message of messages">
+            <img md-list-avatar [src]="message.image" alt="Image of {{message.from}}">
+            <h4 md-line>{{message.from}}</h4>
+            <p md-line> {{message.subject}} </p>
+            <a md-line class="demo-secondary-text" href="http://www.google.com">{{message.message}} </a>
+        </md-list-item>
+        <md-divider></md-divider>
+        <h3 md-subheader>Older</h3>
+        <md-list-item *ngFor="let message of messages">
+            <h4 md-line>{{message.from}}</h4>
+            <p md-line> {{message.subject}} </p>
+            <p md-line class="demo-secondary-text">{{message.message}} </p>
+        </md-list-item>
+    </md-list>
+</div>
