@@ -1,8 +1,8 @@
 export class BlogPost {
+    id: string;
     name: string;
     images: string[];
     description: string;
-    id: string;
     abstract: string;
     postDate: string;
     author: string;

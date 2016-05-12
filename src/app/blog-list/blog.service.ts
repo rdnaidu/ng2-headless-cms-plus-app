@@ -5,24 +5,24 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BlogService {
 
-	private _url = '/assets/blogs-json';
+    private _url = '/assets/blogs-json';
 
-	constructor(private _http: Http) {
+    constructor(private _http: Http) {
 
-	}
+    }
 
-	getBlogs(filter?) {
-		let url = this._url;
+    getBlogs(filter?) {
+        let url = this._url;
 
-		if (filter && filter.phoneId) {
+        if (filter && filter.phoneId) {
             url += '/' + filter.phoneId;
         } else {
             url += '/blogs.json';
         }
-
+        console.log(url);
         return this._http.get(url)
-				.map(res => res.json());
-	}
+            .map(res => res.json());
+    }
 
     getBlog(id) {
         let url = this._url;
@@ -30,6 +30,6 @@ export class BlogService {
         url += '/' + id + '.json';
 
         return this._http.get(url)
-                .map(res => res.json());
+            .map(res => res.json());
     }
 }
