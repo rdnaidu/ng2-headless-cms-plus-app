@@ -6,6 +6,7 @@ import {AuthService} from '../auth/auth.service';
 import {MenuItem} from './menu-item';
 import {RouterActive} from '../router-active';
 import {MdButton, MdAnchor} from '@angular2-material/button';
+import {BlogTypeaheadComponent} from '../blog-typeahead/blog-typeahead.component';
 
 declare var jQuery: any;
 
@@ -13,7 +14,7 @@ declare var jQuery: any;
 @Component({
     selector: 'navbar',
     template: require('./navbar.component.html'),
-    directives: [ROUTER_DIRECTIVES, RouterActive, MdButton, MdAnchor]
+    directives: [ROUTER_DIRECTIVES, RouterActive, MdButton, MdAnchor, BlogTypeaheadComponent]
 })
 export class NavBarComponent implements OnInit {
     menuItems: MenuItem[]= [
