@@ -1,7 +1,13 @@
-<input [(ngModel)]="asyncSelected" [typeahead]="getAsyncData(getContext())" (typeaheadLoading)="changeTypeaheadLoading($event)"
-    (typeaheadNoResults)="changeTypeaheadNoResults($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionsLimit]="7"
-    placeholder="Search" class="form-control col-md-8">
-    <i *ngIf="typeaheadLoading===true" class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+<input 
+    [(ngModel)]="asyncSelected" 
+    [typeahead]="getAsyncData(getContext())" 
+    (typeaheadLoading)="changeTypeaheadLoading($event)" 
+    (typeaheadNoResults)="changeTypeaheadNoResults($event)" 
+    (typeaheadOnSelect)="typeaheadOnSelect($event)" 
+    [typeaheadOptionsLimit]="7"
+    placeholder="Search" 
+    class="form-control col-md-8">
+<i *ngIf="typeaheadLoading===true" class="fa fa-refresh ng-hide" aria-hidden="true"></i>
 <div *ngIf="typeaheadNoResults===true">
-     <small> <i class="glyphicon glyphicon-remove"></i>No Results Found</small>
+    <small> <i class="fa fa-times" aria-hidden="true"></i> No Results Found</small>
 </div>
