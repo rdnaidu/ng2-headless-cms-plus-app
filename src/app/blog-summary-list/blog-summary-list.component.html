@@ -2,7 +2,9 @@
     <md-list dense>
         <h3 md-subheader>Today</h3>
         <md-list-item *ngFor="let blog of blogs">
-            <img md-list-avatar [src]="blog.avatar" alt="...">
+            <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
+                <img md-list-avatar [src]="blog.avatar" alt="...">
+                </a>
             <a md-line href="javascript:void(0)"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.username}}</em></h5>
             <p md-line class="demo-secondary-text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{today | date:'longDate'}} </p>
@@ -10,7 +12,9 @@
         <md-divider></md-divider>
         <h3 md-subheader>Older</h3>
         <md-list-item *ngFor="let blog of olderBlogs">
-            <img md-list-avatar [src]="blog.avatar" alt="...">
+             <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
+                <img md-list-avatar [src]="blog.avatar" alt="...">
+                </a>
             <a md-line href="javascript:void(0)"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.username}}</em></h5>
         </md-list-item>

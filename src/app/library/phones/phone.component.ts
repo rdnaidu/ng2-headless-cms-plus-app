@@ -27,7 +27,7 @@ export class PhoneComponent implements OnInit {
     }
 
     ngOnInit() {
-       console.log("here we aRRR");
+       //console.log("here we aRRR");
         var id = this._routeParams.get("id");
 
         this._phoneService.getPhone(id)

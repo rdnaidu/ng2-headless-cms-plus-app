@@ -10,6 +10,8 @@ import {UserFormComponent} from './users/user-form.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {LoginComponent} from './login/login.component';
 import {BlogComponent} from './blog/blog.component';
+import {BlogUserComponent} from './blog-user/blog-user.component';
+
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
 
@@ -26,6 +28,7 @@ declare var jQuery: any;
     { path: '/users/:id', name: 'EditUser', component: UserFormComponent },
     { path: '/users/new', name: 'NewUser', component: UserFormComponent },
     { path: '/blog/:id', name: 'Blog', component: BlogComponent},
+    { path: '/blog-user/:id' , name: 'BlogUser', component: BlogUserComponent},
     { path: '/login', name: 'Login', component: LoginComponent },
     { path: '/*other', name: 'Other', redirectTo: ['Home'] },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`

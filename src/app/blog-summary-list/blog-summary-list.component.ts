@@ -3,7 +3,7 @@ import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
-import {BlogSummary} from '../blog-list/blog-summary';
+import {BlogSummary} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 
 import * as _ from 'lodash';

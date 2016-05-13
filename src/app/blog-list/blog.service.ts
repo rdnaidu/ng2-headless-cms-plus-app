@@ -14,8 +14,8 @@ export class BlogService {
     getBlogs(filter?) {
         let url = this._url;
 
-        if (filter && filter.phoneId) {
-            url += '/' + filter.phoneId;
+        if (filter && filter.username) {
+            url += '/' + filter.username;
         } else {
             url += '/blogs.json';
         }
@@ -28,7 +28,7 @@ export class BlogService {
         let url = this._url;
 
         url += '/' + id + '.json';
-
+        console.log(url);
         return this._http.get(url)
             .map(res => res.json());
     }

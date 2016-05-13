@@ -1,7 +1,8 @@
 {
     "id": 1,
-    "author": "Alex Rickabaugh",
+    "name": "Alex Rickabaugh",
     "avatar": "https://angular.io/resources/images/bios/alex-rickabaugh.jpg",
+    "username": "alex-rickabaugh",
     "company": "Angular2 Associates",
     "location": "California, US",
     "publications": [

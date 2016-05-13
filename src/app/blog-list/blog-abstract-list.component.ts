@@ -5,7 +5,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated
 
 import {BlogPaginationComponent} from './blog-pagination.component';
 
-import {BlogSummary} from './blog-summary';
+import {BlogSummary} from './blog';
 import {BlogService} from './blog.service';
 
 @Component({
