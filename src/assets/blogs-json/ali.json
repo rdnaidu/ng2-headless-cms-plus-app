@@ -1,0 +1,50 @@
+{
+    "id": 3,
+    "name": "Ali",
+    "avatar": "https://angular.io/resources/images/bios/ali.jpg",
+    "username": "ali",
+    "company": "Mydo",
+    "location": "Cambodia",
+    "publications": [
+        {
+            "id": 1,
+            "title": "Nunc nisl."
+        },
+        {
+            "id": 2,
+            "title": "Proin at turpis a pede posuere nonummy."
+        },
+        {
+            "id": 3,
+            "title": "Pellentesque eget nunc."
+        },
+        {
+            "id": 4,
+            "title": "In hac habitasse platea dictumst."
+        },
+        {
+            "id": 5,
+            "title": "Aliquam sit amet diam in magna bibendum imperdiet."
+        },
+        {
+            "id": 6,
+            "title": "Pellentesque viverra pede ac diam."
+        },
+        {
+            "id": 7,
+            "title": "In hac habitasse platea dictumst."
+        },
+        {
+            "id": 8,
+            "title": "Praesent blandit."
+        },
+        {
+            "id": 9,
+            "title": "Curabitur convallis."
+        },
+        {
+            "id": 10,
+            "title": "Phasellus id sapien in sapien iaculis congue."
+        }
+    ]
+}

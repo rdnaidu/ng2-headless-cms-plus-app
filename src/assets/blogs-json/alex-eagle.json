@@ -1,0 +1,50 @@
+{
+    "id": 1,
+    "name": "Alex Eagle",
+    "avatar": "https://angular.io/resources/images/bios/alex-eagle.jpg",
+    "username": "alex-eagle",
+    "company": "Meetz",
+    "location": "Czech Republic",
+    "publications": [
+        {
+            "id": 1,
+            "title": "Nam dui."
+        },
+        {
+            "id": 2,
+            "title": "Maecenas pulvinar lobortis est."
+        },
+        {
+            "id": 3,
+            "title": "In hac habitasse platea dictumst."
+        },
+        {
+            "id": 4,
+            "title": "In congue."
+        },
+        {
+            "id": 5,
+            "title": "In hac habitasse platea dictumst."
+        },
+        {
+            "id": 6,
+            "title": "Nulla ac enim."
+        },
+        {
+            "id": 7,
+            "title": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+        },
+        {
+            "id": 8,
+            "title": "In eleifend quam a odio."
+        },
+        {
+            "id": 9,
+            "title": "Pellentesque viverra pede ac diam."
+        },
+        {
+            "id": 10,
+            "title": "Praesent blandit."
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 export class BlogSummary {
     id: string;
-    author: string;
+    username: string;
     title: string;
     publishedDate: string;
     likes: number;
