@@ -12,8 +12,10 @@
         </p>
     </div>
     <div class="col-sm-9">
-        <!--   <button class="btn btn-primary" (click)="getFollowers()">Load Followers</button>
-        <router-outlet></router-outlet> -->
+        <h2> Blog Posts </h2>
+        <md-nav-list>
+            <a md-list-item *ngFor="let blogs of blogUser.publications" href="javascript:void(0)">{{blogs.title}}</a>
+        </md-nav-list>
     </div>
 </div>
 <div *ngIf="error">
