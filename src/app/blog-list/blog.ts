@@ -5,6 +5,7 @@ export class BlogPost {
     description: string;
     abstract: string;
     postDate: string;
+    postDataDt: Date;
     author: string;
     comments: Comments[];
     likes: number;
@@ -38,6 +39,7 @@ export class BlogSummary {
     username: string;
     title: string;
     publishedDate: string;
+    postDataDt: Date;
     likes: number;
     stars: number;
 }
