@@ -7,7 +7,8 @@
             [maxSize]="maxSize" 
             class="pagination-md" 
             [boundaryLinks]="true"
-            [rotate]="false" 
+            [rotate]="false"
+            [itemsPerPage] = "maxSize"
             (pageChanged)="pageChanged($event)"
             >
 </pagination>
@@ -45,8 +46,8 @@
             [maxSize]="maxSize" 
             class="pagination-md" 
             [boundaryLinks]="true"
-            [rotate]="false" 
-            (numPages)="numPages = $event"
+            [rotate]="false"
+            [itemsPerPage] = "maxSize"
             (pageChanged)="pageChanged($event)"
             >
 </pagination>

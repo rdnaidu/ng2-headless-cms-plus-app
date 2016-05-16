@@ -40,6 +40,7 @@ export class BlogAbstractListComponent implements OnInit {
   public totalItems: number = 100;
   public currentPage: number = 1;
   public maxSize: number = 5;
+  public itemsPerPage: number = 5;
 
   constructor(private _service: BlogService) {
 
@@ -74,7 +75,7 @@ export class BlogAbstractListComponent implements OnInit {
       .subscribe(
       blogs => {
         this.blogs = blogs;
-   //     this.totalItems = _.size(this.blogs);
+        this.totalItems = _.size(this.blogs);
         console.log(this.totalItems);
         this.pagedBlogs = _.take(this.blogs, this.maxSize);
         _.map(this.pagedBlogs, function addDate(data: BlogPost) {
