@@ -4,7 +4,6 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
-//import {BlogPaginationComponent} from './blog-pagination.component';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {LikeComponent} from '../shared/like.component';
 
