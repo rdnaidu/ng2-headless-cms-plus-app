@@ -14,7 +14,15 @@ declare var jQuery: any;
 @Component({
     selector: 'navbar',
     template: require('./navbar.component.html'),
-    directives: [ROUTER_DIRECTIVES, RouterActive, MdButton, MdAnchor, BlogTypeaheadComponent]
+    directives: [ROUTER_DIRECTIVES, RouterActive, MdButton, MdAnchor, BlogTypeaheadComponent],
+    styles: [`
+    .profile-image  {
+	        padding-top: 0px;
+	        padding-bottom: 0px;,
+            width:30px;
+            height:30px;
+        }
+    `]
 })
 export class NavBarComponent implements OnInit {
     menuItems: MenuItem[]= [

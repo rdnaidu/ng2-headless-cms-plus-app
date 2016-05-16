@@ -10,10 +10,12 @@ export class AuthService {
     public loggedIn;
     token: string;
     public username: String;
+    public avatar: string;
     constructor() {
         this.loggedIn = false;
         localStorage.removeItem('token');
         this.token = localStorage.getItem('token');
+        this.avatar = 'https://angular.io/resources/images/bios/alex-eagle.jpg';
     }
 
     public login(username?: String, password?: String): Observable<string> {
