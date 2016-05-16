@@ -2,15 +2,21 @@ export class BlogPost {
     id: string;
     name: string;
     images: string[];
+    currentImage: string;
     description: string;
+    category: string;
     abstract: string;
-    postDate: string;
-    postDataDt: Date;
+    publishedDate: string;
+    postDate: Date;
     author: string;
+    tags: string[];
+    tagStr: string;
     comments: Comments[];
+    commentsCount: number;
     likes: number;
     stars: number;
 }
+
 
 export class Comments {
     author: string;

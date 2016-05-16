@@ -2,6 +2,66 @@
     <div [innerHTML]="post"></div>
 </article> -->
 <article>
+    <md-card *ngFor="let blog of blogs">
+        <img md-card-image src={{blog.currentImage}}>
+        <md-card-title>{{blog.title}}</md-card-title>
+        <md-card-content>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <span class="fa fa-folder-open" aria-hidden="true"></span> {{blog.category}}
+                    <span class="fa fa-bookmark" aria-hidden="true"></span> {{blog.tagStr}}
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <span class="fa fa-commenting" aria-hidden="true"></span> <a href="javascript:void(0)">{{blog.commentsCount}} Comments</a>
+                    <span class="fa fa-clock-o" aria-hidden="true"></span> {{blog.postDate | date:'longDate'}}
+                </div>
+            </div>
+            <md-divider></md-divider><br/>
+            <p>{{blog.abstract}}</p>
+
+        </md-card-content>
+        <md-card-actions align="end">
+            <span><like [totalLikes]=blog.likes></like>
+            <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
+            <button md-button>Continue reading <i class="fa fa-external-link" aria-hidden="true"></i> </button>
+            </span>
+        </md-card-actions>
+    </md-card>
+
+</article>
+<!--
+<article>
+    <md-card>
+        <img md-card-image src="http://themovieblog.com/wp-content/uploads/2016/05/captain_america_civil_war-752x440.jpg">
+        <md-card-title>Captain America: Civil War Review</md-card-title>
+        <md-card-content>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <span class="fa fa-folder-open" aria-hidden="true"></span> <a href="#">Signs</a>
+                    <span class="fa fa-bookmark" aria-hidden="true"></span> <a href="#">Aries</a>,
+                    <a href="#">Fire</a>, <a href="#">Mars</a>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <span class="fa fa-commenting" aria-hidden="true"></span> <a href="singlepost.html#comments">20 Comments</a>
+                    <span class="fa fa-clock-o" aria-hidden="true"></span> August 24, 2013 9:00 PM
+                </div>
+            </div>
+            <md-divider></md-divider><br/>
+            <p>Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula
+                nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam
+                neque, vestibulum eget, vulputate ut, ultrices vel, augue.</p>
+
+        </md-card-content>
+        <md-card-actions align="end">
+            <span><like [totalLikes]="22"></like>
+            <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
+            <button md-button>Continue reading <i class="fa fa-external-link" aria-hidden="true"></i> </button>
+            </span>
+        </md-card-actions>
+    </md-card>
+
+</article>
+<article>
     <h2><a href="singlepost.html">Aries Sun Sign March 21 - April 19</a></h2>
 
     <div class="row">
@@ -88,4 +148,5 @@
 
     <hr>
 </article>
+-->
 <blog-pagination></blog-pagination>

@@ -4,15 +4,17 @@ import {Component, Input} from '@angular/core';
 @Component({
     selector: 'like',
     template: `
-    <i
-       class="glyphicon glyphicon-heart" 
+    <i class="fa fa-heart" 
+       aria-hidden="true"
        [class.highlighted]="iLike"
-       (click)="onClick()">
+       (click)="onClick()"
+       >
     </i>
     <span>{{ totalLikes }}</span>
     `,
     styles: [`
-        .glyphicon-heart {
+          
+        .fa-heart {
             color: #ccc;
             cursor: pointer;
         }
