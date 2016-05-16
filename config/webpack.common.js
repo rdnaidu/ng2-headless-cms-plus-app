@@ -8,7 +8,8 @@ const helpers = require('./helpers');
 /*
  * Webpack Plugins
  */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// problem with copy-webpack-plugin
+var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
@@ -236,8 +237,7 @@ module.exports = {
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor', 'main']),
-      minChunks: Infinity
+      name: ['polyfills', 'vendor'].reverse()
     }),
 
     /*
@@ -263,7 +263,7 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+      chunksSortMode: 'dependency'
     }),
 
     // var ProvidePlugin = require('webpack/lib/ProvidePlugin');

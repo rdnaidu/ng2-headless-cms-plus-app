@@ -1,13 +1,13 @@
 /*
  * Providers provided by Angular
  */
-import {bootstrap} from '@angular/platform-browser-dynamic';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 /*
 * Platform and Environment
 * our providers/directives/pipes
 */
-import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
-import {ENV_PROVIDERS} from './platform/environment';
+import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
+import { ENV_PROVIDERS } from './platform/environment';
 
 /*
 * App Component
@@ -78,7 +78,7 @@ if ('development' === ENV && HMR === true) {
   let ngHmr = require('angular2-hmr');
   ngHmr.hotModuleReplacement(main, module);
 } else {
-  // bootstrap when documetn is ready
+  // bootstrap when document is ready
   document.addEventListener('DOMContentLoaded', () => main());
 }
 
