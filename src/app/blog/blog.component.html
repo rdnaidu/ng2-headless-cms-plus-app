@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-      <md-card>
+        <md-card>
             <img md-card-image src={{blogPost.currentImage}} class="md-card-image">
             <md-card-title>{{blogPost.title}}</md-card-title>
             <md-card-content>
@@ -19,91 +19,11 @@
 
             </md-card-content>
             <md-card-actions align="end">
-            <span><like [totalLikes]=blogPost.likes></like>
+                <span><like [totalLikes]=blogPost.likes></like>
             <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
             </span>
             </md-card-actions>
         </md-card>
-        <!--
-            <article>
-            <h1><a href="singlepost.html">Aries Sun Sign March 21 - April 19</a></h1>
-
-            <div class="row">
-                <div class="col-sm-6 col-md-6">
-                    <span class="glyphicon glyphicon-folder-open"></span> &nbsp;<a href="#">Signs</a> &nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Aries</a>, <a href="#">Fire</a>, <a href="#">Mars</a>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20 Comments</a> &nbsp;&nbsp;
-                    <span class="glyphicon glyphicon-time"></span> August 24, 2013 9:00 PM
-                </div>
-            </div>
-
-            <hr>
-
-            <img src="http://placehold.it/900x300" class="img-responsive">
-
-            <br />
-
-            <p class="lead">Aries is the first sign of the zodiac, and that's pretty much how those born under this sign see themselves:
-                first. Aries are the leaders of the pack, first in line to get things going. Whether or not everything gets
-                done is another question altogether, for an Aries prefers to initiate rather than to complete. Do you have
-                a project needing a kick-start? Call an Aries, by all means. The leadership displayed by Aries is most impressive,
-                so don't be surprised if they can rally the troops against seemingly insurmountable odds.</p>
-
-            <p>The symbol of Aries is the Ram, and that's both good and bad news. Impulsive Aries might be tempted to ram their
-                ideas down everyone's throats without even bothering to ask if they want to know. It's these times when you
-                may wish Aries' symbol were a more subdued creature, more lamb than ram perhaps. You're not likely to convince
-                the Ram to soften up; these folks are blunt and to the point. Along with those qualities comes the sheer
-                force of the Aries nature, a force that can actually accomplish a great deal. Much of Aries' drive to compete
-                and to win comes from its Cardinal Quality. Cardinal Signs love to get things going, and Aries exemplifies
-                this even better than Cancer, Libra or Capricorn.</p>
-
-            <p>
-                Aries is ruled by Mars. Taking a peek at Roman mythology, we find that Mars was the God of War. Our man Mars was unafraid
-                to do battle, and much the same can be said for Aries. These folks are bold, aggressive and courageous. They
-                can summon up the inner strength required to take on most anyone, and they'll probably win. Aries do not
-                lack energy or vitality, and they can stay in the game longer than most anyone else. Now that's a winning
-                edge. Rams are also, for the most part, independent and well aware of their own interests in a given situation.
-                This sometimes myopic view may not be for everyone, but it does help Aries get things going. Further, their
-                competitive natures ensure that they will play the game with zeal and vigor. At times, their approach may
-                be construed as arrogant and domineering, but it takes a lot of focus to be a leader (or so an Aries would
-                say). Sadly, Aries won't usually be around for the final victory (defeat? never). These folks will more than
-                likely have bolted to the next project before the first one is done.
-            </p>
-
-            <p>
-                The element associated with Aries is Fire. Think action, enthusiasm and a burning desire to play the game. Aries love physicality,
-                so they won't sit on the sidelines for long, if at all. They'll jump into the fray full force and will contribute
-                much in the process. Talk about eager beavers! Sure, some of their decisions may later prove to have been
-                hasty, but you'll never find an Aries who regretted taking a shot.
-            </p>
-
-            <p>
-                Making things happen is what it's all about to these folks. Aries are also unafraid of stepping onto new terrain. The challenge
-                inherent in taking on the unknown is heaven on Earth for Rams. Sure, they may appear arrogant when they take
-                on the world, but they'll be quick to tell you it's the only way to go. While a common Aries refrain might
-                well be 'me first,' there's no point in arguing with them since, in their minds, they are first. Is this
-                unbridled ego? Maybe, but that might be what it takes to blaze a new trail. Oh, and on the subject of arguing,
-                it's the Ram who will have the last word, so save your breath.
-            </p>
-
-            <p>
-                Aries plays as hard as they work. These folks are happiest in a spirited soccer match or engaging in the martial arts. In
-                the game of love, the Ram's ardor is unquestioned, although Aries can also be playful and romantic with their
-                mate. With Aries ruling the head, face and brain, those born under this sign need to be on the lookout for
-                headaches and are well-served to take the occasional deep breath. The Ram's color is bright red, a sure sign
-                of the fire that breathes within.
-            </p>
-
-            <p>
-                The great strength of the Aries-born is in their initiative, courage and determination. These folks love to get things going
-                and are fearless along the way. Their dynamism and competitive spirit add considerably to any of their endeavors.
-            </p>
-
-            <hr>
-        </article>
-        -->
         <ul class="pager">
             <li class="previous"><a [routerLink]="['Home']">&larr; Back to posts</a></li>
         </ul>
@@ -130,9 +50,8 @@
             </form>
         </div>
 
-        <hr />
 
-        <ul id="comments" class="comments">
+  <!--    <ul id="comments" class="comments">
             <li class="comment">
                 <div class="clearfix">
                     <h4 class="pull-left">John</h4>
@@ -153,7 +72,57 @@
                 </p>
             </li>
         </ul>
+        -->
+        <md-card>
+      <!--  <h4 id="addComment">Leave a Comment:</h4>
+        <p class="well">Please <a href="#">sign in</a> to add comments!</p> -->
+        <h4>Comments:</h4>
+        <ul class="media-list comments">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-circle img-thumbnail" src="https://angular.io/resources/images/bios/alex-eagle.jpg" width="64" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading pull-left">loneswan</h5>
+                    <div class="comment-info pull-left">
+                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
+                    </div>
+                    <br class="clearfix">
+                    <p class="well">This is really awesome snippet!</p>
+                </div>
+            </li>
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-circle img-thumbnail" src="http://snipplicious.com/images/guest.png" width="64" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading pull-left">loneswan</h5>
+                    <div class="comment-info pull-left">
+                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
+                    </div>
+                    <br class="clearfix">
+                    <p class="well">This is really awesome snippet!</p>
+                </div>
+            </li>
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-circle img-thumbnail" src="http://snipplicious.com/images/guest.png" width="64" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading pull-left">loneswan</h5>
+                    <div class="comment-info pull-left">
+                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
+                    </div>
+                    <br class="clearfix">
+                    <p class="well">This is really awesome snippet!</p>
+                </div>
+            </li>
+        </ul>
+        </md-card>
     </div>
     <!-- col ending -->
+    <div class="col-lg-8 col-sm-8 col-xs-12">
+        
+    </div>
 </div>
 <!-- row ending -->
