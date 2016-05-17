@@ -9,6 +9,7 @@ import {BlogHomeComponent} from '../blog-home/blog-home.component';
 	directives: [BlogHomeComponent],
 	template: require('./home.component.html')
 })
+
 export class HomeComponent {
 	constructor() {
 	}
