@@ -31,7 +31,7 @@ export class BlogService {
         return this._http.get(url)
             .flatMap(res => res.json())
             .filter(res => {
-                if (res.id == id) {
+                if ((<BlogPost>res).id == id) {
                     return true;
                 }
                 return false;
