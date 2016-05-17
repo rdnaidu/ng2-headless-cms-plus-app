@@ -5,7 +5,7 @@
             <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
                 <img md-list-avatar [src]="blog.avatar" alt="...">
                 </a>
-            <a md-line href="javascript:void(0)"> {{blog.title}} </a>
+            <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.username}}</em></h5>
             <p md-line class="demo-secondary-text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.postDataDt | date:'longDate'}} </p>
         </md-list-item>
@@ -15,7 +15,7 @@
              <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
                 <img md-list-avatar [src]="blog.avatar" alt="...">
                 </a>
-            <a md-line href="javascript:void(0)"> {{blog.title}} </a>
+            <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.username}}</em></h5>
         </md-list-item>
     </md-list>

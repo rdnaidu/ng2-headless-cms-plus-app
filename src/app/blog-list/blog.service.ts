@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import {BlogPost} from '../blog-list/blog';
 @Injectable()
 export class BlogService {
 
@@ -25,6 +25,20 @@ export class BlogService {
     }
 
     getBlog(id) {
+
+        let url = this._url;
+        url += '/blogs.json';
+        return this._http.get(url)
+            .flatMap(res => res.json())
+            .filter(res => {
+                if (res.id == id) {
+                    return true;
+                }
+                return false;
+            });
+    }
+
+    getBlogUser(id) {
         let url = this._url;
 
         url += '/' + id + '.json';

@@ -33,7 +33,7 @@ export class BlogUserComponent implements OnInit {
         let id = this._routeParams.get('id');
         this.error = false;
 		this.isLoading = true;
-        this._service.getBlog(id)
+        this._service.getBlogUser(id)
             .subscribe(
             blogUser => {
                 this.blogUser = blogUser;
