@@ -1,16 +1,8 @@
 <!--<article>
     <div [innerHTML]="post"></div>
 </article> -->
-<pagination 
-            [totalItems]="totalItems" 
-            [(ngModel)]="currentPage" 
-            [maxSize]="maxSize" 
-            class="pagination-md" 
-            [boundaryLinks]="true"
-            [rotate]="false"
-            [itemsPerPage] = "maxSize"
-            (pageChanged)="pageChanged($event)"
-            >
+<pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-md" [boundaryLinks]="true"
+    [rotate]="false" [itemsPerPage]="maxSize" (pageChanged)="pageChanged($event)">
 </pagination>
 <article>
     <md-card *ngFor="let blog of pagedBlogs">
@@ -34,22 +26,16 @@
         <md-card-actions align="end">
             <span><like [totalLikes]=blog.likes></like>
             <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
-            <button md-button>Continue reading <i class="fa fa-external-link" aria-hidden="true"></i> </button>
+            <a md-button [routerLink]="['Blog', { id: '1' }]">
+                Continue reading <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
             </span>
         </md-card-actions>
     </md-card>
 
 </article>
-<pagination 
-            [totalItems]="totalItems" 
-            [(ngModel)]="currentPage" 
-            [maxSize]="maxSize" 
-            class="pagination-md" 
-            [boundaryLinks]="true"
-            [rotate]="false"
-            [itemsPerPage] = "maxSize"
-            (pageChanged)="pageChanged($event)"
-            >
+<pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-md" [boundaryLinks]="true"
+    [rotate]="false" [itemsPerPage]="maxSize" (pageChanged)="pageChanged($event)">
 </pagination>
 <!--
 <blog-pagination></blog-pagination> -->

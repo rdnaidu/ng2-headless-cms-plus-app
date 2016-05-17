@@ -46,7 +46,8 @@ declare var jQuery: any;
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive]
 })
-
+// TODO: Keep track of this issue for back button on IE11
+// https://github.com/angular/angular/issues/7873
 export class AppComponent implements OnInit {
     constructor (
     public appState: AppState,

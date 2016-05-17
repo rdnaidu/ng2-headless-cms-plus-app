@@ -40,7 +40,7 @@ export class AuthService {
 
         this.username = username;
         // simulate successfull login call
-        if (username === 'test' && password === 'test') {
+        if (username === 'alex-eagle' && password === 'alex-eagle') {
             this.token = 'token'; // dummy token
             localStorage.setItem('token', this.token);
             this.loggedIn = true;
