@@ -6,13 +6,13 @@
 </pagination>
 <article>
     <md-card *ngFor="let blog of pagedBlogs">
-        <img md-card-image src={{blog.currentImage}}>
+        <img md-card-image src={{blog.currentImage}} class="md-card-image">
         <md-card-title>{{blog.title}}</md-card-title>
         <md-card-content>
             <div class="row">
                 <div class="col-sm-6 col-md-6">
                     <span class="fa fa-folder-open" aria-hidden="true"></span> {{blog.category}}
-                    <span class="fa fa-bookmark" aria-hidden="true"></span> {{blog.tagStr}}
+                    <span class="fa fa-tags" aria-hidden="true"></span> {{blog.tagStr}}
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <span class="fa fa-commenting" aria-hidden="true"></span> <a href="javascript:void(0)">{{blog.commentsCount}} Comments</a>
