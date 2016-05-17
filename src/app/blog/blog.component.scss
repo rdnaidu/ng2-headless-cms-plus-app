@@ -22,9 +22,11 @@ md-card-actions {
 }
 
 
-img {
-    height: 400px;
-  }
+.md-card-image {
+    display: flex;
+  //  width: auto;
+    max-height: 550px;
+}
   
 md-card {
     margin: 5px 0px 0px 0;
