@@ -7,21 +7,24 @@ import {TagListComponent} from '../tag-list/tag-list.component';
 import {BlogAbstractListComponent} from '../blog-list/blog-abstract-list.component';
 import {BlogCreateComponent} from '../blog-create/blog-create.component';
 import {BlogSummaryListComponent} from '../blog-summary-list/blog-summary-list.component';
+import {SearchService} from '../shared/search.service';
 
 @Component({
   selector: 'blog-home',
   template: require('./blog-home.component.html'),
   styles: [require('./blog-home.scss')],
-  directives: [ ROUTER_DIRECTIVES,
-                MD_LIST_DIRECTIVES,
-                MdButton,
-                TagListComponent,
-                BlogAbstractListComponent,
-                BlogCreateComponent,
-                BlogSummaryListComponent
-                ]
+  directives: [
+    ROUTER_DIRECTIVES,
+    MD_LIST_DIRECTIVES,
+    MdButton,
+    TagListComponent,
+    BlogAbstractListComponent,
+    BlogCreateComponent,
+    BlogSummaryListComponent
+  ]
 })
 export class BlogHomeComponent {
+
   items: string[] = [
     'Pepper',
     'Salt',
@@ -29,9 +32,9 @@ export class BlogHomeComponent {
   ];
 
   contacts: any[] = [
-    {name: 'Nancy', headline: 'Software engineer'},
-    {name: 'Mary', headline: 'TPM'},
-    {name: 'Bobby', headline: 'UX designer'}
+    { name: 'Nancy', headline: 'Software engineer' },
+    { name: 'Mary', headline: 'TPM' },
+    { name: 'Bobby', headline: 'UX designer' }
   ];
 
   messages: any[] = [
@@ -56,26 +59,33 @@ export class BlogHomeComponent {
   ];
 
   links: any[] = [
-    {name: 'Inbox'},
-    {name: 'Outbox'},
-    {name: 'Spam'},
-    {name: 'Trash'}
+    { name: 'Inbox' },
+    { name: 'Outbox' },
+    { name: 'Spam' },
+    { name: 'Trash' }
 
   ];
 
   tags: any[] = [
-    {name: 'Aries'},
-    {name: 'Fire'},
-    {name: 'Mars'},
-    {name: 'Taurus'},
-    {name: 'Earth'},
-    {name: 'Moon'},
-    {name: 'Gemini'},
-    {name: 'Air'},
-    {name: 'Mercury'},
-    {name: 'Cancer'}
+    { name: 'Aries' },
+    { name: 'Fire' },
+    { name: 'Mars' },
+    { name: 'Taurus' },
+    { name: 'Earth' },
+    { name: 'Moon' },
+    { name: 'Gemini' },
+    { name: 'Air' },
+    { name: 'Mercury' },
+    { name: 'Cancer' }
   ];
 
   thirdLine: boolean = false;
   infoClicked: boolean = false;
+
+  constructor (
+    public searchService: SearchService,
+    public router: Router) {
+
+  }
+
 }

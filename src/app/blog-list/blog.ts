@@ -17,6 +17,10 @@ export class BlogPost {
     stars: number;
 }
 
+export interface Search {
+    type: string;
+    searchText: string;
+}
 
 export class Comments {
     username: string;

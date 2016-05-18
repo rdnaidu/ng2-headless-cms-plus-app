@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChange, Input} from '@angular/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
@@ -28,13 +28,15 @@ const postValue = '<p>So the stars of <del>The Avengers 2.5</del> Captain Americ
     LikeComponent
   ]
 })
-export class BlogAbstractListComponent implements OnInit {
+export class BlogAbstractListComponent implements OnInit, OnChanges {
   post = postValue;
   blogs: any[];
   pagedBlogs: any[];
   postsLoading;
   blogServiceError = false;
   errorMessage;
+  @Input() searchString: string;
+  changeLog: string[] = [];
 
 
   public totalItems: number = 100;
@@ -50,9 +52,55 @@ export class BlogAbstractListComponent implements OnInit {
     this.loadPosts();
   }
 
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+    for (let propName in changes) {
+      let chng = changes[propName];
+      let cur = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+      let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
+      this.changeLog.push(changeStr);
+ //     console.log(changeStr);
+    }
+    // simulating search text change
+    this.loadSearch();
+  }
+  
+  private loadSearch() {
+    this.postsLoading = true;
+    this._service.getBlogs()
+      .subscribe(
+      blogs => {
+        this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.maxSize);
+        this.totalItems = _.size(this.blogs);
+     //   console.log(this.totalItems);
+        this.pagedBlogs = _.take(this.blogs, this.maxSize);
+        _.map(this.pagedBlogs, function addDate(data: BlogPost) {
+          data.postDate = new Date(data.publishedDate);
+          data.commentsCount = _.size(data.comments);
+          data.tagStr = (data.tags.join(','));
+          if (_.size(data.images) > 0) {
+            data.currentImage = data.images[0];
+          } else {
+            data.currentImage = '';
+          }
+          // console.log(data.likes);
+
+        });
+      },
+      error => {
+        this.blogServiceError = true;
+        this.errorMessage = 'Unable able to connect';
+        this.postsLoading = false;
+        // console.log("EEEE");
+      },
+      () => {
+        this.postsLoading = false;
+      });
+  }
+
   public pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
+    //  console.log('Page changed to: ' + event.page);
+    //  console.log('Number items per page: ' + event.itemsPerPage);
     let startIndex = (event.page - 1) * this.maxSize;
     this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.maxSize);
     _.map(this.pagedBlogs, function addDate(data: BlogPost) {

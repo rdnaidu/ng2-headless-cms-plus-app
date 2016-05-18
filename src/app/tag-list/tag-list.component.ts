@@ -5,6 +5,8 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated
 import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {TagListService} from './tag-list.service';
+import {SearchService} from '../shared/search.service';
+import {Search} from '../blog-list/blog';
 import {Tag} from './tag';
 
 @Component({
@@ -25,14 +27,19 @@ export class TagListComponent {
   errorMessage;
   selected: string = '';
 
-  constructor(private _service: TagListService) { }
+
+  constructor(public searchService: SearchService,
+              private _service: TagListService) { }
 
   ngOnInit() {
     this.loadTags();
   }
 
   public typeaheadOnSelect($e: Event): void {
-    console.log($e.item.tag);
+    //console.log($e.item.tag);
+   /// let searchObj = new Search();
+  //  searchObj.
+    this.searchService.searchText = 'Tag Search: ' + $e.item.tag;
   }
 
   private loadTags(): void {

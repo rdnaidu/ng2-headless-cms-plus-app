@@ -27,6 +27,7 @@ import {PLATFORM_DIRECTIVES} from '@angular/core';
 
 import {appInjectorRef} from './app/shared/appInjectorRef';
 import {AuthService} from './app/auth/auth.service';
+import {SearchService} from './app/shared/search.service';
 import {TRANSLATE_PROVIDERS,
         TranslateService,
         TranslatePipe,
@@ -41,6 +42,7 @@ export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
     AuthService,
+    SearchService,
     ...PROVIDERS,
     ...ENV_PROVIDERS,
     ...DIRECTIVES,
