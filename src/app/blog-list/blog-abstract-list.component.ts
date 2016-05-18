@@ -8,6 +8,7 @@ import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {LikeComponent} from '../shared/like.component';
 
 import {BlogPost} from './blog';
+import {SearchJSON} from './blog';
 import {BlogService} from './blog.service';
 
 import * as _ from 'lodash';
@@ -35,7 +36,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   postsLoading;
   blogServiceError = false;
   errorMessage;
-  @Input() searchString: string;
+  @Input() searchString: SearchJSON;
   changeLog: string[] = [];
 
 
@@ -54,17 +55,21 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     for (let propName in changes) {
-      let chng = changes[propName];
-      let cur = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-      let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
-      this.changeLog.push(changeStr);
- //     console.log(changeStr);
+      if (propName === 'searchString') {
+        let chng = changes[propName];
+        let cur: SearchJSON = chng.currentValue;
+     //   let prev = JSON.stringify(chng.previousValue);
+     //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
+    //    this.changeLog.push(changeStr);
+   //   console.log(cur);
+      }
+
+      //   console.log(changeStr);
     }
     // simulating search text change
     this.loadSearch();
   }
-  
+
   private loadSearch() {
     this.postsLoading = true;
     this._service.getBlogs()
@@ -72,7 +77,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
       blogs => {
         this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.maxSize);
         this.totalItems = _.size(this.blogs);
-     //   console.log(this.totalItems);
+        //   console.log(this.totalItems);
         this.pagedBlogs = _.take(this.blogs, this.maxSize);
         _.map(this.pagedBlogs, function addDate(data: BlogPost) {
           data.postDate = new Date(data.publishedDate);

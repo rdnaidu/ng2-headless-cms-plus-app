@@ -17,7 +17,7 @@ export class BlogPost {
     stars: number;
 }
 
-export interface Search {
+export interface SearchJSON {
     type: string;
     searchText: string;
 }

@@ -6,7 +6,7 @@ import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {TagListService} from './tag-list.service';
 import {SearchService} from '../shared/search.service';
-import {Search} from '../blog-list/blog';
+import {SearchJSON} from '../blog-list/blog';
 import {Tag} from './tag';
 
 @Component({
@@ -36,10 +36,17 @@ export class TagListComponent {
   }
 
   public typeaheadOnSelect($e: Event): void {
-    //console.log($e.item.tag);
-   /// let searchObj = new Search();
-  //  searchObj.
-    this.searchService.searchText = 'Tag Search: ' + $e.item.tag;
+    // console.log($e.item.tag);
+    ///let searchObj = new Search();
+    //  searchObj.
+    this.searchService.searchJSON = this.encodeSearch($e.item.tag);
+  }
+  
+  private encodeSearch(searchText: string): SearchJSON {
+   return {
+      type: 'tagSearch',
+      searchText: searchText
+   };
   }
 
   private loadTags(): void {
