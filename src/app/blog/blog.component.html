@@ -30,99 +30,53 @@
 
         <!-- Comment form -->
         <div class="well">
-            <h4>Leave a comment</h4>
-            <form role="form" class="clearfix">
-                <div class="col-md-6 form-group">
-                    <label class="sr-only" for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name">
-                </div>
-                <div class="col-md-6 form-group">
-                    <label class="sr-only" for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-                <div class="col-md-12 form-group">
-                    <label class="sr-only" for="email">Comment</label>
-                    <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
-                </div>
-                <div class="col-md-12 form-group text-right">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+            <div *ngIf="!auth.loggedIn">Please <a [routerLink]="['Login']">sign in</a> to add comments!</div>
+            <div *ngIf="auth.loggedIn">
+                <h4>Leave a comment</h4>
+                <form role="form" class="clearfix">
+                    <div class="col-md-6 form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label class="sr-only" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label class="sr-only" for="email">Comment</label>
+                        <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
+                    </div>
+                    <div class="col-md-12 form-group text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
 
-  <!--    <ul id="comments" class="comments">
-            <li class="comment">
-                <div class="clearfix">
-                    <h4 class="pull-left">John</h4>
-                    <p class="pull-right">9:41 PM on August 24, 2013</p>
-                </div>
-                <p>
-                    <em>I don't believe in astrology but still your writing style is really great!</em>
-                </p>
-            </li>
-
-            <li class="comment clearfix">
-                <div class="clearfix">
-                    <h4 class="pull-left">John</h4>
-                    <p class="pull-right">9:41 PM on August 24, 2013</p>
-                </div>
-                <p>
-                    <em>I don't believe in astrology but still your writing style is really great!</em>
-                </p>
-            </li>
-        </ul>
-        -->
         <md-card>
-      <!--  <h4 id="addComment">Leave a Comment:</h4>
-        <p class="well">Please <a href="#">sign in</a> to add comments!</p> -->
-        <h4>Comments:</h4>
-        <ul class="media-list comments">
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-circle img-thumbnail" src="https://angular.io/resources/images/bios/alex-eagle.jpg" width="64" alt="Generic placeholder image">
-                </a>
-                <div class="media-body">
-                    <h5 class="media-heading pull-left">loneswan</h5>
-                    <div class="comment-info pull-left">
-                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
+            <h4>Comments:</h4>
+            <ul class="media-list comments" *ngFor="let comment of blogPost.comments;let i = index">
+                <li class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object img-circle img-thumbnail" src="http://lorempixel.com/80/80/people?random={{ i }}" alt="http://snipplicious.com/images/guest.png" width="64"
+                            alt="Generic placeholder image">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading pull-left text-info"><small>{{comment.username}}</small></h5>
+                        <div class="comment-info pull-left">
+                            <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted {{comment.commentDt | dateDelta:'inDays'  }} days ago</div>
+                        </div>
+                        <br class="clearfix">
+                        <p class="well">{{comment.comment}}</p>
                     </div>
-                    <br class="clearfix">
-                    <p class="well">This is really awesome snippet!</p>
-                </div>
-            </li>
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-circle img-thumbnail" src="http://snipplicious.com/images/guest.png" width="64" alt="Generic placeholder image">
-                </a>
-                <div class="media-body">
-                    <h5 class="media-heading pull-left">loneswan</h5>
-                    <div class="comment-info pull-left">
-                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
-                    </div>
-                    <br class="clearfix">
-                    <p class="well">This is really awesome snippet!</p>
-                </div>
-            </li>
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object img-circle img-thumbnail" src="http://snipplicious.com/images/guest.png" width="64" alt="Generic placeholder image">
-                </a>
-                <div class="media-body">
-                    <h5 class="media-heading pull-left">loneswan</h5>
-                    <div class="comment-info pull-left">
-                        <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted 3 weeks ago</div>
-                    </div>
-                    <br class="clearfix">
-                    <p class="well">This is really awesome snippet!</p>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
         </md-card>
     </div>
     <!-- col ending -->
     <div class="col-lg-8 col-sm-8 col-xs-12">
-        
+
     </div>
 </div>
 <!-- row ending -->

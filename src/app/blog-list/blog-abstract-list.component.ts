@@ -55,18 +55,18 @@ export class BlogAbstractListComponent implements OnInit {
     console.log('Number items per page: ' + event.itemsPerPage);
     let startIndex = (event.page - 1) * this.maxSize;
     this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.maxSize);
-     _.map(this.pagedBlogs, function addDate(data: BlogPost) {
-          data.postDate = new Date(data.publishedDate);
-          data.commentsCount = _.size(data.comments);
-          data.tagStr = (data.tags.join(','));
-          if (_.size(data.images) > 0) {
-            data.currentImage = data.images[0];
-          } else {
-            data.currentImage = '';
-          }
-          // console.log(data.likes);
+    _.map(this.pagedBlogs, function addDate(data: BlogPost) {
+      data.postDate = new Date(data.publishedDate);
+      data.commentsCount = _.size(data.comments);
+      data.tagStr = (data.tags.join(','));
+      if (_.size(data.images) > 0) {
+        data.currentImage = data.images[0];
+      } else {
+        data.currentImage = '';
+      }
+      // console.log(data.likes);
 
-        });
+    });
   };
 
   private loadPosts() {

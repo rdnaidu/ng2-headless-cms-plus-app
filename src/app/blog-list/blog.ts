@@ -19,10 +19,12 @@ export class BlogPost {
 
 
 export class Comments {
-    author: string;
-    details: string;
-    votedUp: boolean;
-    votedDown: boolean;
+    username: string;
+    comment: string;
+    commentDate: string;
+    commentDt: Date;
+    votedUp: number;
+    votedDown: number;
 }
 
 export class BlogUser {
