@@ -3,11 +3,11 @@
         <span class="input-group-addon">
         <span><i class="fa fa-search" aria-hidden="true"></i></span>
         </span>
-        <input [(ngModel)]="selected"
-           [typeahead]="allTags"
-           (typeaheadOnSelect)="typeaheadOnSelect($event)"
-           [typeaheadOptionField]="'tag'"
-           class="form-control" placeholder="Search for a tag ..." type="text">
+        <div class="btn-group">
+            <input [(ngModel)]="selected" [typeahead]="allTags" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionField]="'tag'"
+                class="form-control" placeholder="Search for a tag ..." type="text">
+            <span id="searchclear"><i class="fa fa-times" aria-hidden="true" (click)="clearSearch()"></i></span>
+            </div>
     </div>
 </div>
 <div class="col-md-12">

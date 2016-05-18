@@ -12,6 +12,7 @@ import {Tag} from './tag';
 @Component({
   selector: 'tag-list',
   template: require('./tag-list.component.html'),
+  styles: [require('./tag-list.component.scss')],
   directives: [
     ROUTER_DIRECTIVES,
     MD_LIST_DIRECTIVES,
@@ -41,6 +42,12 @@ export class TagListComponent {
     //  searchObj.
     this.searchService.searchJSON = this.encodeSearch($e.item.tag);
   }
+
+  clearSearch() {
+   // alert('hellop');
+    this.selected = '';
+    this.searchService.searchJSON = this.encodeSearch('');
+  }
   
   private encodeSearch(searchText: string): SearchJSON {
    return {
@@ -48,6 +55,7 @@ export class TagListComponent {
       searchText: searchText
    };
   }
+
 
   private loadTags(): void {
     this.tagsLoading = true;

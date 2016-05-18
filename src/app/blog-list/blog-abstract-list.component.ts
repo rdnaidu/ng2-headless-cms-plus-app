@@ -54,20 +54,26 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+    let cur: SearchJSON = undefined;
     for (let propName in changes) {
       if (propName === 'searchString') {
         let chng = changes[propName];
-        let cur: SearchJSON = chng.currentValue;
-     //   let prev = JSON.stringify(chng.previousValue);
-     //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
-    //    this.changeLog.push(changeStr);
-   //   console.log(cur);
+        cur = chng.currentValue;
+        //   let prev = JSON.stringify(chng.previousValue);
+        //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
+        //    this.changeLog.push(changeStr);
+        console.log(cur);
       }
 
       //   console.log(changeStr);
     }
     // simulating search text change
-    this.loadSearch();
+    if (cur !== undefined && cur.searchText === '') {
+      this.loadPosts();
+    } else {
+      this.loadSearch();
+    }
+
   }
 
   private loadSearch() {
