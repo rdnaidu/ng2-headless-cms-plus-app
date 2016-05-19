@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
+import {Component, Input, OnInit , OnChanges, SimpleChange} from '@angular/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
@@ -20,7 +20,7 @@ import {Tag} from './tag';
     MdButton],
   providers: [TagListService]
 })
-export class TagListComponent implements OnChanges {
+export class TagListComponent implements OnInit, OnChanges {
   tags: any[];
   allTags: any[];
   tagsLoading;

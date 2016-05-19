@@ -7,7 +7,7 @@ import {MenuItem} from './menu-item';
 import {RouterActive} from '../router-active';
 import {MdButton, MdAnchor} from '@angular2-material/button';
 import {BlogTypeaheadComponent} from '../blog-typeahead/blog-typeahead.component';
-
+import {SearchService} from '../shared/search.service';
 declare var jQuery: any;
 
 
@@ -34,8 +34,9 @@ export class NavBarComponent implements OnInit {
         new MenuItem("tweets","Tweets","Tweets"),
         new MenuItem("material","Material","Material")    */
     ];
-    constructor(private _router: Router,
-                public auth: AuthService) {
+    constructor(
+                public searchService: SearchService,
+                public auth: AuthService,private _router: Router) {
     }
 
     ngOnInit() {
