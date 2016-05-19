@@ -5,6 +5,7 @@
     (typeaheadNoResults)="changeTypeaheadNoResults($event)" 
     (typeaheadOnSelect)="typeaheadOnSelect($event)" 
     [typeaheadOptionsLimit]="7"
+    [typeaheadOptionField]="'title'"
     placeholder="Search" 
     class="form-control col-md-8">
 <i *ngIf="typeaheadLoading===true" class="fa fa-refresh ng-hide" aria-hidden="true"></i>

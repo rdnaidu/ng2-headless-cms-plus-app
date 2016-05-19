@@ -80,6 +80,10 @@ export class BlogTypeaheadComponent implements OnInit, OnChanges {
 
   }
 
+  getContext() {
+    return this;
+  }
+  
   ngOnInit() {
     this.loadPosts();
   }
