@@ -11,7 +11,7 @@
         </md-list-item>
         <md-divider></md-divider>
         <h3 md-subheader><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></h3>
-        <md-list-item *ngFor="let blog of olderBlogs">
+        <md-list-item *ngFor="let blog of olderBlogs" md-expando>
              <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
                 <img md-list-avatar [src]="blog.avatar" alt="...">
                 </a>
