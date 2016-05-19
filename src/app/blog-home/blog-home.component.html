@@ -12,8 +12,9 @@
   </div>
   <div class="col-md-4">
     <blog-summary-list></blog-summary-list>
+    <tag-list [searchString]="searchService.searchJSON"></tag-list>
     <blog-create></blog-create>
-    <tag-list></tag-list>
+    
   </div>
 
   <div class="col-md-8">

@@ -14,7 +14,7 @@
     <div class="tag-list well well-sm">
         <h6 md-subheader><b>Trending Tags</b> <i class="fa fa-tags" aria-hidden="true"></i></h6>
 
-        <a *ngFor="let tag of tags" href="#" class="btn btn-primary" role="button">
+        <a *ngFor="let tag of tags" href="javascript:void(0)" (click)="setSearch(tag)" class="btn btn-primary" role="button">
             <b>{{tag.tag}}</b>
             <small>({{tag.count}})</small>
         </a>

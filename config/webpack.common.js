@@ -18,7 +18,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Media Fest Frontend for Headless CMS',
   baseUrl: '/'
 };
 

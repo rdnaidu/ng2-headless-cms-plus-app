@@ -10,6 +10,7 @@ import {LikeComponent} from '../shared/like.component';
 import {BlogPost} from './blog';
 import {SearchJSON} from './blog';
 import {BlogService} from './blog.service';
+import {SearchService} from '../shared/search.service';
 
 import * as _ from 'lodash';
 
@@ -44,8 +45,9 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   public currentPage: number = 1;
   public maxSize: number = 5;
   public itemsPerPage: number = 5;
-
-  constructor(private _service: BlogService) {
+  public currentSearch: SearchJSON = undefined;
+  constructor(public searchService: SearchService,
+              private _service: BlogService) {
 
   }
 
@@ -54,27 +56,54 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-    let cur: SearchJSON = undefined;
+
     for (let propName in changes) {
       if (propName === 'searchString') {
         let chng = changes[propName];
-        cur = chng.currentValue;
+        this.currentSearch = chng.currentValue;
         //   let prev = JSON.stringify(chng.previousValue);
         //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
         //    this.changeLog.push(changeStr);
-        console.log(cur);
+        console.log(this.currentSearch);
       }
 
       //   console.log(changeStr);
     }
     // simulating search text change
-    if (cur !== undefined && cur.searchText === '') {
+    if (this.currentSearch !== undefined && this.currentSearch.searchText === '') {
       this.loadPosts();
     } else {
       this.loadSearch();
     }
 
   }
+
+  clearSearch() {
+    if (this.currentSearch !== undefined && this.currentSearch.searchText !== '') {
+      this.currentSearch.searchText = '';
+      this.searchService.searchJSON = this.encodeSearch('');
+      this.loadPosts();
+    }
+  }
+
+  public pageChanged(event: any): void {
+    //  console.log('Page changed to: ' + event.page);
+    //  console.log('Number items per page: ' + event.itemsPerPage);
+    let startIndex = (event.page - 1) * this.maxSize;
+    this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.maxSize);
+    _.map(this.pagedBlogs, function addDate(data: BlogPost) {
+      data.postDate = new Date(data.publishedDate);
+      data.commentsCount = _.size(data.comments);
+      data.tagStr = (data.tags.join(','));
+      if (_.size(data.images) > 0) {
+        data.currentImage = data.images[0];
+      } else {
+        data.currentImage = '';
+      }
+      // console.log(data.likes);
+
+    });
+  };
 
   private loadSearch() {
     this.postsLoading = true;
@@ -109,24 +138,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
       });
   }
 
-  public pageChanged(event: any): void {
-    //  console.log('Page changed to: ' + event.page);
-    //  console.log('Number items per page: ' + event.itemsPerPage);
-    let startIndex = (event.page - 1) * this.maxSize;
-    this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.maxSize);
-    _.map(this.pagedBlogs, function addDate(data: BlogPost) {
-      data.postDate = new Date(data.publishedDate);
-      data.commentsCount = _.size(data.comments);
-      data.tagStr = (data.tags.join(','));
-      if (_.size(data.images) > 0) {
-        data.currentImage = data.images[0];
-      } else {
-        data.currentImage = '';
-      }
-      // console.log(data.likes);
 
-    });
-  };
 
   private loadPosts() {
     this.postsLoading = true;
@@ -162,5 +174,11 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
 
 
+  private encodeSearch(searchText: string): SearchJSON {
+    return {
+      type: 'tagSearch',
+      searchText: searchText
+    };
+  }
 
 }

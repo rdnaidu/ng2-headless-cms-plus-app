@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
 import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
@@ -20,20 +20,40 @@ import {Tag} from './tag';
     MdButton],
   providers: [TagListService]
 })
-export class TagListComponent {
+export class TagListComponent implements OnChanges {
   tags: any[];
   allTags: any[];
   tagsLoading;
   tagsServiceError = false;
   errorMessage;
   selected: string = '';
+  @Input() searchString: string;
+  currentSearch: SearchJSON;
 
 
   constructor(public searchService: SearchService,
-              private _service: TagListService) { }
+    private _service: TagListService) { }
 
   ngOnInit() {
     this.loadTags();
+  }
+
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+
+    for (let propName in changes) {
+      if (propName === 'searchString') {
+        let chng = changes[propName];
+        this.currentSearch = chng.currentValue;
+
+        //   let prev = JSON.stringify(chng.previousValue);
+        //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
+        //    this.changeLog.push(changeStr);
+        // console.log(this.searchString);
+      }
+      if (this.currentSearch !== undefined) {
+        this.selected = this.currentSearch.searchText;
+      }
+    }
   }
 
   public typeaheadOnSelect($e: Event): void {
@@ -44,16 +64,21 @@ export class TagListComponent {
   }
 
   clearSearch() {
-   // alert('hellop');
+    // alert('hellop');
     this.selected = '';
     this.searchService.searchJSON = this.encodeSearch('');
   }
-  
+
+  setSearch(tag: Tag) {
+   // alert(tag.tag);
+    this.searchService.searchJSON = this.encodeSearch(tag.tag);
+  }
+
   private encodeSearch(searchText: string): SearchJSON {
-   return {
+    return {
       type: 'tagSearch',
       searchText: searchText
-   };
+    };
   }
 
 
