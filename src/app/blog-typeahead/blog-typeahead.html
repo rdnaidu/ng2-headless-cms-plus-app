@@ -10,13 +10,13 @@
     placeholder="Search" 
     class="form-control col-md-8"> -->
 <div class="input-group">
-    <i class="fa fa-search" aria-hidden="true"></i>
+    <i class="fa fa-search pull-left" aria-hidden="true"></i>
     <input [(ngModel)]="selected" [typeahead]="blogs" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionField]="'title'"
         class="form-control col-md-8" placeholder="Search for a title ..." type="text">
     <i *ngIf="typeaheadLoading===true" class="fa fa-refresh ng-hide" aria-hidden="true"></i>
     <div *ngIf="typeaheadNoResults===true">
         <small> <i class="fa fa-times" aria-hidden="true"></i> No Results Found</small>
     </div>
-    <i id="searchclear" class="fa fa-times pull-right" aria-hidden="true" (click)="clearSearch()"></i>
+    <i *ngIf="selected !== ''" id="searchclear" class="fa fa-times pull-right" aria-hidden="true" (click)="clearSearch()"></i>
     <!--   <input type="text" class="form-control col-md-8" placeholder="Search"> -->
 </div>
