@@ -9,7 +9,7 @@
     [typeaheadOptionField]="'title'"
     placeholder="Search" 
     class="form-control col-md-8"> -->
-<div class="form-group">
+<div class="input-group">
     <i class="fa fa-search" aria-hidden="true"></i>
     <input [(ngModel)]="selected" [typeahead]="blogs" (typeaheadOnSelect)="typeaheadOnSelect($event)" [typeaheadOptionField]="'title'"
         class="form-control col-md-8" placeholder="Search for a title ..." type="text">
