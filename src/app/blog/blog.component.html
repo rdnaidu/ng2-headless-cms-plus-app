@@ -14,7 +14,7 @@
                     </li>
         </ul>
         <!-- Comment form -->
-        <comments-form></comments-form>
+        <comments-form *ngIf="showComments"></comments-form>
         <comments [comments]="blogPost.comments" [showComments]="showComments"></comments>
     </div>
 </div>
