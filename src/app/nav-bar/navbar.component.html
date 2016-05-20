@@ -16,7 +16,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-responsive-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" *ngFor="let menuItem of menuItems">
-                <li *ngIf="menuItem.loginCheck && auth.loggedIn" router-active (click)="clicked()" id={{menuItem.id}}>
+                <li *ngIf="(menuItem.loginCheck && auth.loggedIn) || (!menuItem.loginCheck)" router-active (click)="clicked()" id={{menuItem.id}}>
                     <a [routerLink]="[menuItem.alias]">
                         <i *ngIf="menuItem.iconClass !== undefined" class='{{menuItem.iconClass}}' aria-hidden="true"></i>                        {{menuItem.name}}
                     </a>

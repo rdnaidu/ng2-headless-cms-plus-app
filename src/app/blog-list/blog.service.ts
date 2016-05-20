@@ -46,4 +46,13 @@ export class BlogService {
         return this._http.get(url)
             .map(res => res.json());
     }
+
+    getBlogUsers() {
+        let url = this._url;
+
+        url += '/users.json';
+
+        return this._http.get(url)
+            .map(res => res.json());
+    }
 }
