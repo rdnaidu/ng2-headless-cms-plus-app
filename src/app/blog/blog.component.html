@@ -53,26 +53,7 @@
             </div>
         </div>
 
-
-        <md-card>
-            <h4>Comments:</h4>
-            <ul class="media-list comments" *ngFor="let comment of blogPost.comments;let i = index">
-                <li class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object img-circle img-thumbnail" src="http://lorempixel.com/80/80/people?random={{ i }}" alt="http://snipplicious.com/images/guest.png" width="64"
-                            alt="Generic placeholder image">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading pull-left text-info"><small>{{comment.username}}</small></h5>
-                        <div class="comment-info pull-left">
-                            <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> Posted {{comment.commentDt | dateDelta:'inDays'  }} days ago</div>
-                        </div>
-                        <br class="clearfix">
-                        <p class="well">{{comment.comment}}</p>
-                    </div>
-                </li>
-            </ul>
-        </md-card>
+        <comments [comments]="blogPost.comments"></comments>
     </div>
     <!-- col ending -->
     <div class="col-lg-8 col-sm-8 col-xs-12">

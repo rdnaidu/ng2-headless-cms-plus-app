@@ -10,6 +10,7 @@ import {BlogPost, Comments} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 import {AuthService} from '../auth/auth.service';
 import {DateDeltaPipe} from './date-delta.pipe';
+import {CommentsComponent} from '../comments/comments.component';
 
 @Component({
   selector: 'blog-post',
@@ -20,7 +21,8 @@ import {DateDeltaPipe} from './date-delta.pipe';
     MdButton,
     MD_CARD_DIRECTIVES,
     PAGINATION_DIRECTIVES,
-    LikeComponent
+    LikeComponent,
+    CommentsComponent
   ],
   styles: [require('./blog.component.scss')],
   providers: [BlogService],
