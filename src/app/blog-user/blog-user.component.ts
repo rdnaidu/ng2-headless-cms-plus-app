@@ -13,6 +13,7 @@ import * as _ from 'lodash';
     selector: 'blog-user',
     providers: [BlogService],
     template: require('./blog-user.component.html'),
+    styles: [require('./blog-user.component.scss')],
     directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
 })
 export class BlogUserComponent implements OnInit {

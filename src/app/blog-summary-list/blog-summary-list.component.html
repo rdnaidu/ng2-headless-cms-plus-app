@@ -1,22 +1,26 @@
 <div class="col-lg-12">
-    <md-list dense >
+    <md-list dense>
         <h3 md-subheader><b>Trending Blogs</b> <i class="fa fa-line-chart" aria-hidden="true"></i></h3>
-        <md-list-item *ngFor="let blog of blogs" md-expando>
-            <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
-                <img md-list-avatar [src]="blog.avatar" alt="...">
+        <md-card>
+            <md-list-item *ngFor="let blog of blogs" md-expando>
+                <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
+                    <img md-list-avatar [src]="blog.avatar" alt="...">
                 </a>
-            <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
-            <h5 md-line><em>{{blog.username}}</em></h5>
-            <p md-line class="demo-secondary-text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.postDataDt | date:'longDate'}} </p>
-        </md-list-item>
+                <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
+                <h5 md-line><em>{{blog.username}}</em></h5>
+                <p md-line class="demo-secondary-text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.postDataDt | date:'longDate'}} </p>
+            </md-list-item>
+        </md-card>
         <md-divider></md-divider>
         <h3 md-subheader><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></h3>
+        <md-card>
         <md-list-item *ngFor="let blog of olderBlogs" md-expando>
-             <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
+            <a md-list-avatar [routerLink]="['BlogUser', { id: blog.username }]">
                 <img md-list-avatar [src]="blog.avatar" alt="...">
-                </a>
+            </a>
             <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.username}}</em></h5>
         </md-list-item>
+        </md-card>
     </md-list>
 </div>
