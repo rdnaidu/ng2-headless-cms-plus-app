@@ -9,37 +9,13 @@
 </pre>
 </article>
 <article>
-    <md-card *ngFor="let blog of pagedBlogs">
-        <img md-card-image src={{blog.currentImage}} class="md-card-image">
-        <md-card-title>{{blog.title}}</md-card-title>
-        <md-card-content>
-            <div class="row">
-                <div class="col-sm-6 col-md-6">
-                    <span class="fa fa-folder-open" aria-hidden="true"></span> {{blog.category}}
-                    <span class="fa fa-tags" aria-hidden="true"></span> {{blog.tagStr}}
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <span class="fa fa-commenting" aria-hidden="true"></span> <a href="javascript:void(0)">{{blog.commentsCount}} Comments</a>
-                    <span class="fa fa-clock-o" aria-hidden="true"></span> {{blog.postDate | date:'longDate'}}
-                </div>
-            </div>
-            <md-divider></md-divider><br/>
-            <p>{{blog.abstract}}</p>
-
-        </md-card-content>
-        <md-card-actions align="end">
-            <span><like [totalLikes]=blog.likes></like>
-            <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
-            <a md-button [routerLink]="['Blog', { id: blog.id }]">
-                Continue reading <i class="fa fa-external-link" aria-hidden="true"></i>
-            </a>
-            </span>
-        </md-card-actions>
-    </md-card>
-
+    <blog-content *ngFor="let blog of pagedBlogs"
+            [blogPost]="blog" 
+            [showAbstract]="true" 
+            [enableComments]="false"
+            > 
+         </blog-content>
 </article>
 <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-md" [boundaryLinks]="true"
     [rotate]="false" [itemsPerPage]="maxSize" (pageChanged)="pageChanged($event)">
 </pagination>
-<!--
-<blog-pagination></blog-pagination> -->

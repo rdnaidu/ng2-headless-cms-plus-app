@@ -6,6 +6,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated
 
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {LikeComponent} from '../shared/like.component';
+import {BlogContentComponent} from '../blog-content/blog-content.component';
 
 import {BlogPost} from './blog';
 import {SearchJSON} from './blog';
@@ -27,7 +28,8 @@ const postValue = '<p>So the stars of <del>The Avengers 2.5</del> Captain Americ
     MdButton,
     MD_CARD_DIRECTIVES,
     PAGINATION_DIRECTIVES,
-    LikeComponent
+    LikeComponent,
+    BlogContentComponent
   ]
 })
 export class BlogAbstractListComponent implements OnInit, OnChanges {
@@ -39,7 +41,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   errorMessage;
   @Input() searchString: SearchJSON;
   changeLog: string[] = [];
-
+  showComments: boolean;
 
   public totalItems: number = 100;
   public currentPage: number = 1;
@@ -47,8 +49,8 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   public itemsPerPage: number = 5;
   public currentSearch: SearchJSON = undefined;
   constructor(public searchService: SearchService,
-              private _service: BlogService) {
-
+    private _service: BlogService) {
+    this.showComments = false;
   }
 
   ngOnInit() {

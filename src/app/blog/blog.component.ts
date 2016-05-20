@@ -4,13 +4,13 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/router-deprecated';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {LikeComponent} from '../shared/like.component';
 
 import {BlogPost, Comments} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 import {AuthService} from '../auth/auth.service';
-import {DateDeltaPipe} from './date-delta.pipe';
 import {CommentsComponent} from '../comments/comments.component';
+import {BlogContentComponent} from '../blog-content/blog-content.component';
+import {CommentsFormComponent} from '../comments/comments-form.component';
 
 @Component({
   selector: 'blog-post',
@@ -21,12 +21,12 @@ import {CommentsComponent} from '../comments/comments.component';
     MdButton,
     MD_CARD_DIRECTIVES,
     PAGINATION_DIRECTIVES,
-    LikeComponent,
-    CommentsComponent
+    CommentsComponent,
+    BlogContentComponent,
+    CommentsFormComponent
   ],
   styles: [require('./blog.component.scss')],
-  providers: [BlogService],
-  pipes: [DateDeltaPipe]
+  providers: [BlogService]
 })
 export class BlogComponent implements OnInit {
   blogPost = new BlogPost();
@@ -51,6 +51,13 @@ export class BlogComponent implements OnInit {
   toggleComments() {
     this.showComments = !this.showComments;
   }
+
+  onShowComments(event) {
+    //alert(event);
+    this.showComments = event;
+	//	var startIndex = (page -1) * this.pageSize;
+	//	this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize)
+	}
   
   private loadPost(id: any) {
 

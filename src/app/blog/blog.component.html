@@ -1,67 +1,21 @@
 <div class="row">
     <div class="col">
-        <md-card>
-            <img md-card-image src={{blogPost.currentImage}} class="md-card-image">
-            <md-card-title>{{blogPost.title}}</md-card-title>
-            <md-card-content>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <span class="fa fa-folder-open" aria-hidden="true"></span> {{blogPost.category}}
-                        <span class="fa fa-tags" aria-hidden="true"></span> {{blogPost.tagStr}}
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                        <span class="fa fa-commenting" aria-hidden="true"></span> {{blogPost.commentsCount}} Comments
-                        <span class="fa fa-clock-o" aria-hidden="true"></span> {{blogPost.postDate | date:'longDate'}}
-                    </div>
-                </div>
-                <md-divider></md-divider><br/>
-                <p>{{blogPost.body}}</p>
-
-            </md-card-content>
-            <md-card-actions align="end">
-                <span><like [totalLikes]=blogPost.likes></like>
-            <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
-            <button  md-button (click)="toggleComments()">
-                <div *ngIf="!showComments">Show Comments <i class="fa fa-plus-circle" aria-hidden="true"></i> </div>
-                <div *ngIf="showComments">Hide Comments <i class="fa fa-minus-circle" aria-hidden="true"></i> </div>
-            </button>
-            </span>
-            </md-card-actions>
-        </md-card>
+        <blog-content 
+            [blogPost]="blogPost" 
+            [showAbstract]="false" 
+            [showComments]="showComments"
+            (show-comments)="onShowComments($event)"
+            > 
+         </blog-content>
         <ul class="pager">
-            <li class="previous"><a [routerLink]="['Home']">&larr; Back to posts</a></li>
+            <li class="previous">
+                <a [routerLink]="['Home']">
+                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back to posts</a>
+                    </li>
         </ul>
-
         <!-- Comment form -->
-        <div class="well">
-            <div *ngIf="!auth.loggedIn">Please <a [routerLink]="['Login']">sign in</a> to add comments!</div>
-            <div *ngIf="auth.loggedIn">
-                <h4>Leave a comment</h4>
-                <form role="form" class="clearfix">
-                    <div class="col-md-6 form-group">
-                        <label class="sr-only" for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label class="sr-only" for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="col-md-12 form-group">
-                        <label class="sr-only" for="email">Comment</label>
-                        <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
-                    </div>
-                    <div class="col-md-12 form-group text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
+        <comments-form></comments-form>
         <comments [comments]="blogPost.comments" [showComments]="showComments"></comments>
-    </div>
-    <!-- col ending -->
-    <div class="col-lg-8 col-sm-8 col-xs-12">
-
     </div>
 </div>
 <!-- row ending -->
