@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Alex Wolfe",
         "avatar": "https://angular.io/resources/images/bios/alex-wolfe.jpg",
-        "username": "dgardner1",
+        "username": "alex-wolfe",
         "company": "Twiyo",
         "location": "China"
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "name": "Brad Green",
         "avatar": "https://angular.io/resources/images/bios/brad-green.jpg",
-        "username": "jthompson2",
+        "username": "brad-green",
         "company": "Oloo",
         "location": "US"
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "name": "Brian Ford",
         "avatar": "https://angular.io/resources/images/bios/brian-ford.jpg",
-        "username": "jthompson2",
+        "username": "brian-ford",
         "company": "Oloo",
         "location": "US"
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "name": "David East",
         "avatar": "https://angular.io/resources/images/bios/david-east.jpg",
-        "username": "jthompson2",
+        "username": "david-east",
         "company": "Oloo",
         "location": "US"
     },
