@@ -16,12 +16,15 @@ import {DateDeltaPipe} from '../blog/date-delta.pipe';
 export class CommentsComponent implements OnInit {
   title: string = 'Comments';
   @Input() comments: Comments[];
+  @Input() showComments: boolean;
 
   constructor() {
+      this.showComments = true;
   }
 
   ngOnInit() {
 
   }
+
 
 }

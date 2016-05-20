@@ -33,11 +33,13 @@ export class BlogComponent implements OnInit {
   postLoading;
   blogServiceError = false;
   errorMessage;
+  showComments: boolean;
 
   constructor(
     public auth: AuthService,
     private _service: BlogService,
     private _routeParams: RouteParams) {
+    this.showComments = true;
   }
 
   ngOnInit() {
@@ -46,7 +48,10 @@ export class BlogComponent implements OnInit {
     this.loadPost(id);
   }
 
-
+  toggleComments() {
+    this.showComments = !this.showComments;
+  }
+  
   private loadPost(id: any) {
 
     this.postLoading = true; //
@@ -54,12 +59,12 @@ export class BlogComponent implements OnInit {
       .subscribe(
       post => {
 
-        this.blogPost = <BlogPost> post;
+        this.blogPost = <BlogPost>post;
         this.blogPost.postDate = new Date(this.blogPost.publishedDate);
         this.blogPost.commentsCount = _.size(this.blogPost.comments);
         _.map(this.blogPost.comments, function addDate(data: Comments) {
-					data.commentDt = new Date(data.commentDate);
-				});
+          data.commentDt = new Date(data.commentDate);
+        });
         this.blogPost.comments = _.sortBy(this.blogPost.comments, 'commentDt').reverse();
         this.blogPost.tagStr = (this.blogPost.tags.join(','));
         if (_.size(this.blogPost.images) > 0) {
@@ -67,7 +72,7 @@ export class BlogComponent implements OnInit {
         } else {
           this.blogPost.currentImage = '';
         }
-     //   console.log(this.blogPost);
+        //   console.log(this.blogPost);
       },
       error => {
         this.blogServiceError = true;
