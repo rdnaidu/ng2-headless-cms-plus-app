@@ -11,8 +11,12 @@ describe('App', () => {
     expect(subject).toEqual(result);
   });
 
+
  /* it('should have <header>', () => {
     let subject = element(by.css('app header')).isPresent();
+
+  it('should have <md-toolbar>', () => {
+    let subject = element(by.css('app md-toolbar')).isPresent();
     let result  = true;
     expect(subject).toEqual(result);
   });

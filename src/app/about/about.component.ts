@@ -11,6 +11,12 @@ console.log('`About` component loaded asynchronously');
 @Component({
   selector: 'about',
   styles: [`
+    h1 {
+      font-family: Arial, Helvetica, sans-serif
+    }
+    md-card{
+      margin: 25px;
+    }
   `],
   template: `
   <md-card>
