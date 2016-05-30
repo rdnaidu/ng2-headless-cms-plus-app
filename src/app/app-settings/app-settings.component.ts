@@ -52,7 +52,7 @@ export class AppSettingsComponent implements OnInit {
 
      save() {
        // alert("Save");
-       this.cmsSettings = this.settingsService.getCmsSettings();
-       this.router.navigate(['Home'])
+       this.settingsService.cmsSettings = this.cmsSettings;
+       this.router.navigate(['Home']);
      }
 }
