@@ -5,17 +5,18 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { NavBarComponent } from './nav-bar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import {UsersComponent} from './users/users.component';
-import {UserFormComponent} from './users/user-form.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {LoginComponent} from './login/login.component';
-import {BlogComponent} from './blog/blog.component';
-import {BlogUserComponent} from './blog-user/blog-user.component';
-import {BlogFormComponent} from './blog-create/blog-form.component';
-import {BlogUserListComponent} from './blog-user-list/blog-user-list.component';
+import { UsersComponent } from './users/users.component';
+import { UserFormComponent } from './users/user-form.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
+import { BlogComponent } from './blog/blog.component';
+import { BlogUserComponent } from './blog-user/blog-user.component';
+import { BlogFormComponent } from './blog-create/blog-form.component';
+import { BlogUserListComponent } from './blog-user-list/blog-user-list.component';
+import { AppSettingsComponent } from './app-settings/app-settings.component';
 
-import {AppState} from './app.service';
-import {RouterActive} from './router-active';
+import { AppState } from './app.service';
+import { RouterActive } from './router-active';
 
 
 
@@ -38,7 +39,8 @@ declare var jQuery: any;
     { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-    { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
+    { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+    { path: '/settings', name: 'Settings', component: AppSettingsComponent }
 ])
 @Component({
     selector: 'app',

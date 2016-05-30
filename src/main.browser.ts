@@ -13,26 +13,27 @@ import { ENV_PROVIDERS } from './platform/environment';
 * App Component
 * our top level component that holds all of our components
 */
-import {AppComponent, APP_PROVIDERS} from './app';
+import { AppComponent, APP_PROVIDERS } from './app';
 
 
-import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import {ComponentRef} from '@angular/core/index';
+import { FORM_PROVIDERS, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { ComponentRef } from '@angular/core/index';
 // Angular 2 Http
-import {HTTP_PROVIDERS, Http} from '@angular/http';
+import { HTTP_PROVIDERS, Http } from '@angular/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
-import {PLATFORM_DIRECTIVES} from '@angular/core';
+import { PLATFORM_DIRECTIVES } from '@angular/core';
 
-import {appInjectorRef} from './app/shared/appInjectorRef';
-import {AuthService} from './app/auth/auth.service';
-import {SearchService} from './app/shared/search.service';
-import {TRANSLATE_PROVIDERS,
+import { appInjectorRef } from './app/shared/appInjectorRef';
+import { AuthService } from './app/auth/auth.service';
+import { SearchService } from './app/shared/search.service';
+import { SettingsService } from './app/shared/settings.service';
+import { TRANSLATE_PROVIDERS,
         TranslateService,
         TranslatePipe,
         TranslateLoader,
-        TranslateStaticLoader} from 'ng2-translate/ng2-translate';
+        TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -43,6 +44,7 @@ export function main(initialHmrState?: any): Promise<any> {
   return bootstrap(AppComponent, [
     AuthService,
     SearchService,
+    SettingsService,
     ...PROVIDERS,
     ...ENV_PROVIDERS,
     ...DIRECTIVES,

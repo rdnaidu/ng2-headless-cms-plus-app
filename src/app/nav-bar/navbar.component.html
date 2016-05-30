@@ -35,6 +35,7 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        <li [class.active]="isCurrentRoute(['Settings'])" (click)="clicked()" id="settings"><a [routerLink]="['Settings']"><i class="fa fa-sliders" aria-hidden="true"></i> Settings</a></li>
                         <li [class.active]="isCurrentRoute(['About'])" (click)="clicked()" id="about"><a [routerLink]="['About']"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
                         <li class="divider"></li>
                         <li [class.active]="isCurrentRoute(['Login'])" (click)="clicked()" id="login"><a [routerLink]="['Login']"><i class="fa fa-key" aria-hidden="true"></i> {{!auth.loggedIn ? "Log In" : "Log Out"}}</a></li>

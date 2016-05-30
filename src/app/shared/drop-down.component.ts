@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {DropdownValue} from './drop-downValue';
+import { DropdownValue } from './drop-downValue';
 
 
 
@@ -27,7 +27,8 @@ import {DropdownValue} from './drop-downValue';
     <div class="form-group">
       <label class="control-label" *ngIf="labelText">{{labelText}}</label>
       <select class="form-control input-medium" (change)="selectItem($event.target.value)">
-      <option *ngFor="#value of values" [value]="value.value">{{value.label}}</option>
+      <option *ngFor="#value of values" [value]="value.value" 
+          selected={{value.selected}}>{{value.label}}</option>
       </select>
     </div>
   </div>
@@ -51,7 +52,7 @@ export class DropdownComponent {
     }
 
     selectItem(value) {
-        console.log(value);
+      //  console.log(value);
         this.select.emit({ selectedValue: value});
     }
 }

@@ -7,12 +7,12 @@
     "sourceMap": true,
     "noEmitHelpers": true
   },
-  // "exclude": [
-  //   "./node_modules",
-  //   "./typings/main.d.ts",
-  //   "./typings/main"
-  // ],
-  "files": [
+  "exclude": [
+    "./node_modules",
+    "./typings/main.d.ts",
+    "./typings/main"
+  ],
+  "filesGlob": [
     "./src/app/**/*.ts",
     "./src/platform/**/*.ts",
     "!./node_modules/**",
@@ -25,5 +25,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
