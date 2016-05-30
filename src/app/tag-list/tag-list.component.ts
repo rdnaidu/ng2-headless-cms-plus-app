@@ -1,13 +1,14 @@
-import {Component, Input, OnInit , OnChanges, SimpleChange} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
-import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { Component, Input, OnInit , OnChanges, SimpleChange } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { MD_GRID_LIST_DIRECTIVES } from '@angular2-material/grid-list';
+import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
-import {TagListService} from './tag-list.service';
-import {SearchService} from '../shared/search.service';
-import {SearchJSON} from '../blog-list/blog';
-import {Tag} from './tag';
+import { TagListService } from './tag-list.service';
+import { SearchService } from '../shared/search.service';
+import { SearchJSON } from '../blog-list/blog';
+import { Tag } from './tag';
 
 @Component({
   selector: 'tag-list',
@@ -16,6 +17,7 @@ import {Tag} from './tag';
   directives: [
     ROUTER_DIRECTIVES,
     MD_LIST_DIRECTIVES,
+    MD_GRID_LIST_DIRECTIVES,
     TYPEAHEAD_DIRECTIVES,
     MdButton],
   providers: [TagListService]
