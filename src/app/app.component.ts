@@ -1,10 +1,10 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {NavBarComponent} from './nav-bar/navbar.component';
-import {HomeComponent} from './home/home.component';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { NavBarComponent } from './nav-bar/navbar.component';
+import { HomeComponent } from './home/home.component';
 import {UsersComponent} from './users/users.component';
 import {UserFormComponent} from './users/user-form.component';
 import {NotFoundComponent} from './not-found/not-found.component';

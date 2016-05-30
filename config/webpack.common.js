@@ -42,8 +42,10 @@ module.exports = {
    * You can pass false to disable it.
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
-   * cache: false,
-   *
+   */
+   //cache: false,
+
+  /*
    * The entry point for the bundle
    * Our Angular.js app
    *

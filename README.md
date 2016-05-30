@@ -27,6 +27,8 @@
 
 > If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)
 
+> If you're looking to add Angular 2 Material Design we have a branch [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2)
+
 This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 * Best practices in file and application organization for Angular 2.
 * Ready to go build system using Webpack for working with TypeScript.
@@ -311,6 +313,10 @@ see [typings/registry](https://github.com/typings/registry)
  * We are using inline source-maps and hot module replacement which will increase the bundle size.
 * If you're in China
  * check out https://github.com/cnpm/cnpm
+* If you're looking to add Angular 2 Material Design
+ * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
+* node-pre-gyp ERR in npm install (Windows)
+ * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
