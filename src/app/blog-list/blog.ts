@@ -15,7 +15,7 @@ export interface BlogPost {
     likes?: number;
     stars?: number;
     abstract: string;
-    body: string;
+    body?: string;
     images: string[];
     tags: string[];
     comments?: Comments[];
@@ -40,7 +40,7 @@ export interface BlogPostLive {
     likes?: number;
     stars?: number;
     abstract: string;
-    body: string;
+    body?: string;
     images: string[];
     tags: string[];
     comments?: Comments[];
@@ -49,8 +49,8 @@ export interface BlogPostLive {
 }
 
 export interface SearchJSON {
-    type: string;
-    searchText: string;
+    title : string;
+    tag: string
 }
 
 export interface Comments {

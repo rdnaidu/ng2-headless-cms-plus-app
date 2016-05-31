@@ -1,8 +1,7 @@
-import {Component, OnInit, OnChanges, SimpleChange, Input} from '@angular/core';
+import {Component, OnInit, SimpleChange, Input} from '@angular/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-
 
 import {BlogPost} from '../blog-list/blog';
 import {SearchJSON} from '../blog-list/blog';
@@ -18,9 +17,8 @@ let template = require('./blog-typeahead.html');
   styles: [require('./blog-typeahead.component.scss')],
   template: template
 })
-export class BlogTypeaheadComponent implements OnInit, OnChanges {
+export class BlogTypeaheadComponent implements OnInit {
   public selected: string = '';
-  //  public asyncSelected: string = '';
   public typeaheadLoading: boolean = false;
   public typeaheadNoResults: boolean = false;
 
@@ -29,9 +27,7 @@ export class BlogTypeaheadComponent implements OnInit, OnChanges {
   postsLoading;
   blogServiceError = false;
   errorMessage;
-  @Input() searchString: SearchJSON;
   changeLog: string[] = [];
-  currentSearch: SearchJSON;
 
   constructor(public searchService: SearchService,
     public router: Router,
@@ -47,42 +43,15 @@ export class BlogTypeaheadComponent implements OnInit, OnChanges {
     this.loadPosts();
   }
 
-  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-
-    for (let propName in changes) {
-      if (propName === 'searchString') {
-        let chng = changes[propName];
-        this.currentSearch = chng.currentValue;
-        //   let prev = JSON.stringify(chng.previousValue);
-        //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
-        //    this.changeLog.push(changeStr);
-        console.log(this.currentSearch);
-      }
-
-      //   console.log(changeStr);
-    }
-    // simulating search text change
-    if (this.currentSearch !== undefined && this.currentSearch.type === 'titleSearch') {
-
-      this.selected = this.currentSearch.searchText;
-      console.log("Modified" + this.selected);
-    }
-
-  }
-
-
   clearSearch() {
-    // alert('hellop');
     this.selected = '';
-    this.searchService.searchJSON = this.encodeSearch('');
+    this.searchService.searchJSON.title = '';
   }
 
 
   public typeaheadOnSelect(e: any): void {
-    // console.log(`Selected value: ${e.item.id}`);
-    let blogId = `${e.item.id}`;
-    this.searchService.setSearchJSON(this.encodeSearch(''));
-    this.router.navigate(['Blog', { id: blogId }]);
+    this.searchService.searchJSON.title = e.item.id;
+    this.router.navigate(['Blog', {id: e.item.id}]);
   }
 
   private loadPosts() {
@@ -95,7 +64,7 @@ export class BlogTypeaheadComponent implements OnInit, OnChanges {
       },
       error => {
         this.blogServiceError = true;
-        this.errorMessage = 'Unable able to connect';
+        this.errorMessage = 'Unable to connect';
         this.postsLoading = false;
         this.typeaheadNoResults = true;
       },
@@ -103,12 +72,4 @@ export class BlogTypeaheadComponent implements OnInit, OnChanges {
         this.postsLoading = false;
       });
   }
-
-  private encodeSearch(searchText: string): SearchJSON {
-    return {
-      type: 'titleSearch',
-      searchText: searchText
-    };
-  }
-
 }

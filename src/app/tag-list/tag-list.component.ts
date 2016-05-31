@@ -1,4 +1,4 @@
-import { Component, Input, OnInit , OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { MD_GRID_LIST_DIRECTIVES } from '@angular2-material/grid-list';
@@ -22,67 +22,36 @@ import { Tag } from './tag';
     MdButton],
   providers: [TagListService]
 })
-export class TagListComponent implements OnInit, OnChanges {
-  tags: any[];
-  allTags: any[];
-  tagsLoading;
+export class TagListComponent implements OnInit {
+  tags: Tag[] = [] as Tag[];
+  allTags: Tag[] = [] as Tag[];
+  tagsLoading: boolean = true;
   tagsServiceError = false;
   errorMessage;
   selected: string = '';
-  @Input() searchString: string;
-  currentSearch: SearchJSON;
 
-
-  constructor(public searchService: SearchService,
+  constructor(
+    public searchService: SearchService,
     private _service: TagListService) { }
 
   ngOnInit() {
     this.loadTags();
   }
-
-  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-
-    for (let propName in changes) {
-      if (propName === 'searchString') {
-        let chng = changes[propName];
-        this.currentSearch = chng.currentValue;
-
-        //   let prev = JSON.stringify(chng.previousValue);
-        //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
-        //    this.changeLog.push(changeStr);
-        // console.log(this.searchString);
-      }
-      if (this.currentSearch !== undefined) {
-        this.selected = this.currentSearch.searchText;
-      }
-    }
-  }
-
-  public typeaheadOnSelect($e: Event): void {
-    // console.log($e.item.tag);
-    ///let searchObj = new Search();
-    //  searchObj.
-    this.searchService.searchJSON = this.encodeSearch($e.item.tag);
+  
+  public typeaheadOnSelect(e: any): void {
+    console.log('event', e);
+    this.searchService.searchJSON.tag = e.item.name;
   }
 
   clearSearch() {
-    // alert('hellop');
     this.selected = '';
-    this.searchService.searchJSON = this.encodeSearch('');
+    this.searchService.clearSearch();
   }
 
   setSearch(tag: Tag) {
-   // alert(tag.tag);
-    this.searchService.searchJSON = this.encodeSearch(tag.tag);
+    this.searchService.clearTitle();
+    this.searchService.searchJSON.tag = tag.name;
   }
-
-  private encodeSearch(searchText: string): SearchJSON {
-    return {
-      type: 'tagSearch',
-      searchText: searchText
-    };
-  }
-
 
   private loadTags(): void {
     this.tagsLoading = true;
@@ -91,7 +60,6 @@ export class TagListComponent implements OnInit, OnChanges {
       tags => {
         this.allTags = tags;
         this.tags = _.take(_.sortBy(tags, 'count').reverse(), 20);
-        //   console.log(this.tags);
       },
       error => {
         this.tagsServiceError = true;
@@ -102,7 +70,4 @@ export class TagListComponent implements OnInit, OnChanges {
         this.tagsLoading = false;
       });
   }
-
-
-
 }

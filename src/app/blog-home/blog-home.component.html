@@ -12,12 +12,12 @@
   </div>
   <div class="col-md-4">
     <blog-summary-list></blog-summary-list>
-    <tag-list [searchString]="searchService.searchJSON"></tag-list>
+    <tag-list></tag-list>
     <blog-create></blog-create>
     
   </div>
 
   <div class="col-md-8">
-    <blog-abstract-list [searchString]="searchService.searchJSON"></blog-abstract-list>
+    <blog-abstract-list [searchString]="searchService.searchJSON.tag"></blog-abstract-list>
   </div>
 </div>

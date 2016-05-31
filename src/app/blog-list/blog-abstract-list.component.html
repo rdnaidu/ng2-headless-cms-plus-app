@@ -13,11 +13,14 @@
         [itemsPerPage]="itemsPerPage" 
         (pageChanged)="pageChanged($event)">
     </pagination>
-    <pre class="well" 
-        *ngIf="currentSearch !== undefined && currentSearch.searchText !== ''">Search: <i class="fa fa-tags" aria-hidden="true" *ngIf="currentSearch.type === 'tagSearch'"></i> {{currentSearch.searchText}}<div id="searchclear" class="pull-right"><i class="fa fa-times " aria-hidden="true" 
-        (click)="clearSearch()"></i>
+    <div class="well" 
+        *ngIf="searchService.searchJSON.tag !== undefined && searchService.searchJSON.tag !== ''">
+        Search: <i class="fa fa-tags" aria-hidden="true"></i> 
+        {{searchService.searchJSON.tag}}
+        <div id="searchclear" class="pull-right">
+            <i class="fa fa-times " aria-hidden="true" (click)="clearSearch()"></i>
         </div>
-    </pre>
+    </div>
 </article>
 <article>
     <blog-content *ngFor="let blog of pagedBlogs"

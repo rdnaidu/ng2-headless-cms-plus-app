@@ -18,7 +18,7 @@ import * as _ from 'lodash';
 })
 export class BlogUserComponent implements OnInit {
     title: string;
-    blogUser = {};
+    blogUser = <BlogUser>{};
     error: boolean;
     isLoading: boolean;
 

@@ -40,15 +40,17 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   postsLoading;
   blogServiceError = false;
   errorMessage;
-  @Input() searchString: SearchJSON;
   changeLog: string[] = [];
   showComments: boolean;
+  @Input() searchString: string;
 
+  // Pagination related settings
+  // Todo: Need to move to a global place for this type of settings
   public totalItems: number = 100;
   public currentPage: number = 1;
   public maxSize: number = 5;
   public itemsPerPage: number = 5;
-  public currentSearch: SearchJSON = undefined;
+  public currentSearch: SearchJSON = <SearchJSON>{};
   constructor(public searchService: SearchService,
     private _service: BlogService) {
     this.showComments = false;
@@ -59,11 +61,27 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
   
   loadPosts() {
+    let self = this;
     this.postsLoading = true;
     this._service.getBlogs()
+      .map(data => {
+        let tData = _.filter(data, function(o) {
+          if (self.searchService.searchJSON.tag == '') {
+            return true;
+          }
+          
+          let index = _.indexOf(o.tags, self.searchService.searchJSON.tag);
+          
+          if (index === -1) return false;
+          
+          return true;
+        });
+        
+        console.log(tData);
+        return tData;
+      })
       .subscribe(
       blogs => {
-        console.log('blogs', blogs);
         this.blogs = blogs;
         this.totalItems = _.size(this.blogs);
         this.pagedBlogs = _.take(this.blogs, this.itemsPerPage);
@@ -88,38 +106,21 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-
     for (let propName in changes) {
       if (propName === 'searchString') {
-        let chng = changes[propName];
-        this.currentSearch = chng.currentValue;
-        //   let prev = JSON.stringify(chng.previousValue);
-        //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
-        //    this.changeLog.push(changeStr);
-        
+        this.loadPosts();
       }
     }
-    // simulating search text change
-    if (this.currentSearch !== undefined && this.currentSearch.searchText === '') {
-      this.loadPosts();
-    } else {
-      this.loadPosts();
-    }
-
   }
 
-  clearSearch() {
-    if (this.currentSearch !== undefined && this.currentSearch.searchText !== '') {
-      this.currentSearch.searchText = '';
-      this.searchService.searchJSON = this.encodeSearch('');
-      this.loadPosts();
-    }
+  clearSearch(type: string) {
+    this.searchService.clearSearch();
+    this.loadPosts();
   }
 
   public pageChanged(event: any): void {
     let startIndex = (event.page - 1) * this.itemsPerPage;
     this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.itemsPerPage);
-    //this.currentPage = event.page;
     
     _.map(this.pagedBlogs, function addDate(data: BlogPostLive) {
       data.postDate = new Date(data.publishdate);
@@ -139,6 +140,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
     this._service.getBlogs()
       .subscribe(
       blogs => {
+        
         this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.itemsPerPage);
         this.totalItems = _.size(this.blogs);
         
@@ -163,12 +165,4 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
         this.postsLoading = false;
       });
   }
-
-  private encodeSearch(searchText: string): SearchJSON {
-    return {
-      type: 'tagSearch',
-      searchText: searchText
-    };
-  }
-
 }

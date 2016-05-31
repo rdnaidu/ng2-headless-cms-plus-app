@@ -50,8 +50,8 @@ export class BlogService {
         return tData;
     }
 
-    getBlogsFromDrupal(): Rx.Observable<BlogPostLive[]> {
-      let url = 'http://10.146.201.72/Xperience/blogs';
+    getBlogsFromDrupal(filter?: any): Rx.Observable<BlogPostLive[]> {
+      let url = this.config.apiEndPoint + '/blogs';
       let self = this;
 
       return this._http.get(url)
@@ -75,7 +75,7 @@ export class BlogService {
         } else {
             url += '/blogs.json';
         }
-        console.log(url);
+        
         return this._http.get(url)
             .map(res => res.json());
     }

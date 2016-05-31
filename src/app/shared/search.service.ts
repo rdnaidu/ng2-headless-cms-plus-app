@@ -7,7 +7,7 @@ import {SearchJSON} from '../blog-list/blog';
 */
 @Injectable()
 export class SearchService {
-    public searchJSON: SearchJSON;
+    public searchJSON: SearchJSON = <SearchJSON>{};
 
     constructor() {
         this.clearSearch();
@@ -18,13 +18,15 @@ export class SearchService {
     }
 
     clearSearch() {
-        this.searchJSON = this.encodeSearch('');
+        this.clearTag();
+        this.clearTitle();
     }
-
-    private encodeSearch(searchText: string): SearchJSON {
-        return {
-            type: 'tagSearch',
-            searchText: searchText
-        };
+    
+    clearTitle() {
+        this.searchJSON.title = '';
+    }
+    
+    clearTag() {
+        this.searchJSON.tag = '';
     }
 }

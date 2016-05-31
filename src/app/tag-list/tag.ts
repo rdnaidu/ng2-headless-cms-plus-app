@@ -1,5 +1,5 @@
-export class Tag {
-    id: string;
-    tag: string;
-    count: number;
+export interface Tag {
+    tid: string;
+    name: string;
+    count?: number;
 }
