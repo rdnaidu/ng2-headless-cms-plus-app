@@ -1,28 +1,47 @@
 import { Injectable } from '@angular/core';
+import { SessionService } from './services/session.service';
 
-export class CMSSettings {
+export interface CMSSettings {
     mode: any;
     host: string;
     port: number;
 }
 
 export enum CMSTypes {
-        Stub,
-        Drupal
-    }
+    Stub,
+    Drupal
+}
 
 /* Settings Service for
       1) Storing the settings for app
 */
 @Injectable()
 export class SettingsService {
+    name: string = 'cmssettings';
+    cmsSettings: CMSSettings = {
+        mode: CMSTypes.Stub,
+        host: 'localhost',
+        port: 8080
+    };
 
-    cmsSettings = new CMSSettings();
-
-    constructor() {
-        this.cmsSettings.mode = CMSTypes.Stub;
-        this.cmsSettings.host = 'localhost';
-        this.cmsSettings.port = 8080;
+    constructor(private session: SessionService) {
+        if (this.session.get(this.name)) {
+            this.cmsSettings = this.session.get(this.name);
+        } else {
+            this.cmsSettings.mode = CMSTypes.Stub;
+            this.cmsSettings.host = 'localhost';
+            this.cmsSettings.port = 8080;
+            this.store();
+        }
+    }
+    
+    save(settings: CMSSettings) {
+        this.cmsSettings = settings;
+        this.store();
+    }
+    
+    store() {
+        this.session.set(this.name, this.cmsSettings);
     }
 
     getCmsSettings(): CMSSettings {
@@ -30,6 +49,7 @@ export class SettingsService {
     }
     setCmsType(cmsType: any) {
         this.cmsSettings.mode = cmsType;
+        this.store();
     }
 
     getCmsType(): any {
@@ -38,6 +58,7 @@ export class SettingsService {
 
     setCmsHost(cmsHost: string) {
         this.cmsSettings.host = cmsHost;
+        this.store();
     }
 
     getCmsHost(): string {
@@ -46,6 +67,7 @@ export class SettingsService {
 
     setCmsPort(cmsPort: number) {
         this.cmsSettings.port = cmsPort;
+        this.store();
     }
 
     getCmsPort(): number {

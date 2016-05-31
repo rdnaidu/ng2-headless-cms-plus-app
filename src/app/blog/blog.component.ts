@@ -5,7 +5,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/rout
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
-import {BlogPost, Comments} from '../blog-list/blog';
+import {BlogPost, BlogPostLive, Comments} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 import {AuthService} from '../auth/auth.service';
 import {CommentsComponent} from '../comments/comments.component';
@@ -29,7 +29,7 @@ import {CommentsFormComponent} from '../comments/comments-form.component';
   providers: [BlogService]
 })
 export class BlogComponent implements OnInit {
-  blogPost = new BlogPost();
+  blogPost: BlogPostLive = <BlogPostLive>{};
   postLoading;
   blogServiceError = false;
   errorMessage;
@@ -66,9 +66,9 @@ export class BlogComponent implements OnInit {
       .subscribe(
       post => {
 
-        this.blogPost = <BlogPost>post;
-        this.blogPost.postDate = new Date(this.blogPost.publishedDate);
-        this.blogPost.commentsCount = _.size(this.blogPost.comments);
+        this.blogPost = post;
+        this.blogPost.postDate = new Date(this.blogPost.publishdate);
+        this.blogPost.comment_count = _.size(this.blogPost.comments);
         _.map(this.blogPost.comments, function addDate(data: Comments) {
           data.commentDt = new Date(data.commentDate);
         });

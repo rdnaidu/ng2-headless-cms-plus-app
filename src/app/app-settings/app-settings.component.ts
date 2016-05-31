@@ -16,10 +16,14 @@ import { SettingsService, CMSTypes, CMSSettings } from '../shared/settings.servi
 export class AppSettingsComponent implements OnInit {
      public dropdownValues: DropdownValue[] = [];
      labelText: string = 'Select Mode';
-     cmsSettings = new CMSSettings();
+     cmsSettings: CMSSettings;
      form: ControlGroup;
 
-     constructor(public settingsService: SettingsService,fb: FormBuilder, private router: Router) {
+     constructor(
+         public settingsService: SettingsService,
+         fb: FormBuilder, 
+         private router: Router
+     ) {
          this.form = fb.group({
 			mode: ['', Validators.required],
 			host: ['', Validators.required],
@@ -51,8 +55,8 @@ export class AppSettingsComponent implements OnInit {
      }
 
      save() {
-       // alert("Save");
-       this.settingsService.cmsSettings = this.cmsSettings;
+         console.log('save settings');
+       this.settingsService.save(this.cmsSettings);
        this.router.navigate(['Home']);
      }
 }

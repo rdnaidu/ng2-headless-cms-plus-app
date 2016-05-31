@@ -33,7 +33,7 @@ export class BlogSummaryListComponent implements OnInit {
 				this.blogs = _.take(blogs, 5);
 				this.olderBlogs = _.take(_.drop(blogs, 4), 10);
 				_.map(this.blogs, function addDate(data: BlogSummary) {
-					data.postDataDt = new Date(data.publishedDate);
+					data.postDate = new Date(data.publishdate);
 				});
 			},
 			error => {

@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Inject, provide } from '@angular/core';
 import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { NavBarComponent } from './nav-bar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +17,7 @@ import { AppSettingsComponent } from './app-settings/app-settings.component';
 
 import { AppState } from './app.service';
 import { RouterActive } from './router-active';
-
+import { APP_CONFIG, CONFIG, Config } from './app.config';
 
 
 declare var jQuery: any;
@@ -34,13 +34,13 @@ declare var jQuery: any;
     { path: '/blog/:id', name: 'Blog', component: BlogComponent},
     { path: '/blog-user/:id' , name: 'BlogUser', component: BlogUserComponent},
     { path: '/login', name: 'Login', component: LoginComponent },
-    { path: '/*other', name: 'Other', redirectTo: ['Home'] },
     { path: '/blog-form/', name: 'NewBlog', component: BlogFormComponent},
     { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
     { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
-    { path: '/settings', name: 'Settings', component: AppSettingsComponent }
+    { path: '/settings', name: 'Settings', component: AppSettingsComponent },
+    { path: '/*other', name: 'Other', redirectTo: ['Home'] },
 ])
 @Component({
     selector: 'app',
@@ -57,11 +57,13 @@ declare var jQuery: any;
 // https://github.com/angular/angular/issues/7873
 export class AppComponent implements OnInit {
     constructor (
-    public appState: AppState,
-    public router: Router) {
+        @Inject(APP_CONFIG) private config: Config,
+        public appState: AppState,
+        public router: Router) {
 
-  }
+    }
     ngOnInit() {
+        console.log(this.config);
         jQuery.material.options.validate = false;
         jQuery.material.init();
         console.log('Initial App State', this.appState.state);

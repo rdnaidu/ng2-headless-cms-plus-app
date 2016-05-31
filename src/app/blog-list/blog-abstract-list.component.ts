@@ -9,6 +9,7 @@ import {LikeComponent} from '../shared/like.component';
 import {BlogContentComponent} from '../blog-content/blog-content.component';
 
 import {BlogPost} from './blog';
+import { BlogPostLive } from './blog';
 import {SearchJSON} from './blog';
 import {BlogService} from './blog.service';
 import {SearchService} from '../shared/search.service';
@@ -56,6 +57,35 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.loadPosts();
   }
+  
+  loadPosts() {
+    this.postsLoading = true;
+    this._service.getBlogs()
+      .subscribe(
+      blogs => {
+        console.log('blogs', blogs);
+        this.blogs = blogs;
+        this.totalItems = _.size(this.blogs);
+        this.pagedBlogs = _.take(this.blogs, this.itemsPerPage);
+        _.map(this.pagedBlogs, function addDate(data: BlogPostLive) {
+          data.postDate = new Date(data.publishdate);
+          data.tagStr = (data.tags.join(','));
+          if (_.size(data.images) > 0) {
+            data.currentImage = data.images[0];
+          } else {
+            data.currentImage = '';
+          }
+        });
+      },
+      error => {
+        this.blogServiceError = true;
+        this.errorMessage = 'Unable able to connect';
+        this.postsLoading = false;
+      },
+      () => {
+        this.postsLoading = false;
+      });
+  }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
 
@@ -66,16 +96,14 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
         //   let prev = JSON.stringify(chng.previousValue);
         //   let changeStr = `${propName}: currentValue = ${cur}, previousValue = ${prev}`;
         //    this.changeLog.push(changeStr);
-        console.log(this.currentSearch);
+        
       }
-
-      //   console.log(changeStr);
     }
     // simulating search text change
     if (this.currentSearch !== undefined && this.currentSearch.searchText === '') {
       this.loadPosts();
     } else {
-      this.loadSearch();
+      this.loadPosts();
     }
 
   }
@@ -89,21 +117,20 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   }
 
   public pageChanged(event: any): void {
-    //  console.log('Page changed to: ' + event.page);
-    //  console.log('Number items per page: ' + event.itemsPerPage);
-    let startIndex = (event.page - 1) * this.maxSize;
-    this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.maxSize);
-    _.map(this.pagedBlogs, function addDate(data: BlogPost) {
-      data.postDate = new Date(data.publishedDate);
-      data.commentsCount = _.size(data.comments);
+    let startIndex = (event.page - 1) * this.itemsPerPage;
+    this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.itemsPerPage);
+    //this.currentPage = event.page;
+    
+    _.map(this.pagedBlogs, function addDate(data: BlogPostLive) {
+      data.postDate = new Date(data.publishdate);
+      data.comment_count = data.comment_count;
       data.tagStr = (data.tags.join(','));
       if (_.size(data.images) > 0) {
         data.currentImage = data.images[0];
       } else {
         data.currentImage = '';
       }
-      // console.log(data.likes);
-
+      
     });
   };
 
@@ -112,69 +139,30 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
     this._service.getBlogs()
       .subscribe(
       blogs => {
-        this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.maxSize);
+        this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.itemsPerPage);
         this.totalItems = _.size(this.blogs);
-        //   console.log(this.totalItems);
-        this.pagedBlogs = _.take(this.blogs, this.maxSize);
+        
+        this.pagedBlogs = _.take(this.blogs, this.itemsPerPage);
         _.map(this.pagedBlogs, function addDate(data: BlogPost) {
-          data.postDate = new Date(data.publishedDate);
-          data.commentsCount = _.size(data.comments);
+          data.postDate = new Date(data.publishdate);
+          data.comment_count = data.comment_count;
           data.tagStr = (data.tags.join(','));
           if (_.size(data.images) > 0) {
             data.currentImage = data.images[0];
           } else {
             data.currentImage = '';
           }
-          // console.log(data.likes);
-
         });
       },
       error => {
         this.blogServiceError = true;
         this.errorMessage = 'Unable able to connect';
         this.postsLoading = false;
-        // console.log("EEEE");
       },
       () => {
         this.postsLoading = false;
       });
   }
-
-
-
-  private loadPosts() {
-    this.postsLoading = true;
-    this._service.getBlogs()
-      .subscribe(
-      blogs => {
-        this.blogs = blogs;
-        this.totalItems = _.size(this.blogs);
-        console.log(this.totalItems);
-        this.pagedBlogs = _.take(this.blogs, this.maxSize);
-        _.map(this.pagedBlogs, function addDate(data: BlogPost) {
-          data.postDate = new Date(data.publishedDate);
-          data.commentsCount = _.size(data.comments);
-          data.tagStr = (data.tags.join(','));
-          if (_.size(data.images) > 0) {
-            data.currentImage = data.images[0];
-          } else {
-            data.currentImage = '';
-          }
-          // console.log(data.likes);
-
-        });
-      },
-      error => {
-        this.blogServiceError = true;
-        this.errorMessage = 'Unable able to connect';
-        this.postsLoading = false;
-        // console.log("EEEE");
-      },
-      () => {
-        this.postsLoading = false;
-      });
-  }
-
 
   private encodeSearch(searchText: string): SearchJSON {
     return {

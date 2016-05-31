@@ -3,19 +3,39 @@
     
 </article> -->
 <article>
-    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-md" [boundaryLinks]="true"
-        [rotate]="false" [itemsPerPage]="maxSize" (pageChanged)="pageChanged($event)">
-    </pagination> <pre class="well" *ngIf="currentSearch !== undefined && currentSearch.searchText !== ''">Search: <i class="fa fa-tags" aria-hidden="true" *ngIf="currentSearch.type === 'tagSearch'"></i> {{currentSearch.searchText}}<div id="searchclear" class="pull-right"><i class="fa fa-times " aria-hidden="true" (click)="clearSearch()"></i></div>
-</pre>
+    <pagination 
+        class="pagination-md"
+        [totalItems]="totalItems" 
+        [(ngModel)]="currentPage" 
+        [maxSize]="maxSize" 
+        [boundaryLinks]="true"
+        [rotate]="false" 
+        [itemsPerPage]="itemsPerPage" 
+        (pageChanged)="pageChanged($event)">
+    </pagination>
+    <pre class="well" 
+        *ngIf="currentSearch !== undefined && currentSearch.searchText !== ''">
+        Search: <i class="fa fa-tags" aria-hidden="true" *ngIf="currentSearch.type === 'tagSearch'"></i> 
+        {{currentSearch.searchText}}
+        <div id="searchclear" class="pull-right">
+            <i class="fa fa-times " aria-hidden="true" (click)="clearSearch()"></i>
+        </div>
+    </pre>
 </article>
 <article>
     <blog-content *ngFor="let blog of pagedBlogs"
-            [blogPost]="blog" 
-            [showAbstract]="true" 
-            [enableComments]="false"
-            > 
-         </blog-content>
+        [blogPost]="blog" 
+        [showAbstract]="true" 
+        [enableComments]="false"> 
+    </blog-content>
 </article>
-<pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-md" [boundaryLinks]="true"
-    [rotate]="false" [itemsPerPage]="maxSize" (pageChanged)="pageChanged($event)">
+<pagination 
+    class="pagination-md"
+    [totalItems]="totalItems" 
+    [(ngModel)]="currentPage" 
+    [maxSize]="maxSize" 
+    [boundaryLinks]="true"
+    [rotate]="false" 
+    [itemsPerPage]="itemsPerPage" 
+    (pageChanged)="pageChanged($event)">
 </pagination>

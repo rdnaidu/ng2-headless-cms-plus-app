@@ -1,20 +1,51 @@
-export class BlogPost {
+export interface BlogPost {
     id: string;
-    name: string;
-    images: string[];
-    currentImage: string;
-    description: string;
+    authorid: string;
+    authorname: string;
+    authoravatar: string;
+    authoremail: string;
+    title: string;
+    description?: string;
+    gender?: string;
+    currentImage?: string;
     category: string;
-    abstract: string;
-    publishedDate: string;
+    publishdate: string;
+    updateddate: Date;
     postDate: Date;
-    author: string;
+    likes?: number;
+    stars?: number;
+    abstract: string;
+    body: string;
+    images: string[];
     tags: string[];
-    tagStr: string;
-    comments: Comments[];
-    commentsCount: number;
-    likes: number;
-    stars: number;
+    comments?: Comments[];
+    comment_count: number;
+    tagStr?: string;
+}
+
+export interface BlogPostLive {
+    id: string;
+    authorid: string;
+    authorname: string;
+    authoravatar: string;
+    authoremail: string;
+    title: string;
+    description?: string;
+    gender?: string;
+    currentImage?: string;
+    category: string;
+    publishdate: string;
+    updateddate: Date;
+    postDate: Date;
+    likes?: number;
+    stars?: number;
+    abstract: string;
+    body: string;
+    images: string[];
+    tags: string[];
+    comments?: Comments[];
+    comment_count: number;
+    tagStr?: string;
 }
 
 export interface SearchJSON {
@@ -22,7 +53,7 @@ export interface SearchJSON {
     searchText: string;
 }
 
-export class Comments {
+export interface Comments {
     username: string;
     comment: string;
     commentDate: string;
@@ -31,27 +62,28 @@ export class Comments {
     votedDown: number;
 }
 
-export class BlogUser {
+export interface BlogUser {
     id: string;
     name: string;
     avatar: string;
     username: string;
     company: string;
     location: string;
-    publications = new Array<Publications>();
+    publications: Publications[]
 }
 
-export class Publications {
+export interface Publications {
     id: string;
     title: string;
 }
 
-export class BlogSummary {
+export interface BlogSummary {
     id: string;
-    username: string;
+    authorname: string;
+    authoravatar: string;
     title: string;
-    publishedDate: string;
-    postDataDt: Date;
+    publishdate: string;
+    postDate: Date;
     likes: number;
     stars: number;
 }

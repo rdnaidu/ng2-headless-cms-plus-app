@@ -8,17 +8,27 @@
                 <span class="fa fa-tags" aria-hidden="true"></span> {{blogPost.tagStr}}
             </div>
             <div class="col-sm-6 col-md-6">
-                <span class="fa fa-commenting" aria-hidden="true"></span> {{blogPost.commentsCount}} Comments
+                <span class="fa fa-commenting" aria-hidden="true"></span> {{blogPost.comment_count}} Comments
                 <span class="fa fa-clock-o" aria-hidden="true"></span> {{blogPost.postDate | date:'longDate'}}
             </div>
         </div>
         <md-divider></md-divider><br/>
-        <p *ngIf="!showAbstract">{{blogPost.body}}</p>
+        <p *ngIf="!showAbstract">{{blogPost.description}}</p>
         <p *ngIf="showAbstract">{{blogPost.abstract}}</p>
 
     </md-card-content>
+    
     <md-card-actions align="end">
-        <span><like [totalLikes]=blogPost.likes></like>
+        <md-list dense>
+            <md-list-item md-expando>
+                <a md-list-avatar [routerLink]="['BlogUser', { id: 'alex-eagle' }]">
+                    <img md-list-avatar [src]="blogPost.authoravatar" alt="...">
+                </a>
+                <h5 md-line><em>{{blogPost.authorname}}</em></h5>
+            </md-list-item>
+        </md-list>
+        <span>
+            <like [totalLikes]=blogPost.likes></like>
             <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
             <a *ngIf="showAbstract" md-button [routerLink]="['Blog', { id: blogPost.id }]">
                 Continue reading <i class="fa fa-external-link" aria-hidden="true"></i>
