@@ -14,11 +14,8 @@
         (pageChanged)="pageChanged($event)">
     </pagination>
     <pre class="well" 
-        *ngIf="currentSearch !== undefined && currentSearch.searchText !== ''">
-        Search: <i class="fa fa-tags" aria-hidden="true" *ngIf="currentSearch.type === 'tagSearch'"></i> 
-        {{currentSearch.searchText}}
-        <div id="searchclear" class="pull-right">
-            <i class="fa fa-times " aria-hidden="true" (click)="clearSearch()"></i>
+        *ngIf="currentSearch !== undefined && currentSearch.searchText !== ''">Search: <i class="fa fa-tags" aria-hidden="true" *ngIf="currentSearch.type === 'tagSearch'"></i> {{currentSearch.searchText}}<div id="searchclear" class="pull-right"><i class="fa fa-times " aria-hidden="true" 
+        (click)="clearSearch()"></i>
         </div>
     </pre>
 </article>
