@@ -65,7 +65,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
     this.postsLoading = true;
     this._service.getBlogs()
       .map(data => {
-        let tData = _.filter(data, function(o) {
+        let tData = _.filter(data, function(o: BlogPost) {
           if (self.searchService.searchJSON.tag == '') {
             return true;
           }

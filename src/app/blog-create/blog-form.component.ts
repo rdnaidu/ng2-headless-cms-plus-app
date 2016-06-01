@@ -16,7 +16,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 	form: ControlGroup;
 	public heading: string = '';
 //	user = new User();
-	blog = new BlogPost();
+	blog: BlogPost;
 
 	constructor(fb: FormBuilder,
 			private _router: Router,

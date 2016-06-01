@@ -186,7 +186,7 @@ export class BlogService {
             .flatMap(res => {
                 let data = res.json();
                 
-                let index = _.findIndex(data, function(o) {
+                let index = _.findIndex(data, function(o: BlogPost) {
                     return o.id == id; 
                 });
                 
