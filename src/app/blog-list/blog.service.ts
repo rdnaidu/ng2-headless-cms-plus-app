@@ -18,6 +18,10 @@ export class BlogService {
         private settings: SettingsService) {
     }
     
+    getLiveUrl() {
+        return this.config.apiEndPoint + '/blogs';
+    }
+    
     parseSrcFromHtml(html: string) {
         let tHtml = html || '';
         var result;
@@ -51,7 +55,7 @@ export class BlogService {
     }
 
     getBlogsFromDrupal(filter?: any): Rx.Observable<BlogPostLive[]> {
-      let url = this.config.apiEndPoint + '/blogs';
+      let url = this.getLiveUrl();
       let self = this;
 
       return this._http.get(url)
@@ -78,6 +82,80 @@ export class BlogService {
         
         return this._http.get(url)
             .map(res => res.json());
+    }
+    
+    getTrendingBlogsFromDrupal() {
+        let url = this.getLiveUrl() + '/trending';
+        let self = this;
+        return this._http.get(url)
+            .map(res => res.json())
+            .map(res => {
+                var tData: any[] = [];
+                _.forEach(res, function(value) {
+                    let imgUrls = self.parseSrcFromHtml(value.authoravatar);
+                    let img: string = '';
+                    if (imgUrls.length) {
+                        img = self.config.apiShort + imgUrls[0];
+                    }
+                    
+                    value.authoravatar = img;
+                    tData.push(value);
+                });
+                
+                return tData;
+            });
+    }
+    
+    getTrendingBlogs(): Rx.Observable<any[]> {
+        
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+            return this.getTrendingBlogsFromDrupal();
+        }
+        
+        return this.getBlogs()
+            .map(res => {
+                return _.take(res, 5);
+            });
+    }
+    
+    getOlderBlogsFromDrupal() {
+        let url = this.getLiveUrl() + '/older';
+        let self = this;
+        return this._http.get(url)
+            .map(res => res.json())
+            .map(res => {
+                var tData: any[] = [];
+                _.forEach(res, function(value) {
+                    let imgUrls = self.parseSrcFromHtml(value.authoravatar);
+                    let img: string = '';
+                    if (imgUrls.length) {
+                        img = self.config.apiShort + imgUrls[0];
+                    }
+                    
+                    value.authoravatar = img;
+                    tData.push(value);
+                });
+                console.log('tdata', tData);
+                return tData;
+            });
+    }
+    
+    getOlderBlogs(): Rx.Observable<any[]> {
+        
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+            return this.getOlderBlogsFromDrupal();
+        }
+        
+        return this.getBlogs()
+            .map(res => {
+                return _.take(_.drop(res, 4), 10);
+            });
+    }
+    
+    getTOBlogs() {
+        let trend = this.getTrendingBlogs();
+        let older = this.getOlderBlogs();
+        return Rx.Observable.forkJoin(trend, older);
     }
     
     getBlogFromDrupal(id): Rx.Observable<BlogPostLive> {

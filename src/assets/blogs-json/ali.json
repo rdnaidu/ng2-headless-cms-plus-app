@@ -1,10 +1,15 @@
 {
-    "id": 3,
-    "name": "Ali",
+    "uid": 3,
+    "name": "ali",
+    "username": "Ali",
     "avatar": "https://angular.io/resources/images/bios/ali.jpg",
-    "username": "ali",
-    "company": "Mydo",
-    "location": "Cambodia",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "ali",
+    "roles": "Mydo",
+    "timezone": "Cambodia",
     "publications": [
         {
             "id": 1,

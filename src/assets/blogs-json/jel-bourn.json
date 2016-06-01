@@ -1,15 +1,15 @@
 {
     "uid": 5,
-    "username": "Filipe Silva",
-    "name": "filipe-silva",
-    "avatar": "https://angular.io/resources/images/bios/filipe-silva.jpg",
+    "name": "jel-bourn",
+    "username": "Jel Bourn",
+    "avatar": "https://angular.io/resources/images/bios/jelbourn.jpg",
     "width": 85,
     "height": 85,
     "alt": "",
     "typeof": "",
-    "mail": "filipe-silva",
+    "mail": "jelbourn",
     "roles": "Oloo",
-    "timezone": "Boston, US",
+    "timezone": "England",
     "publications": [
         {
             "id": 1,

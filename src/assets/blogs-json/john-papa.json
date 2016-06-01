@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "John Papa",
+    "uid": 5,
+    "name": "john-papa",
+    "username": "John Papa",
     "avatar": "https://angular.io/resources/images/bios/john-papa.jpg",
-    "username": "john-papa",
-    "company": "Oloo",
-    "location": "USA",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "john-papa",
+    "roles": "Oloo",
+    "timezone": "USA",
     "publications": [
         {
             "id": 1,

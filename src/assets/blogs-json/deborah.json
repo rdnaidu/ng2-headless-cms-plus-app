@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Deborah",
+    "uid": 5,
+    "name": "deborah",
+    "username": "Deborah",
     "avatar": "https://angular.io/resources/images/bios/deborah.jpg",
-    "username": "deborah",
-    "company": "Oloo",
-    "location": "US",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "deborah",
+    "roles": "Oloo",
+    "timezone": "US",
     "publications": [
         {
             "id": 1,

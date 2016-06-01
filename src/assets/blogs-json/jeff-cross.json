@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Jet Cross",
+    "uid": 5,
+    "name": "jeff-cross",
+    "username": "Jeff Cross",
     "avatar": "https://angular.io/resources/images/bios/jeff-cross.jpg",
-    "username": "jeff-cross",
-    "company": "Oloo",
-    "location": "California , US",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "jeff-cross",
+    "roles": "Oloo",
+    "timezone": "California , US",
     "publications": [
         {
             "id": 1,

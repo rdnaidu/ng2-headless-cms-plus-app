@@ -16,8 +16,8 @@
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label" for="i2">Email</label>
-                        <input [(ngModel)]="user.email" id="i2" #email="ngForm" ngControl="email" type="text" class="form-control">
-                        <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+                        <input [(ngModel)]="user.mail" id="i2" #mail="ngForm" ngControl="mail" type="text" class="form-control">
+                        <div *ngIf="mail.touched && !mail.valid" class="alert alert-danger">
                             Please type a valid email.
                         </div>
                     </div>

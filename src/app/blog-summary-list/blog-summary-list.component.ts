@@ -27,18 +27,27 @@ export class BlogSummaryListComponent implements OnInit {
 
 
     ngOnInit() {
-		this._service.getBlogs()
+		this.getTOBlogs();
+	}
+	
+	getTOBlogs() {
+		this._service.getTOBlogs()
 			.subscribe(
 			blogs => {
-				this.blogs = _.take(blogs, 5);
-				this.olderBlogs = _.take(_.drop(blogs, 4), 10);
+				console.log('blogs', blogs);
+				this.blogs = blogs[0];
+				this.olderBlogs = blogs[1];
 				_.map(this.blogs, function addDate(data: BlogSummary) {
+					data.postDate = new Date(data.publishdate);
+				});
+				
+				_.map(this.olderBlogs, function addDate(data: BlogSummary) {
 					data.postDate = new Date(data.publishdate);
 				});
 			},
 			error => {
 				this.blogServiceError = true;
-				this.errorMessage = 'Unable able to connect';
+				this.errorMessage = 'Unable to connect';
 				this.isLoading = false;
 				// console.log("EEEE");
 			},
@@ -46,5 +55,4 @@ export class BlogSummaryListComponent implements OnInit {
 				this.isLoading = false;
 			});
 	}
-
 }

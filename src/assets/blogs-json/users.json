@@ -1,162 +1,162 @@
 [
     {
-        "id": 1,
-        "name": "Alex Eagle",
+        "uid": 1,
+        "name": "alex-eagle",
         "avatar": "https://angular.io/resources/images/bios/alex-eagle.jpg",
-        "username": "alex-eagle",
-        "company": "Meetz",
-        "location": "Czech Republic"
+        "mail": "alex-eagle",
+        "roles": "Meetz",
+        "timezone": "Czech Republic"
     },
     {
-        "id": 2,
-        "name": "Alex Rickabaugh",
+        "uid": 2,
+        "name": "alex-rickabaugh",
         "avatar": "https://angular.io/resources/images/bios/alex-rickabaugh.jpg",
-        "username": "alex-rickabaugh",
-        "company": "Angular2 Associates",
-        "location": "California, US"
+        "mail": "alex-rickabaugh",
+        "roles": "Angular2 Associates",
+        "timezone": "California, US"
     },
     {
-        "id": 3,
-        "name": "Alex Wolfe",
+        "uid": 3,
+        "name": "alex-wolfe",
         "avatar": "https://angular.io/resources/images/bios/alex-wolfe.jpg",
-        "username": "alex-wolfe",
-        "company": "Twiyo",
-        "location": "China"
+        "mail": "alex-wolfe",
+        "roles": "Twiyo",
+        "timezone": "China"
     },
     {
-        "id": 4,
-        "name": "Ali",
+        "uid": 4,
+        "name": "ali",
         "avatar": "https://angular.io/resources/images/bios/ali.jpg",
-        "username": "ali",
-        "company": "Mydo",
-        "location": "Cambodia"
+        "mail": "ali",
+        "roles": "Mydo",
+        "timezone": "Cambodia"
     },
     {
-        "id": 5,
-        "name": "Brad Green",
+        "uid": 5,
+        "name": "brad-green",
         "avatar": "https://angular.io/resources/images/bios/brad-green.jpg",
-        "username": "brad-green",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "brad-green",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 6,
-        "name": "Brian Ford",
+        "uid": 6,
+        "name": "brian-ford",
         "avatar": "https://angular.io/resources/images/bios/brian-ford.jpg",
-        "username": "brian-ford",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "brian-ford",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 7,
-        "name": "David East",
+        "uid": 7,
+        "name": "david-east",
         "avatar": "https://angular.io/resources/images/bios/david-east.jpg",
-        "username": "david-east",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "david-east",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 8,
-        "name": "Deborah",
+        "uid": 8,
+        "name": "deborah",
         "avatar": "https://angular.io/resources/images/bios/deborah.jpg",
-        "username": "deborah",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "deborah",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 9,
-        "name": "Elad Bezalel",
+        "uid": 9,
+        "name": "elad-bezalel",
         "avatar": "https://angular.io/resources/images/bios/eladbezalel.jpg",
-        "username": "eladbezalel",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "elad-bezalel",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 10,
-        "name": "Filipe Silva",
+        "uid": 10,
+        "name": "filipe-silva",
         "avatar": "https://angular.io/resources/images/bios/filipe-silva.jpg",
-        "username": "filipe-silva",
-        "company": "Oloo",
-        "location": "Boston, US"
+        "mail": "filipe-silva",
+        "roles": "Oloo",
+        "timezone": "Boston, US"
     },
     {
-        "id": 11,
-        "name": "Hansl",
+        "uid": 11,
+        "name": "hansl",
         "avatar": "https://angular.io/resources/images/bios/hansl.jpg",
-        "username": "hansl",
-        "company": "Oloo",
-        "location": "Peru"
+        "mail": "hansl",
+        "roles": "Oloo",
+        "timezone": "Peru"
     },
     {
-        "id": 12,
-        "name": "Igo Minar",
+        "uid": 12,
+        "name": "igo-minar",
         "avatar": "https://angular.io/resources/images/bios/igor-minar.jpg",
-        "username": "ignor-minar",
-        "company": "Oloo",
-        "location": "Brazil"
+        "mail": "igo-minar",
+        "roles": "Oloo",
+        "timezone": "Brazil"
     },
     {
-        "id": 13,
-        "name": "John Bedard",
+        "uid": 13,
+        "name": "john-bedard",
         "avatar": "https://angular.io/resources/images/bios/jbedard.jpg",
-        "username": "jbedard",
-        "company": "Oloo",
-        "location": "US"
+        "mail": "john-bedard",
+        "roles": "Oloo",
+        "timezone": "US"
     },
     {
-        "id": 14,
-        "name": "Jet Cross",
+        "uid": 14,
+        "name": "jeff-cross",
         "avatar": "https://angular.io/resources/images/bios/jeff-cross.jpg",
-        "username": "jeff-cross",
-        "company": "Oloo",
-        "location": "California , US"
+        "mail": "jeff-cross",
+        "roles": "Oloo",
+        "timezone": "California , US"
     },
     {
-        "id": 15,
-        "name": "Jeff Whelpley",
+        "uid": 15,
+        "name": "jeff-whelpley",
         "avatar": "https://angular.io/resources/images/bios/jeffwhelpley.jpg",
-        "username": "jeffwhelpley",
-        "company": "Oloo",
-        "location": "Dallas, TX"
+        "mail": "jeff-whelpley",
+        "roles": "Oloo",
+        "timezone": "Dallas, TX"
     },
     {
-        "id": 16,
-        "name": "Jel Bourn",
+        "uid": 16,
+        "name": "jel-bourn",
         "avatar": "https://angular.io/resources/images/bios/jelbourn.jpg",
-        "username": "jelbourn",
-        "company": "Oloo",
-        "location": "England"
+        "mail": "jel-bourn",
+        "roles": "Oloo",
+        "timezone": "England"
     },
     {
-        "id": 17,
-        "name": "Jesus Rodriguez",
+        "uid": 17,
+        "name": "jesus-rodriguez",
         "avatar": "https://angular.io/resources/images/bios/jesus-rodriguez.jpg",
-        "username": "jesus-rodriguez",
-        "company": "Oloo",
-        "location": "Peru"
+        "mail": "jesus-rodriguez",
+        "roles": "Oloo",
+        "timezone": "Peru"
     },
     {
-        "id": 18,
-        "name": "John Papa",
+        "uid": 18,
+        "name": "john-papa",
         "avatar": "https://angular.io/resources/images/bios/john-papa.jpg",
-        "username": "john-papa",
-        "company": "Oloo",
-        "location": "USA"
+        "mail": "john-papa",
+        "roles": "Oloo",
+        "timezone": "USA"
     },
     {
-        "id": 19,
-        "name": "Jule Skremer",
+        "uid": 19,
+        "name": "jule-skremer",
         "avatar": "https://angular.io/resources/images/bios/juleskremer.jpg",
-        "username": "juleskremer",
-        "company": "Oloo",
-        "location": "India"
+        "mail": "jule-skremer",
+        "roles": "Oloo",
+        "timezone": "India"
     },
     {
-        "id": 20,
-        "name": "Julie Ralph",
+        "uid": 20,
+        "name": "julie-ralph",
         "avatar": "https://angular.io/resources/images/bios/julie-ralph.jpg",
-        "username": "julie-ralph",
-        "company": "Oloo",
-        "location": "USA"
+        "mail": "julie-ralph",
+        "roles": "Oloo",
+        "timezone": "USA"
     }
 ]

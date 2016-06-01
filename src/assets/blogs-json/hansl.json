@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Hansl",
+    "uid": 5,
+    "name": "hansl",
+    "username": "Hansl",
     "avatar": "https://angular.io/resources/images/bios/hansl.jpg",
-    "username": "hansl",
-    "company": "Oloo",
-    "location": "Peru",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "hansl",
+    "roles": "Oloo",
+    "timezone": "Peru",
     "publications": [
         {
             "id": 1,

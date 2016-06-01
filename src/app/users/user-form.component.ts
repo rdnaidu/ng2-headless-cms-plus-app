@@ -4,7 +4,8 @@ import {CanDeactivate, Router, RouteParams} from '@angular/router-deprecated';
 
 import {BasicValidators} from '../shared/basicValidators';
 import {UserService} from '../users/user.service';
-import {User} from './user';
+import {User, Address, UserClass } from './user';
+import { Publications } from '../blog-list/blog';
 
 @Component({
 	template: require('./user-form.component.html'),
@@ -15,17 +16,17 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 
 	form: ControlGroup;
 	title: string;
-	user = new User();
+	
+	user: User = new UserClass();
 
 	constructor(fb: FormBuilder,
 			private _router: Router,
 			private _routeParams: RouteParams,
 			private _userService: UserService
-			) {
-
+	) {			
 		this.form = fb.group({
 			name: ['', Validators.required],
-			email: ['', BasicValidators.email],
+			mail: ['', BasicValidators.email],
 			phone: [],
 			address: fb.group({
 				street: [],
@@ -37,24 +38,32 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 	}
 
 	ngOnInit() {
+		this.getUser();
+	}
+	
+	getUser() {
 		let id = this._routeParams.get('id');
-
 		this.title = id ? 'Edit User' : 'New User';
 
-		if (!id)
-				return;
-		// console.log("Herer");
+		if (!id) return;
+		
 		this._userService.getUser(id)
-				.subscribe(
-					user =>
-						this.user = user,
-					response => {
-						if (response.status === 404) {
-							this._router.navigate(['NotFound']);
-						}
+			.subscribe(
+				user => {
+					this.user = user;
+					if (!this.user.uid) {
+						this._router.navigate(['NewUser']);
 					}
+					console.log('this', this.user);
+				},
+				response => {
+					console.log('hsdfsdf');
+					if (response.status === 404) {
+						this._router.navigate(['NotFound']);
+					}
+				}
 
-				);
+			);
 	}
 
 	routerCanDeactivate() {
@@ -67,15 +76,14 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 
 		let result;
 
-		if (this.user.id) {
+		if (this.user.uid) {
 			result = this._userService.updateUser(this.user);
 		} else {
 			result = this._userService.addUser(this.user);
 		}
 
 		result.subscribe(x => {
-				// this.form.markAsPristine();
-					this._router.navigate(['Users']);
+			this._router.navigate(['Users']);
 		});
 	}
 }

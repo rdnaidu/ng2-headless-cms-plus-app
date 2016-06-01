@@ -17,9 +17,9 @@
 	<tbody>
 		<tr *ngFor="let user of users">
 			<td>{{ user.name }}</td>
-			<td>{{ user.email }}</td>
+			<td>{{ user.mail }}</td>
 			<td>
-                <a [routerLink]="['EditUser', { id: user.id }]">
+                <a [routerLink]="['EditUser', { id: user.name }]">
                     <i class="glyphicon glyphicon-edit"></i>
                 </a>
 			</td>

@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Jesus Rodriguez",
+    "uid": 5,
+    "name": "jesus-rodriguez",
+    "username": "Jesus Rodriguez",
     "avatar": "https://angular.io/resources/images/bios/jesus-rodriguez.jpg",
-    "username": "jesus-rodriguez",
-    "company": "Oloo",
-    "location": "Peru",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "jesus-rodriguez",
+    "roles": "Oloo",
+    "timezone": "Peru",
     "publications": [
         {
             "id": 1,

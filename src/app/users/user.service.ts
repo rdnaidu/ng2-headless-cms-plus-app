@@ -1,23 +1,91 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject} from '@angular/core';
 import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
+import * as Rx from 'rxjs/Rx';
+
+import { APP_CONFIG, CONFIG, Config } from '../app.config';
+import { SettingsService, CMSTypes } from '../shared/settings.service';
+import { User, Address, UserClass } from './user';
 
 @Injectable()
 export class UserService {
 
-	private _url = 'http://jsonplaceholder.typicode.com/users';
+	private _url = '/assets/blogs-json';
 
-	constructor(private _http: Http) {
+	constructor(
+		@Inject(APP_CONFIG) private config: Config,
+		private settings: SettingsService,
+		private _http: Http
+	) {
 
 	}
+	
+	getUrl() {
+		return this._url;
+	}
+	
+	getLiveUrl() {
+		return this.config.apiEndPoint + '/users';
+	}
+	
+	getUsersFromDrupal(): Rx.Observable<User[]> {
+		let url = this.getLiveUrl();
+		
+		return this._http.get(url)
+			.map(res => {
+				return res.json();
+			})
+			.map(data => {
+				let tData = [];
+				
+				_.forEach(data, function(object) {
+					object.address = {
+						street: '',
+						suite: '',
+						city: '',
+						zipcode: ''
+					} as Address;
+					object.publications = [];
+					tData.push(object);
+				});
+				
+				return tData;
+			});
+	}
+	
+	getUserFromDrupal(userId): Rx.Observable<User> {
+		let url = this.getLiveUrl() + '/' + userId;
+		
+		return this._http.get(url)
+			.map(res => res.json())
+			.map(res => {
+				if (res.length) {
+					return res[0];
+				}
+				return new UserClass();
+			});
+	}
 
-	getUsers() {
-		return this._http.get(this._url)
+	getUsers(): Rx.Observable<User[]> {
+		
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+			return this.getUsersFromDrupal();
+		}
+		
+		let url = this.getUrl() + '/users.json';
+		
+		return this._http.get(url)
 				.map(res => res.json());
 	}
 
-	getUser(userId) {
-		return this._http.get(this.getUserUrl(userId))
+	getUser(userId): Rx.Observable<User> {
+		
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+			return this.getUserFromDrupal(userId);
+		}
+		
+		let url = this.getUserUrl(userId) + '.json';
+		
+		return this._http.get(url)
 				.map(res => res.json());
 	}
 

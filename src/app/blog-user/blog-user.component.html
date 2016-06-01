@@ -9,14 +9,14 @@
                     </h5>
                 </md-card-title>
                 <md-card-content>
-                    <p *ngIf="blogUser.username">
-                        <i class="glyphicon glyphicon-user"></i> {{blogUser.username}}
+                    <p *ngIf="blogUser.mail">
+                        <i class="glyphicon glyphicon-user"></i> {{blogUser.mail}}
                     </p>
-                    <p *ngIf="blogUser.company">
-                        <i class="glyphicon glyphicon-briefcase"></i> {{blogUser.company}}
+                    <p *ngIf="blogUser.roles">
+                        <i class="glyphicon glyphicon-briefcase"></i> {{blogUser.roles}}
                     </p>
-                    <p *ngIf="blogUser.location">
-                        <i class="glyphicon glyphicon-globe"></i> {{blogUser.location}}
+                    <p *ngIf="blogUser.timezone">
+                        <i class="glyphicon glyphicon-globe"></i> {{blogUser.timezone}}
                     </p>
                 </md-card-content>
             </md-card>

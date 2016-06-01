@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Brad Green",
+    "uid": 5,
+    "name": "brad-green",
+    "username": "Brad Green",
     "avatar": "https://angular.io/resources/images/bios/brad-green.jpg",
-    "username": "jthompson2",
-    "company": "Oloo",
-    "location": "US",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "jthompson2",
+    "roles": "Oloo",
+    "timezone": "US",
     "publications": [
         {
             "id": 1,

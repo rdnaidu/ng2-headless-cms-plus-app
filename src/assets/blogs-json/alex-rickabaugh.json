@@ -1,10 +1,15 @@
 {
-    "id": 1,
-    "name": "Alex Rickabaugh",
+    "uid": 1,
+    "name": "alex-rickabaugh",
+    "username": "Alex Rickabaugh",
     "avatar": "https://angular.io/resources/images/bios/alex-rickabaugh.jpg",
-    "username": "alex-rickabaugh",
-    "company": "Angular2 Associates",
-    "location": "California, US",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "alex-rickabaugh",
+    "roles": "Angular2 Associates",
+    "timezone": "California, US",
     "publications": [
         {
             "id": 1,

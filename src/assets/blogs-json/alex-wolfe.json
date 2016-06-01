@@ -1,10 +1,15 @@
 {
-    "id": 2,
-    "name": "Alex Wolfe",
+    "uid": 2,
+    "name": "alex-wolfe",
+    "username": "Alex Wolfe",
     "avatar": "https://angular.io/resources/images/bios/alex-wolfe.jpg",
-    "username": "dgardner1",
-    "company": "Twiyo",
-    "location": "China",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "dgardner1",
+    "roles": "Twiyo",
+    "timezone": "China",
     "publications": [
         {
             "id": 1,

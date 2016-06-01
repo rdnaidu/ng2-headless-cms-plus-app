@@ -1,10 +1,21 @@
 {
-    "id": 1,
-    "name": "Alex Eagle",
+    "uid": 1,
+    "name": "alex-eagle",
+    "username": "Alex Eagle",
     "avatar": "https://angular.io/resources/images/bios/alex-eagle.jpg",
-    "username": "alex-eagle",
-    "company": "Meetz",
-    "location": "Czech Republic",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "alex-eagle",
+    "roles": "Meetz",
+    "timezone": "Czech Republic",
+    "address": {
+        "street": "",
+        "suite": "",
+        "city": "",
+        "zipcode": ""
+    },
     "publications": [
         {
             "id": 1,

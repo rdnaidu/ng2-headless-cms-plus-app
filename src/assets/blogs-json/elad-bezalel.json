@@ -1,15 +1,15 @@
 {
     "uid": 5,
-    "username": "Filipe Silva",
-    "name": "filipe-silva",
-    "avatar": "https://angular.io/resources/images/bios/filipe-silva.jpg",
+    "name": "elad-bezalel",
+    "username": "Elad Bezalel",
+    "avatar": "https://angular.io/resources/images/bios/eladbezalel.jpg",
     "width": 85,
     "height": 85,
     "alt": "",
     "typeof": "",
-    "mail": "filipe-silva",
+    "mail": "eladbezalel",
     "roles": "Oloo",
-    "timezone": "Boston, US",
+    "timezone": "US",
     "publications": [
         {
             "id": 1,

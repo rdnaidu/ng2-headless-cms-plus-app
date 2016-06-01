@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "David East",
+    "uid": 5,
+    "name": "david-east",
+    "username": "David East",
     "avatar": "https://angular.io/resources/images/bios/david-east.jpg",
-    "username": "jthompson2",
-    "company": "Oloo",
-    "location": "US",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "jthompson2",
+    "roles": "Oloo",
+    "timezone": "US",
     "publications": [
         {
             "id": 1,

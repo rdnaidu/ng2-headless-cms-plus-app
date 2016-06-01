@@ -1,10 +1,15 @@
 {
-    "id": 5,
-    "name": "Julie Ralph",
+    "uid": 5,
+    "name": "julie-ralph",
+    "username": "Julie Ralph",
     "avatar": "https://angular.io/resources/images/bios/julie-ralph.jpg",
-    "username": "julie-ralph",
-    "company": "Oloo",
-    "location": "USA",
+    "width": 85,
+    "height": 85,
+    "alt": "",
+    "typeof": "",
+    "mail": "julie-ralph",
+    "roles": "Oloo",
+    "timezone": "USA",
     "publications": [
         {
             "id": 1,
