@@ -37,7 +37,7 @@ export class AppSettingsComponent implements OnInit {
        for (let value in CMSTypes) {
                 let selected: string = '';
                 let option: any;
-                var isValueProperty = parseInt(value, 10) >= 0
+                var isValueProperty = parseInt(value, 10) >= 0;
                 if (isValueProperty) {
                     if (value == this.settingsService.getCmsType()) {
                         selected = 'selected';

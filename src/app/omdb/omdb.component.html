@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row well">
+
+        <h3><img class="pull-right" src="assets/img/omdb.png" height="60"><b>{{ title }}</b> </h3>
+    </div>
+    <div class="row">
+        <div class="col well inputs">
+            <form class="form-search" id="search-by-title-form" [ngFormModel]="form" (ngSubmit)="search()">
+                <fieldset>
+                    <legend>By Search</legend>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="s">Title</label>
+                        <input [(ngModel)]="params.s" type="text" id="s" name="s" #s="ngForm" ngControl="s" type="text" class="form-control">
+                        <div *ngIf="s.touched && !s.valid" class='alert alert-danger'>
+                            Title is required.
+                        </div>
+                    </div>
+                    <!--                    <div class="form-group label-floating">
+                        <label class="control-label" for="plot">Plot</label>
+                        <select name="plot" class="form-control input-medium" (change)="onSelect($event.target.value)" [(ngModel)]="params.plot"
+                            id="plot" #mode="ngForm" ngControl="plot">
+                        <option value="short" selected="selected">Short</option>
+                        <option value="full">Full</option>
+                    </select>
+                    </div>
+-->
+
+                </fieldset>
+                <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
+                <button id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>
+            </form>
+        </div>
+        <div *ngIf="searchResult">
+            <div class="row">
+            <pagination 
+                    class="pagination-md"
+                    [totalItems]="result.totalResults" 
+                    [(ngModel)]="currentPage" 
+                    [maxSize]="maxSize" 
+                    [boundaryLinks]="true"
+                    [rotate]="false" 
+                    [itemsPerPage]="itemsPerPage" 
+                    (pageChanged)="pageChanged($event)">
+            </pagination>
+            </div>
+            <div class="col-md-3" *ngFor="let movie of result.Search">
+                <md-card>
+                    <img md-card-image src={{movie.Poster}} class="md-card-image">
+                    <md-card-title>{{movie.Title}}</md-card-title>
+                    <md-card-content>
+
+                        <p><span class="fa fa-clock-o" aria-hidden="true"> {{movie.Year}} </span> </p>
+                        <p><span class="fa fa-film" aria-hidden="true"> {{movie.Type}} </span> </p>
+
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--       <div *ngFor="let blog of pagedBlogs">
+            <md-card>
+                <img md-card-image src={{blogPost.currentImage}} class="md-card-image">
+                <md-card-title>{{blogPost.title}}</md-card-title>
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <span class="fa fa-folder-open" aria-hidden="true"></span> {{blogPost.category}}
+                            <span class="fa fa-tags" aria-hidden="true"></span> {{blogPost.tagStr}}
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <span class="fa fa-commenting" aria-hidden="true"></span> {{blogPost.comment_count}} Comments
+                            <span class="fa fa-clock-o" aria-hidden="true"></span> {{blogPost.postDate | date:'longDate'}}
+                        </div>
+                    </div>
+                    <md-divider></md-divider><br/>
+                    <p *ngIf="!showAbstract">{{blogPost.description}}</p>
+                    <p *ngIf="showAbstract">{{blogPost.abstract}}</p>
+
+                </md-card-content>
+            </md-card>
+            -->
