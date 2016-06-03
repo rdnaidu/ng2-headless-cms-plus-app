@@ -58,6 +58,10 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.loadPosts();
+    /*this._service.createBlog()
+      .subscribe(data => {
+        console.log('blog created', data);
+      });*/
   }
   
   loadPosts() {

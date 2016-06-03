@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {LoginFormComponent} from '../login-form/login-form.component';
 import {Router} from '@angular/router-deprecated';
@@ -23,11 +23,20 @@ import {Router} from '@angular/router-deprecated';
   `
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     error: boolean = false;
 
     constructor(public auth: AuthService,
                 public router: Router) {
+        if (this.auth.user.isLoggedIn) {
+            this.router.navigate(['Home']);
+        }
+    }
+    
+    ngOnInit() {
+        if (this.auth.user.isLoggedIn) {
+            this.router.navigate(['Home']);
+        }
     }
 
     login($event) {
@@ -37,7 +46,9 @@ export class LoginComponent {
         this.auth.login($event.loginForm.username, $event.loginForm.password)
             .subscribe(
                 (token: any) => this.router.navigate(['Home']),
-                () => { this.error = true; }
+                (error) => {
+                     this.error = true; 
+                }
             );
     }
 

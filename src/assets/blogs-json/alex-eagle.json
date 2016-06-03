@@ -3,11 +3,7 @@
     "name": "alex-eagle",
     "username": "Alex Eagle",
     "avatar": "https://angular.io/resources/images/bios/alex-eagle.jpg",
-    "width": 85,
-    "height": 85,
-    "alt": "",
-    "typeof": "",
-    "mail": "alex-eagle",
+    "mail": "alex-eagle@xyz.com",
     "roles": "Meetz",
     "timezone": "Czech Republic",
     "address": {
@@ -18,43 +14,43 @@
     },
     "publications": [
         {
-            "id": 1,
+            "nid": 1,
             "title": "Nam dui."
         },
         {
-            "id": 2,
+            "nid": 2,
             "title": "Maecenas pulvinar lobortis est."
         },
         {
-            "id": 3,
+            "nid": 3,
             "title": "In hac habitasse platea dictumst."
         },
         {
-            "id": 4,
+            "nid": 4,
             "title": "In congue."
         },
         {
-            "id": 5,
+            "nid": 5,
             "title": "In hac habitasse platea dictumst."
         },
         {
-            "id": 6,
+            "nid": 6,
             "title": "Nulla ac enim."
         },
         {
-            "id": 7,
+            "nid": 7,
             "title": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
         },
         {
-            "id": 8,
+            "nid": 8,
             "title": "In eleifend quam a odio."
         },
         {
-            "id": 9,
+            "nid": 9,
             "title": "Pellentesque viverra pede ac diam."
         },
         {
-            "id": 10,
+            "nid": 10,
             "title": "Praesent blandit."
         }
     ]

@@ -12,10 +12,6 @@ export interface User {
     name: string;
     username?: string;
     avatar: string;
-    width: number;
-    height: number;
-    alt: string;
-    typeof: string;
     mail: string;
     roles: string;
     timezone: string;
@@ -29,10 +25,6 @@ export class UserClass implements User {
     name = '';
     username = '';
     avatar = '';
-    width = 0;
-    height = 0;
-    alt = '';
-    typeof = '';
     mail = '';
     roles = '';
     timezone = '';

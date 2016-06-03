@@ -7,6 +7,7 @@ import { FormBuilder, ControlGroup, Validators } from '@angular/common';
 import { DropdownComponent } from '../shared/drop-down.component';
 import { DropdownValue } from '../shared/drop-downValue';
 import { SettingsService, CMSTypes, CMSSettings } from '../shared/settings.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -18,12 +19,17 @@ export class AppSettingsComponent implements OnInit {
      labelText: string = 'Select Mode';
      cmsSettings: CMSSettings;
      form: ControlGroup;
+     prevType;
+     currType;
 
      constructor(
          public settingsService: SettingsService,
          fb: FormBuilder, 
-         private router: Router
+         private router: Router,
+         private authService: AuthService
      ) {
+         this.prevType = this.settingsService.getCmsType();
+         this.currType = this.settingsService.getCmsType();
          this.form = fb.group({
 			mode: ['', Validators.required],
 			host: ['', Validators.required],
@@ -37,7 +43,7 @@ export class AppSettingsComponent implements OnInit {
        for (let value in CMSTypes) {
                 let selected: string = '';
                 let option: any;
-                var isValueProperty = parseInt(value, 10) >= 0;
+                var isValueProperty = parseInt(value, 10) >= 0
                 if (isValueProperty) {
                     if (value == this.settingsService.getCmsType()) {
                         selected = 'selected';
@@ -51,12 +57,19 @@ export class AppSettingsComponent implements OnInit {
 
      }
      onSelect(value) {
-       this.settingsService.setCmsType(value);
+        this.prevType = this.settingsService.getCmsType();
+        this.currType = value;
+        this.settingsService.setCmsType(value);
      }
 
      save() {
          console.log('save settings');
        this.settingsService.save(this.cmsSettings);
+       if (this.prevType != this.currType) {
+           this.authService
+            .logout()
+            .subscribe();
+       }
        this.router.navigate(['Home']);
      }
 }

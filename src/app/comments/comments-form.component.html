@@ -1,6 +1,6 @@
 <div class="well">
-    <div *ngIf="!auth.loggedIn">Please <a [routerLink]="['Login']">sign in</a> to add comments!</div>
-    <div *ngIf="auth.loggedIn">
+    <div *ngIf="!auth.user.isLoggedIn">Please <a [routerLink]="['Login']">sign in</a> to add comments!</div>
+    <div *ngIf="auth.user.isLoggedIn">
         <h4>Leave a comment</h4>
         <form role="form" class="clearfix">
             <div class="col-md-6 form-group">

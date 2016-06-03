@@ -3,52 +3,48 @@
     "name": "alex-rickabaugh",
     "username": "Alex Rickabaugh",
     "avatar": "https://angular.io/resources/images/bios/alex-rickabaugh.jpg",
-    "width": 85,
-    "height": 85,
-    "alt": "",
-    "typeof": "",
-    "mail": "alex-rickabaugh",
+    "mail": "alex-rickabaugh@xyz.com",
     "roles": "Angular2 Associates",
     "timezone": "California, US",
     "publications": [
         {
-            "id": 1,
+            "nid": 1,
             "title": "Fusce consequat."
         },
         {
-            "id": 2,
+            "nid": 2,
             "title": "Curabitur convallis."
         },
         {
-            "id": 3,
+            "nid": 3,
             "title": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis."
         },
         {
-            "id": 4,
+            "nid": 4,
             "title": "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci."
         },
         {
-            "id": 5,
+            "nid": 5,
             "title": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."
         },
         {
-            "id": 6,
+            "nid": 6,
             "title": "Etiam pretium iaculis justo."
         },
         {
-            "id": 7,
+            "nid": 7,
             "title": "Morbi porttitor lorem id ligula."
         },
         {
-            "id": 8,
+            "nid": 8,
             "title": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros."
         },
         {
-            "id": 9,
+            "nid": 9,
             "title": "Curabitur gravida nisi at nibh."
         },
         {
-            "id": 10,
+            "nid": 10,
             "title": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
         }
     ]

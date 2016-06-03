@@ -1,5 +1,5 @@
 import {Injectable, Inject} from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 
 import * as Rx from 'rxjs/Rx';
 import { BlogPost } from '../blog-list/blog';
@@ -7,6 +7,8 @@ import { BlogPostLive } from '../blog-list/blog';
 import * as _ from 'lodash';
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
+import { HelperService } from '../shared/services/helper.service';
+import { SessionService } from '../shared/services/session.service';
 
 @Injectable()
 export class BlogService {
@@ -15,39 +17,76 @@ export class BlogService {
     constructor(
         @Inject(APP_CONFIG) private config: Config,
         private _http: Http,
-        private settings: SettingsService) {
+        private settings: SettingsService,
+        private helper: HelperService,
+        private session: SessionService) {
+    }
+    
+   /* getXCSRFToken() {
+        let url = this.config.apiEndPoint + '/rest/session/token';
+        
+        this.http
+    }*/
+    
+    
+    
+    createBlog() {
+        let url = this.config.apiEndPoint + '/entity/node?_format=hal+json';
+        
+        let data = {
+            "_links": {
+                "type": {
+                "href": this.config.apiLocal + "/rest/type/node/blog"
+                }
+            },
+            "title": [
+                {
+                    "value":"Writers Square Awards Banquet2"
+                }
+            ],
+            "body": [
+                {
+                    "value":"Here are some photos from our 2015 Writers Square Awards Banquet held on December 5, 2015. The student winners were awarded their scholarship checks and trophies at the banquet1."
+                }
+            ]
+        }
+        
+        let body = JSON.stringify(data);
+        let headers = new Headers({
+            'Content-Type': 'application/hal+json',
+            'Authorization': 'Basic c2VudGhpbDpzZW50aGls',
+            'X-CSRF-Token': '7X35U6B5HCBs1fQSXanacgf_Yqyhpi23RcRhG-Cf3dQ' 
+        });
+        
+        let options = new RequestOptions({ headers: headers });
+        return this._http.post(url, body, options)
+            .map(res => {
+                console.log(res);
+                return res.json();
+            });
     }
     
     getLiveUrl() {
         return this.config.apiEndPoint + '/blogs';
     }
-    
-    parseSrcFromHtml(html: string) {
-        let tHtml = html || '';
-        var result;
-        result = html.match(/src="(.+?)"/ig) || [];
-        result = result.length ? result.join(',').replace(/"|src=/g, '') : "";
-        result = (result == "") ? [] : result.split(',');
-        return result || [];
-    } 
 
     transformBlogs(data) {
         let self = this;
         var tData: any[] = [];
         _.forEach(data, function(value) {
             value.tags = (value.tags == "") ? [] : value.tags.split('|');
-            value.images = self.parseSrcFromHtml(value.images);
+            value.images = self.helper.parseSrcFromHtml(value.images);
             value.likes = 10;
             value.stars = 567;
             _.forEach(value.images, function(avalue, key) {
                 value.images[key] = self.config.apiShort + avalue;
             })
             
-            value.authoravatar = self.parseSrcFromHtml(value.authoravatar);
+            value.authoravatar = self.helper.parseSrcFromHtml(value.authoravatar);
             if (value.authoravatar.length == 0) {
                 value.authoravatar = '';
             } else {
-                value.authoravatar = value.authoravatar[0];
+                value.authoravatar = self.config.apiShort + value.authoravatar[0];
             }
             tData.push(value);
         })
@@ -92,7 +131,7 @@ export class BlogService {
             .map(res => {
                 var tData: any[] = [];
                 _.forEach(res, function(value) {
-                    let imgUrls = self.parseSrcFromHtml(value.authoravatar);
+                    let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
                     if (imgUrls.length) {
                         img = self.config.apiShort + imgUrls[0];
@@ -126,7 +165,7 @@ export class BlogService {
             .map(res => {
                 var tData: any[] = [];
                 _.forEach(res, function(value) {
-                    let imgUrls = self.parseSrcFromHtml(value.authoravatar);
+                    let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
                     if (imgUrls.length) {
                         img = self.config.apiShort + imgUrls[0];
@@ -152,10 +191,22 @@ export class BlogService {
             });
     }
     
+    getBlogsByUser(id) {
+        let url = this.config.apiEndPoint + '/users/'+id+'/blogs';
+        return this._http.get(url)
+            .map(res => res.json());
+    }
+    
     getTOBlogs() {
         let trend = this.getTrendingBlogs();
         let older = this.getOlderBlogs();
         return Rx.Observable.forkJoin(trend, older);
+    }
+    
+    getBlogComments(blogId): Rx.Observable<any> {
+        let url = this.config.apiEndPoint + '/comments/' + blogId;
+        return this._http.get(url)
+            .map(res => res.json());
     }
     
     getBlogFromDrupal(id): Rx.Observable<BlogPostLive> {
@@ -171,7 +222,7 @@ export class BlogService {
                 }
                 
                 return Rx.Observable.throw(new Error('No data found'));
-            })
+            });
     }
 
     getBlog(id): Rx.Observable<BlogPostLive> {

@@ -5,12 +5,12 @@
                 <img class="img-circle img-responsive" src="{{blogUser.avatar}}">
                 <md-card-title>
                     <h5 *ngIf="blogUser.name">
-                        <b>{{blogUser.name}}</b>
+                        <i class="glyphicon glyphicon-user"></i><b> {{blogUser.name}}</b>
                     </h5>
                 </md-card-title>
                 <md-card-content>
                     <p *ngIf="blogUser.mail">
-                        <i class="glyphicon glyphicon-user"></i> {{blogUser.mail}}
+                        <i class="glyphicon glyphicon-envelope"></i> {{blogUser.mail}}
                     </p>
                     <p *ngIf="blogUser.roles">
                         <i class="glyphicon glyphicon-briefcase"></i> {{blogUser.roles}}
@@ -28,8 +28,11 @@
                     <h2> Blog Posts </h2>
                 </md-card-title>
                 <md-card-content>
-                    <md-nav-list>
-                        <a md-list-item *ngFor="let blog of blogUser.publications" [routerLink]="['Blog', { id: blog.id }]">{{blog.title}}</a>
+                    <md-nav-list *ngIf="blogUser.publications && blogUser.publications.length">
+                        <a md-list-item *ngFor="let blog of blogUser.publications" [routerLink]="['Blog', { id: blog.nid }]">{{blog.title}}</a>
+                    </md-nav-list>
+                    <md-nav-list *ngIf="!(blogUser.publications && blogUser.publications.length)">
+                        <p md-list-item>No Blogs Posts to show</p>
                     </md-nav-list>
                 </md-card-content>
             </md-card>

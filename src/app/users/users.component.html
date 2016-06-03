@@ -19,12 +19,14 @@
 			<td>{{ user.name }}</td>
 			<td>{{ user.mail }}</td>
 			<td>
-                <a [routerLink]="['EditUser', { id: user.name }]">
+                <!--a [routerLink]="['EditUser', {name: user.name, id: user.uid }]"-->
+				<a>
                     <i class="glyphicon glyphicon-edit"></i>
                 </a>
 			</td>
 			<td>
-                <i (click)="deleteUser(user)" class="glyphicon glyphicon-remove"></i>
+                <!--i (click)="deleteUser(user)" class="glyphicon glyphicon-remove"></i-->
+				<i class="glyphicon glyphicon-remove"></i>
             </td>
 		</tr>
 	</tbody>

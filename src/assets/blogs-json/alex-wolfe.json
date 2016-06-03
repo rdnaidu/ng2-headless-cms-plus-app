@@ -3,52 +3,48 @@
     "name": "alex-wolfe",
     "username": "Alex Wolfe",
     "avatar": "https://angular.io/resources/images/bios/alex-wolfe.jpg",
-    "width": 85,
-    "height": 85,
-    "alt": "",
-    "typeof": "",
-    "mail": "dgardner1",
+    "mail": "dgardner1@xyz.com",
     "roles": "Twiyo",
     "timezone": "China",
     "publications": [
         {
-            "id": 1,
+            "nid": 1,
             "title": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."
         },
         {
-            "id": 2,
+            "nid": 2,
             "title": "Nullam sit amet turpis elementum ligula vehicula consequat."
         },
         {
-            "id": 3,
+            "nid": 3,
             "title": "In blandit ultrices enim."
         },
         {
-            "id": 4,
+            "nid": 4,
             "title": "In est risus, auctor sed, tristique in, tempus sit amet, sem."
         },
         {
-            "id": 5,
+            "nid": 5,
             "title": "Proin eu mi."
         },
         {
-            "id": 6,
+            "nid": 6,
             "title": "Duis aliquam convallis nunc."
         },
         {
-            "id": 7,
+            "nid": 7,
             "title": "Vivamus in felis eu sapien cursus vestibulum."
         },
         {
-            "id": 8,
+            "nid": 8,
             "title": "Aliquam non mauris."
         },
         {
-            "id": 9,
+            "nid": 9,
             "title": "Proin eu mi."
         },
         {
-            "id": 10,
+            "nid": 10,
             "title": "Cras pellentesque volutpat dui."
         }
     ]

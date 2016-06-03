@@ -56,11 +56,4 @@ export class NavBarComponent implements OnInit {
         jQuery('.navbar-collapse.in').collapse('hide');
     }
 
-    logout() {
-        this.auth.logout()
-            .subscribe(res => {
-                console.log(res);
-                this._router.navigate(['Home']);
-            });
-    }
 }

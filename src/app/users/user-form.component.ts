@@ -6,6 +6,7 @@ import {BasicValidators} from '../shared/basicValidators';
 import {UserService} from '../users/user.service';
 import {User, Address, UserClass } from './user';
 import { Publications } from '../blog-list/blog';
+import { SettingsService, CMSTypes } from '../shared/settings.service';
 
 @Component({
 	template: require('./user-form.component.html'),
@@ -22,7 +23,8 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 	constructor(fb: FormBuilder,
 			private _router: Router,
 			private _routeParams: RouteParams,
-			private _userService: UserService
+			private _userService: UserService,
+			private settings: SettingsService
 	) {			
 		this.form = fb.group({
 			name: ['', Validators.required],
@@ -43,11 +45,18 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 	
 	getUser() {
 		let id = this._routeParams.get('id');
+		let name = this._routeParams.get('name');
 		this.title = id ? 'Edit User' : 'New User';
+
+		let userid = name;
+		
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+			userid = id;
+		}
 
 		if (!id) return;
 		
-		this._userService.getUser(id)
+		this._userService.getUser(userid)
 			.subscribe(
 				user => {
 					this.user = user;

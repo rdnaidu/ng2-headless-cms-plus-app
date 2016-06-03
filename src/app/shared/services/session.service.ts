@@ -17,4 +17,12 @@ export class SessionService {
             return JSON.parse(sessionStorage.getItem(key));
         }
     }
+    
+    remove(key: string, isLocal = false) {
+        if (isLocal) {
+            return localStorage.removeItem(key);
+        } else {
+            return sessionStorage.removeItem(key);
+        }
+    }
 }

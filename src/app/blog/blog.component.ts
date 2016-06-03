@@ -79,13 +79,11 @@ export class BlogComponent implements OnInit {
         } else {
           this.blogPost.currentImage = '';
         }
-        //   console.log(this.blogPost);
       },
       error => {
         this.blogServiceError = true;
         this.errorMessage = 'Unable able to connect';
         this.postLoading = false;
-        // console.log(this.errorMessage);
       },
       () => {
         this.postLoading = false;

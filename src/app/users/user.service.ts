@@ -5,6 +5,7 @@ import * as Rx from 'rxjs/Rx';
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 import { User, Address, UserClass } from './user';
+import { HelperService } from '../shared/services/helper.service';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,8 @@ export class UserService {
 	constructor(
 		@Inject(APP_CONFIG) private config: Config,
 		private settings: SettingsService,
-		private _http: Http
+		private _http: Http,
+		private helper: HelperService
 	) {
 
 	}
@@ -27,9 +29,9 @@ export class UserService {
 		return this.config.apiEndPoint + '/users';
 	}
 	
-	getUsersFromDrupal(): Rx.Observable<User[]> {
-		let url = this.getLiveUrl();
-		
+	getUsersFromDrupal() {
+		let url = this.getLiveUrl() + '?t=' + (new Date()).getTime();
+		let self = this;
 		return this._http.get(url)
 			.map(res => {
 				return res.json();
@@ -38,6 +40,15 @@ export class UserService {
 				let tData = [];
 				
 				_.forEach(data, function(object) {
+					let avatar = self.helper.parseSrcFromHtml(object.avatar);
+					
+					if (avatar.length) {
+						avatar = avatar[0];
+					} else {
+						avatar = '';
+					}
+					
+					object.avatar = self.config.apiShort + avatar;
 					object.address = {
 						street: '',
 						suite: '',
@@ -53,12 +64,21 @@ export class UserService {
 	}
 	
 	getUserFromDrupal(userId): Rx.Observable<User> {
-		let url = this.getLiveUrl() + '/' + userId;
-		
+		let url = this.getLiveUrl() + '/' + userId + '?t=' + (new Date()).getTime();
+		let self = this;
 		return this._http.get(url)
 			.map(res => res.json())
 			.map(res => {
 				if (res.length) {
+					let avatar = self.helper.parseSrcFromHtml(res[0].avatar);
+					
+					if (avatar.length) {
+						avatar = avatar[0];
+					} else {
+						avatar = '';
+					}
+					
+					res[0].avatar = self.config.apiShort + avatar;
 					return res[0];
 				}
 				return new UserClass();

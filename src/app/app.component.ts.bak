@@ -30,10 +30,10 @@ declare var jQuery: any;
 @RouteConfig([
     { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: '/users', name: 'Users', component: UsersComponent },
-    { path: '/users/:name/:id', name: 'EditUser', component: UserFormComponent },
+    { path: '/users/:id', name: 'EditUser', component: UserFormComponent },
     { path: '/users/new', name: 'NewUser', component: UserFormComponent },
     { path: '/blog/:id', name: 'Blog', component: BlogComponent},
-    { path: '/blog-user/:name/:id' , name: 'BlogUser', component: BlogUserComponent},
+    { path: '/blog-user/:id' , name: 'BlogUser', component: BlogUserComponent},
     { path: '/login', name: 'Login', component: LoginComponent },
     { path: '/blog-form/', name: 'NewBlog', component: BlogFormComponent},
     { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},

@@ -3,7 +3,7 @@
         "uid": 1,
         "name": "alex-eagle",
         "avatar": "https://angular.io/resources/images/bios/alex-eagle.jpg",
-        "mail": "alex-eagle",
+        "mail": "alex-eagle@xyz.com",
         "roles": "Meetz",
         "timezone": "Czech Republic"
     },
@@ -11,7 +11,7 @@
         "uid": 2,
         "name": "alex-rickabaugh",
         "avatar": "https://angular.io/resources/images/bios/alex-rickabaugh.jpg",
-        "mail": "alex-rickabaugh",
+        "mail": "alex-rickabaugh@xyz.com",
         "roles": "Angular2 Associates",
         "timezone": "California, US"
     },
@@ -19,7 +19,7 @@
         "uid": 3,
         "name": "alex-wolfe",
         "avatar": "https://angular.io/resources/images/bios/alex-wolfe.jpg",
-        "mail": "alex-wolfe",
+        "mail": "alex-wolfe@xyz.com",
         "roles": "Twiyo",
         "timezone": "China"
     },
@@ -27,7 +27,7 @@
         "uid": 4,
         "name": "ali",
         "avatar": "https://angular.io/resources/images/bios/ali.jpg",
-        "mail": "ali",
+        "mail": "ali@xyz.com",
         "roles": "Mydo",
         "timezone": "Cambodia"
     },
@@ -35,7 +35,7 @@
         "uid": 5,
         "name": "brad-green",
         "avatar": "https://angular.io/resources/images/bios/brad-green.jpg",
-        "mail": "brad-green",
+        "mail": "brad-green@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -43,7 +43,7 @@
         "uid": 6,
         "name": "brian-ford",
         "avatar": "https://angular.io/resources/images/bios/brian-ford.jpg",
-        "mail": "brian-ford",
+        "mail": "brian-ford@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -51,7 +51,7 @@
         "uid": 7,
         "name": "david-east",
         "avatar": "https://angular.io/resources/images/bios/david-east.jpg",
-        "mail": "david-east",
+        "mail": "david-east@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -59,7 +59,7 @@
         "uid": 8,
         "name": "deborah",
         "avatar": "https://angular.io/resources/images/bios/deborah.jpg",
-        "mail": "deborah",
+        "mail": "deborah@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -67,7 +67,7 @@
         "uid": 9,
         "name": "elad-bezalel",
         "avatar": "https://angular.io/resources/images/bios/eladbezalel.jpg",
-        "mail": "elad-bezalel",
+        "mail": "elad-bezalel@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -75,7 +75,7 @@
         "uid": 10,
         "name": "filipe-silva",
         "avatar": "https://angular.io/resources/images/bios/filipe-silva.jpg",
-        "mail": "filipe-silva",
+        "mail": "filipe-silva@xyz.com",
         "roles": "Oloo",
         "timezone": "Boston, US"
     },
@@ -83,15 +83,15 @@
         "uid": 11,
         "name": "hansl",
         "avatar": "https://angular.io/resources/images/bios/hansl.jpg",
-        "mail": "hansl",
+        "mail": "hansl@xyz.com",
         "roles": "Oloo",
         "timezone": "Peru"
     },
     {
         "uid": 12,
-        "name": "igo-minar",
+        "name": "igor-minar",
         "avatar": "https://angular.io/resources/images/bios/igor-minar.jpg",
-        "mail": "igo-minar",
+        "mail": "igor-minar@xyz.com",
         "roles": "Oloo",
         "timezone": "Brazil"
     },
@@ -99,7 +99,7 @@
         "uid": 13,
         "name": "john-bedard",
         "avatar": "https://angular.io/resources/images/bios/jbedard.jpg",
-        "mail": "john-bedard",
+        "mail": "john-bedard@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
     },
@@ -107,7 +107,7 @@
         "uid": 14,
         "name": "jeff-cross",
         "avatar": "https://angular.io/resources/images/bios/jeff-cross.jpg",
-        "mail": "jeff-cross",
+        "mail": "jeff-cross@xyz.com",
         "roles": "Oloo",
         "timezone": "California , US"
     },
@@ -115,7 +115,7 @@
         "uid": 15,
         "name": "jeff-whelpley",
         "avatar": "https://angular.io/resources/images/bios/jeffwhelpley.jpg",
-        "mail": "jeff-whelpley",
+        "mail": "jeff-whelpley@xyz.com",
         "roles": "Oloo",
         "timezone": "Dallas, TX"
     },
@@ -123,7 +123,7 @@
         "uid": 16,
         "name": "jel-bourn",
         "avatar": "https://angular.io/resources/images/bios/jelbourn.jpg",
-        "mail": "jel-bourn",
+        "mail": "jel-bourn@xyz.com",
         "roles": "Oloo",
         "timezone": "England"
     },
@@ -131,7 +131,7 @@
         "uid": 17,
         "name": "jesus-rodriguez",
         "avatar": "https://angular.io/resources/images/bios/jesus-rodriguez.jpg",
-        "mail": "jesus-rodriguez",
+        "mail": "jesus-rodriguez@xyz.com",
         "roles": "Oloo",
         "timezone": "Peru"
     },
@@ -139,7 +139,7 @@
         "uid": 18,
         "name": "john-papa",
         "avatar": "https://angular.io/resources/images/bios/john-papa.jpg",
-        "mail": "john-papa",
+        "mail": "john-papa@xyz.com",
         "roles": "Oloo",
         "timezone": "USA"
     },
@@ -147,7 +147,7 @@
         "uid": 19,
         "name": "jule-skremer",
         "avatar": "https://angular.io/resources/images/bios/juleskremer.jpg",
-        "mail": "jule-skremer",
+        "mail": "jule-skremer@xyz.com",
         "roles": "Oloo",
         "timezone": "India"
     },
@@ -155,7 +155,7 @@
         "uid": 20,
         "name": "julie-ralph",
         "avatar": "https://angular.io/resources/images/bios/julie-ralph.jpg",
-        "mail": "julie-ralph",
+        "mail": "julie-ralph@xyz.com",
         "roles": "Oloo",
         "timezone": "USA"
     }

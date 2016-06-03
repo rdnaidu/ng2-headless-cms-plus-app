@@ -4,7 +4,7 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 import {FormBuilder, ControlGroup, Validators} from '@angular/common';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-
+import { SpinnerComponent } from '../shared/spinner.component';
 import { OmdbService } from './omdb.service';
 import { OmdbSearchParams, OmdbBySearch, BySearchResult } from './omdb';
 
@@ -14,7 +14,8 @@ import { OmdbSearchParams, OmdbBySearch, BySearchResult } from './omdb';
     directives: [   ROUTER_DIRECTIVES, 
                     MD_LIST_DIRECTIVES,
                     MdButton,
-                    PAGINATION_DIRECTIVES],
+                    PAGINATION_DIRECTIVES,
+                    SpinnerComponent],
     providers: [OmdbService]
 })
 export class OmdbComponent implements OnInit {
@@ -27,7 +28,7 @@ export class OmdbComponent implements OnInit {
     public maxSize: number = 10;
     public itemsPerPage: number = 10;
     // omdbResults: BySearchResult[];
-
+    isLoading = false;
 
     constructor(private _service: OmdbService,
         fb: FormBuilder,
@@ -43,6 +44,7 @@ export class OmdbComponent implements OnInit {
     search() {
         //console.log(this.params);
         this.searchResult = false;
+        
         if (this.params.s.length == 0)
             return;
         this.loadSearch()
@@ -58,20 +60,22 @@ export class OmdbComponent implements OnInit {
     }   
     
     private loadSearch() {
+        this.isLoading=true;
         this._service.getDetails(this.params)
             .subscribe(
             result => {
             this.result = result;
-             //   console.log(this.result.Search)
+                console.log(this.result.Search)
                 this.searchResult = true;
+                this.isLoading = false;
             },
             error => {
                 //	this.errorMessage = 'Unable able to connect';
-                //	this.isLoading = false;
-                this.searchResult = true;
+                this.isLoading = false;
+                this.searchResult = false;
             },
             () => {
-                //	this.isLoading = false;
+                this.isLoading = false;
             });
     }
  

@@ -37,6 +37,9 @@ import { TRANSLATE_PROVIDERS,
         
 import { APP_CONFIG, CONFIG, Config } from './app/app.config';
 import { SessionService } from './app/shared/services/session.service';
+import { HelperService } from './app/shared/services/helper.service';
+import { BasicAuth } from './app/auth/auth-user';
+import { UserService } from './app/users/user.service';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -45,10 +48,13 @@ import { SessionService } from './app/shared/services/session.service';
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
+    BasicAuth,
+    UserService,
     AuthService,
     SearchService,
     SessionService,
     SettingsService,
+    HelperService,
     ...PROVIDERS,
     ...ENV_PROVIDERS,
     ...DIRECTIVES,

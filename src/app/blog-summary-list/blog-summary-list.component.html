@@ -3,7 +3,7 @@
         <h3 md-subheader><b>Trending Blogs</b> <i class="fa fa-line-chart" aria-hidden="true"></i></h3>
         <md-card>
             <md-list-item *ngFor="let blog of blogs" md-expando>
-                <a md-list-avatar [routerLink]="['BlogUser', { id: blog.authorname }]">
+                <a md-list-avatar [routerLink]="['BlogUser', { name: blog.authorname, id: blog.authorid }]">
                     <img md-list-avatar [src]="blog.authoravatar" alt="...">
                 </a>
                 <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
@@ -15,7 +15,7 @@
         <h3 md-subheader><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></h3>
         <md-card>
         <md-list-item *ngFor="let blog of olderBlogs" md-expando>
-            <a md-list-avatar [routerLink]="['BlogUser', { id: blog.authorname }]">
+            <a md-list-avatar [routerLink]="['BlogUser', { name: blog.authorname, id: blog.authorid }]">
                 <img md-list-avatar [src]="blog.authoravatar" alt="...">
             </a>
             <a md-line [routerLink]="['Blog', { id: blog.id }]"> {{blog.title}} </a>
