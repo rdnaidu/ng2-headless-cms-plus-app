@@ -48,8 +48,8 @@ declare var jQuery: any;
      encapsulation: ViewEncapsulation.None,
     styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),
-              require('assets/bootstrap-material-design/css/bootstrap-material-design.min.css'),
-              require('assets/bootstrap-material-design/css/ripples.min.css')
+              require('bootstrap-material-design/dist/css/bootstrap-material-design.min.css'),
+              require('bootstrap-material-design/dist/css/ripples.min.css')
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive]
 })
