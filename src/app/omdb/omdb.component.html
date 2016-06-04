@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row well">
 
         <h3><img class="pull-right" src="assets/img/omdb.png" height="60"><b>{{ title }}</b> </h3>
@@ -28,12 +28,14 @@
 
                 </fieldset>
                 <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
-                <button id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>
+                <button id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>&nbsp;&nbsp;
+                <spinner [visible]="isLoading"></spinner>
             </form>
         </div>
         <div *ngIf="searchResult">
-            <div class="row">
-                <spinner [visible]="isLoading"></spinner>
+            <div class="col">
+                
+                
             <pagination *ngIf="result != undefined"
                     class="pagination-md"
                     [totalItems]="result.totalResults" 
@@ -48,11 +50,11 @@
             <div class="col-md-3" *ngFor="let movie of result.Search">
                 <md-card>
                     <img md-card-image src={{movie.Poster}} class="md-card-image">
-                    <md-card-title>{{movie.Title}}</md-card-title>
+                    <md-card-title class="md-subhead"><b>{{movie.Title}}</b></md-card-title>
                     <md-card-content>
 
-                        <p><span class="fa fa-clock-o" aria-hidden="true"> {{movie.Year}} </span> </p>
-                        <p><span class="fa fa-film" aria-hidden="true"> {{movie.Type}} </span> </p>
+                        <p><span class="fa fa-clock-o md-body-1" aria-hidden="true"> {{movie.Year}} </span> </p>
+                        <p><span class="fa fa-film md-body-1" aria-hidden="true"> {{movie.Type}} </span> </p>
 
                     </md-card-content>
                 </md-card>

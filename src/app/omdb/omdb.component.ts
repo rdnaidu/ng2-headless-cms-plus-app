@@ -47,7 +47,7 @@ export class OmdbComponent implements OnInit {
         
         if (this.params.s.length == 0)
             return;
-        this.loadSearch()
+        this.loadSearch(false);
     }
     ngOnInit() {
 
@@ -56,16 +56,21 @@ export class OmdbComponent implements OnInit {
     public pageChanged(event: any): void {
      //   alert(event.page);
         this.params.page = event.page;
-        this.loadSearch();
+        this.loadSearch(true);
     }   
     
-    private loadSearch() {
+    private loadSearch(pageChanged: boolean) {
         this.isLoading=true;
+        if (!pageChanged)
+             this.currentPage = 1;
         this._service.getDetails(this.params)
             .subscribe(
             result => {
-            this.result = result;
-                console.log(this.result.Search)
+                this.result = result;
+               // console.log(this.result.Search)
+               if (this.result.Search == undefined) 
+                this.searchResult=false
+               else
                 this.searchResult = true;
                 this.isLoading = false;
             },
