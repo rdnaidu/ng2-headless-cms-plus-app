@@ -6,7 +6,7 @@ import {FormBuilder, ControlGroup, Validators} from '@angular/common';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import { SpinnerComponent } from '../shared/spinner.component';
 import { OmdbService } from './omdb.service';
-import { OmdbSearchParams, OmdbBySearch, BySearchResult } from './omdb';
+import { OmdbSearchParams, OmdbBySearch, BySearchResult, OmdbIDSearchParams, ByIdSearchResult } from './omdb';
 
 @Component({
     selector: 'omdb-component',
@@ -22,14 +22,17 @@ export class OmdbComponent implements OnInit {
     title = 'Search';
     form: ControlGroup;
     params = new OmdbSearchParams();
+    searchParams = new OmdbIDSearchParams();
     result: OmdbBySearch;
+    detailResult: ByIdSearchResult;
     searchResult: boolean;
     public currentPage: number = 1;
     public maxSize: number = 10;
     public itemsPerPage: number = 10;
     // omdbResults: BySearchResult[];
     isLoading = false;
-
+    showDetail = false;
+    
     constructor(private _service: OmdbService,
         fb: FormBuilder,
         private router: Router
@@ -44,17 +47,51 @@ export class OmdbComponent implements OnInit {
     search() {
         //console.log(this.params);
         this.searchResult = false;
-        
+        this.showDetail = false;
         if (this.params.s.length == 0)
             return;
         this.loadSearch(false);
     }
+    
+    hideDetail() {
+        this.showDetail = false;
+        //this.currentPage = 1;
+        this.loadSearch(true);
+    }
+    
+    showDetails(imdbID: string) {
+        //alert(imdbID);
+        this.searchParams.i = imdbID;
+        this.searchParams.plot='full';
+        this.searchParams.tomatoes=true;
+        this.loadDetails();
+    }
+    
+     private loadDetails() {
+        this.isLoading=true;
+        this._service.getDetailsById(this.searchParams)
+            .subscribe(
+            result => {
+                this.detailResult = result;
+                this.isLoading = false;
+                this.showDetail = true;
+            },
+            error => {
+                //	this.errorMessage = 'Unable able to connect';
+                this.isLoading = false;
+            },
+            () => {
+                this.isLoading = false;
+            });
+    }
+    
     ngOnInit() {
 
     }
     
     public pageChanged(event: any): void {
      //   alert(event.page);
+        this.showDetail = false;
         this.params.page = event.page;
         this.loadSearch(true);
     }   

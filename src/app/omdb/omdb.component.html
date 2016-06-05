@@ -7,7 +7,7 @@
         <div class="col well inputs">
             <form class="form-search" id="search-by-title-form" [ngFormModel]="form" (ngSubmit)="search()">
                 <fieldset>
-                    <legend>By Search</legend>
+                   <!-- <legend>By Search</legend> -->
 
                     <div class="form-group label-floating">
                         <label class="control-label" for="s">Title</label>
@@ -16,23 +16,13 @@
                             Title is required.
                         </div>
                     </div>
-                    <!--                    <div class="form-group label-floating">
-                        <label class="control-label" for="plot">Plot</label>
-                        <select name="plot" class="form-control input-medium" (change)="onSelect($event.target.value)" [(ngModel)]="params.plot"
-                            id="plot" #mode="ngForm" ngControl="plot">
-                        <option value="short" selected="selected">Short</option>
-                        <option value="full">Full</option>
-                    </select>
-                    </div>
--->
-
                 </fieldset>
                 <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
                 <button id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>&nbsp;&nbsp;
                 <spinner [visible]="isLoading"></spinner>
             </form>
         </div>
-        <div *ngIf="searchResult">
+        <div *ngIf="searchResult && !showDetail">
             <div class="col">
                 
                 
@@ -49,10 +39,12 @@
             </div>
             <div class="col-md-3" *ngFor="let movie of result.Search">
                 <md-card>
-                    <img md-card-image src={{movie.Poster}} class="md-card-image">
-                    <md-card-title class="md-subhead"><b>{{movie.Title}}</b></md-card-title>
+                    <a class="clickable" (click) = "showDetails(movie.imdbID)">
+                        <img md-card-image src={{movie.Poster}} class="md-card-image" >
+                        </a>
+<!--                    <md-card-title class="md-subhead"><b>{{movie.Title}}</b></md-card-title> -->
                     <md-card-content>
-
+                        <p> <b>{{movie.Title}}</b> </p>
                         <p><span class="fa fa-clock-o md-body-1" aria-hidden="true"> {{movie.Year}} </span> </p>
                         <p><span class="fa fa-film md-body-1" aria-hidden="true"> {{movie.Type}} </span> </p>
 
@@ -60,5 +52,14 @@
                 </md-card>
             </div>
         </div>
-    </div>
+        <div *ngIf="showDetail" class="col well">
+                    <ul class="pager">
+            <li class="previous">
+                <a (click) = "hideDetail()">
+                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
+                    </li>
+        </ul>
+            <p>{{detailResult.Plot}}</p>
+            </div>
+    </div> <!-- row -->
 </div>
