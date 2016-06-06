@@ -6,6 +6,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/rout
 import {BlogUser} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 import { UserService } from '../users/user.service';
+import { AuthService } from '../auth/auth.service';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 import { User } from '../users/user';
 
@@ -14,7 +15,7 @@ import * as _ from 'lodash';
 
 @Component({
     selector: 'blog-user',
-    providers: [BlogService, UserService],
+    providers: [BlogService, UserService, AuthService],
     template: require('./blog-user.component.html'),
     styles: [require('./blog-user.component.scss')],
     directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
@@ -25,15 +26,20 @@ export class BlogUserComponent implements OnInit {
     error: boolean;
     isLoading: boolean;
 
-    constructor(private _router: Router,
+    constructor(
+        public auth: AuthService,
+        public settings: SettingsService,
+        private _router: Router,
         private _routeParams: RouteParams,
         private _service: BlogService,
-        private _userService: UserService,
-        private settings: SettingsService
+        private _userService: UserService
     ) {
+        
     }
 
-
+    public deletePost(postId: number) {
+        alert("Delete "+ postId);
+    }
     ngOnInit() {
 
         let id = this._routeParams.get('id');
