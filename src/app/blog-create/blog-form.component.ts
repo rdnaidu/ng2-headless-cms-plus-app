@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, ControlGroup, Validators} from '@angular/common';
 import {CanDeactivate, Router, RouteParams} from '@angular/router-deprecated';
 
+import {BlogService} from '../blog-list/blog.service';
 //import {BasicValidators} from '../shared/basicValidators';
 // import {UserService} from '../users/user.service';
 // import {User} from './user';
-import {BlogPost} from '../blog-list/blog';
+import {BlogPostForm} from '../blog-list/blog';
 
 @Component({
-	template: require('./blog-form.component.html')
+	template: require('./blog-form.component.html'),
+	providers: [ BlogService]
 
 })
 export class BlogFormComponent implements OnInit, CanDeactivate {
@@ -16,16 +18,16 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 	form: ControlGroup;
 	public heading: string = '';
 //	user = new User();
-	blog: BlogPost;
+	blog = new BlogPostForm();
 
 	constructor(fb: FormBuilder,
 			private _router: Router,
-			private _routeParams: RouteParams
+			private _routeParams: RouteParams,
+			private _blogService: BlogService
 			) {
 
 		this.form = fb.group({
 			title: ['', Validators.required],
-			abstract: ['', Validators.required],
 			body: ['', Validators.required]
 		});
 	}
@@ -40,18 +42,6 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 			return;
 		}
 				
-		// console.log("Herer");
-	/*	this._userService.getUser(id)
-				.subscribe(
-					user =>
-						this.user = user,
-					response => {
-						if (response.status === 404) {
-							this._router.navigate(['NotFound']);
-						}
-					}
-
-				);*/
 	}
 
 	routerCanDeactivate() {
@@ -63,7 +53,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 	save() {
 
 		let result;
-
+		this._blogService.postBlog(this.blog);
 /*		if (this.user.id) {
 			result = this._userService.updateUser(this.user);
 		} else {

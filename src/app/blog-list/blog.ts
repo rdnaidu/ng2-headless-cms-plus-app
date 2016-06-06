@@ -1,3 +1,8 @@
+export class BlogPostForm {
+     title: string;
+     body: string;
+}
+
 export interface BlogPost {
     id: string;
     authorid: string;

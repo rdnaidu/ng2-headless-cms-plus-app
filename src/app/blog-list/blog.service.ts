@@ -2,13 +2,14 @@ import {Injectable, Inject} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
 import * as Rx from 'rxjs/Rx';
-import { BlogPost } from '../blog-list/blog';
+import { BlogPost, BlogPostForm} from '../blog-list/blog';
 import { BlogPostLive } from '../blog-list/blog';
 import * as _ from 'lodash';
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 import { HelperService } from '../shared/services/helper.service';
 import { SessionService } from '../shared/services/session.service';
+import { AuthUser, AuthUserClass, BasicAuth } from '../auth/auth-user';
 
 @Injectable()
 export class BlogService {
@@ -28,7 +29,52 @@ export class BlogService {
         this.http
     }*/
     
-    
+    public postBlog(blogForm: BlogPostForm) {
+        if (this.settings.getCmsType() == CMSTypes.Stub)
+            return;
+            
+        let url = 'http://10.146.201.72/Xperience/entity/node';
+        let user: AuthUser = new AuthUserClass();
+        user = this.session.get('authuser');
+        let CSRFToken = this.session.get("X-CSRF-Token");
+        let AuthString = 'Basic ' + user.token;
+        let headers = new Headers({
+            'Content-Type': 'application/hal+json',
+            'Authorization': AuthString,
+            'X-CSRF-Token': CSRFToken
+        });
+
+        let data =
+            {
+                "_links": {
+                    "type": {
+                        "href": "http://10.146.201.72/Xperience/rest/type/node/blog"
+                    }
+                },
+                "title": [
+                    {
+                        "value": blogForm.title
+                    }
+                ],
+                "body": [
+                    {
+                        "value": blogForm.body
+                    }
+                ]
+            };
+        let body = JSON.stringify(data);
+        let options = new RequestOptions({ headers: headers });
+     //   console.log(options.headers);
+     //   console.log (body);
+        this._http.post(url, body, options)
+            .map(res => res.json())
+            .subscribe(
+                result => { console.log(result); },
+                error => {
+                    console.log(error);
+                }
+            )
+    }
     
     createBlog() {
         let url = this.config.apiEndPoint + '/entity/node?_format=hal+json';
@@ -61,7 +107,7 @@ export class BlogService {
         let options = new RequestOptions({ headers: headers });
         return this._http.post(url, body, options)
             .map(res => {
-                console.log(res);
+         //       console.log(res);
                 return res.json();
             });
     }
@@ -174,7 +220,7 @@ export class BlogService {
                     value.authoravatar = img;
                     tData.push(value);
                 });
-                console.log('tdata', tData);
+       //         console.log('tdata', tData);
                 return tData;
             });
     }
@@ -254,7 +300,7 @@ export class BlogService {
         let url = this._url;
 
         url += '/' + id + '.json';
-        console.log(url);
+    //    console.log(url);
         return this._http.get(url)
             .map(res => res.json());
     }
