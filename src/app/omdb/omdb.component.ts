@@ -4,9 +4,14 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 import {FormBuilder, ControlGroup, Validators} from '@angular/common';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {
+  Ng2BootstrapConfig, Ng2BootstrapTheme, PROGRESSBAR_DIRECTIVES,RatingComponent
+} from 'ng2-bootstrap/ng2-bootstrap';
 import { SpinnerComponent } from '../shared/spinner.component';
 import { OmdbService } from './omdb.service';
 import { OmdbSearchParams, OmdbBySearch, BySearchResult, OmdbIDSearchParams, ByIdSearchResult } from './omdb';
+import { RottenTomatoImagePipe } from './rt-image.pipe';
+import {MdProgressBar} from '@angular2-material/progress-bar/progress-bar';
 
 @Component({
     selector: 'omdb-component',
@@ -15,8 +20,11 @@ import { OmdbSearchParams, OmdbBySearch, BySearchResult, OmdbIDSearchParams, ByI
                     MD_LIST_DIRECTIVES,
                     MdButton,
                     PAGINATION_DIRECTIVES,
-                    SpinnerComponent],
-    providers: [OmdbService]
+                    SpinnerComponent,
+                    PROGRESSBAR_DIRECTIVES,
+                    RatingComponent],
+    providers: [OmdbService],
+    pipes: [ RottenTomatoImagePipe ]
 })
 export class OmdbComponent implements OnInit {
     title = 'Search';

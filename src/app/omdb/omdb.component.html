@@ -7,7 +7,7 @@
         <div class="col well inputs">
             <form class="form-search" id="search-by-title-form" [ngFormModel]="form" (ngSubmit)="search()">
                 <fieldset>
-                   <!-- <legend>By Search</legend> -->
+                    <!-- <legend>By Search</legend> -->
 
                     <div class="form-group label-floating">
                         <label class="control-label" for="s">Title</label>
@@ -24,25 +24,17 @@
         </div>
         <div *ngIf="searchResult && !showDetail">
             <div class="col">
-                
-                
-            <pagination *ngIf="result != undefined"
-                    class="pagination-md"
-                    [totalItems]="result.totalResults" 
-                    [(ngModel)]="currentPage" 
-                    [maxSize]="maxSize" 
-                    [boundaryLinks]="true"
-                    [rotate]="false" 
-                    [itemsPerPage]="itemsPerPage" 
-                    (pageChanged)="pageChanged($event)">
-            </pagination>
+                <pagination *ngIf="result != undefined" class="pagination-md" [totalItems]="result.totalResults" [(ngModel)]="currentPage"
+                    [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)">
+                </pagination>
+
             </div>
             <div class="col-md-3" *ngFor="let movie of result.Search">
                 <md-card>
-                    <a class="clickable" (click) = "showDetails(movie.imdbID)">
-                        <img md-card-image src={{movie.Poster}} class="md-card-image" >
-                        </a>
-<!--                    <md-card-title class="md-subhead"><b>{{movie.Title}}</b></md-card-title> -->
+                    <a class="clickable" (click)="showDetails(movie.imdbID)">
+                        <img md-card-image src={{movie.Poster}} class="md-card-image">
+                    </a>
+                    <!--                    <md-card-title class="md-subhead"><b>{{movie.Title}}</b></md-card-title> -->
                     <md-card-content>
                         <p> <b>{{movie.Title}}</b> </p>
                         <p><span class="fa fa-clock-o md-body-1" aria-hidden="true"> {{movie.Year}} </span> </p>
@@ -52,14 +44,154 @@
                 </md-card>
             </div>
         </div>
-        <div *ngIf="showDetail" class="col well">
-                    <ul class="pager">
-            <li class="previous">
-                <a (click) = "hideDetail()">
-                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
-                    </li>
-        </ul>
-            <p>{{detailResult.Plot}}</p>
+        <div *ngIf="showDetail" class="col">
+            <ul class="pager">
+                <li class="previous">
+                    <a (click)="hideDetail()">
+                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
+                </li>
+            </ul>
+            <div class="col-md-3">
+                <md-card>
+                    <img md-card-image src={{detailResult.Poster}} class="md-card-image">
+                    <!--       <md-card-content>
+                        <p> <b>{{detailResult.Title}}</b> </p>
+                    </md-card-content> -->
+                </md-card>
             </div>
-    </div> <!-- row -->
+            <div class="col-md-9 well">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">{{detailResult.Title}}</div>
+                    <div class="panel-body">
+                        <p>{{detailResult.Plot}}</p>
+                    </div>
+                    <!-- Table -->
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Type</td>
+                                <td>{{detailResult.Type}}</td>
+                            </tr>
+                            <tr>
+                                <td>Year</td>
+                                <td>{{detailResult.Year}}</td>
+                            </tr>
+                            <tr>
+                                <td>Rated</td>
+                                <td>{{detailResult.Rated}}</td>
+                            </tr>
+                            <tr>
+                                <td>Released</td>
+                                <td>{{detailResult.Released}}</td>
+                            </tr>
+                            <tr>
+                                <td>Production</td>
+                                <td>{{detailResult.Production}}</td>
+                            </tr>
+                            <tr>
+                                <td>Genre</td>
+                                <td>{{detailResult.Genre}}</td>
+                            </tr>
+                            <tr>
+                                <td>Writer</td>
+                                <td>{{detailResult.Writer}}</td>
+                            </tr>
+                            <tr>
+                                <td>Actors</td>
+                                <td>{{detailResult.Actors}}</td>
+                            </tr>
+                            <tr>
+                                <td>Language</td>
+                                <td>{{detailResult.Language}}</td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td>{{detailResult.Country}}</td>
+                            </tr>
+                            <tr>
+                                <td>Awards</td>
+                                <td>{{detailResult.Awards}}</td>
+                            </tr>
+                            <tr>
+                                <td>IMdb Rating</td>
+                                <td>{{detailResult.imdbRating}}
+                                     <rating [(ngModel)]="detailResult.imdbRating" [max]="10" [readonly]="true" 
+                               ></rating>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>IMdb Votes</td>
+                                <td>{{detailResult.imdbVotes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><img src="assets/img/rottentomatoes_logo_40.png"></div>
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Tomato Meter</td>
+                            <td><b>{{detailResult.tomatoMeter}}%</b>
+
+                                <progressbar class="progress-striped" value="{{detailResult.tomatoMeter}}" max="100" type="warning"></progressbar>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Image</td>
+                            <td><img src="{{detailResult.tomatoImage | rtimage }}"></td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Rating</td>
+                            <td>{{detailResult.tomatoRating}}
+                                <rating [(ngModel)]="detailResult.tomatoRating" [max]="10" [readonly]="true" 
+                               ></rating>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Reviews</td>
+                            <td>{{detailResult.tomatoReviews}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Fresh</td>
+                            <td>{{detailResult.tomatoFresh}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Rotten</td>
+                            <td>{{detailResult.tomatoRotten}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tomato Consensus</td>
+                            <td>{{detailResult.tomatoConsensus}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tomato User Meter</td>
+                            <td><b>{{detailResult.tomatoUserMeter}}%</b>
+
+                                <progressbar value="{{detailResult.tomatoUserMeter}}" max="100"></progressbar>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tomato User Rating</td>
+                            <td>{{detailResult.tomatoUserRating}}</td>
+
+                        </tr>
+                        <tr>
+                            <td>Tomato User Reviews</td>
+                            <td>{{detailResult.tomatoUserReviews}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- row -->
 </div>
