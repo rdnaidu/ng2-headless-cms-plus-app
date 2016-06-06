@@ -84,7 +84,7 @@ export class AuthService implements OnInit {
 
             let options = new RequestOptions({ headers: headers });
             let logSuccess = false;
-           // let encodedString = this.encode(username, password);
+           /* This works but not really required as the encoding and username/password check is already done.
             this.http.post(url, body, options)
                 .map(response => response.headers)
                 .subscribe(
@@ -103,7 +103,7 @@ export class AuthService implements OnInit {
                     }
                 }
                 );
-
+        */
 
             userStream = this.userService.getUser(user.uid);
 
