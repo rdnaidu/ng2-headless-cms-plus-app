@@ -7,27 +7,27 @@
     "location": "Dallas, TX",
     "publications": [
         {
-            "id": 1,
+            "nid": 1,
             "title": "Nullam molestie nibh in lectus."
         },
         {
-            "id": 2,
+            "nid": 2,
             "title": "Phasellus sit amet erat."
         },
         {
-            "id": 3,
+            "nid": 3,
             "title": "Morbi quis tortor id nulla ultrices aliquet."
         },
         {
-            "id": 4,
+            "nid": 4,
             "title": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
         },
         {
-            "id": 5,
+            "nid": 5,
             "title": "Etiam pretium iaculis justo."
         },
         {
-            "id": 6,
+            "nid": 6,
             "title": "Duis bibendum."
         },
         {
