@@ -2,7 +2,8 @@
     <div [innerHTML]="post"></div>
     
 </article> -->
-<article>
+ <spinner [visible]="postsLoading"></spinner>
+<article *ngIf="!postsLoading">
     <pagination 
         class="pagination-md"
         [totalItems]="totalItems" 
@@ -37,5 +38,5 @@
     [boundaryLinks]="true"
     [rotate]="false" 
     [itemsPerPage]="itemsPerPage" 
-    (pageChanged)="pageChanged($event)">
+    (pageChanged)="pageChanged($event)"  *ngIf="!postsLoading">
 </pagination>

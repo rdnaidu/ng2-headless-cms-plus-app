@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col">
+    <spinner [visible]="postLoading"></spinner>
+    <div class="col" *ngIf="!postLoading">
         <blog-content 
             [blogPost]="blogPost" 
             [showAbstract]="false" 

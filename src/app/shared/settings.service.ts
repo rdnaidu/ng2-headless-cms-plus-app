@@ -24,7 +24,7 @@ export class SettingsService {
         port: 8080
     };
 
-    constructor(private session: SessionService) {
+    constructor(public session: SessionService) {
         if (this.session.get(this.name)) {
             this.cmsSettings = this.session.get(this.name);
         } else {

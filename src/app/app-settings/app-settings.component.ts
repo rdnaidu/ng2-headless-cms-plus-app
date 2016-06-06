@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Inject } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 import { FormBuilder, ControlGroup, Validators } from '@angular/common';
-
+import { SessionService } from '../shared/services/session.service';
 import { DropdownComponent } from '../shared/drop-down.component';
 import { DropdownValue } from '../shared/drop-downValue';
 import { SettingsService, CMSTypes, CMSSettings } from '../shared/settings.service';
 import { AuthService } from '../auth/auth.service';
+import { APP_CONFIG,Config } from '../app.config';
 
 @Component({
   selector: 'app-settings',
@@ -24,9 +25,11 @@ export class AppSettingsComponent implements OnInit {
 
      constructor(
          public settingsService: SettingsService,
+         public sessionService: SessionService,
          fb: FormBuilder, 
          private router: Router,
-         private authService: AuthService
+         private authService: AuthService,       
+         @Inject(APP_CONFIG) private config: Config
      ) {
          this.prevType = this.settingsService.getCmsType();
          this.currType = this.settingsService.getCmsType();
@@ -63,7 +66,9 @@ export class AppSettingsComponent implements OnInit {
      }
 
      save() {
-         console.log('save settings');
+       //console.log(this.config.apiEndPoint);
+       this.authService.setCSRFToken();
+     //  console.log("CSRF Token:"+ this.sessionService.get("X-CSRF-Token"));
        this.settingsService.save(this.cmsSettings);
        if (this.prevType != this.currType) {
            this.authService

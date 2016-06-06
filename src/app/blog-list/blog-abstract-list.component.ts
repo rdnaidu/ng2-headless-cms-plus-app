@@ -3,7 +3,7 @@ import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
-
+import { SpinnerComponent } from '../shared/spinner.component';
 import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {LikeComponent} from '../shared/like.component';
 import {BlogContentComponent} from '../blog-content/blog-content.component';
@@ -30,7 +30,8 @@ const postValue = '<p>So the stars of <del>The Avengers 2.5</del> Captain Americ
     MD_CARD_DIRECTIVES,
     PAGINATION_DIRECTIVES,
     LikeComponent,
-    BlogContentComponent
+    BlogContentComponent,
+    SpinnerComponent
   ]
 })
 export class BlogAbstractListComponent implements OnInit, OnChanges {

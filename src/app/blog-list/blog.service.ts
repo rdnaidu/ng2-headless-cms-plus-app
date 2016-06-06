@@ -15,11 +15,11 @@ export class BlogService {
     private _url = '/assets/blogs-json';
 
     constructor(
+        public session: SessionService,
         @Inject(APP_CONFIG) private config: Config,
         private _http: Http,
         private settings: SettingsService,
-        private helper: HelperService,
-        private session: SessionService) {
+        private helper: HelperService) {
     }
     
    /* getXCSRFToken() {

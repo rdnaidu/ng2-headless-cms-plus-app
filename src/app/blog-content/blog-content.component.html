@@ -13,8 +13,8 @@
             </div>
         </div>
         <md-divider></md-divider><br/>
-        <p *ngIf="!showAbstract">{{blogPost.description}}</p>
-        <p *ngIf="showAbstract">{{blogPost.abstract}}</p>
+        <div *ngIf="!showAbstract" [innerHTML]=blogPost.description></div>
+        <div *ngIf="showAbstract" [innerHTML]=blogPost.abstract></div>
 
     </md-card-content>
     <md-card-actions align="start">
