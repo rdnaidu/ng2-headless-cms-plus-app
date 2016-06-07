@@ -1,5 +1,6 @@
 <md-card>
-    <img md-card-image src={{blogPost.currentImage}} class="md-card-image">
+    <img md-card-image *ngIf="blogPost.currentImage != undefined && blogPost.currentImage != ''" src={{blogPost.currentImage}} class="md-card-image">
+    <img md-card-image *ngIf="blogPost.currentImage == undefined || blogPost.currentImage == ''" src="http://placehold.it/550x250" class="md-card-image">
     <md-card-title>{{blogPost.title}}</md-card-title>
     <md-card-content>
         <div class="row">

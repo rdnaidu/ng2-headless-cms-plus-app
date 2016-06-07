@@ -3,6 +3,7 @@ import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
+import { SpinnerComponent } from '../shared/spinner.component';
 import {BlogUser} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 import { UserService } from '../users/user.service';
@@ -14,7 +15,7 @@ import * as _ from 'lodash';
 	providers: [BlogService, UserService],
     template: require('./blog-user-list.component.html'),
 	styles: [require('./blog-user-list.component.scss')],
-    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
+    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton, SpinnerComponent]
 })
 export class BlogUserListComponent implements OnInit {
     users: any[];
@@ -31,6 +32,11 @@ export class BlogUserListComponent implements OnInit {
 
 
     ngOnInit() {
+		this.loadUsers();
+	}
+
+	private loadUsers() {
+		this.isLoading = true;
 		this._userService.getUsers()
 			.subscribe(
 			users => {
@@ -45,5 +51,4 @@ export class BlogUserListComponent implements OnInit {
 				this.isLoading = false;
 			});
 	}
-
 }

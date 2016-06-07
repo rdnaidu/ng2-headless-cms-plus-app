@@ -1,4 +1,5 @@
-<div *ngIf="!error">
+<spinner [visible]="isLoading"></spinner>
+<div *ngIf="!error && !isLoading">
     <div class="container-fluid span3 blog-user">
         <div class="col-sm-3">
             <md-card>
@@ -61,7 +62,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="error">
+<div *ngIf="error && !isLoading">
     <div class="alert alert-info">
         <strong>Error in getting user details!</strong> {{errorDetails}} </div>
 </div>

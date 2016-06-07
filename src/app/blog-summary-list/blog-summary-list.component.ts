@@ -3,6 +3,7 @@ import {MdButton} from '@angular2-material/button';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
 
+import { SpinnerComponent } from '../shared/spinner.component';
 import {BlogSummary} from '../blog-list/blog';
 import {BlogService} from '../blog-list/blog.service';
 
@@ -12,7 +13,7 @@ import * as _ from 'lodash';
     selector: 'blog-summary-list',
 	providers: [BlogService],
     template: require('./blog-summary-list.component.html'),
-    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton]
+    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton,SpinnerComponent]
 })
 export class BlogSummaryListComponent implements OnInit {
     blogs: any[];
@@ -31,10 +32,12 @@ export class BlogSummaryListComponent implements OnInit {
 	}
 	
 	getTOBlogs() {
+		this.isLoading = true;
 		this._service.getTOBlogs()
 			.subscribe(
 			blogs => {
-				console.log('blogs', blogs);
+				//console.log('blogs', blogs);
+				this.isLoading = false;
 				this.blogs = blogs[0];
 				this.olderBlogs = blogs[1];
 				_.map(this.blogs, function addDate(data: BlogSummary) {
