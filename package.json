@@ -82,7 +82,7 @@
     "@angular2-material/tabs": "2.0.0-alpha.5",
     "@angular2-material/toolbar": "2.0.0-alpha.5",
     "angular2-google-maps": "^0.9.0",
-    "angular2-notifications": "^0.1.56",
+    "angular2-notifications": "^0.1.57",
     "bootstrap-loader": "^1.0.10",
     "bootstrap-material-design": "^0.5.9",
     "bootstrap-sass": "^3.3.6",
