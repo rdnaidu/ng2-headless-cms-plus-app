@@ -68,6 +68,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   loadPosts() {
     let self = this;
     this.postsLoading = true;
+    this.currentPage = 1;
     this._service.getBlogs()
       .map(data => {
         let tData = _.filter(data, function(o: BlogPost) {

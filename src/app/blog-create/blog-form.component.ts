@@ -10,21 +10,21 @@ import {BlogPostForm} from '../blog-list/blog';
 
 @Component({
 	template: require('./blog-form.component.html'),
-	providers: [ BlogService]
+	providers: [BlogService]
 
 })
 export class BlogFormComponent implements OnInit, CanDeactivate {
 
 	form: ControlGroup;
 	public heading: string = '';
-//	user = new User();
+	//	user = new User();
 	blog = new BlogPostForm();
 
 	constructor(fb: FormBuilder,
-			private _router: Router,
-			private _routeParams: RouteParams,
-			private _blogService: BlogService
-			) {
+		private _router: Router,
+		private _routeParams: RouteParams,
+		private _blogService: BlogService
+	) {
 
 		this.form = fb.group({
 			title: ['', Validators.required],
@@ -41,7 +41,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 			this.heading = 'New Blog';
 			return;
 		}
-				
+
 	}
 
 	routerCanDeactivate() {
@@ -53,16 +53,19 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 	save() {
 
 		let result;
-		this._blogService.postBlog(this.blog);
-/*		if (this.user.id) {
-			result = this._userService.updateUser(this.user);
-		} else {
-			result = this._userService.addUser(this.user);
-		}
-*/
-	//	result.subscribe(x => {
-				// this.form.markAsPristine();
-					this._router.navigate(['Home']);
-	//	});
+		result = this._blogService.postBlog(this.blog);
+
+		result.subscribe(
+			x => {
+				alert("Blog successfully created");
+			},
+			error => {
+				alert("Error creating blog");
+			},
+			() => {
+				this._router.navigate(['Home']);
+			}
+		)
+
 	}
 }

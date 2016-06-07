@@ -77,6 +77,9 @@ export class AuthService implements OnInit {
             let url = this.config.apiEndPoint + '/user/login';
             let body = "name=" + username + "&pass=" + password + "&form_id=user_login_form";
             let CSRFToken = this.sessionService.get("X-CSRF-Token");
+            if (CSRFToken == undefined) {
+                CSRFToken = this.setCSRFToken();
+            }
             let headers = new Headers({
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRF-Token': CSRFToken
@@ -139,9 +142,17 @@ export class AuthService implements OnInit {
         */
     }
 
-    
+    public getCSRFToken(force?: boolean) {
+        if (force != undefined && !force) {
+            let token = this.sessionService.get("X-CSRF-Token");
+            if (token != undefined)
+                return token;
+        }
+        return this.setCSRFToken();
+    }
 
     public setCSRFToken() {
+            
         let _url = this.config.apiEndPoint + '/rest/session/token';
         let CSRFToken: any;
         this.http.get(_url)
@@ -151,11 +162,12 @@ export class AuthService implements OnInit {
                 //  console.log(res);
                 CSRFToken = res;
                 this.sessionService.set("X-CSRF-Token", CSRFToken);
+                return CSRFToken;
             },
             error => { console.log(error) },
             () => { }
             );
-
+            
     }
 
     public logout() {

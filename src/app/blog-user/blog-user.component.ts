@@ -34,66 +34,88 @@ export class BlogUserComponent implements OnInit {
         private _service: BlogService,
         private _userService: UserService
     ) {
-        
+
     }
 
     public deletePost(postId: number) {
-        alert("Delete "+ postId);
+        // alert("Delete " + postId)
+        this._service.deleteBlog(postId)
+            .subscribe(
+            x => {
+                alert("Blog successfully deleted");
+                this.loadUser();
+            },
+            error => {
+               // console.log(error);
+                if (error.status !== 204) {
+                    alert("Error deleting blog");
+                } else {
+                    alert("Blog successfully deleted");
+                    this.loadUser();
+                }
+            }
+            )
     }
+
+
     ngOnInit() {
+        this.loadUser();
+    }
+
+    private loadUser() {
 
         let id = this._routeParams.get('id');
         let name = this._routeParams.get('name');
         let userid = name;
         this.error = false;
-		this.isLoading = true;
-        
+        this.isLoading = true;
+
         if (this.settings.getCmsType() == CMSTypes.Drupal) {
             userid = id;
         }
-        
+
         let userStream = this._userService.getUser(userid);
         if (this.settings.getCmsType() == CMSTypes.Drupal) {
             let blogStream = this._service.getBlogsByUser(userid);
-            
+
             Rx.Observable.forkJoin(userStream, blogStream).subscribe(
-            blogUser => {
-                this.blogUser = blogUser[0];
-                this.blogUser.publications = blogUser[1];
-                this.error = false;
-				this.isLoading = false;
-                console.log(this.blogUser);
-            },
-            error => {
-                if (error.status === 404) {
-                    this._router.navigate(['NotFound']);
+                blogUser => {
+                    this.blogUser = blogUser[0];
+                    this.blogUser.publications = blogUser[1];
+                    this.error = false;
+                    this.isLoading = false;
+                    console.log(this.blogUser);
+                },
+                error => {
+                    if (error.status === 404) {
+                        this._router.navigate(['NotFound']);
+                    }
+                    console.log('ERR:' + error);
+                    this.error = true;
+                    this.isLoading = false;
                 }
-                console.log('ERR:' + error);
-                this.error = true;
-				this.isLoading = false;
-            }
 
             );
-            
+
         } else {
             userStream.subscribe(
-            blogUser => {
-                this.blogUser = blogUser;
-                this.error = false;
-				this.isLoading = false;
-                console.log(this.blogUser);
-            },
-            error => {
-                if (error.status === 404) {
-                    this._router.navigate(['NotFound']);
+                blogUser => {
+                    this.blogUser = blogUser;
+                    this.error = false;
+                    this.isLoading = false;
+                    console.log(this.blogUser);
+                },
+                error => {
+                    if (error.status === 404) {
+                        this._router.navigate(['NotFound']);
+                    }
+                    console.log('ERR:' + error);
+                    this.error = true;
+                    this.isLoading = false;
                 }
-                console.log('ERR:' + error);
-                this.error = true;
-				this.isLoading = false;
-            }
 
             );
-        }   
+        }
     }
 
 }
