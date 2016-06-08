@@ -65,7 +65,8 @@ export class BlogService {
             return Rx.Observable.of(true);
 
         let url = this.config.apiEndPoint + '/entity/node';
-        let links_href = this.config.apiEndPoint + '/rest/type/node/blog';
+//      let links_href = this.config.apiEndPoint + '/rest/type/node/blog';
+        let links_href = 'http://localhost/Xperience/rest/type/node/blog';
         let options= this.setRequestOptions();
         
         let data =
@@ -87,7 +88,9 @@ export class BlogService {
                 ]
             };
         let body = JSON.stringify(data);
-
+        console.log(body);
+        console.log(url);
+        console.log(options);
         return this._http.post(url, body, options)
             .map(res => res.json());
 
