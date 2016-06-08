@@ -16,6 +16,7 @@ import { BlogUserListComponent } from './blog-user-list/blog-user-list.component
 import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { OmdbComponent } from './omdb/omdb.component';
 
+import {NotificationsDemoComponent} from './library/notifications-demo/notifications-demo.component';
 import { AppState } from './app.service';
 import { RouterActive } from './router-active';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
@@ -39,6 +40,7 @@ declare var jQuery: any;
     { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     { path: '/omdb', name: 'Omdb', component: OmdbComponent },
+    { path: '/notifications', name: 'Notifications', component: NotificationsDemoComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
     { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
     { path: '/settings', name: 'Settings', component: AppSettingsComponent },
