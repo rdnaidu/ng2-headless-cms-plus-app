@@ -20,7 +20,7 @@ import {NotificationsDemoComponent} from './library/notifications-demo/notificat
 import { AppState } from './app.service';
 import { RouterActive } from './router-active';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
-
+import { SimpleNotificationsComponent } from 'angular2-notifications';
 
 declare var jQuery: any;
 
@@ -49,17 +49,25 @@ declare var jQuery: any;
 @Component({
     selector: 'app',
     template: require('./app.component.html'),
-     encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None,
     styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),
               require('bootstrap-material-design/dist/css/bootstrap-material-design.min.css'),
               require('bootstrap-material-design/dist/css/ripples.min.css')
               ],
-    directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive]
+    directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive, SimpleNotificationsComponent]
 })
 // TODO: Keep track of this issue for back button on IE11
 // https://github.com/angular/angular/issues/7873
 export class AppComponent implements OnInit {
+    
+    notificationsOptions = {
+        timeOut: 3000,
+        showProgressBar: false,
+        pauseOnHover: false,
+        clickToClose: false
+    }
+    
     constructor (
         @Inject(APP_CONFIG) private config: Config,
         public appState: AppState,
