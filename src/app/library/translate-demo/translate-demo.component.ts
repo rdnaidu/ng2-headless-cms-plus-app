@@ -1,8 +1,8 @@
 /* tslint:disable */
-import {Component, Injectable, provide} from '@angular/core'; 
-import {TranslateService, TranslatePipe, TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
-import {DropdownComponent} from '../../shared/drop-down.component';
-import {DropdownValue} from '../../shared/drop-downValue';
+import { Component, Injectable, provide } from '@angular/core'; 
+import { TranslateService, TranslatePipe, TRANSLATE_PROVIDERS } from 'ng2-translate/ng2-translate';
+import { DropdownComponent } from '../../shared/drop-down.component';
+import { DropdownValue } from '../../shared/drop-downValue';
  
 @Injectable() 
 @Component({ 

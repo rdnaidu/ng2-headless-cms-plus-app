@@ -1,12 +1,12 @@
-import {Component, OnInit, SimpleChange, Input} from '@angular/core';
-import {Router, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { Component, OnInit, SimpleChange, Input } from '@angular/core';
+import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
+import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
-import {BlogPost} from '../blog-list/blog';
-import {SearchJSON} from '../blog-list/blog';
-import {BlogService} from '../blog-list/blog.service';
-import {SearchService} from '../shared/search.service';
+import { BlogPost } from '../blog-list/blog';
+import { SearchJSON } from '../blog-list/blog';
+import { BlogService } from '../blog-list/blog.service';
+import { SearchService } from '../shared/search.service';
 // webpack html imports
 let template = require('./blog-typeahead.html');
 

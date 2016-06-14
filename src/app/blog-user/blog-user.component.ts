@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
 
 import { SpinnerComponent } from '../shared/spinner.component';
-import {BlogUser} from '../blog-list/blog';
-import {BlogService} from '../blog-list/blog.service';
+import { BlogUser } from '../blog-list/blog';
+import { BlogService } from '../blog-list/blog.service';
 import { UserService } from '../users/user.service';
 import { AuthService } from '../auth/auth.service';
 import { SettingsService, CMSTypes } from '../shared/settings.service';

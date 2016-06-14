@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MdButton, MdAnchor} from '@angular2-material/button';
+import { Component } from '@angular/core';
+import { MdButton, MdAnchor } from '@angular2-material/button';
 
 @Component({
     selector: 'button-demo',

@@ -1,10 +1,8 @@
-import {Injectable, Inject} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import { Injectable, Inject } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
-import * as Rx from 'rxjs/Rx';
-import { BlogPost, BlogPostForm} from '../blog-list/blog';
+import { BlogPost, BlogPostForm } from '../blog-list/blog';
 import { BlogPostLive } from '../blog-list/blog';
-import * as _ from 'lodash';
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 import { HelperService } from '../shared/services/helper.service';
@@ -12,6 +10,8 @@ import { SessionService } from '../shared/services/session.service';
 import { AuthService } from '../auth/auth.service';
 import { AuthUser, AuthUserClass, BasicAuth } from '../auth/auth-user';
 
+import * as Rx from 'rxjs/Rx';
+import * as _ from 'lodash';
 @Injectable()
 export class BlogService {
     private _url = '/assets/blogs-json';
@@ -31,30 +31,13 @@ export class BlogService {
          this.http
      }*/
 
-    private setRequestOptions(): RequestOptions {
-        let user: AuthUser = new AuthUserClass();
-        user = this.session.get('authuser');
-        let CSRFToken = this.session.get("X-CSRF-Token");
-        if (CSRFToken == undefined) {
-            CSRFToken = this.auth.setCSRFToken();
-        }
-        let AuthString = 'Basic ' + user.token;
-        let headers = new Headers({
-            'Content-Type': 'application/hal+json',
-            'Authorization': AuthString,
-            'X-CSRF-Token': CSRFToken
-        });
-        let options = new RequestOptions({ headers: headers });
-        return options;
-    }
-    
     public deleteBlog(blogID: number): Rx.Observable<any> {
-        let url = 'http://10.146.201.72/Xperience/node/'+blogID;
+        let url = 'http://10.146.201.72/Xperience/node/' + blogID;
 
         if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
 
-        let options= this.setRequestOptions();
+        let options = this.setRequestOptions();
         return this._http.delete(url, options)
             .map(response => response.headers);
     }
@@ -65,25 +48,25 @@ export class BlogService {
             return Rx.Observable.of(true);
 
         let url = this.config.apiEndPoint + '/entity/node';
-//      let links_href = this.config.apiEndPoint + '/rest/type/node/blog';
-        let links_href = 'http://localhost/Xperience/rest/type/node/blog';
-        let options= this.setRequestOptions();
-        
+        //      let links_href = this.config.apiEndPoint + '/rest/type/node/blog';
+        let linksHref = 'http://localhost/Xperience/rest/type/node/blog';
+        let options = this.setRequestOptions();
+
         let data =
             {
-                "_links": {
-                    "type": {
-                        "href": links_href
+                '_links': {
+                    'type': {
+                        'href': linksHref
                     }
                 },
-                "title": [
+                'title': [
                     {
-                        "value": blogForm.title
+                        'value': blogForm.title
                     }
                 ],
-                "body": [
+                'body': [
                     {
-                        "value": blogForm.body
+                        'value': blogForm.body
                     }
                 ]
             };
@@ -95,24 +78,26 @@ export class BlogService {
             .map(res => res.json());
 
     }
-
+/*
     public createBlog(): Rx.Observable<any> {
         let url = this.config.apiEndPoint + '/entity/node?_format=hal+json';
 
         let data = {
-            "_links": {
-                "type": {
-                    "href": this.config.apiLocal + "/rest/type/node/blog"
+            '_links': {
+                'type': {
+                    'href': this.config.apiLocal + '/rest/type/node/blog'
                 }
             },
-            "title": [
+            'title': [
                 {
-                    "value": "Writers Square Awards Banquet2"
+                    'value': 'Writers Square Awards Banquet2'
                 }
             ],
-            "body": [
+            'body': [
                 {
-                    "value": "Here are some photos from our 2015 Writers Square Awards Banquet held on December 5, 2015. The student winners were awarded their scholarship checks and trophies at the banquet1."
+                    'value': 'Here are some photos from our 2015 Writers Square Awards Banquet 
+                    held on December 5, 2015. The student winners were awarded their scholarship 
+                    checks and trophies at the banquet1.'
                 }
             ]
         }
@@ -131,16 +116,16 @@ export class BlogService {
                 return res.json();
             });
     }
-
+*/
     getLiveUrl() {
         return this.config.apiEndPoint + '/blogs';
     }
 
     transformBlogs(data) {
         let self = this;
-        var tData: any[] = [];
+        let tData: any[] = [];
         _.forEach(data, function (value) {
-            value.tags = (value.tags == "") ? [] : value.tags.split('|');
+            value.tags = (value.tags === '') ? [] : value.tags.split('|');
             value.images = self.helper.parseSrcFromHtml(value.images);
             value.likes = 10;
             value.stars = 567;
@@ -195,7 +180,7 @@ export class BlogService {
         return this._http.get(url)
             .map(res => res.json())
             .map(res => {
-                var tData: any[] = [];
+                let tData: any[] = [];
                 _.forEach(res, function (value) {
                     let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
@@ -229,7 +214,7 @@ export class BlogService {
         return this._http.get(url)
             .map(res => res.json())
             .map(res => {
-                var tData: any[] = [];
+                let tData: any[] = [];
                 _.forEach(res, function (value) {
                     let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
@@ -332,5 +317,22 @@ export class BlogService {
 
         return this._http.get(url)
             .map(res => res.json());
+    }
+
+    private setRequestOptions(): RequestOptions {
+        let user: AuthUser = new AuthUserClass();
+        user = this.session.get('authuser');
+        let csrfToken = this.session.get('X-CSRF-Token');
+        if (csrfToken === undefined) {
+            csrfToken = this.auth.setCSRFToken();
+        }
+        let authString = 'Basic ' + user.token;
+        let headers = new Headers({
+            'Content-Type': 'application/hal+json',
+            'Authorization': authString,
+            'X-CSRF-Token': csrfToken
+        });
+        let options = new RequestOptions({ headers: headers });
+        return options;
     }
 }

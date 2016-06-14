@@ -1,21 +1,21 @@
-import {Component} from '@angular/core';
-import {Route, RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {CardDemo} from './card/card-demo';
-import {ButtonDemo} from './button/button-demo';
-import {RadioDemo} from './radio/radio-demo';
-import {SidenavDemo} from './sidenav/sidenav-demo';
-import {ProgressCircleDemo} from './progress-circle/progress-circle-demo';
-import {ProgressBarDemo} from './progress-bar/progress-bar-demo';
-import {CheckboxDemo} from './checkbox/checkbox-demo';
-import {Dir} from '@angular2-material/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {MdToolbar} from '@angular2-material/toolbar';
-import {PortalDemo} from './portal/portal-demo';
-import {ToolbarDemo} from './toolbar/toolbar-demo';
-import {ListDemo} from './list/list-demo';
-import {InputDemo} from './input/input-demo';
+import { Component } from '@angular/core';
+import { Route, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { CardDemo } from './card/card-demo';
+import { ButtonDemo } from './button/button-demo';
+import { RadioDemo } from './radio/radio-demo';
+import { SidenavDemo } from './sidenav/sidenav-demo';
+import { ProgressCircleDemo } from './progress-circle/progress-circle-demo';
+import { ProgressBarDemo } from './progress-bar/progress-bar-demo';
+import { CheckboxDemo } from './checkbox/checkbox-demo';
+import { Dir } from '@angular2-material/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { MdToolbar } from '@angular2-material/toolbar';
+import { PortalDemo } from './portal/portal-demo';
+import { ToolbarDemo } from './toolbar/toolbar-demo';
+import { ListDemo } from './list/list-demo';
+import { InputDemo } from './input/input-demo';
 
 @Component({
   selector: 'home',

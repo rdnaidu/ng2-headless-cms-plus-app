@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/router-deprecated';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { MdButton } from '@angular2-material/button';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { SpinnerComponent } from '../shared/spinner.component';
-import {BlogPost, BlogPostLive, Comments} from '../blog-list/blog';
-import {BlogService} from '../blog-list/blog.service';
-import {AuthService} from '../auth/auth.service';
-import {CommentsComponent} from '../comments/comments.component';
-import {BlogContentComponent} from '../blog-content/blog-content.component';
-import {CommentsFormComponent} from '../comments/comments-form.component';
+import { BlogPost, BlogPostLive, Comments } from '../blog-list/blog';
+import { BlogService } from '../blog-list/blog.service';
+import { AuthService } from '../auth/auth.service';
+import { CommentsComponent } from '../comments/comments.component';
+import { BlogContentComponent } from '../blog-content/blog-content.component';
+import { CommentsFormComponent } from '../comments/comments-form.component';
 
 @Component({
   selector: 'blog-post',

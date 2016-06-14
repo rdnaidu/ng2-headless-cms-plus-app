@@ -1,21 +1,15 @@
-import {Component, OnInit, OnChanges, SimpleChange, Input} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
+import { Component, OnInit, OnChanges, SimpleChange, Input } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 import { SpinnerComponent } from '../shared/spinner.component';
-import {PAGINATION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {LikeComponent} from '../shared/like.component';
-import {BlogContentComponent} from '../blog-content/blog-content.component';
+import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
-import {BlogPost} from '../blog-list/blog';
-import { BlogPostLive } from '../blog-list/blog';
-import {SearchJSON} from '../blog-list/blog';
-import {BlogService} from '../blog-list/blog.service';
-import {SearchService} from '../shared/search.service';
-import {SettingsService} from '../shared/settings.service';
+import { SearchService } from '../shared/search.service';
+import { SettingsService } from '../shared/settings.service';
 import * as Rx from 'rxjs/Rx';
-import {ContentfulService} from '../contentful/contentful.service.ts';
+import { ContentfulService } from '../contentful/contentful.service.ts';
 import * as _ from 'lodash';
 
 import {ContentfulPost, ContentfulAuthor } from './contentStructure';
@@ -23,15 +17,13 @@ import {ContentfulPost, ContentfulAuthor } from './contentStructure';
 @Component({
   selector: 'contentful-demo',
   template: require('./contentful.component.html'),
-  providers: [BlogService, ContentfulService],
+  providers: [ContentfulService],
   directives: [
     ROUTER_DIRECTIVES,
     MD_LIST_DIRECTIVES,
     MdButton,
     MD_CARD_DIRECTIVES,
     PAGINATION_DIRECTIVES,
-    LikeComponent,
-    BlogContentComponent,
     SpinnerComponent
   ]
 })
@@ -48,12 +40,11 @@ export class ContentfulComponent implements OnInit {
 
   constructor(public searchService: SearchService,
     public settingService: SettingsService,
-    public contentfulService: ContentfulService,
-    private _service: BlogService) {
-
-    this.client = this.settingService.getContentfulClient();
-    this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
-    this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
+    public contentfulService: ContentfulService) {
+  // TODO: Commented out contentful APIs and service as there was in issue in prod runtime with CreateClient
+  //  this.client = this.settingService.getContentfulClient();
+  //   this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
+  //  this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
   }
 
   loadContentfulEntries() {

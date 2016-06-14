@@ -1,9 +1,8 @@
 import { Component, OnInit , Input } from '@angular/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams} from '@angular/router-deprecated';
+import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
 
-
-import {BlogPost, Comments} from '../blog-list/blog';
-import {DateDeltaPipe} from '../blog/date-delta.pipe';
+import { BlogPost, Comments } from '../blog-list/blog';
+import { DateDeltaPipe } from '../blog/date-delta.pipe';
 
 
 @Component({

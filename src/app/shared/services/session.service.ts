@@ -9,7 +9,7 @@ export class SessionService {
             sessionStorage.setItem(key, JSON.stringify(value));
         }
     }
-    
+
     get (key, isLocal = false) {
         if (isLocal) {
             return JSON.parse(localStorage.getItem(key));
@@ -17,7 +17,7 @@ export class SessionService {
             return JSON.parse(sessionStorage.getItem(key));
         }
     }
-    
+
     remove(key: string, isLocal = false) {
         if (isLocal) {
             return localStorage.removeItem(key);

@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
-import {MdRadioDispatcher} from '@angular2-material/radio';
+import { Component } from '@angular/core';
+import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
+import { MdRadioDispatcher } from '@angular2-material/radio';
 
 @Component({
   selector: 'radio-demo',

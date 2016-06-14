@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_SIDENAV_DIRECTIVES} from '@angular2-material/sidenav';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+import { Component } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
+import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 
 @Component({
     selector: 'sidenav-demo',

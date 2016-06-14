@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SessionService } from './services/session.service';
 
-//var contentful = require('contentful');
+// var contentful = require('contentful');
 
 export interface ContentfulSettings {
     space: string;
@@ -27,19 +27,21 @@ export enum CMSTypes {
 @Injectable()
 export class SettingsService {
     name: string = 'cmssettings';
-/*
-    contentfulSettings: ContentfulSettings = {
-        space: 'dmnelpd4oq3t',
-        accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6',
-        contenttype_post: '2wKn6yEnZewu2SCCkus4as',
-        contenttype_author: '1kUEViTN4EmGiEaaeC6ouY'
-    };
 
-    contentfulClient = contentful.createClient({
-        space: 'dmnelpd4oq3t',
-        accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6'
-    });
-*/
+    /*
+        contentfulSettings: ContentfulSettings = {
+            space: 'dmnelpd4oq3t',
+            accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6',
+            contenttype_post: '2wKn6yEnZewu2SCCkus4as',
+            contenttype_author: '1kUEViTN4EmGiEaaeC6ouY'
+        };
+    
+        contentfulClient = contentful.createClient({
+            space: 'dmnelpd4oq3t',
+            accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6'
+        });
+    */
+
     cmsSettings: CMSSettings = {
         mode: CMSTypes.Stub,
         host: 'localhost',
@@ -66,14 +68,15 @@ export class SettingsService {
         this.session.set(this.name, this.cmsSettings);
     }
 
- /*   getContentfulClient(): any {
-        return this.contentfulClient;
-    }
+    /*   getContentfulClient(): any {
+           return this.contentfulClient;
+       }
+   
+       getContentfulSettings(): ContentfulSettings {
+           return this.contentfulSettings;
+       }
+      */
 
-    getContentfulSettings(): ContentfulSettings {
-        return this.contentfulSettings;
-    }
-   */ 
     getCmsSettings(): CMSSettings {
         return this.cmsSettings;
     }

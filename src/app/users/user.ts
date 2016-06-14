@@ -16,8 +16,8 @@ export interface User {
     roles: string;
     timezone: string;
     phone?: string;
-    address?: Address
-    publications?: Publications[]
+    address?: Address;
+    publications?: Publications[];
 }
 
 export class UserClass implements User {

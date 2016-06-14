@@ -1,11 +1,11 @@
 /* tslint:disable */
-import {Component, OnInit} from '@angular/core';
-import {Router,RouterLink} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { Router,RouterLink } from '@angular/router-deprecated';
 
-import {PhoneService} from './phone.service';
-import {SpinnerComponent} from '../../shared/spinner.component';
-import {AlertComponent} from '../../shared/alert.component';
-import {SearchPipe} from './search.pipe';
+import { PhoneService } from './phone.service';
+import { SpinnerComponent } from '../../shared/spinner.component';
+import { AlertComponent } from '../../shared/alert.component';
+import { SearchPipe } from './search.pipe';
 
 @Component({
     selector: 'phones',

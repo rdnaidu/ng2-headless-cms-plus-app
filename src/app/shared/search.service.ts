@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {SearchJSON} from '../blog-list/blog';
+import { SearchJSON } from '../blog-list/blog';
 /* Search Service for
       1) Storing the search string
       2) Will be extended to once search is implemented
@@ -21,11 +21,11 @@ export class SearchService {
         this.clearTag();
         this.clearTitle();
     }
-    
+
     clearTitle() {
         this.searchJSON.title = '';
     }
-    
+
     clearTag() {
         this.searchJSON.tag = '';
     }

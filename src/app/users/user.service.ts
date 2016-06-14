@@ -1,5 +1,5 @@
-import {Injectable, Inject} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable, Inject } from '@angular/core';
+import { Http } from '@angular/http';
 import * as Rx from 'rxjs/Rx';
 
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
@@ -20,15 +20,15 @@ export class UserService {
 	) {
 
 	}
-	
+
 	getUrl() {
 		return this._url;
 	}
-	
+
 	getLiveUrl() {
 		return this.config.apiEndPoint + '/users';
 	}
-	
+
 	getUsersFromDrupal() {
 		let url = this.getLiveUrl() + '?t=' + (new Date()).getTime();
 		let self = this;
@@ -38,16 +38,16 @@ export class UserService {
 			})
 			.map(data => {
 				let tData = [];
-				
+
 				_.forEach(data, function(object) {
 					let avatar = self.helper.parseSrcFromHtml(object.avatar);
-					
+
 					if (avatar.length) {
 						avatar = avatar[0];
 					} else {
 						avatar = '';
 					}
-					
+
 					object.avatar = self.config.apiShort + avatar;
 					object.address = {
 						street: '',
@@ -58,11 +58,11 @@ export class UserService {
 					object.publications = [];
 					tData.push(object);
 				});
-				
+
 				return tData;
 			});
 	}
-	
+
 	getUserFromDrupal(userId): Rx.Observable<User> {
 		let url = this.getLiveUrl() + '/' + userId + '?t=' + (new Date()).getTime();
 		let self = this;
@@ -71,13 +71,13 @@ export class UserService {
 			.map(res => {
 				if (res.length) {
 					let avatar = self.helper.parseSrcFromHtml(res[0].avatar);
-					
+
 					if (avatar.length) {
 						avatar = avatar[0];
 					} else {
 						avatar = '';
 					}
-					
+
 					res[0].avatar = self.config.apiShort + avatar;
 					return res[0];
 				}
@@ -86,25 +86,25 @@ export class UserService {
 	}
 
 	getUsers(): Rx.Observable<User[]> {
-		
-		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+
+		if (this.settings.getCmsType() === CMSTypes.Drupal) {
 			return this.getUsersFromDrupal();
 		}
-		
+
 		let url = this.getUrl() + '/users.json';
-		
+
 		return this._http.get(url)
 				.map(res => res.json());
 	}
 
 	getUser(userId): Rx.Observable<User> {
-		
-		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+
+		if (this.settings.getCmsType() === CMSTypes.Drupal) {
 			return this.getUserFromDrupal(userId);
 		}
-		
+
 		let url = this.getUserUrl(userId) + '.json';
-		
+
 		return this._http.get(url)
 				.map(res => res.json());
 	}

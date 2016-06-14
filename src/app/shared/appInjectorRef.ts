@@ -1,4 +1,4 @@
-import {Injector} from '@angular/core';
+import { Injector } from '@angular/core';
 
 let _appInjectorRef: Injector;
 

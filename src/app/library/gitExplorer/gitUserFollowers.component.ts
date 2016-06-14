@@ -1,7 +1,7 @@
-import {Component, Injector} from '@angular/core';
-import {Http} from '@angular/http';
-import {RouteParams, OnActivate, ComponentInstruction} from '@angular/router-deprecated';
-import {GitUsersInfo} from './gitUser';
+import { Component, Injector } from '@angular/core';
+import { Http } from '@angular/http';
+import { RouteParams, OnActivate, ComponentInstruction } from '@angular/router-deprecated';
+import { GitUsersInfo } from './gitUser';
 
 @Component({
     template: ` 

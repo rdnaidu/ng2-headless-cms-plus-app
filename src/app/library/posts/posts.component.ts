@@ -1,13 +1,13 @@
 /* tslint:disable */
-import {Component, OnInit} from '@angular/core';
-import {CanActivate, ComponentInstruction} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { CanActivate, ComponentInstruction } from '@angular/router-deprecated';
 
-import {PostService} from './post.service';
-import {UserService} from '../../users/user.service';
-import {SpinnerComponent} from '../../shared/spinner.component';
-import {PaginationComponent} from '../../shared/pagination.component';
-import {isLoggedIn} from '../../auth/isLoggedIn';
-import {Post} from './post';
+import { PostService } from './post.service';
+import { UserService } from '../../users/user.service';
+import { SpinnerComponent } from '../../shared/spinner.component';
+import { PaginationComponent } from '../../shared/pagination.component';
+import { isLoggedIn } from '../../auth/isLoggedIn';
+import { Post } from './post';
 
 import * as _ from 'lodash';
 

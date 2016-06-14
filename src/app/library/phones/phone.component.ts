@@ -1,10 +1,10 @@
 /* tslint:disable */
-import {Component, OnInit} from '@angular/core';
-import {Router, RouteParams} from '@angular/router-deprecated';
-import {PhoneService} from "./phone.service";
-import {Phone} from './phone';
-import {CarouselComponent} from '../carousel/carousel.component';
-import {CheckmarkPipe} from '../../shared/checkmark.pipe';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouteParams } from '@angular/router-deprecated';
+import { PhoneService } from "./phone.service";
+import { Phone } from './phone';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { CheckmarkPipe } from '../../shared/checkmark.pipe';
 
 
 @Component({

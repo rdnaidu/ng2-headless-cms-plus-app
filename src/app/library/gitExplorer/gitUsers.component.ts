@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {Http} from '@angular/http';
-import {ROUTER_DIRECTIVES, RouteParams, RouteConfig} from '@angular/router-deprecated';
-import {GitUserDetailComponent} from './gitUserDetail.component';
-import {GitUserFollowersComponent} from './gitUserFollowers.component';
+import { Component } from '@angular/core';
+import { Http } from '@angular/http';
+import { ROUTER_DIRECTIVES, RouteParams, RouteConfig } from '@angular/router-deprecated';
+import { GitUserDetailComponent } from './gitUserDetail.component';
+import { GitUserFollowersComponent } from './gitUserFollowers.component';
 
 @Component({
   template: `

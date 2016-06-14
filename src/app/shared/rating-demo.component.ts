@@ -1,9 +1,7 @@
-
-
-import {Component} from '@angular/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {RatingComponent} from 'ng2-bootstrap/ng2-bootstrap';
-import {NgModel} from '@angular/common';
+import { Component } from '@angular/core';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
+import { RatingComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { NgModel } from '@angular/common';
 
 
 // webpack html imports

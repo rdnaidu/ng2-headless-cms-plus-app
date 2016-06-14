@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from '@angular/router-deprecated';
-import {Observable, Scheduler} from 'rxjs/Rx';
-import {Observer} from 'rxjs/Observer';
-import {AuthService} from '../auth/auth.service';
-import {MenuItem} from './menu-item';
-import {RouterActive} from '../router-active';
-import {MdButton, MdAnchor} from '@angular2-material/button';
-import {BlogTypeaheadComponent} from '../blog-typeahead/blog-typeahead.component';
-import {SearchService} from '../shared/search.service';
+import { Component, OnInit } from '@angular/core';
+import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { Observable, Scheduler } from 'rxjs/Rx';
+import { Observer } from 'rxjs/Observer';
+import { AuthService } from '../auth/auth.service';
+import { MenuItem } from './menu-item';
+import { RouterActive } from '../router-active';
+import { MdButton, MdAnchor } from '@angular2-material/button';
+import { BlogTypeaheadComponent } from '../blog-typeahead/blog-typeahead.component';
+import { SearchService } from '../shared/search.service';
 declare var jQuery: any;
 
 

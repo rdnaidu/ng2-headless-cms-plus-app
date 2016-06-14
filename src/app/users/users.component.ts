@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterLink} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router-deprecated';
 
-import {UserService} from './user.service';
-import {SpinnerComponent} from '../shared/spinner.component';
-import {AlertComponent} from '../shared/alert.component';
-import {CanActivate, ComponentInstruction} from '@angular/router-deprecated';
-import {isLoggedIn} from '../auth/isLoggedIn';
+import { UserService } from './user.service';
+import { SpinnerComponent } from '../shared/spinner.component';
+import { AlertComponent } from '../shared/alert.component';
+import { CanActivate, ComponentInstruction } from '@angular/router-deprecated';
+import { isLoggedIn } from '../auth/isLoggedIn';
 
 @Component({
 	template: require('./users.component.html'),

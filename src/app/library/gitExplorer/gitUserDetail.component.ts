@@ -1,13 +1,13 @@
-import {Component, ReflectiveInjector, Injector, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
-import {ROUTER_DIRECTIVES,
+import { Component, ReflectiveInjector, Injector, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { ROUTER_DIRECTIVES,
         Router,
         RouteParams,
         RouteConfig,
         OnActivate,
-        ComponentInstruction} from '@angular/router-deprecated';
-import {GitUserFollowersComponent} from './GitUserFollowers.component';
-import {GitUser} from './gitUser';
+        ComponentInstruction } from '@angular/router-deprecated';
+import { GitUserFollowersComponent } from './GitUserFollowers.component';
+import { GitUser } from './gitUser';
 
 
 @Component({

@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import { Component } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 
 @Component({
     selector: 'card-demo',

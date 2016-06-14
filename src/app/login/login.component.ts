@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../auth/auth.service';
-import {LoginFormComponent} from '../login-form/login-form.component';
-import {Router} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
+import { LoginFormComponent } from '../login-form/login-form.component';
+import { Router } from '@angular/router-deprecated';
 
 @Component({
 

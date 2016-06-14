@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, RouteConfig, Router} from '@angular/router-deprecated';
-import {FORM_PROVIDERS, FORM_DIRECTIVES, Control} from '@angular/common';
-import {Http} from '@angular/http';
-import {GitUsersComponent} from './gitUsers.component';
-import {GitUsersInfo} from './gitUser';
+import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES, RouteConfig, Router } from '@angular/router-deprecated';
+import { FORM_PROVIDERS, FORM_DIRECTIVES, Control } from '@angular/common';
+import { Http } from '@angular/http';
+import { GitUsersComponent } from './gitUsers.component';
+import { GitUsersInfo } from './gitUser';
 /*
     Inspired from 
     https://auth0.com/blog/2016/01/25/angular-2-series-part-4-component-router-in-depth/

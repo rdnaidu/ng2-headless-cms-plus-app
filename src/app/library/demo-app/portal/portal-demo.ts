@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {PortalHostDirective} from '@angular2-material/core/portal/portal-directives';
-import {TemplatePortalDirective} from '@angular2-material/core/portal/portal-directives';
-import {Portal} from '@angular2-material/core/portal/portal';
-import {ViewChildren} from '@angular/core';
-import {QueryList} from '@angular/core';
-import {ComponentPortal} from '@angular2-material/core/portal/portal';
+import { Component } from '@angular/core';
+import { PortalHostDirective } from '@angular2-material/core/portal/portal-directives';
+import { TemplatePortalDirective } from '@angular2-material/core/portal/portal-directives';
+import { Portal } from '@angular2-material/core/portal/portal';
+import { ViewChildren } from '@angular/core';
+import { QueryList } from '@angular/core';
+import { ComponentPortal } from '@angular2-material/core/portal/portal';
 
 @Component({
   selector: 'portal-demo',

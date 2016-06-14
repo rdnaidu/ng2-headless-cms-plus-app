@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
-import {MdButton} from '@angular2-material/button';
-import {MdCard} from '@angular2-material/card';
-import {MdCheckbox} from '@angular2-material/checkbox';
-import {MdToolbar} from '@angular2-material/toolbar';
+import { Component } from '@angular/core';
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MdButton } from '@angular2-material/button';
+import { MdCard } from '@angular2-material/card';
+import { MdCheckbox } from '@angular2-material/checkbox';
+import { MdToolbar } from '@angular2-material/toolbar';
 
 
 let max = 5;

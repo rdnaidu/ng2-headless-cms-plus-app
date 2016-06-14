@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, ControlGroup, Validators} from '@angular/common';
-import {CanDeactivate, Router, RouteParams} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ControlGroup, Validators } from '@angular/common';
+import { CanDeactivate, Router, RouteParams } from '@angular/router-deprecated';
 import { NotificationsService } from 'angular2-notifications';
 
-import {BlogService} from '../blog-list/blog.service';
+import { BlogService } from '../blog-list/blog.service';
 //import {BasicValidators} from '../shared/basicValidators';
 // import {UserService} from '../users/user.service';
 // import {User} from './user';
-import {BlogPostForm} from '../blog-list/blog';
+import { BlogPostForm } from '../blog-list/blog';
 
 @Component({
 	template: require('./blog-form.component.html'),

@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, ControlGroup, Validators} from '@angular/common';
-import {CanDeactivate, Router, RouteParams} from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ControlGroup, Validators } from '@angular/common';
+import { CanDeactivate, Router, RouteParams } from '@angular/router-deprecated';
 
-import {BasicValidators} from '../shared/basicValidators';
-import {UserService} from '../users/user.service';
-import {User, Address, UserClass } from './user';
+import { BasicValidators } from '../shared/basicValidators';
+import { UserService } from '../users/user.service';
+import { User, Address, UserClass } from './user';
 import { Publications } from '../blog-list/blog';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 
@@ -17,7 +17,7 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 
 	form: ControlGroup;
 	title: string;
-	
+
 	user: User = new UserClass();
 
 	constructor(fb: FormBuilder,
@@ -25,7 +25,7 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 			private _routeParams: RouteParams,
 			private _userService: UserService,
 			private settings: SettingsService
-	) {			
+	) {
 		this.form = fb.group({
 			name: ['', Validators.required],
 			mail: ['', BasicValidators.email],
@@ -42,20 +42,20 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 	ngOnInit() {
 		this.getUser();
 	}
-	
+
 	getUser() {
 		let id = this._routeParams.get('id');
 		let name = this._routeParams.get('name');
 		this.title = id ? 'Edit User' : 'New User';
 
 		let userid = name;
-		
-		if (this.settings.getCmsType() == CMSTypes.Drupal) {
+
+		if (this.settings.getCmsType() === CMSTypes.Drupal) {
 			userid = id;
 		}
 
 		if (!id) return;
-		
+
 		this._userService.getUser(userid)
 			.subscribe(
 				user => {

@@ -1,9 +1,9 @@
 /* tslint:disable */
-import {Component} from "@angular/core";
-import {NotificationsService} from "angular2-notifications/components";
-import {SimpleNotificationsComponent} from "angular2-notifications/components";
-import {DropdownComponent} from '../../shared/drop-down.component';
-import {DropdownValue} from '../../shared/drop-downValue';
+import { Component } from "@angular/core";
+import { NotificationsService } from "angular2-notifications/components";
+import { SimpleNotificationsComponent } from "angular2-notifications/components";
+import { DropdownComponent } from '../../shared/drop-down.component';
+import { DropdownValue } from '../../shared/drop-downValue';
 
 @Component({
     selector: 'notifications-demo',

@@ -34,7 +34,7 @@ import { TRANSLATE_PROVIDERS,
         TranslatePipe,
         TranslateLoader,
         TranslateStaticLoader } from 'ng2-translate/ng2-translate';
-        
+
 import { APP_CONFIG, CONFIG, Config } from './app/app.config';
 import { SessionService } from './app/shared/services/session.service';
 import { HelperService } from './app/shared/services/helper.service';

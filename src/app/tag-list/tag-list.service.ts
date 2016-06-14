@@ -18,27 +18,27 @@ export class TagListService {
         private settings: SettingsService) {
         this.liveUrl = this.config.apiEndPoint + '/tags';
     }
-    
+
     getTagsFromDrupal() {
         let self = this;
-        
+
         return this._http.get(this.liveUrl)
             .map(res => res.json());
     }
-    
+
     getTagFromDrupal(id) {
         let self = this;
-        
+
         return this._http.get(this.liveUrl + '/' + id)
             .map(res => res.json());
     }
 
     getTags(filter?): Rx.Observable<Tag[]> {
-        
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getTagsFromDrupal();
         }
-        
+
         let url = this._url;
 
         if (filter && filter.username) {
@@ -52,11 +52,11 @@ export class TagListService {
     }
 
     getTag(id) {
-        
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getTagFromDrupal(id);
         }
-        
+
         let url = this._url;
 
         url += '/' + id + '.json';

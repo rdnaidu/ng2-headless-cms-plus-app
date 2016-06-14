@@ -1,7 +1,7 @@
-import {Injectable, Inject, OnInit} from '@angular/core';
+import { Injectable, Inject, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import {Observer} from 'rxjs/Observer';
+import { Observable } from 'rxjs/Rx';
+import { Observer } from 'rxjs/Observer';
 import { SessionService } from '../shared/services/session.service';
 import { UserService } from '../users/user.service';
 import { APP_CONFIG, CONFIG, Config } from '../app.config';
@@ -39,28 +39,14 @@ export class AuthService implements OnInit {
         this.initialize();
     }
 
-    private initialize() {
-        if (this.sessionService.get(this.key, this.user.rememberMe)) {
-            let user = this.sessionService.get(this.key, this.user.rememberMe);
-            this.user = user;
-        }
-    }
-
     getToken() {
         return this.user.token;
     }
 
-    private setSession() {
-        this.sessionService.set(this.key, this.user, this.user.rememberMe);
-    }
 
-    private clearSession() {
-        this.sessionService.remove(this.key, this.user.rememberMe);
-        this.user = new AuthUserClass();
-    }
 
     encode(username, password) {
-        return btoa(username + ":" + password);
+        return btoa(username + ':' + password);
     }
 
     public login(username?: String, password?: String): Observable<any> {
@@ -75,9 +61,9 @@ export class AuthService implements OnInit {
             if (!user) return Observable.throw(new Error('Please check username and password'));
 
             let url = this.config.apiEndPoint + '/user/login';
-            let body = "name=" + username + "&pass=" + password + "&form_id=user_login_form";
-            let CSRFToken = this.sessionService.get("X-CSRF-Token");
-            if (CSRFToken == undefined) {
+            let body = 'name=' + username + '&pass=' + password + '&form_id=user_login_form';
+            let CSRFToken = this.sessionService.get('X-CSRF-Token');
+            if (CSRFToken === undefined) {
                 CSRFToken = this.setCSRFToken();
             }
             let headers = new Headers({
@@ -87,26 +73,27 @@ export class AuthService implements OnInit {
 
             let options = new RequestOptions({ headers: headers });
             let logSuccess = false;
-           /* This works but not really required as the encoding and username/password check is already done.
-            this.http.post(url, body, options)
-                .map(response => response.headers)
-                .subscribe(
-                result => { 
-                    console.log(result);
-                    // Assume the redirect error will happen for a valid user
-                   // return Observable.throw(new Error('Please check username and password')); },
-                },
-                error => {
-                    console.log(error);
-                    console.log(error.status);
-                    if (error.status === 200) {
-                //        this.postBlog(encodedString);
-                    } else {
-                        return Observable.throw(new Error('Please check username and password'));
-                    }
-                }
-                );
-        */
+            /* This works but not really required as the encoding and username/password
+             check is already done.
+             this.http.post(url, body, options)
+                 .map(response => response.headers)
+                 .subscribe(
+                 result => { 
+                     console.log(result);
+                     // Assume the redirect error will happen for a valid user
+                    // return Observable.throw(new Error('Please check username and password')); },
+                 },
+                 error => {
+                     console.log(error);
+                     console.log(error.status);
+                     if (error.status === 200) {
+                 //        this.postBlog(encodedString);
+                     } else {
+                         return Observable.throw(new Error('Please check username and password'));
+                     }
+                 }
+                 );
+         */
 
             userStream = this.userService.getUser(user.uid);
 
@@ -143,16 +130,16 @@ export class AuthService implements OnInit {
     }
 
     public getCSRFToken(force?: boolean) {
-        if (force != undefined && !force) {
-            let token = this.sessionService.get("X-CSRF-Token");
-            if (token != undefined)
+        if (force !== undefined && !force) {
+            let token = this.sessionService.get('X-CSRF-Token');
+            if (token !== undefined)
                 return token;
         }
         return this.setCSRFToken();
     }
 
     public setCSRFToken() {
-            
+
         let _url = this.config.apiEndPoint + '/rest/session/token';
         let CSRFToken: any;
         this.http.get(_url)
@@ -161,13 +148,13 @@ export class AuthService implements OnInit {
             res => {
                 //  console.log(res);
                 CSRFToken = res;
-                this.sessionService.set("X-CSRF-Token", CSRFToken);
+                this.sessionService.set('X-CSRF-Token', CSRFToken);
                 return CSRFToken;
             },
-            error => { console.log(error) },
+            error => { console.log(error); },
             () => { }
             );
-            
+
     }
 
     public logout() {
@@ -185,4 +172,21 @@ export class AuthService implements OnInit {
         return Observable.of(!!this.getToken());
     }
 
+    private initialize() {
+        if (this.sessionService.get(this.key, this.user.rememberMe)) {
+            let user = this.sessionService.get(this.key, this.user.rememberMe);
+            this.user = user;
+        }
+    }
+
+
+
+    private setSession() {
+        this.sessionService.set(this.key, this.user, this.user.rememberMe);
+    }
+
+    private clearSession() {
+        this.sessionService.remove(this.key, this.user.rememberMe);
+        this.user = new AuthUserClass();
+    }
 }

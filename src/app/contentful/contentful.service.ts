@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as Rx from 'rxjs/Rx';
 import * as _ from 'lodash';
 import { SettingsService, ContentfulSettings } from '../shared/settings.service';
 
-import {ContentfulPost, ContentfulAuthor } from './contentStructure';
+import { ContentfulPost, ContentfulAuthor } from './contentStructure';
 
 
 @Injectable()
@@ -14,9 +14,10 @@ export class ContentfulService {
 
 
     constructor(public settingService: SettingsService) {
-        this.client = this.settingService.getContentfulClient();
-        this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
-        this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
+        // TODO: Commented out contentful APIs and service as there was in issue in prod runtime with CreateClient
+        // this.client = this.settingService.getContentfulClient();
+        // this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
+        // this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
     }
 
 

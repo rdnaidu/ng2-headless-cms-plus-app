@@ -1,8 +1,8 @@
-import {Injector} from '@angular/core';
-import {Router, ComponentInstruction} from '@angular/router-deprecated';
+import { Injector } from '@angular/core';
+import { Router, ComponentInstruction } from '@angular/router-deprecated';
 
-import {appInjectorRef} from '../shared/appInjectorRef';
-import {AuthService} from './auth.service';
+import { appInjectorRef } from '../shared/appInjectorRef';
+import { AuthService } from './auth.service';
 
 export const isLoggedIn = (next: ComponentInstruction, prev: ComponentInstruction) => {
     let injector: Injector = appInjectorRef(); // reference app injector reference

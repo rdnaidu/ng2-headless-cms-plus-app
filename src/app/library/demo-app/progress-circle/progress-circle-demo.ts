@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {MdButton} from '@angular2-material/button';
-import {MdProgressCircle, MdSpinner} from '@angular2-material/progress-circle/progress-circle';
+import { Component } from '@angular/core';
+import { MdButton } from '@angular2-material/button';
+import { MdProgressCircle, MdSpinner } from '@angular2-material/progress-circle/progress-circle';
 
 @Component({
   selector: 'progress-circle-demo',

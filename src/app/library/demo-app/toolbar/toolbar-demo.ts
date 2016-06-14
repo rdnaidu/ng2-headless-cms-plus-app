@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MdToolbar} from '@angular2-material/toolbar';
+import { Component } from '@angular/core';
+import { MdToolbar } from '@angular2-material/toolbar';
 
 @Component({
   selector: 'toolbar-demo',

@@ -1,5 +1,5 @@
 /* tslint:disable */
-import {Control} from '@angular/common';
+import { Control } from '@angular/common';
 
 export class BasicValidators {
 
