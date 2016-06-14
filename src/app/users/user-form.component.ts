@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators } from '@angular/common';
 import { CanDeactivate, Router, RouteParams } from '@angular/router-deprecated';
@@ -50,7 +51,7 @@ export class UserFormComponent implements OnInit, CanDeactivate {
 
 		let userid = name;
 
-		if (this.settings.getCmsType() === CMSTypes.Drupal) {
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
 			userid = id;
 		}
 

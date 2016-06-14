@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import * as Rx from 'rxjs/Rx';
@@ -87,7 +88,7 @@ export class UserService {
 
 	getUsers(): Rx.Observable<User[]> {
 
-		if (this.settings.getCmsType() === CMSTypes.Drupal) {
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
 			return this.getUsersFromDrupal();
 		}
 
@@ -99,7 +100,7 @@ export class UserService {
 
 	getUser(userId): Rx.Observable<User> {
 
-		if (this.settings.getCmsType() === CMSTypes.Drupal) {
+		if (this.settings.getCmsType() == CMSTypes.Drupal) {
 			return this.getUserFromDrupal(userId);
 		}
 

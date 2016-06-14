@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Component, OnInit } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
@@ -71,12 +72,12 @@ export class BlogUserComponent implements OnInit {
         this.error = false;
         this.isLoading = true;
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             userid = id;
         }
 
         let userStream = this._userService.getUser(userid);
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             let blogStream = this._service.getBlogsByUser(userid);
 
             Rx.Observable.forkJoin(userStream, blogStream).subscribe(

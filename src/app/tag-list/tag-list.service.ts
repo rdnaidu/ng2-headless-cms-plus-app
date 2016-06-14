@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
@@ -35,7 +36,7 @@ export class TagListService {
 
     getTags(filter?): Rx.Observable<Tag[]> {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getTagsFromDrupal();
         }
 
@@ -53,7 +54,7 @@ export class TagListService {
 
     getTag(id) {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getTagFromDrupal(id);
         }
 

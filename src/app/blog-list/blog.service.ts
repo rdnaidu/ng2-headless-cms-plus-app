@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
@@ -157,7 +158,7 @@ export class BlogService {
 
     getBlogs(filter?: any) {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getBlogsFromDrupal();
         }
 
@@ -197,7 +198,7 @@ export class BlogService {
 
     getTrendingBlogs(): Rx.Observable<any[]> {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getTrendingBlogsFromDrupal();
         }
 
@@ -231,7 +232,7 @@ export class BlogService {
 
     getOlderBlogs(): Rx.Observable<any[]> {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getOlderBlogsFromDrupal();
         }
 
@@ -277,7 +278,7 @@ export class BlogService {
 
     getBlog(id): Rx.Observable<BlogPostLive> {
 
-        if (this.settings.getCmsType() === CMSTypes.Drupal) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
             return this.getBlogFromDrupal(id);
         }
 
