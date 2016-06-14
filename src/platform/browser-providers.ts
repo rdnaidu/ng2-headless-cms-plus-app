@@ -11,7 +11,8 @@ import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 // Angular 2 Material
 // TODO(gdi2290): replace with @angular2-material/all
-import { MATERIAL_PROVIDERS } from './angular2-material2';
+import { MATERIAL_PROVIDERS } from '../platform/browser/angular2-material2';
+
 
 /*
 * Application Providers/Directives/Pipes
