@@ -12,6 +12,6 @@ export const CONFIG: Config = {
     apiShort: 'http://10.146.201.72',
     title: 'Xperience Platform',
     apiLocal: 'http://localhost/Xperience'
-}
+};
 
 export let APP_CONFIG = new OpaqueToken('app.config');

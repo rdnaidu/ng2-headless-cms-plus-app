@@ -54,12 +54,12 @@ export class BlogComponent implements OnInit {
   }
 
   onShowComments(event) {
-    //alert(event);
+    // alert(event);
     this.showComments = event;
-	//	var startIndex = (page -1) * this.pageSize;
-	//	this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize)
+	  // var startIndex = (page -1) * this.pageSize;
+	  // this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize)
 	}
-  
+
   private loadPost(id: any) {
 
     this.postLoading = true; //

@@ -5,7 +5,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecat
 
 import { SpinnerComponent } from '../shared/spinner.component';
 import { BlogUser } from '../blog-list/blog';
-import { BlogService} from '../blog-list/blog.service';
+import { BlogService } from '../blog-list/blog.service';
 import { UserService } from '../users/user.service';
 
 import * as _ from 'lodash';

@@ -4,7 +4,7 @@ import { CanDeactivate, Router, RouteParams } from '@angular/router-deprecated';
 import { NotificationsService } from 'angular2-notifications';
 
 import { BlogService } from '../blog-list/blog.service';
-//import {BasicValidators} from '../shared/basicValidators';
+// import {BasicValidators} from '../shared/basicValidators';
 // import {UserService} from '../users/user.service';
 // import {User} from './user';
 import { BlogPostForm } from '../blog-list/blog';
@@ -18,7 +18,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 
 	form: ControlGroup;
 	public heading: string = '';
-	//	user = new User();
+	// user = new User();
 	blog = new BlogPostForm();
 
 	constructor(fb: FormBuilder,
@@ -56,7 +56,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 		let self = this;
 		let result;
 		result = this._blogService.postBlog(this.blog);
-		
+
 		result.subscribe(
 			x => {
 				self._notificationsService.success('Create Blog', 'Blog has been created successfully');
@@ -67,7 +67,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 			() => {
 				this._router.navigate(['Home']);
 			}
-		)
+		);
 
 	}
 }

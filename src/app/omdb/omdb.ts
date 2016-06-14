@@ -60,7 +60,7 @@ export interface ByIdSearchResult {
     tomatoConsensus?: string;  // "An eerie, haunting spectacle, Batman succeeds ..
     tomatoUserMeter?: string;   // "84",
     tomatoUserRating?: string; // "3.5",
-    tomatoUserReviews?: string; //"908278",
+    tomatoUserReviews?: string; // "908278",
     tomatoURL?:  string; // "http://www.rottentomatoes.com/m/1001781-batman/",
     DVD:    string;     // "25 Mar 1997",
     BoxOffice: string;  // "N/A",

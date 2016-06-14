@@ -16,12 +16,13 @@ import { BlogUserListComponent } from './blog-user-list/blog-user-list.component
 import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { OmdbComponent } from './omdb/omdb.component';
 
-import {NotificationsDemoComponent} from './library/notifications-demo/notifications-demo.component';
+import { NotificationsDemoComponent }
+        from './library/notifications-demo/notifications-demo.component';
 import { AppState } from './app.service';
 import { RouterActive } from './router-active';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { SimpleNotificationsComponent } from 'angular2-notifications';
-//import { ContentfulComponent } from './contentful/contentful.component';
+// import { ContentfulComponent } from './contentful/contentful.component';
 
 declare var jQuery: any;
 
@@ -42,11 +43,11 @@ declare var jQuery: any;
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     { path: '/omdb', name: 'Omdb', component: OmdbComponent },
     { path: '/notifications', name: 'Notifications', component: NotificationsDemoComponent },
- //   { path: '/contentful', name: 'Contentful', component: ContentfulComponent },
+    // { path: '/contentful', name: 'Contentful', component: ContentfulComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
     { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
     { path: '/settings', name: 'Settings', component: AppSettingsComponent },
-    { path: '/*other', name: 'Other', redirectTo: ['Home'] },
+    { path: '/*other', name: 'Other', redirectTo: ['Home'] }
 ])
 @Component({
     selector: 'app',
@@ -62,14 +63,14 @@ declare var jQuery: any;
 // TODO: Keep track of this issue for back button on IE11
 // https://github.com/angular/angular/issues/7873
 export class AppComponent implements OnInit {
-    
+
     notificationsOptions = {
         timeOut: 3000,
         showProgressBar: false,
         pauseOnHover: false,
         clickToClose: false
-    }
-    
+    };
+
     constructor (
         @Inject(APP_CONFIG) private config: Config,
         public appState: AppState,

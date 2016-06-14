@@ -37,7 +37,7 @@ export class TagListComponent implements OnInit {
   ngOnInit() {
     this.loadTags();
   }
-  
+
   public typeaheadOnSelect(e: any): void {
     console.log('event', e);
     this.searchService.searchJSON.tag = e.item.name;

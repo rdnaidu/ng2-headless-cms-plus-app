@@ -43,19 +43,19 @@ export class BlogUserComponent implements OnInit {
         this._service.deleteBlog(postId)
             .subscribe(
             x => {
-                alert("Blog successfully deleted");
+                alert('Blog successfully deleted');
                 this.loadUser();
             },
             error => {
                // console.log(error);
                 if (error.status !== 204) {
-                    alert("Error deleting blog");
+                    alert('Error deleting blog');
                 } else {
-                    alert("Blog successfully deleted");
+                    alert('Blog successfully deleted');
                     this.loadUser();
                 }
             }
-            )
+            );
     }
 
 
@@ -71,12 +71,12 @@ export class BlogUserComponent implements OnInit {
         this.error = false;
         this.isLoading = true;
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             userid = id;
         }
 
         let userStream = this._userService.getUser(userid);
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             let blogStream = this._service.getBlogsByUser(userid);
 
             Rx.Observable.forkJoin(userStream, blogStream).subscribe(

@@ -14,10 +14,12 @@ export class ContentfulService {
 
 
     constructor(public settingService: SettingsService) {
-        // TODO: Commented out contentful APIs and service as there was in issue in prod runtime with CreateClient
+        // TODO: Commented out contentful APIs and service as there was in 
+        // issue in prod runtime with CreateClient
         // this.client = this.settingService.getContentfulClient();
         // this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
-        // this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
+        // this.authorContentTypeID = this.settingService.getContentfulSettings().
+        // contenttype_author;
     }
 
 
@@ -27,7 +29,7 @@ export class ContentfulService {
             this.client.getEntries({
                 'content_type': this.postContentTypeID
             }));
-        
+
 
     }
 

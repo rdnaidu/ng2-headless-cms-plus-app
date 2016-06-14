@@ -54,8 +54,8 @@ export interface BlogPostLive {
 }
 
 export interface SearchJSON {
-    title : string;
-    tag: string
+    title: string;
+    tag: string;
 }
 
 export interface Comments {
@@ -74,7 +74,7 @@ export interface BlogUser {
     username: string;
     company: string;
     location: string;
-    publications: Publications[]
+    publications: Publications[];
 }
 
 export interface Publications {

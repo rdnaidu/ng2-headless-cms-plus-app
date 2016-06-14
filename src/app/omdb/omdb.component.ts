@@ -60,7 +60,7 @@ export class OmdbComponent implements OnInit {
         // console.log(this.params);
         this.searchResult = false;
         this.showDetail = false;
-        if (this.params.s.length == 0)
+        if (this.params.s.length === 0)
             return;
         this.loadSearch(false);
     }
@@ -100,11 +100,10 @@ export class OmdbComponent implements OnInit {
             .subscribe(
             result => {
                 this.result = result;
+                this.searchResult = true;
                 // console.log(this.result.Search)
-                if (this.result.Search == undefined)
-                    this.searchResult = false
-                else
-                    this.searchResult = true;
+                if (this.result.Search === undefined)
+                    this.searchResult = false;
                 this.isLoading = false;
             },
             error => {

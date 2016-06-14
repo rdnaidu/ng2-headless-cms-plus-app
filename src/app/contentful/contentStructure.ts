@@ -5,16 +5,16 @@ export class ContentfulAuthor {
     profilePhoto = new cnImage();
 }
 
-export class cnImage {
-    fields = new cnFields();
+export class CnImage {
+    fields = new CnFields();
 }
 
-export class cnFields {
+export class CnFields {
     file = new cnFile();
     title: string;
 }
 
-export class cnFile {
+export class CnFile {
     contentType: string;
     url: string;
     fileName: string;
@@ -22,14 +22,14 @@ export class cnFile {
 
 
 export class ContentfulPost {
-    fields = new cnPostFields();
+    fields = new CnPostFields();
 }
 
-export class cnPostFields {
+export class CnPostFields {
     author  = new ContentfulAuthor();
     body: string;
     slug: string;
-    featuredImage = new  cnImage();
+    featuredImage = new CnImage();
     title: string;
     tags: string[];
 }

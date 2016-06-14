@@ -6,7 +6,7 @@ export interface AuthUser {
     isLoggedIn: boolean;
     rememberMe: boolean;
     token: string;
-    data: User
+    data: User;
 }
 
 export class AuthUserClass {
@@ -73,7 +73,7 @@ export class BasicAuth {
         let user;
         if (this._data[name]) {
             user = this._data[name];
-            if (user.password == password) {
+            if (user.password === password) {
                 return user;
             }
         }

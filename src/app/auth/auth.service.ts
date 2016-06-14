@@ -54,7 +54,7 @@ export class AuthService implements OnInit {
         let self = this;
         let userStream;
 
-        if (this.settings.getCmsType() == CMSTypes.Stub) {
+        if (this.settings.getCmsType() === CMSTypes.Stub) {
             userStream = this.userService.getUser(username);
         } else {
             let user = this.basicAuth.checkUser(username, password);
@@ -62,13 +62,13 @@ export class AuthService implements OnInit {
 
             let url = this.config.apiEndPoint + '/user/login';
             let body = 'name=' + username + '&pass=' + password + '&form_id=user_login_form';
-            let CSRFToken = this.sessionService.get('X-CSRF-Token');
-            if (CSRFToken === undefined) {
-                CSRFToken = this.setCSRFToken();
+            let csrfToken = this.sessionService.get('X-CSRF-Token');
+            if (csrfToken === undefined) {
+                csrfToken = this.setCSRFToken();
             }
             let headers = new Headers({
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRF-Token': CSRFToken
+                'X-CSRF-Token': csrfToken
             });
 
             let options = new RequestOptions({ headers: headers });
@@ -141,15 +141,15 @@ export class AuthService implements OnInit {
     public setCSRFToken() {
 
         let _url = this.config.apiEndPoint + '/rest/session/token';
-        let CSRFToken: any;
+        let csrfToken: any;
         this.http.get(_url)
             .map(response => response.text())
             .subscribe(
             res => {
                 //  console.log(res);
-                CSRFToken = res;
-                this.sessionService.set('X-CSRF-Token', CSRFToken);
-                return CSRFToken;
+                csrfToken = res;
+                this.sessionService.set('X-CSRF-Token', csrfToken);
+                return csrfToken;
             },
             error => { console.log(error); },
             () => { }

@@ -12,7 +12,7 @@ import * as Rx from 'rxjs/Rx';
 import { ContentfulService } from '../contentful/contentful.service.ts';
 import * as _ from 'lodash';
 
-import {ContentfulPost, ContentfulAuthor } from './contentStructure';
+import { ContentfulPost, ContentfulAuthor } from './contentStructure';
 
 @Component({
   selector: 'contentful-demo',
@@ -41,7 +41,8 @@ export class ContentfulComponent implements OnInit {
   constructor(public searchService: SearchService,
     public settingService: SettingsService,
     public contentfulService: ContentfulService) {
-  // TODO: Commented out contentful APIs and service as there was in issue in prod runtime with CreateClient
+  // TODO: Commented out contentful APIs and service as there was in issue 
+  // in prod runtime with CreateClient
   //  this.client = this.settingService.getContentfulClient();
   //   this.postContentTypeID = this.settingService.getContentfulSettings().contenttype_post;
   //  this.authorContentTypeID = this.settingService.getContentfulSettings().contenttype_author;
@@ -64,7 +65,7 @@ export class ContentfulComponent implements OnInit {
   }
   private extractData(entries: any[]) {
     this.posts = entries;
-    //console.log(this.posts);
+    // console.log(this.posts);
   }
 
 

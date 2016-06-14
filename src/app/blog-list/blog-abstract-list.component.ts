@@ -64,7 +64,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
         console.log('blog created', data);
       });*/
   }
-  
+
   loadPosts() {
     let self = this;
     this.postsLoading = true;
@@ -72,17 +72,17 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
     this._service.getBlogs()
       .map(data => {
         let tData = _.filter(data, function(o: BlogPost) {
-          if (self.searchService.searchJSON.tag == '') {
+          if (self.searchService.searchJSON.tag === '') {
             return true;
           }
-          
+
           let index = _.indexOf(o.tags, self.searchService.searchJSON.tag);
-          
+
           if (index === -1) return false;
-          
+
           return true;
         });
-        
+
         console.log(tData);
         return tData;
       })
@@ -127,7 +127,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
   public pageChanged(event: any): void {
     let startIndex = (event.page - 1) * this.itemsPerPage;
     this.pagedBlogs = _.take(_.drop(this.blogs, startIndex), this.itemsPerPage);
-    
+
     _.map(this.pagedBlogs, function addDate(data: BlogPostLive) {
       data.postDate = new Date(data.publishdate);
       data.comment_count = data.comment_count;
@@ -137,7 +137,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
       } else {
         data.currentImage = '';
       }
-      
+
     });
   };
 
@@ -146,10 +146,10 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
     this._service.getBlogs()
       .subscribe(
       blogs => {
-        
+
         this.blogs = _.take(_.drop(blogs, Math.round(Math.random() * 10) + 1), this.itemsPerPage);
         this.totalItems = _.size(this.blogs);
-        
+
         this.pagedBlogs = _.take(this.blogs, this.itemsPerPage);
         _.map(this.pagedBlogs, function addDate(data: BlogPost) {
           data.postDate = new Date(data.publishdate);

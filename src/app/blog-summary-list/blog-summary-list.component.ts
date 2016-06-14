@@ -13,7 +13,7 @@ import * as _ from 'lodash';
     selector: 'blog-summary-list',
 	providers: [BlogService],
     template: require('./blog-summary-list.component.html'),
-    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton,SpinnerComponent]
+    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton, SpinnerComponent]
 })
 export class BlogSummaryListComponent implements OnInit {
     blogs: any[];
@@ -30,20 +30,20 @@ export class BlogSummaryListComponent implements OnInit {
     ngOnInit() {
 		this.getTOBlogs();
 	}
-	
+
 	getTOBlogs() {
 		this.isLoading = true;
 		this._service.getTOBlogs()
 			.subscribe(
 			blogs => {
-				//console.log('blogs', blogs);
+				// console.log('blogs', blogs);
 				this.isLoading = false;
 				this.blogs = blogs[0];
 				this.olderBlogs = blogs[1];
 				_.map(this.blogs, function addDate(data: BlogSummary) {
 					data.postDate = new Date(data.publishdate);
 				});
-				
+
 				_.map(this.olderBlogs, function addDate(data: BlogSummary) {
 					data.postDate = new Date(data.publishdate);
 				});

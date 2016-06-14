@@ -34,7 +34,7 @@ export class BlogService {
     public deleteBlog(blogID: number): Rx.Observable<any> {
         let url = 'http://10.146.201.72/Xperience/node/' + blogID;
 
-        if (this.settings.getCmsType() == CMSTypes.Stub)
+        if (this.settings.getCmsType() === CMSTypes.Stub)
             return Rx.Observable.of(true);
 
         let options = this.setRequestOptions();
@@ -44,7 +44,7 @@ export class BlogService {
 
 
     public postBlog(blogForm: BlogPostForm): Rx.Observable<any> {
-        if (this.settings.getCmsType() == CMSTypes.Stub)
+        if (this.settings.getCmsType() === CMSTypes.Stub)
             return Rx.Observable.of(true);
 
         let url = this.config.apiEndPoint + '/entity/node';
@@ -52,8 +52,7 @@ export class BlogService {
         let linksHref = 'http://localhost/Xperience/rest/type/node/blog';
         let options = this.setRequestOptions();
 
-        let data =
-            {
+        let data =  {
                 '_links': {
                     'type': {
                         'href': linksHref
@@ -131,16 +130,16 @@ export class BlogService {
             value.stars = 567;
             _.forEach(value.images, function (avalue, key) {
                 value.images[key] = self.config.apiShort + avalue;
-            })
+            });
 
             value.authoravatar = self.helper.parseSrcFromHtml(value.authoravatar);
-            if (value.authoravatar.length == 0) {
+            if (value.authoravatar.length === 0) {
                 value.authoravatar = '';
             } else {
                 value.authoravatar = self.config.apiShort + value.authoravatar[0];
             }
             tData.push(value);
-        })
+        });
         return tData;
     }
 
@@ -158,7 +157,7 @@ export class BlogService {
 
     getBlogs(filter?: any) {
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getBlogsFromDrupal();
         }
 
@@ -198,7 +197,7 @@ export class BlogService {
 
     getTrendingBlogs(): Rx.Observable<any[]> {
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getTrendingBlogsFromDrupal();
         }
 
@@ -232,7 +231,7 @@ export class BlogService {
 
     getOlderBlogs(): Rx.Observable<any[]> {
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getOlderBlogsFromDrupal();
         }
 
@@ -278,7 +277,7 @@ export class BlogService {
 
     getBlog(id): Rx.Observable<BlogPostLive> {
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+        if (this.settings.getCmsType() === CMSTypes.Drupal) {
             return this.getBlogFromDrupal(id);
         }
 
@@ -289,7 +288,7 @@ export class BlogService {
                 let data = res.json();
 
                 let index = _.findIndex(data, function (o: BlogPost) {
-                    return o.id == id;
+                    return o.id === id;
                 });
 
                 if (index !== -1) {
