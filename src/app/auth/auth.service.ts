@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable, Inject, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -54,7 +55,7 @@ export class AuthService implements OnInit {
         let self = this;
         let userStream;
 
-        if (this.settings.getCmsType() === CMSTypes.Stub) {
+        if (this.settings.getCmsType() == CMSTypes.Stub) {
             userStream = this.userService.getUser(username);
         } else {
             let user = this.basicAuth.checkUser(username, password);

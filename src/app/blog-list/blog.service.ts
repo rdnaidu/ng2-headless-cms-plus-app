@@ -35,7 +35,7 @@ export class BlogService {
     public deleteBlog(blogID: number): Rx.Observable<any> {
         let url = 'http://10.146.201.72/Xperience/node/' + blogID;
 
-        if (this.settings.getCmsType() === CMSTypes.Stub)
+        if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
 
         let options = this.setRequestOptions();
@@ -45,7 +45,7 @@ export class BlogService {
 
 
     public postBlog(blogForm: BlogPostForm): Rx.Observable<any> {
-        if (this.settings.getCmsType() === CMSTypes.Stub)
+        if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
 
         let url = this.config.apiEndPoint + '/entity/node';
