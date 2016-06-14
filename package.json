@@ -86,6 +86,7 @@
     "bootstrap-loader": "^1.0.10",
     "bootstrap-material-design": "^0.5.10",
     "bootstrap-sass": "^3.3.6",
+    "contentful": "^3.3.14",
     "core-js": "^2.4.0",
     "font-awesome": "^4.6.3",
     "font-awesome-webpack": "0.0.4",

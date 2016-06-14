@@ -1,0 +1,11 @@
+<spinner [visible]="postsLoading"></spinner>
+<md-card>
+    <md-card-title-group>
+        <md-card-title>Posts Data</md-card-title>
+         <md-card-content>
+             <div *ngFor="let post of posts">
+                 <p> {{post.fields.title}}</p>
+             </div>
+         </md-card-content>
+    </md-card-title-group>
+  </md-card>

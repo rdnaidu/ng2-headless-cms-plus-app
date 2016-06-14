@@ -41,6 +41,8 @@ import 'angular2-notifications/components';
 import 'ng2-bootstrap/ng2-bootstrap';
 
 import 'bootstrap-material-design';
+
+import 'contentful';
 // import 'assets/bootstrap-material-design/js/material.min.js';
 // import 'assets/bootstrap-material-design/js/ripples.min.js';
 

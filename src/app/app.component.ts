@@ -21,6 +21,7 @@ import { AppState } from './app.service';
 import { RouterActive } from './router-active';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { SimpleNotificationsComponent } from 'angular2-notifications';
+import { ContentfulComponent } from './contentful/contentful.component';
 
 declare var jQuery: any;
 
@@ -41,6 +42,7 @@ declare var jQuery: any;
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     { path: '/omdb', name: 'Omdb', component: OmdbComponent },
     { path: '/notifications', name: 'Notifications', component: NotificationsDemoComponent },
+    { path: '/contentful', name: 'Contentful', component: ContentfulComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
     { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
     { path: '/settings', name: 'Settings', component: AppSettingsComponent },
