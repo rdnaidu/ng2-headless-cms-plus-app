@@ -17,5 +17,5 @@ export const APPLICATION_DIRECTIVES = [
 ];
 
 export const DIRECTIVES = [
-  {provide: PLATFORM_DIRECTIVES, multi: true, useValue: APPLICATION_DIRECTIVES }
+  { provide: PLATFORM_DIRECTIVES, multi: true, useValue: APPLICATION_DIRECTIVES }
 ];
