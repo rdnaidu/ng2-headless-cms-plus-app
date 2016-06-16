@@ -19,3 +19,8 @@
 .md-list-text-auto .md-list-text {
     width: auto !important;
 }
+
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+    background: #428bca;
+    color: #fff !important;
+}

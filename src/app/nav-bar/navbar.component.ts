@@ -48,6 +48,7 @@ export class NavBarComponent implements OnInit {
     menuItems: MenuItem[] = [
         new MenuItem('users', 'Users', 'Users', 'fa fa-users', true),
         new MenuItem('omdb', 'Omdb', 'Omdb APIs', 'fa fa-video-camera', false),
+        new MenuItem('solr', 'Solr', 'Solr APIs', 'fa fa-search', false),
         new MenuItem('blogusers', 'BlogUserList', 'Blog Users', 'fa fa-users', false)
         /*,
         new MenuItem("posts","Posts","Posts"),

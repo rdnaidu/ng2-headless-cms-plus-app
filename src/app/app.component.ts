@@ -15,6 +15,7 @@ import { BlogFormComponent } from './blog-create/blog-form.component';
 import { BlogUserListComponent } from './blog-user-list/blog-user-list.component';
 import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { OmdbComponent } from './omdb/omdb.component';
+import { SolrComponent } from './solr/solr.component';
 
 import { NotificationsDemoComponent }
         from './library/notifications-demo/notifications-demo.component';
@@ -42,6 +43,7 @@ declare var jQuery: any;
     { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},
     { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
     { path: '/omdb', name: 'Omdb', component: OmdbComponent },
+    { path: '/solr', name: 'Solr', component: SolrComponent },
     { path: '/notifications', name: 'Notifications', component: NotificationsDemoComponent },
     // { path: '/contentful', name: 'Contentful', component: ContentfulComponent },
     // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
@@ -56,7 +58,8 @@ declare var jQuery: any;
     styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),
               require('bootstrap-material-design/dist/css/bootstrap-material-design.min.css'),
-              require('bootstrap-material-design/dist/css/ripples.min.css')
+              require('bootstrap-material-design/dist/css/ripples.min.css'),
+              require('ng2-select/components/css/ng2-select.css')
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive, SimpleNotificationsComponent]
 })

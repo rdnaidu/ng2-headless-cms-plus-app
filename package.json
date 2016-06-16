@@ -111,6 +111,7 @@
     "less": "^2.5.1",
     "lodash": "^4.11.1",
     "ng2-bootstrap": "^1.0.17",
+    "ng2-select": "^1.0.3",
     "ng2-translate": "^1.11.3",
     "normalize.css": "^4.1.1",
     "resolve-url-loader": "^1.4.3",

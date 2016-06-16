@@ -1,0 +1,10 @@
+<div style="width: 300px; margin-bottom: 20px;">
+  <ng-select [data]="value"
+    [multiple]="true"
+    [items]="items"
+    [disabled]="disabled"
+    (data)="refreshValue($event)"
+    (selected)="selected($event)"
+    (removed)="removed($event)"
+    placeholder="No category selected"></ng-select>
+</div>
