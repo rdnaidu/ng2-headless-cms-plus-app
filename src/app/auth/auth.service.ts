@@ -104,6 +104,7 @@ export class AuthService implements OnInit {
         return userStream
             .map(res => {
                 self.user.isLoggedIn = true;
+                self.user.state="loggedIn";
                 self.user.token = this.encode(res.name, password);
                 self.user.data = res;
                 self.setSession();

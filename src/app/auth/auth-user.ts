@@ -5,12 +5,14 @@ import { Address, User, UserClass } from '../users/user';
 export interface AuthUser {
     isLoggedIn: boolean;
     rememberMe: boolean;
+    state: string;
     token: string;
     data: User;
 }
 
 export class AuthUserClass {
     isLoggedIn = false;
+    state = 'loggedOut';
     rememberMe = false;
     token = '';
     data = new UserClass();

@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,
+    OnInit,
+    trigger,
+    state,
+    style,
+    transition,
+    animate
+} from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 import { Observable, Scheduler } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
@@ -22,10 +29,23 @@ declare var jQuery: any;
             width:30px;
             height:30px;
         }
-    `]
+    `],
+    animations: [
+        trigger('loginState', [
+            state('loggedIn', style({ opacity: 1, transform: 'translateX(0)' })),
+            transition('loggedIn => loggedOut', [
+                style({
+                    opacity: 0,
+                    transform: 'translateX(-100%)'
+                }),
+                animate('0.2s ease-in')
+            ])
+        ])
+
+    ]
 })
 export class NavBarComponent implements OnInit {
-    menuItems: MenuItem[]= [
+    menuItems: MenuItem[] = [
         new MenuItem('users', 'Users', 'Users', 'fa fa-users', true),
         new MenuItem('omdb', 'Omdb', 'Omdb APIs', 'fa fa-video-camera', false),
         new MenuItem('blogusers', 'BlogUserList', 'Blog Users', 'fa fa-users', false)
@@ -37,9 +57,9 @@ export class NavBarComponent implements OnInit {
         new MenuItem("material","Material","Material")    */
     ];
     constructor(
-                public searchService: SearchService,
-                public auth: AuthService,
-                private _router: Router) {
+        public searchService: SearchService,
+        public auth: AuthService,
+        private _router: Router) {
     }
 
     ngOnInit() {
