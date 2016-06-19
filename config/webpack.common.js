@@ -9,7 +9,7 @@ const helpers = require('./helpers');
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
@@ -61,7 +61,7 @@ module.exports = {
     'main':      './src/main.browser.ts'
 
   },
-  
+
   /*
    * Options affecting the resolving of modules.
    *
@@ -74,7 +74,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.js', '.json'],
 
     // Make sure root is src
     root: helpers.root('src'),
@@ -127,8 +127,9 @@ module.exports = {
         exclude: [
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular2-material'),
           helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/@ngrx'),
+          helpers.root('node_modules/@angular2-material'),
         ]
       }
 
@@ -166,10 +167,9 @@ module.exports = {
       },
 
       /*
-       * Raw loader support for *.css files
+       * to string and css loader support for *.css files
        * Returns file content as string
        *
-       * See: https://github.com/webpack/raw-loader
        */
       {
         test: /\.css$/,
@@ -304,7 +304,8 @@ module.exports = {
      */
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
-    })
+    }),
+
   ],
 
   /*
