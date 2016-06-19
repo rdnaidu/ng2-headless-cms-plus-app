@@ -1,11 +1,58 @@
 <div class="container">
     <div class="row well">
-        <div class="col inputs">
+        <div class="inputs">
             <h4><b>{{ title }}</b></h4>
             <div>
                 <form class="form-search" id="search-by-title-form" [ngFormModel]="form" (ngSubmit)="search()">
-                    <xp-solr-typeahead></xp-solr-typeahead>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Filter by Category</label>
+                        <xp-solr-multiselect (getData)="getData($event)"></xp-solr-multiselect>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Filter by Event name</label>
+                        <div class="input-group" style="width:100%">
+                            <input  [(ngModel)]="data.eventname"
+                                [typeahead]="getAsyncData(getContext())"
+                                [typeaheadAsync]="true" 
+                                (typeaheadLoading)="changeTypeaheadLoading($event)"
+                                (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+                                (typeaheadOnSelect)="typeaheadOnSelect($event)"
+                                [typeaheadOptionField]="'name'"
+                                [typeaheadOptionsLimit]="7"
+                                [typeaheadMinLength]="0"
+                                class="form-control">
+                            <div *ngIf="typeaheadLoading===true">
+                                <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+                            </div>
+                            <div *ngIf="typeaheadNoResults===true" class="" style="">
+                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                            </div>
+                         </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
+                        <button (click)="reset($event)" id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>&nbsp;&nbsp;
+                    </div>
                 </form>
+            </div>
+        </div>
+        <div class="inputs" *ngIf="searchResult">
+            <div class="col">
+                <pagination *ngIf="result != undefined" class="pagination-md" [totalItems]="result.numFound" [(ngModel)]="data.page"
+                    [maxSize]="data.size" [boundaryLinks]="true" [rotate]="false" [itemsPerPage]="data.rows" (pageChanged)="pageChanged($event)">
+                </pagination>
+            </div>
+            <div class="media" *ngFor="let movie of result.docs">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTU1ZTJhYmRhNiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NTVlMmFiZGE2Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+                    </a>
+                </div> 
+                <div class="media-body">
+                    <h4 class="media-heading">{{movie.event_name[0]}}</h4>
+                    <p>{{movie.event_type_desc}}</p>
+                    <p>Created Date: {{movie.created_date | date: 'dd-MM-y HH:mm:ss'}} | Start Time: {{movie.start_time | date: 'dd-MM-y HH:mm:ss'}} | End Time: {{movie.end_time | date: 'dd-MM-y HH:mm:ss'}}</p> 
+                </div>
             </div>
         </div>
     </div>

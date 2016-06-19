@@ -41,6 +41,7 @@ import { HelperService } from './app/shared/services/helper.service';
 import { BasicAuth } from './app/auth/auth-user';
 import { UserService } from './app/users/user.service';
 import { NotificationsService } from 'angular2-notifications';
+import { SolrService } from './app/solr/solr.service';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -49,6 +50,7 @@ import { NotificationsService } from 'angular2-notifications';
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(AppComponent, [
+    SolrService,
     NotificationsService,
     BasicAuth,
     UserService,
