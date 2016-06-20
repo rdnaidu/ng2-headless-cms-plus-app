@@ -34,7 +34,7 @@ export class SolrComponent implements OnInit {
         eventname: '',
         start: 0,
         page: 1,
-        rows: 5,
+        rows: 10,
         size: 5
     };
     public typeaheadLoading: boolean = false;

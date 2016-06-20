@@ -8,8 +8,8 @@ export interface Config {
 }
 
 export const CONFIG: Config = {
-    apiEndPoint: 'http://10.146.201.72/Xperience',
-    apiShort: 'http://10.146.201.72',
+    apiEndPoint: 'http://10.146.201.41/Xperience',
+    apiShort: 'http://10.146.201.41',
     title: 'Xperience Platform',
     apiLocal: 'http://localhost/Xperience'
 };

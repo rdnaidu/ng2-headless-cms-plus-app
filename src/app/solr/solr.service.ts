@@ -13,7 +13,7 @@ export class SolrService {
         
     }
 
-    getEvents(params: any) {
+    getEventsLive(params: any) {
         let url = this.solrUrl + '/select';
         let query = [];
         let category = [];
@@ -30,6 +30,8 @@ export class SolrService {
             query.push('q=event_name:' + params.eventname);
         } else if(categoryStr !== '') {
             query.push('q=event_type_name:' + categoryStr);
+        } else {
+            query.push('q=*');
         }
 
         query.push('start=' + params.start)
@@ -45,12 +47,54 @@ export class SolrService {
             });
     }
     
+    getEvents(params: any) {
+        if (this.settings.getCmsType() == CMSTypes.Drupal) {
+            return this.getEventsLive(params);
+        }
+        
+        let url = this._url + '/solr-events.json';
+        
+        return this._http.get(url)
+            .map(res => {
+                let data = res.json();
+                console.log(data);
+                data = data.response;
+                
+                let category = _.map(params.category, function(val) {
+                    return val.id;
+                });
+                
+                console.log(category);
+                let catRegExp = new RegExp('.*');
+                if (category.length) catRegExp = new RegExp(category.join('|'));
+                
+                let docs = data.docs.filter(function(item) {
+                    if (params.eventname != '') {
+                        return catRegExp.test(item.event_type_name[0]) && (0 <= item.event_name.indexOf(params.eventname));
+                    } else {
+                        return catRegExp.test(item.event_type_name[0]);
+                    }
+                });
+                
+                data.numFound = docs.length;
+                data.docs = _.take(_.drop(docs, params.start), params.rows);;
+                
+                return data;
+            });
+    }
+    
     solrAutoSuggestLive(str: string) {
         let url = this.solrUrl + '/suggest' + '?q=' + str + 'wt=json&start=0&rows=10';
 
         return this._http.get(url)
             .map(res => {
-                let data = res.json()
+                let data = res.json();
+                let docs = data.response.docs.filter(function(item) {
+                    let val = item.event_name[0];
+                    return 0 <= val.indexOf(str);
+                });
+                
+                data.response.docs = docs || [];
 
                 let tmpData = [];
 
