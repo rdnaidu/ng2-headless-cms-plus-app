@@ -37,6 +37,7 @@ export const routes: RouterConfig = [
     { path: 'notifications', component: NotificationsDemoComponent },
     // { path: '/contentful', component: ContentfulComponent },
     { path: 'settings', component: AppSettingsComponent },
+    { path: 'about', component: 'About' },
     { path: '*other', redirectTo: '/home' }
 ];
 
