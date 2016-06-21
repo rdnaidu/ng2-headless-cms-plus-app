@@ -49,15 +49,81 @@ export class AuthService implements OnInit {
     encode(username, password) {
         return btoa(username + ':' + password);
     }
+    
+    private getRefreshToken(token) {
+        let url = this.config.apiEndPoint + '/simple-oauth/refresh';
+        let csrfToken = this.sessionService.get('X-CSRF-Token');
+        if (csrfToken === undefined) {
+            this.setCSRFToken();
+            csrfToken = this.getCSRFToken();
+        }
+        
+        let headers = new Headers({
+            'X-CSRF-Token': csrfToken,
+            'Authorization': 'Bearer ' + token
+        });
+        
+        let options = new RequestOptions({ headers: headers });
+        
+        return this.http.get(url, options)
+            .map(res => {
+                let data = res.json();
+                console.log('data', data);
+                return data;
+            });
+    }
 
     public login(username?: String, password?: String): Observable<any> {
         // This is just a login from local which have credentials locallay
         let self = this;
         let userStream;
-
+        let data;
+        
         if (this.settings.getCmsType() == CMSTypes.Stub) {
             userStream = this.userService.getUser(username);
         } else {
+            let url = this.config.apiEndPoint + '/jdrupal/connect?_format=hal_json';
+            let csrfToken = this.sessionService.get('X-CSRF-Token');
+            if (csrfToken === undefined) {
+                this.setCSRFToken();
+                csrfToken = this.getCSRFToken();
+            }
+            let token = this.encode(username, password);
+            let headers = new Headers({
+                'Content-Type': 'application/hal+json',
+                'X-CSRF-Token': csrfToken,
+                'Authorization': 'Basic ' + token
+            });
+            
+            let options = new RequestOptions({ headers: headers });
+            userStream = this.http.get(url, options)
+                .flatMap(res => {
+                    data = res.json();
+                    let user;
+                    if (data.name) {
+                        user = self.basicAuth.getUser(data.name);
+                        if (user) {
+                            return self.getRefreshToken(user.refresh_token)
+                                .map(res => {
+                                    data.credentials = res;
+                                    return data;
+                                });
+                        } else {
+                            return Observable.throw(new Error('Please check username and password'));
+                        }
+                    } else {
+                        return Observable.throw(new Error('Please check username and password'));
+                    }
+                })
+                .flatMap(res => {
+                    if (res.uid) {
+                        return this.userService.getUser(res.uid);
+                    } else {
+                        return Observable.throw(new Error('Please check username and password'));
+                    }
+                });
+            
+            /*
             let user = this.basicAuth.checkUser(username, password);
             if (!user) return Observable.throw(new Error('Please check username and password'));
 
@@ -65,7 +131,8 @@ export class AuthService implements OnInit {
             let body = 'name=' + username + '&pass=' + password + '&form_id=user_login_form';
             let csrfToken = this.sessionService.get('X-CSRF-Token');
             if (csrfToken === undefined) {
-                csrfToken = this.setCSRFToken();
+                this.setCSRFToken();
+                csrfToken = this.getCSRFToken();
             }
             let headers = new Headers({
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -74,29 +141,29 @@ export class AuthService implements OnInit {
 
             let options = new RequestOptions({ headers: headers });
             let logSuccess = false;
-            /* This works but not really required as the encoding and username/password
-             check is already done.
-             this.http.post(url, body, options)
-                 .map(response => response.headers)
-                 .subscribe(
-                 result => { 
-                     console.log(result);
-                     // Assume the redirect error will happen for a valid user
-                    // return Observable.throw(new Error('Please check username and password')); },
-                 },
-                 error => {
-                     console.log(error);
-                     console.log(error.status);
-                     if (error.status === 200) {
-                 //        this.postBlog(encodedString);
-                     } else {
-                         return Observable.throw(new Error('Please check username and password'));
-                     }
-                 }
-                 );
-         */
+            // This works but not really required as the encoding and username/password
+            // check is already done.
+            this.http.post(url, body, options)
+                .map(response => response.headers)
+                .subscribe(
+                    result => { 
+                        console.log(result);
+                        // Assume the redirect error will happen for a valid user
+                        // return Observable.throw(new Error('Please check username and password')); },
+                    },
+                    error => {
+                        console.log(error);
+                        console.log(error.status);
+                        if (error.status === 200) {
+                            // this.postBlog(encodedString);
+                        } else {
+                            return Observable.throw(new Error('Please check username and password'));
+                        }
+                    }
+                );
+            */
 
-            userStream = this.userService.getUser(user.uid);
+           // userStream = Observable.of({});//this.userService.getUser(user.uid);
 
 
         }
@@ -104,8 +171,8 @@ export class AuthService implements OnInit {
         return userStream
             .map(res => {
                 self.user.isLoggedIn = true;
-                self.user.state="loggedIn";
-                self.user.token = this.encode(res.name, password);
+                self.user.state = "loggedIn";
+                self.user.token = data.credentials.access_token; //this.encode(res.name, password);
                 self.user.data = res;
                 self.setSession();
 

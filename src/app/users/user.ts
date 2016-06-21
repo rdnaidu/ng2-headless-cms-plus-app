@@ -18,6 +18,7 @@ export interface User {
     phone?: string;
     address?: Address;
     publications?: Publications[];
+    credentials: any
 }
 
 export class UserClass implements User {
@@ -36,4 +37,5 @@ export class UserClass implements User {
         zipcode: ''
     } as Address;
     publications = [] as Publications[];
+    credentials = {};
 }

@@ -327,7 +327,7 @@ export class BlogService {
         if (csrfToken === undefined) {
             csrfToken = this.auth.setCSRFToken();
         }
-        let authString = 'Basic ' + user.token;
+        let authString = user.data.credentials.tokent_type + ' ' + user.token;
         let headers = new Headers({
             'Content-Type': 'application/hal+json',
             'Authorization': authString,
