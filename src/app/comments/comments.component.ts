@@ -1,5 +1,5 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 import { BlogPost, Comments } from '../blog-list/blog';
 import { DateDeltaPipe } from '../blog/date-delta.pipe';

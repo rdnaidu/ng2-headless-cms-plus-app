@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { BlogHomeComponent } from '../blog-home/blog-home.component';
 
 

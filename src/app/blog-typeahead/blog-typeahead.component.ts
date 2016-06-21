@@ -1,5 +1,5 @@
 import { Component, OnInit, SimpleChange, Input } from '@angular/core';
-import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
@@ -51,7 +51,7 @@ export class BlogTypeaheadComponent implements OnInit {
 
   public typeaheadOnSelect(e: any): void {
     this.searchService.searchJSON.title = e.item.id;
-    this.router.navigate(['Blog', {id: e.item.id}]);
+    this.router.navigate(['/blog', e.item.id]);
   }
 
   private loadPosts() {

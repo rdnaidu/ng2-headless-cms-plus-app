@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
-import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { FormBuilder, ControlGroup, Validators } from '@angular/common';
 import { SessionService } from '../shared/services/session.service';
 import { DropdownComponent } from '../shared/drop-down.component';
@@ -75,6 +75,6 @@ export class AppSettingsComponent implements OnInit {
                 .logout()
                 .subscribe();
         }
-        this.router.navigate(['Home']);
+        this.router.navigate(['/home']);
     }
 }

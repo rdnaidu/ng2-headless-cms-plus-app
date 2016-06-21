@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 import { BlogPost, Comments } from '../blog-list/blog';
 import { AuthService } from '../auth/auth.service';
@@ -13,8 +13,7 @@ export class CommentsFormComponent implements OnInit {
     title: string = 'Comments';
 
 
-    constructor(public auth: AuthService,
-            private _routeParams: RouteParams) {
+    constructor(public auth: AuthService) {
 
     }
 

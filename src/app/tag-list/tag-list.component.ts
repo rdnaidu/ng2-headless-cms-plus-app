@@ -2,7 +2,7 @@ import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { MD_GRID_LIST_DIRECTIVES } from '@angular2-material/grid-list';
-import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { TagListService } from './tag-list.service';

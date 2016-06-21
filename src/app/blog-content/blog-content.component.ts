@@ -1,5 +1,5 @@
 import { Component, OnInit , Input , Output , EventEmitter } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';

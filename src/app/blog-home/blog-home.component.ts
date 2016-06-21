@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
-import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { BlogAbstractListComponent } from '../blog-list/blog-abstract-list.component';

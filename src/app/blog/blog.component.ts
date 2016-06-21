@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
-import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router, ActivatedRoute } from '@angular/router';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { SpinnerComponent } from '../shared/spinner.component';
@@ -39,14 +39,23 @@ export class BlogComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private _service: BlogService,
-    private _routeParams: RouteParams) {
+    private _router: Router,
+    private _route: ActivatedRoute) {
     this.showComments = true;
   }
 
   ngOnInit() {
-    let id = this._routeParams.get('id');
-    console.log('id = ' + id);
-    this.loadPost(id);
+    let id;
+   // console.log('id = ' + id);
+
+    this._route
+      .params
+      .subscribe(params => {
+        id = +params['id'];
+        console.log('id = ' + id);
+        this.loadPost(id);
+      });
+
   }
 
   toggleComments() {
@@ -56,9 +65,9 @@ export class BlogComponent implements OnInit {
   onShowComments(event) {
     // alert(event);
     this.showComments = event;
-	  // var startIndex = (page -1) * this.pageSize;
-	  // this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize)
-	}
+    // var startIndex = (page -1) * this.pageSize;
+    // this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize)
+  }
 
   private loadPost(id: any) {
 

@@ -33,7 +33,7 @@ export class BlogService {
      }*/
 
     public deleteBlog(blogID: number): Rx.Observable<any> {
-        let url = 'http://10.146.201.72/Xperience/node/' + blogID;
+        let url = this.config.apiEndPoint + '/node/' + blogID;
 
         if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
@@ -261,7 +261,7 @@ export class BlogService {
     }
 
     getBlogFromDrupal(id): Rx.Observable<BlogPostLive> {
-        let url = 'http://10.146.201.72/Xperience/blogs';
+        let url = this.config.apiEndPoint +'/blogs';
         url += '/' + id;
 
         return this._http.get(url)
@@ -284,6 +284,7 @@ export class BlogService {
 
         let url = this._url;
         url += '/blogs.json';
+        
         return this._http.get(url)
             .flatMap(res => {
                 let data = res.json();

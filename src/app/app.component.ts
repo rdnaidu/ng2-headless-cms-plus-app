@@ -1,8 +1,9 @@
 /*
  * Angular 2 decorators and services
  */
+
 import { Component, ViewEncapsulation, OnInit, Inject, provide } from '@angular/core';
-import { Router, RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { NavBarComponent } from './nav-bar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
@@ -17,40 +18,22 @@ import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { OmdbComponent } from './omdb/omdb.component';
 import { SolrComponent } from './solr/solr.component';
 
+
 import { NotificationsDemoComponent }
         from './library/notifications-demo/notifications-demo.component';
 import { AppState } from './app.service';
-import { RouterActive } from './router-active';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { SimpleNotificationsComponent } from 'angular2-notifications';
 // import { ContentfulComponent } from './contentful/contentful.component';
 
 declare var jQuery: any;
 
+
 /*
  * App Component
  * Top Level Component
  */
-@RouteConfig([
-    { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
-    { path: '/users', name: 'Users', component: UsersComponent },
-    { path: '/users/:name/:id', name: 'EditUser', component: UserFormComponent },
-    { path: '/users/new', name: 'NewUser', component: UserFormComponent },
-    { path: '/blog/:id', name: 'Blog', component: BlogComponent},
-    { path: '/blog-user/:name/:id' , name: 'BlogUser', component: BlogUserComponent},
-    { path: '/login', name: 'Login', component: LoginComponent },
-    { path: '/blog-form/', name: 'NewBlog', component: BlogFormComponent},
-    { path: '/blog-form/:id', name: 'EditBlog', component: BlogFormComponent},
-    { path: '/blogusers', name: 'BlogUserList', component: BlogUserListComponent },
-    { path: '/omdb', name: 'Omdb', component: OmdbComponent },
-    { path: '/solr', name: 'Solr', component: SolrComponent },
-    { path: '/notifications', name: 'Notifications', component: NotificationsDemoComponent },
-    // { path: '/contentful', name: 'Contentful', component: ContentfulComponent },
-    // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-    { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
-    { path: '/settings', name: 'Settings', component: AppSettingsComponent },
-    { path: '/*other', name: 'Other', redirectTo: ['Home'] }
-])
+
 @Component({
     selector: 'app',
     template: require('./app.component.html'),
@@ -61,7 +44,7 @@ declare var jQuery: any;
               require('bootstrap-material-design/dist/css/ripples.min.css'),
               require('ng2-select/components/css/ng2-select.css')
               ],
-    directives: [ROUTER_DIRECTIVES, NavBarComponent, RouterActive, SimpleNotificationsComponent]
+    directives: [ROUTER_DIRECTIVES, NavBarComponent, SimpleNotificationsComponent]
 })
 // TODO: Keep track of this issue for back button on IE11
 // https://github.com/angular/angular/issues/7873
@@ -76,8 +59,7 @@ export class AppComponent implements OnInit {
 
     constructor (
         @Inject(APP_CONFIG) private config: Config,
-        public appState: AppState,
-        public router: Router) {
+        public appState: AppState) {
 
     }
     ngOnInit() {

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
-import { RouteConfig, ROUTER_DIRECTIVES, Router, RouteParams } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router ,ActivatedRoute} from '@angular/router';
 
 import { SpinnerComponent } from '../shared/spinner.component';
 import { BlogUser } from '../blog-list/blog';
@@ -32,7 +32,7 @@ export class BlogUserComponent implements OnInit {
         public auth: AuthService,
         public settings: SettingsService,
         private _router: Router,
-        private _routeParams: RouteParams,
+        private _route: ActivatedRoute,
         private _service: BlogService,
         private _userService: UserService
     ) {
@@ -48,7 +48,7 @@ export class BlogUserComponent implements OnInit {
                 this.loadUser();
             },
             error => {
-               // console.log(error);
+                // console.log(error);
                 if (error.status !== 204) {
                     alert('Error deleting blog');
                 } else {
@@ -66,58 +66,68 @@ export class BlogUserComponent implements OnInit {
 
     private loadUser() {
 
-        let id = this._routeParams.get('id');
-        let name = this._routeParams.get('name');
-        let userid = name;
-        this.error = false;
-        this.isLoading = true;
+        let id;// = this._routeParams.get('id');
+        let name;// = this._routeParams.get('name');
+        console.log("Called");
+        this._route
+            .params
+            .subscribe(params => {
+                id = +params['id'];
+                name = params['name'];
+                console.log(params);
 
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
-            userid = id;
-        }
+                let userid = name;
+                this.error = false;
+                this.isLoading = true;
 
-        let userStream = this._userService.getUser(userid);
-        if (this.settings.getCmsType() == CMSTypes.Drupal) {
-            let blogStream = this._service.getBlogsByUser(userid);
-
-            Rx.Observable.forkJoin(userStream, blogStream).subscribe(
-                blogUser => {
-                    this.blogUser = blogUser[0];
-                    this.blogUser.publications = blogUser[1];
-                    this.error = false;
-                    this.isLoading = false;
-              //      console.log(this.blogUser);
-                },
-                error => {
-                    if (error.status === 404) {
-                        this._router.navigate(['NotFound']);
-                    }
-              //      console.log('ERR:' + error);
-                    this.error = true;
-                    this.isLoading = false;
+                if (this.settings.getCmsType() == CMSTypes.Drupal) {
+                    userid = id;
                 }
 
-            );
+                let userStream = this._userService.getUser(userid);
+                if (this.settings.getCmsType() == CMSTypes.Drupal) {
+                    let blogStream = this._service.getBlogsByUser(userid);
 
-        } else {
-            userStream.subscribe(
-                blogUser => {
-                    this.blogUser = blogUser;
-                    this.error = false;
-                    this.isLoading = false;
-                  //  console.log(this.blogUser);
-                },
-                error => {
-                    if (error.status === 404) {
-                        this._router.navigate(['NotFound']);
-                    }
-               //     console.log('ERR:' + error);
-                    this.error = true;
-                    this.isLoading = false;
+                    Rx.Observable.forkJoin(userStream, blogStream).subscribe(
+                        blogUser => {
+                            this.blogUser = blogUser[0];
+                            this.blogUser.publications = blogUser[1];
+                            this.error = false;
+                            this.isLoading = false;
+                            //      console.log(this.blogUser);
+                        },
+                        error => {
+                            if (error.status === 404) {
+                                this._router.navigate(['NotFound']);
+                            }
+                            //      console.log('ERR:' + error);
+                            this.error = true;
+                            this.isLoading = false;
+                        }
+
+                    );
+
+                } else {
+                    userStream.subscribe(
+                        blogUser => {
+                            this.blogUser = blogUser;
+                            this.error = false;
+                            this.isLoading = false;
+                            //  console.log(this.blogUser);
+                        },
+                        error => {
+                            if (error.status === 404) {
+                                this._router.navigate(['NotFound']);
+                            }
+                            //     console.log('ERR:' + error);
+                            this.error = true;
+                            this.isLoading = false;
+                        }
+
+                    );
                 }
+            });
 
-            );
-        }
     }
 
 }

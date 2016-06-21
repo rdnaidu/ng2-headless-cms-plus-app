@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let blog of blogUser.publications">
-                        <td><a md-list-item [routerLink]="['Blog', { id: blog.nid }]">{{blog.title}}</a></td>
+                        <td><a md-list-item [routerLink]="['/blog', { id: blog.nid }]">{{blog.title}}</a></td>
                         <td>
                             <i *ngIf="auth.user.data.name == blogUser.name" (click)="deletePost(blog.nid)" class="fa fa-trash clickable" aria-hidden="true"></i>
                         </td>

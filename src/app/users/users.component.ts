@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { UserService } from './user.service';
 import { SpinnerComponent } from '../shared/spinner.component';
 import { AlertComponent } from '../shared/alert.component';
-import { CanActivate, ComponentInstruction } from '@angular/router-deprecated';
 import { isLoggedIn } from '../auth/isLoggedIn';
 
 @Component({
 	template: require('./users.component.html'),
 	providers: [UserService],
-	directives: [RouterLink, SpinnerComponent, AlertComponent]
+	directives: [ROUTER_DIRECTIVES, SpinnerComponent, AlertComponent]
 })
 
-@CanActivate((next: ComponentInstruction, previous: ComponentInstruction) => {
-  return isLoggedIn(next, previous);
-})
 export class UsersComponent implements OnInit {
 
 	users: any[];

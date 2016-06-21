@@ -6,12 +6,11 @@ import { Component,
     transition,
     animate
 } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Observable, Scheduler } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import { AuthService } from '../auth/auth.service';
 import { MenuItem } from './menu-item';
-import { RouterActive } from '../router-active';
 import { MdButton, MdAnchor } from '@angular2-material/button';
 import { BlogTypeaheadComponent } from '../blog-typeahead/blog-typeahead.component';
 import { SearchService } from '../shared/search.service';
@@ -21,7 +20,7 @@ declare var jQuery: any;
 @Component({
     selector: 'navbar',
     template: require('./navbar.component.html'),
-    directives: [ROUTER_DIRECTIVES, RouterActive, MdButton, MdAnchor, BlogTypeaheadComponent],
+    directives: [ROUTER_DIRECTIVES, MdButton, MdAnchor, BlogTypeaheadComponent],
     styles: [`
     .profile-image  {
 	        padding-top: 0px;
@@ -46,10 +45,10 @@ declare var jQuery: any;
 })
 export class NavBarComponent implements OnInit {
     menuItems: MenuItem[] = [
-        new MenuItem('users', 'Users', 'Users', 'fa fa-users', true),
-        new MenuItem('omdb', 'Omdb', 'Omdb APIs', 'fa fa-video-camera', false),
-        new MenuItem('solr', 'Solr', 'Solr APIs', 'fa fa-search', false),
-        new MenuItem('blogusers', 'BlogUserList', 'Blog Users', 'fa fa-users', false)
+        new MenuItem('users', '/users', 'Users', 'fa fa-users', true),
+        new MenuItem('omdb', '/omdb', 'Omdb APIs', 'fa fa-video-camera', false),
+        new MenuItem('solr', '/solr', 'Solr APIs', 'fa fa-search', false),
+        new MenuItem('blogusers', '/blogusers', 'Blog Users', 'fa fa-users', false)
         /*,
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),
@@ -66,11 +65,11 @@ export class NavBarComponent implements OnInit {
     ngOnInit() {
 
     }
-
+/*
     isCurrentRoute(route) {
         let instruction = this._router.generate(route);
         return this._router.isRouteActive(instruction);
-    }
+    }*/
 
     // collapse Navbar once clicked
     clicked() {

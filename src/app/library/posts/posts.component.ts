@@ -1,6 +1,5 @@
 /* tslint:disable */
 import { Component, OnInit } from '@angular/core';
-import { CanActivate, ComponentInstruction } from '@angular/router-deprecated';
 
 import { PostService } from './post.service';
 import { UserService } from '../../users/user.service';
@@ -32,9 +31,6 @@ import * as _ from 'lodash';
 	directives: [SpinnerComponent,PaginationComponent]
 })
 
-@CanActivate((next: ComponentInstruction, previous: ComponentInstruction) => {
-  return isLoggedIn(next,previous);
-})
 export class PostsComponent implements OnInit{
 	//posts: any[];
 	posts= [];

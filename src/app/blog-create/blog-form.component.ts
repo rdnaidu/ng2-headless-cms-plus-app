@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators } from '@angular/common';
-import { CanDeactivate, Router, RouteParams } from '@angular/router-deprecated';
+import { CanDeactivate, Router , ActivatedRoute } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 
 import { BlogService } from '../blog-list/blog.service';
@@ -14,7 +14,7 @@ import { BlogPostForm } from '../blog-list/blog';
 	providers: [BlogService]
 
 })
-export class BlogFormComponent implements OnInit, CanDeactivate {
+export class BlogFormComponent implements OnInit {
 
 	form: ControlGroup;
 	public heading: string = '';
@@ -23,7 +23,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 
 	constructor(fb: FormBuilder,
 		private _router: Router,
-		private _routeParams: RouteParams,
+		private _route: ActivatedRoute,
 		private _blogService: BlogService,
 		private _notificationsService: NotificationsService
 	) {
@@ -35,14 +35,17 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 	}
 
 	ngOnInit() {
-		let id = this._routeParams.get('id');
-
-		this.heading = id ? 'Edit Blog' : 'New Blog';
-
-		if (!id) {
-			this.heading = 'New Blog';
-			return;
-		}
+		let id: any;
+		this._route
+			.params
+			.subscribe(params => {
+				id = +params['id'];
+				this.heading = id ? 'Edit Blog' : 'New Blog';
+				if (!id) {
+					this.heading = 'New Blog';
+					return;
+				}
+			});
 
 	}
 
@@ -65,7 +68,7 @@ export class BlogFormComponent implements OnInit, CanDeactivate {
 				self._notificationsService.error('Error creating blog', 'Creating blog has been failed');
 			},
 			() => {
-				this._router.navigate(['Home']);
+				this._router.navigate(['/home']);
 			}
 		);
 
