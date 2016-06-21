@@ -18,7 +18,7 @@ export interface User {
     phone?: string;
     address?: Address;
     publications?: Publications[];
-    credentials: any
+    credentials?: any;
 }
 
 export class UserClass implements User {

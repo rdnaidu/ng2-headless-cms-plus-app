@@ -81,6 +81,7 @@ export class AuthService implements OnInit {
         
         if (this.settings.getCmsType() == CMSTypes.Stub) {
             userStream = this.userService.getUser(username);
+         //   console.log(username);
         } else {
             let url = this.config.apiEndPoint + '/jdrupal/connect?_format=hal_json';
             let csrfToken = this.sessionService.get('X-CSRF-Token');
@@ -167,12 +168,14 @@ export class AuthService implements OnInit {
 
 
         }
-
+        
         return userStream
             .map(res => {
                 self.user.isLoggedIn = true;
                 self.user.state = "loggedIn";
-                self.user.token = data.credentials.access_token; //this.encode(res.name, password);
+                if (res.credentials !== undefined) {
+                    self.user.token = res.credentials.access_token; //this.encode(res.name, password);
+                }
                 self.user.data = res;
                 self.setSession();
 
