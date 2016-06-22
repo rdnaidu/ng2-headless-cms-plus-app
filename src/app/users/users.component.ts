@@ -4,7 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { UserService } from './user.service';
 import { SpinnerComponent } from '../shared/spinner.component';
 import { AlertComponent } from '../shared/alert.component';
-import { isLoggedIn } from '../auth/isLoggedIn';
+
 
 @Component({
 	template: require('./users.component.html'),

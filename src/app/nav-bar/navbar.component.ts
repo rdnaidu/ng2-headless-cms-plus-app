@@ -6,7 +6,7 @@ import { Component,
     transition,
     animate
 } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router, ActivatedRoute } from '@angular/router';
 import { Observable, Scheduler } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import { AuthService } from '../auth/auth.service';
@@ -19,16 +19,9 @@ declare var jQuery: any;
 
 @Component({
     selector: 'navbar',
-    template: require('./navbar.component.html'),
+    templateUrl: './navbar.component.html',
     directives: [ROUTER_DIRECTIVES, MdButton, MdAnchor, BlogTypeaheadComponent],
-    styles: [`
-    .profile-image  {
-	        padding-top: 0px;
-	        padding-bottom: 0px;,
-            width:30px;
-            height:30px;
-        }
-    `],
+    styleUrls: ['./navbar.component.scss'],
     animations: [
         trigger('loginState', [
             state('loggedIn', style({ opacity: 1, transform: 'translateX(0)' })),
@@ -59,17 +52,19 @@ export class NavBarComponent implements OnInit {
     constructor(
         public searchService: SearchService,
         public auth: AuthService,
-        private _router: Router) {
+        private _router: Router,
+        private _route: ActivatedRoute) {
+           
     }
 
     ngOnInit() {
 
     }
-/*
+
     isCurrentRoute(route) {
-        let instruction = this._router.generate(route);
-        return this._router.isRouteActive(instruction);
-    }*/
+       console.log(this._router);
+       console.log(this._route);
+    }
 
     // collapse Navbar once clicked
     clicked() {

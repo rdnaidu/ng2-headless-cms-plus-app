@@ -36,7 +36,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'app',
-    template: require('./app.component.html'),
+    templateUrl: './app.component.html',
     encapsulation: ViewEncapsulation.None,
     styles: [ require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),

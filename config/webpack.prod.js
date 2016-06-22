@@ -168,10 +168,11 @@ module.exports = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
      */
-
+    // TODO: used older logic instead of  helpers.root('node_modules/angular2-hmr/prod.js')
+    // as there was a runtime failure relook at this later
     new NormalModuleReplacementPlugin(
       /angular2-hmr/,
-      helpers.root('node_modules/angular2-hmr/prod.js')
+      helpers.root('config/modules/angular2-hmr-prod.js')
     ),
 
     /**

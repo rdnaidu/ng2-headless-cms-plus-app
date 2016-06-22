@@ -60,7 +60,7 @@ export class SolrService {
                 console.log(data);
                 data = data.response;
                 
-                let category = _.map(params.category, function(val) {
+                let category = _.map(params.category, function(val: any) {
                     return val.id;
                 });
                 
