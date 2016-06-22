@@ -48,12 +48,19 @@ export class BlogFormComponent implements OnInit {
 					return;
 				}
 			});
-		/*	this.modal.alert()
+	  /* let dialog =this.modal.confirm()
                 .size('sm')
-                .showClose(true)
+                .message('dd')
                 .title('A simple Alert style modal window')
                 .isBlocking(true)
-				.open();*/
+                .open();
+				
+				
+				dialog.then(
+                 res => console.log(res)
+                ).catch(
+					error => console.log(error)
+				);*/
 	}
 
 	routerCanDeactivate() {
