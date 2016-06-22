@@ -1,8 +1,9 @@
 <spinner [visible]="isLoading"></spinner>
-<div class="col-lg-12" *ngIf="!isLoading">
+<div class="col" *ngIf="!isLoading">
     <md-list dense>
-        <h3 md-subheader><b>Trending Blogs</b> <i class="fa fa-line-chart" aria-hidden="true"></i></h3>
+        
         <md-card>
+            <p><b>Trending Blogs</b> <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <md-list-item *ngFor="let blog of blogs" md-expando>
                 <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
                     <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
@@ -13,8 +14,9 @@
             </md-list-item>
         </md-card>
         <md-divider></md-divider>
-        <h3 md-subheader><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></h3>
+        
         <md-card>
+            <p><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></p>
         <md-list-item *ngFor="let blog of olderBlogs" md-expando>
             <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
                 <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
