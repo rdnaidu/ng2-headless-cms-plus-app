@@ -240,8 +240,9 @@ export class AuthService implements OnInit {
     }
 
     public check() {
-        //  return Observable.of(this.loggedIn);
-        return Observable.of(!!this.getToken());
+        return this.user.isLoggedIn;
+       // return Observable.of(this.loggedIn);
+       // return Observable.of(!!this.getToken());
     }
 
     private initialize() {

@@ -26,9 +26,9 @@ export class AppSettingsComponent implements OnInit {
     constructor(
         public settingsService: SettingsService,
         public sessionService: SessionService,
+        public authService: AuthService,
         fb: FormBuilder,
         private router: Router,
-        private authService: AuthService,
         @Inject(APP_CONFIG) private config: Config
     ) {
         this.prevType = this.settingsService.getCmsType();

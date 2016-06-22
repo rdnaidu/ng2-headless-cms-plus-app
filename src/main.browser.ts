@@ -9,14 +9,12 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 
-
 /*
 * App Component
 * our top level component that holds all of our components
 */
 import { AppComponent, APP_PROVIDERS } from './app';
 
-import { appInjectorRef } from './app/shared/appInjectorRef';
 
 
 /*
@@ -30,15 +28,14 @@ export function main(initialHmrState?: any): Promise<any> {
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS
   ])
-  .then(decorateComponentRef)
- /* .then((appRef: any) => {
-        // store a reference to the application injector
-        appInjectorRef(appRef.injector);
-    })
-    */
+    .then(decorateComponentRef)
     .catch(err => console.error(err));
 
-
+ /* No longer require this with the new implementation of CanActivate
+      .then((appRef: any) => {
+        // store a reference to the application injector
+        appInjectorRef(appRef.injector);
+    })*/
 }
 
 /*

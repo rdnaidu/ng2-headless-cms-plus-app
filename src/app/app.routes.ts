@@ -29,7 +29,7 @@ export const routes: RouterConfig = [
     { path: 'blog-user' , component: BlogUserComponent},
     { path: 'blog-user/:name/:id' , component: BlogUserComponent},
     { path: 'login', component: LoginComponent },
-    { path: 'blog-form', component: BlogFormComponent},
+    { path: 'blog-form', component: BlogFormComponent , canActivate: [AuthGuard]},
     { path: 'blog-form/:id', component: BlogFormComponent},
     { path: 'blogusers', component: BlogUserListComponent },
     { path: 'omdb', component: OmdbComponent },
