@@ -62,8 +62,7 @@ export class NavBarComponent implements OnInit {
     }
 
     isCurrentRoute(route) {
-       console.log(this._router);
-       console.log(this._route);
+       return route === this._router.url;
     }
 
     // collapse Navbar once clicked
