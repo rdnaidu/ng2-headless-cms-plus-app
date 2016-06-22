@@ -3,7 +3,7 @@
     <div class="container-fluid span3 blog-user">
         <div class="col-sm-3">
             <md-card>
-                <img class="img-circle img-responsive" src="{{blogUser.avatar}}">
+                <img class="img-circle img-responsive" src="{{blogUser.avatar}}" onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
                 <md-card-title>
                     <h5 *ngIf="blogUser.name">
                         <i class="glyphicon glyphicon-user"></i><b> {{blogUser.name}}</b>

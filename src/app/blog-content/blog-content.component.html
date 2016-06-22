@@ -22,7 +22,7 @@
         <md-list dense>
             <md-list-item md-expando class="md-list-text-auto">
                 <a md-list-avatar [routerLink]="['/blog-user', { name: blogPost.authorname, id: blogPost.authorid }]">
-                    <img md-list-avatar [src]="blogPost.authoravatar" alt="...">
+                    <img md-list-avatar [src]="blogPost.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
                 </a>
                 <h5 md-line><em>{{blogPost.authorname}}</em></h5>
                 <span>

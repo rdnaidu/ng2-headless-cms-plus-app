@@ -5,7 +5,7 @@
         <md-card>
             <md-list-item *ngFor="let blog of blogs" md-expando>
                 <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
-                    <img md-list-avatar [src]="blog.authoravatar" alt="...">
+                    <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
                 </a>
                 <a md-line [routerLink]="['/blog', { id: blog.id }]"> {{blog.title}} </a>
                 <h5 md-line><em>{{blog.authorname}}</em></h5>
@@ -17,7 +17,7 @@
         <md-card>
         <md-list-item *ngFor="let blog of olderBlogs" md-expando>
             <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
-                <img md-list-avatar [src]="blog.authoravatar" alt="...">
+                <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
             </a>
             <a md-line [routerLink]="['/blog', { id: blog.id }]"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.authorname}}</em></h5>
