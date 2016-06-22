@@ -38,11 +38,13 @@ declare var jQuery: any;
     selector: 'app',
     templateUrl: './app.component.html',
     encapsulation: ViewEncapsulation.None,
-    styles: [ require('assets/css/bootstrap.css'),
+    styles: [
+              require('assets/css/bootstrap.css'),
               require('assets/css/styles.css'),
               require('bootstrap-material-design/dist/css/bootstrap-material-design.min.css'),
               require('bootstrap-material-design/dist/css/ripples.min.css'),
-              require('ng2-select/components/css/ng2-select.css')
+              require('ng2-select/components/css/ng2-select.css'),
+              require('./app.style.css'),
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent, SimpleNotificationsComponent]
 })
