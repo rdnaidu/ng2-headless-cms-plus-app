@@ -8,6 +8,7 @@ import { BlogService } from '../blog-list/blog.service';
 // import {UserService} from '../users/user.service';
 // import {User} from './user';
 import { BlogPostForm } from '../blog-list/blog';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 @Component({
 	template: require('./blog-form.component.html'),
@@ -22,6 +23,7 @@ export class BlogFormComponent implements OnInit {
 	blog = new BlogPostForm();
 
 	constructor(fb: FormBuilder,
+		public modal: Modal,
 		private _router: Router,
 		private _route: ActivatedRoute,
 		private _blogService: BlogService,
@@ -46,7 +48,12 @@ export class BlogFormComponent implements OnInit {
 					return;
 				}
 			});
-
+		/*	this.modal.alert()
+                .size('sm')
+                .showClose(true)
+                .title('A simple Alert style modal window')
+                .isBlocking(true)
+				.open();*/
 	}
 
 	routerCanDeactivate() {

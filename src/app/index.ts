@@ -24,6 +24,9 @@ import { Http } from '@angular/http';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { provide } from '@angular/core';
 
+// Register providers for browser, this is mandatory.
+import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
+
 // Application wide providers
 export const APP_PROVIDERS = [
   AppState,
@@ -38,6 +41,7 @@ export const APP_PROVIDERS = [
   HelperService,
   TranslateService,
   AuthGuard,
+  ...MODAL_BROWSER_PROVIDERS,
   provide(APP_CONFIG, { useValue: CONFIG }),
   {
     provide: TranslateLoader,

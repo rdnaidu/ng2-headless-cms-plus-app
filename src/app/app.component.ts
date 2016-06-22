@@ -2,7 +2,12 @@
  * Angular 2 decorators and services
  */
 
-import { Component, ViewEncapsulation, OnInit, Inject, provide } from '@angular/core';
+import { Component,
+        ViewEncapsulation,
+        OnInit,
+        Inject,
+        provide,
+        ViewContainerRef  } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { NavBarComponent } from './nav-bar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +30,8 @@ import { AppState } from './app.service';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { SimpleNotificationsComponent } from 'angular2-notifications';
 // import { ContentfulComponent } from './contentful/contentful.component';
+import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
+
 
 declare var jQuery: any;
 
@@ -37,6 +44,7 @@ declare var jQuery: any;
 @Component({
     selector: 'app',
     templateUrl: './app.component.html',
+    viewProviders: [ ...BS_MODAL_PROVIDERS ],
     encapsulation: ViewEncapsulation.None,
     styles: [
               require('assets/css/bootstrap.css'),
@@ -61,8 +69,12 @@ export class AppComponent implements OnInit {
 
     constructor (
         @Inject(APP_CONFIG) private config: Config,
-        public appState: AppState) {
-
+        public appState: AppState,
+        public modal: Modal,
+        viewContainer: ViewContainerRef
+        ) {
+            //  all ancestors of our root component have access to Modal via DI
+            modal.defaultViewContainer = viewContainer;
     }
     ngOnInit() {
         console.log(this.config);
