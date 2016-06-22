@@ -66,9 +66,8 @@ export class AppSettingsComponent implements OnInit {
     }
 
     save() {
-        // console.log(this.config.apiEndPoint);
+        
         this.authService.setCSRFToken();
-        //  console.log("CSRF Token:"+ this.sessionService.get("X-CSRF-Token"));
         this.settingsService.save(this.cmsSettings);
         if (this.prevType !== this.currType) {
             this.authService

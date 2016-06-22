@@ -10,14 +10,13 @@ import { Tag } from './tag';
 @Injectable()
 export class TagListService {
 
-    private _url = '/assets/blogs-json';
     private liveUrl: string;
 
     constructor(
         @Inject(APP_CONFIG) private config: Config,
         private _http: Http,
         private settings: SettingsService) {
-        this.liveUrl = this.config.apiEndPoint + '/tags';
+        this.liveUrl = this.config.xpRootURL + '/tags';
     }
 
     getTagsFromDrupal() {
@@ -40,14 +39,13 @@ export class TagListService {
             return this.getTagsFromDrupal();
         }
 
-        let url = this._url;
+        let url = this.config.stubURL;
 
         if (filter && filter.username) {
             url += '/' + filter.username;
         } else {
             url += '/tags.json';
         }
-       // console.log(url);
         return this._http.get(url)
             .map(res => res.json());
     }
@@ -58,10 +56,9 @@ export class TagListService {
             return this.getTagFromDrupal(id);
         }
 
-        let url = this._url;
+        let url = this.config.stubURL;
 
         url += '/' + id + '.json';
-        console.log(url);
         return this._http.get(url)
             .map(res => res.json());
     }

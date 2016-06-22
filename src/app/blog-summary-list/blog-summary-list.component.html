@@ -5,10 +5,10 @@
         <md-card>
             <p><b>Trending Blogs</b> <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <md-list-item *ngFor="let blog of blogs" md-expando>
-                <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
+                <a md-list-avatar [routerLink]="['/blog-user', blog.authorname, blog.authorid]">
                     <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
                 </a>
-                <a md-line [routerLink]="['/blog', { id: blog.id }]"> {{blog.title}} </a>
+                <a md-line [routerLink]="['/blog', blog.id]"> {{blog.title}} </a>
                 <h5 md-line><em>{{blog.authorname}}</em></h5>
                 <p md-line class="demo-secondary-text"><i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.postDate | date:'longDate'}} </p>
             </md-list-item>
@@ -18,10 +18,10 @@
         <md-card>
             <p><b>Older</b> <i class="fa fa-list" aria-hidden="true"></i></p>
         <md-list-item *ngFor="let blog of olderBlogs" md-expando>
-            <a md-list-avatar [routerLink]="['/blog-user', { name: blog.authorname, id: blog.authorid }]">
+            <a md-list-avatar [routerLink]="['/blog-user', blog.authorname,blog.authorid]">
                 <img md-list-avatar [src]="blog.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
             </a>
-            <a md-line [routerLink]="['/blog', { id: blog.id }]"> {{blog.title}} </a>
+            <a md-line [routerLink]="['/blog', blog.id]"> {{blog.title}} </a>
             <h5 md-line><em>{{blog.authorname}}</em></h5>
         </md-list-item>
         </md-card>

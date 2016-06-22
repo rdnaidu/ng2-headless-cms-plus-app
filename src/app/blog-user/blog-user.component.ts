@@ -11,6 +11,7 @@ import { UserService } from '../users/user.service';
 import { AuthService } from '../auth/auth.service';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
 import { User } from '../users/user';
+import { NotificationsService } from 'angular2-notifications';
 
 import * as Rx from 'rxjs/Rx';
 import * as _ from 'lodash';
@@ -34,28 +35,34 @@ export class BlogUserComponent implements OnInit {
         private _router: Router,
         private _route: ActivatedRoute,
         private _service: BlogService,
-        private _userService: UserService
-    ) {
-
-    }
+        private _userService: UserService,
+        private _notificationsService: NotificationsService
+    ) {}
 
     public deletePost(postId: number) {
-        // alert("Delete " + postId)
+        let self = this;
         this._service.deleteBlog(postId)
             .subscribe(
-            x => {
-                alert('Blog successfully deleted');
-                this.loadUser();
-            },
-            error => {
-                // console.log(error);
-                if (error.status !== 204) {
-                    alert('Error deleting blog');
-                } else {
-                    alert('Blog successfully deleted');
-                    this.loadUser();
+                x => {
+                    self._notificationsService.success('Delete Blog', 'Blog has been deleted successfully');
+                    let index = _.findIndex(self.blogUser.publications, {nid: postId});
+                    if (index !== -1) {
+                        self.blogUser.publications.splice(index, 1);
+                    }
+                    //this.loadUser();
+                },
+                error => {
+                    if (error.status !== 204) {
+                        self._notificationsService.error('Delete Blog', 'Deleting blog has been failed');
+                        
+                    } else {
+                        self._notificationsService.success('Delete Blog', 'Blog has been deleted successfully');
+                        let index = _.findIndex(self.blogUser.publications, {nid: postId});
+                        if (index !== -1) {
+                            self.blogUser.publications.splice(index, 1);
+                        }
+                    }
                 }
-            }
             );
     }
 

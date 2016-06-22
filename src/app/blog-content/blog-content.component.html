@@ -21,14 +21,14 @@
     <md-card-actions align="start">
         <md-list dense>
             <md-list-item md-expando class="md-list-text-auto">
-                <a md-list-avatar [routerLink]="['/blog-user', { name: blogPost.authorname, id: blogPost.authorid }]">
+                <a md-list-avatar [routerLink]="['/blog-user', blogPost.authorname,blogPost.authorid]">
                     <img md-list-avatar [src]="blogPost.authoravatar" alt="..." onError="this.onerror=null;this.src='assets/img/blogger_32.png'">
                 </a>
                 <h5 md-line><em>{{blogPost.authorname}}</em></h5>
                 <span>
                     <like [totalLikes]=blogPost.likes></like>
                     <button md-button>Share <i class="fa fa-share" aria-hidden="true"></i></button>
-                    <a *ngIf="showAbstract" md-button [routerLink]="['/blog', { id: blogPost.id }]">
+                    <a *ngIf="showAbstract" md-button [routerLink]="['/blog', blogPost.id]">
                         Continue reading <i class="fa fa-external-link" aria-hidden="true"></i>
                     </a>
                     <button *ngIf="enableComments" md-button (click)="toggleComments()">

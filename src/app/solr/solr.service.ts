@@ -1,20 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { SettingsService, CMSTypes } from '../shared/settings.service';
+import { APP_CONFIG, CONFIG, Config } from '../app.config';
 import * as _ from 'lodash';
 
 @Injectable()
 export class SolrService {
-    private _url = '/assets/blogs-json';
-    private solrUrl = 'http://10.146.201.83:8080/solr/collection1';
-
-    constructor(private _http: Http, private settings: SettingsService) {
+    
+    constructor(
+        private _http: Http, 
+        private settings: SettingsService,
+        @Inject(APP_CONFIG) private config: Config
+    ) {
         
     }
 
     getEventsLive(params: any) {
-        let url = this.solrUrl + '/select';
+        let url = this.config.solrRootURL + '/select';
         let query = [];
         let category = [];
 
@@ -43,7 +46,7 @@ export class SolrService {
         return this._http.get(url)
             .map(res => {
                let data = res.json();
-               return data.responseHeader.response;
+               return data.response;
             });
     }
     
@@ -52,7 +55,7 @@ export class SolrService {
             return this.getEventsLive(params);
         }
         
-        let url = this._url + '/solr-events.json';
+        let url = this.config.stubURL + '/solr-events.json';
         
         return this._http.get(url)
             .map(res => {
@@ -64,7 +67,6 @@ export class SolrService {
                     return val.id;
                 });
                 
-                console.log(category);
                 let catRegExp = new RegExp('.*');
                 if (category.length) catRegExp = new RegExp(category.join('|'));
                 
@@ -84,7 +86,7 @@ export class SolrService {
     }
     
     solrAutoSuggestLive(str: string) {
-        let url = this.solrUrl + '/suggest' + '?q=' + str + 'wt=json&start=0&rows=10';
+        let url = this.config.solrRootURL + '/suggest' + '?q=' + str + 'wt=json&start=0&rows=10';
 
         return this._http.get(url)
             .map(res => {
@@ -113,7 +115,7 @@ export class SolrService {
             return this.solrAutoSuggestLive(str);
         }
 
-        let url = this._url + '/solr-suggest.json';
+        let url = this.config.stubURL + '/solr-suggest.json';
 
         return this._http.get(url)
             .map(res => {

@@ -10,24 +10,19 @@ import { HelperService } from '../shared/services/helper.service';
 
 @Injectable()
 export class UserService {
-
-	private _url = '/assets/blogs-json';
-
 	constructor(
 		@Inject(APP_CONFIG) private config: Config,
 		private settings: SettingsService,
 		private _http: Http,
 		private helper: HelperService
-	) {
-
-	}
+	) {}
 
 	getUrl() {
-		return this._url;
+		return this.config.stubURL;
 	}
 
 	getLiveUrl() {
-		return this.config.apiEndPoint + '/users';
+		return this.config.xpRootURL + '/users';
 	}
 
 	getUsersFromDrupal() {
@@ -49,7 +44,7 @@ export class UserService {
 						avatar = '';
 					}
 
-					object.avatar = self.config.apiShort + avatar;
+					object.avatar = self.config.drupalRoot + avatar;
 					object.address = {
 						street: '',
 						suite: '',
@@ -79,7 +74,7 @@ export class UserService {
 						avatar = '';
 					}
 
-					res[0].avatar = self.config.apiShort + avatar;
+					res[0].avatar = self.config.drupalRoot + avatar;
 					return res[0];
 				}
 				return new UserClass();
@@ -111,7 +106,7 @@ export class UserService {
 	}
 
 	addUser(user) {
-		return this._http.post(this._url, JSON.stringify(user))
+		return this._http.post(this.getUrl(), JSON.stringify(user))
 			.map(res => res.json());
 	}
 
@@ -128,6 +123,6 @@ export class UserService {
 				.map(res => res.json());
 	}
 	private getUserUrl(userId) {
-		return this._url + '/' + userId;
+		return this.getUrl() + '/' + userId;
 	}
 }

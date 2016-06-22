@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     template: `
    <!-- Logged in: {{ auth.loggedIn }}<br> -->
     <br>
-    <login-form (formEvent)="login($event)" *ngIf="!auth.loggedIn" [error]="error"></login-form>
+    <login-form [isLoading]="isLoading" (formEvent)="login($event)" *ngIf="!auth.loggedIn" [error]="error"></login-form>
     <div class="container" *ngIf="auth.loggedIn">
         <div class="row">
             <div>
@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
     error: boolean = false;
+    isLoading: boolean = false;
 
     constructor(public auth: AuthService,
                 public router: Router) {
@@ -40,14 +41,19 @@ export class LoginComponent implements OnInit {
     }
 
     login($event) {
-      //  console.log($event.loginForm.username + ":" + $event.loginForm.password);
-      // this.auth.login($event.loginForm.username,$event.loginForm.password);
-
+        //  console.log($event.loginForm.username + ":" + $event.loginForm.password);
+        // this.auth.login($event.loginForm.username,$event.loginForm.password);
+        this.isLoading = true;
+        let self = this;
         this.auth.login($event.loginForm.username, $event.loginForm.password)
             .subscribe(
-                (token: any) => this.router.navigate(['/home']),
+                (token: any) => {
+                    this.isLoading = false;
+                    this.router.navigate(['/home'])
+                },
                 (error) => {
-                     this.error = true;
+                    this.isLoading = false;
+                    this.error = true;
                 }
             );
     }

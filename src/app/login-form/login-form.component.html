@@ -34,8 +34,8 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!form.valid"
-                                                tabindex="4">Log In</button>
+                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!form.valid || isLoading"
+                                                tabindex="4"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"> </i>Log In</button>
                                         </div>
                                     </div>
                                 </div>

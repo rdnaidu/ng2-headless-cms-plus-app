@@ -51,7 +51,7 @@ export class AuthService implements OnInit {
     }
     
     private getRefreshToken(token) {
-        let url = this.config.apiEndPoint + '/simple-oauth/refresh';
+        let url = this.config.xpRootURL + '/simple-oauth/refresh';
         let csrfToken = this.sessionService.get('X-CSRF-Token');
         if (csrfToken === undefined) {
             this.setCSRFToken();
@@ -83,7 +83,7 @@ export class AuthService implements OnInit {
             userStream = this.userService.getUser(username);
          //   console.log(username);
         } else {
-            let url = this.config.apiEndPoint + '/jdrupal/connect?_format=hal_json';
+            let url = this.config.xpRootURL + '/jdrupal/connect?_format=hal_json';
             let csrfToken = this.sessionService.get('X-CSRF-Token');
             if (csrfToken === undefined) {
                 this.setCSRFToken();
@@ -128,7 +128,7 @@ export class AuthService implements OnInit {
             let user = this.basicAuth.checkUser(username, password);
             if (!user) return Observable.throw(new Error('Please check username and password'));
 
-            let url = this.config.apiEndPoint + '/user/login';
+            let url = this.config.xpRootURL + '/user/login';
             let body = 'name=' + username + '&pass=' + password + '&form_id=user_login_form';
             let csrfToken = this.sessionService.get('X-CSRF-Token');
             if (csrfToken === undefined) {
@@ -173,8 +173,16 @@ export class AuthService implements OnInit {
             .map(res => {
                 self.user.isLoggedIn = true;
                 self.user.state = "loggedIn";
-                if (res.credentials !== undefined) {
-                    self.user.token = res.credentials.access_token; //this.encode(res.name, password);
+                if (data !== undefined && data.credentials !== undefined) {
+                    self.user.token = data.credentials.access_token; //this.encode(res.name, password);
+                    res.credentials = data.credentials;
+                } else {
+                    res.credentials = {
+                        access_token:'',
+                        expires_in: 0,
+                        refresh_token:'',
+                        token_type: ''
+                    };
                 }
                 self.user.data = res;
                 self.setSession();
@@ -184,7 +192,7 @@ export class AuthService implements OnInit {
 
         // TODO: have to update drupal 8 which have to accept restfull login
         /*
-        let url = this.config.apiEndPoint + '/user/login';
+        let url = this.config.xpRootURL + '/user/login';
         let body = "name=" + username + "&pass=" + password + "&form_id=user_login_form"; 
         
         let headers = new Headers({
@@ -212,7 +220,7 @@ export class AuthService implements OnInit {
 
     public setCSRFToken() {
 
-        let _url = this.config.apiEndPoint + '/rest/session/token';
+        let _url = this.config.xpRootURL + '/rest/session/token';
         let csrfToken: any;
         this.http.get(_url)
             .map(response => response.text())

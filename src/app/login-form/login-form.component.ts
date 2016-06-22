@@ -16,6 +16,7 @@ export class LoginFormComponent {
 		form: ControlGroup;
         @Output() formEvent = new EventEmitter();
         @Input() error: boolean;
+		@Input() isLoading: boolean;
 		constructor(fb: FormBuilder) {
 
 			this.form = fb.group ({

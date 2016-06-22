@@ -1,23 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { OmdbSearchParams, OmdbIDSearchParams } from './omdb';
+import { APP_CONFIG, CONFIG, Config } from '../app.config';
 
 @Injectable()
 export class OmdbService {
-	private _url = 'http://www.omdbapi.com/';
-
-
-	constructor(private _http: Http) {
-
-	}
+	constructor(private _http: Http, @Inject(APP_CONFIG) private config: Config) {}
 
 	getDetails(params?: OmdbSearchParams) {
-		let url = this._url;
+		let url = this.config.omdbURL;
 
-		// if (filter && filter.userId)
-		// url += '?userId=' + filter.userId;
 		if (params && params.s !== '') {
 			url += '?s=' + params.s;
 		}
@@ -25,13 +19,12 @@ export class OmdbService {
 		if (params && params.page !== undefined) {
 			url += '&page=' + params.page;
 		}
-		// console.log(url);
 		return this._http.get(url)
 			.map(res => res.json());
 	}
 
 	getDetailsById(params?: OmdbIDSearchParams) {
-		let url = this._url;
+		let url = this.config.omdbURL;
 
 		if (params && params.i !== '') {
 			url += '?i=' + params.i;
@@ -44,7 +37,6 @@ export class OmdbService {
 		if (params && params.tomatoes !== undefined) {
 			url += '&tomatoes=' + params.tomatoes;
 		}
-		// console.log(url);
 		return this._http.get(url)
 			.map(res => res.json());
 	}

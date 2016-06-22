@@ -15,7 +15,7 @@ let template = require('./solr-multiselect.component.html');
 export class SolrMultiselectComponent {
   public items: Array<Object> = [
       {id: 'music', text: 'Music'},
-      {id: 'sports', text: 'Sports'},
+      {id: 'sport', text: 'Sports'},
       {id: 'comedy', text: 'Comedy'}
   ];
 

@@ -27,13 +27,13 @@ export class BlogService {
     }
 
     /* getXCSRFToken() {
-         let url = this.config.apiEndPoint + '/rest/session/token';
+         let url = this.config.xpRootURL + '/rest/session/token';
          
          this.http
      }*/
 
     public deleteBlog(blogID: number): Rx.Observable<any> {
-        let url = this.config.apiEndPoint + '/node/' + blogID;
+        let url = this.config.xpRootURL + '/node/' + blogID;
 
         if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
@@ -48,9 +48,8 @@ export class BlogService {
         if (this.settings.getCmsType() == CMSTypes.Stub)
             return Rx.Observable.of(true);
 
-        let url = this.config.apiEndPoint + '/entity/node';
-        //      let links_href = this.config.apiEndPoint + '/rest/type/node/blog';
-        let linksHref = 'http://localhost/Xperience/rest/type/node/blog';
+        let url = this.config.xpRootURL + '/entity/node';
+        let linksHref = this.config.xpLocalURL + '/rest/type/node/blog';
         let options = this.setRequestOptions();
 
         let data =  {
@@ -71,21 +70,18 @@ export class BlogService {
                 ]
             };
         let body = JSON.stringify(data);
-        console.log(body);
-        console.log(url);
-        console.log(options);
         return this._http.post(url, body, options)
             .map(res => res.json());
 
     }
 /*
     public createBlog(): Rx.Observable<any> {
-        let url = this.config.apiEndPoint + '/entity/node?_format=hal+json';
+        let url = this.config.xpRootURL + '/entity/node?_format=hal+json';
 
         let data = {
             '_links': {
                 'type': {
-                    'href': this.config.apiLocal + '/rest/type/node/blog'
+                    'href': this.config.xpLocalURL + '/rest/type/node/blog'
                 }
             },
             'title': [
@@ -118,7 +114,7 @@ export class BlogService {
     }
 */
     getLiveUrl() {
-        return this.config.apiEndPoint + '/blogs';
+        return this.config.xpRootURL + '/blogs';
     }
 
     transformBlogs(data) {
@@ -130,14 +126,14 @@ export class BlogService {
             value.likes = 10;
             value.stars = 567;
             _.forEach(value.images, function (avalue, key) {
-                value.images[key] = self.config.apiShort + avalue;
+                value.images[key] = self.config.drupalRoot + avalue;
             });
 
             value.authoravatar = self.helper.parseSrcFromHtml(value.authoravatar);
             if (value.authoravatar.length === 0) {
                 value.authoravatar = '';
             } else {
-                value.authoravatar = self.config.apiShort + value.authoravatar[0];
+                value.authoravatar = self.config.drupalRoot + value.authoravatar[0];
             }
             tData.push(value);
         });
@@ -185,7 +181,7 @@ export class BlogService {
                     let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
                     if (imgUrls.length) {
-                        img = self.config.apiShort + imgUrls[0];
+                        img = self.config.drupalRoot + imgUrls[0];
                     }
 
                     value.authoravatar = img;
@@ -219,7 +215,7 @@ export class BlogService {
                     let imgUrls = self.helper.parseSrcFromHtml(value.authoravatar);
                     let img: string = '';
                     if (imgUrls.length) {
-                        img = self.config.apiShort + imgUrls[0];
+                        img = self.config.drupalRoot + imgUrls[0];
                     }
 
                     value.authoravatar = img;
@@ -243,7 +239,7 @@ export class BlogService {
     }
 
     getBlogsByUser(id) {
-        let url = this.config.apiEndPoint + '/users/' + id + '/blogs';
+        let url = this.config.xpRootURL + '/users/' + id + '/blogs';
         return this._http.get(url)
             .map(res => res.json());
     }
@@ -255,13 +251,13 @@ export class BlogService {
     }
 
     getBlogComments(blogId): Rx.Observable<any> {
-        let url = this.config.apiEndPoint + '/comments/' + blogId;
+        let url = this.config.xpRootURL + '/comments/' + blogId;
         return this._http.get(url)
             .map(res => res.json());
     }
 
     getBlogFromDrupal(id): Rx.Observable<BlogPostLive> {
-        let url = this.config.apiEndPoint +'/blogs';
+        let url = this.config.xpRootURL +'/blogs';
         url += '/' + id;
 
         return this._http.get(url)
@@ -327,7 +323,7 @@ export class BlogService {
         if (csrfToken === undefined) {
             csrfToken = this.auth.setCSRFToken();
         }
-        let authString = user.data.credentials.tokent_type + ' ' + user.token;
+        let authString = user.data.credentials.token_type + ' ' + user.token;
         let headers = new Headers({
             'Content-Type': 'application/hal+json',
             'Authorization': authString,

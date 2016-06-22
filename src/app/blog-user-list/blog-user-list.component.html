@@ -16,7 +16,7 @@
                             <i class="glyphicon glyphicon-globe"></i> {{user.timezone}}
                         </p>
                     </md-card-subtitle>
-                    <a [routerLink]="['/blog-user', { name: user.name, id: user.uid }]"><img md-card-md-image class="img-circle img-responsive" src="{{user.avatar}}" onError="this.onerror=null;this.src='assets/img/blogger_32.png'"></a>
+                    <a [routerLink]="['/blog-user', user.name, user.uid]"><img md-card-md-image class="img-circle img-responsive" src="{{user.avatar}}" onError="this.onerror=null;this.src='assets/img/blogger_32.png'"></a>
                 </md-card-title-group>
             </md-card>
         </div>
