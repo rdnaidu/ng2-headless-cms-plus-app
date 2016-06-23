@@ -17,10 +17,41 @@ export class ModalService {
      * Returns promise resolving to `true`=confirm or `false`=cancel
      */
     confirm(message?: string) {
-        return new Promise<boolean>(resolve => {
+        return this.modalDialog(message);
+/*        return new Promise<boolean>(resolve => {
             return resolve(
                 window.confirm(message || 'Is it OK?')
-                );
-        });
+            );
+        });*/
     };
+
+
+    modalDialog(message?: string): Promise<boolean>{
+        let dialogResult: boolean;
+        let dialog = this.modal.confirm()
+            //.size('sm')
+            .message(message || 'Is it OK?')
+            .title('Confirm')
+            .isBlocking(true)
+            .open();
+
+       let res = new Promise <boolean> (
+
+           function(resolve, reject) {
+               dialog
+            .then((d) => d.result.then((result) => {
+                dialogResult = result;
+                resolve(dialogResult);
+            },
+                () => {
+                   dialogResult = false;
+                   resolve(dialogResult);
+                })
+            ).catch(error => console.log(error));
+           }
+
+       );
+
+       return res;
+    }
 }

@@ -14,6 +14,8 @@ import { AuthService } from './auth/auth.service';
 import { SearchService } from './shared/search.service';
 import { SettingsService } from './shared/settings.service';
 import { AuthGuard } from './auth/auth-guard';
+import { CanDeactivateGuard }    from './shared/interfaces';
+
 import { TRANSLATE_PROVIDERS,
         TranslateService,
         TranslatePipe,
@@ -41,6 +43,7 @@ export const APP_PROVIDERS = [
   HelperService,
   TranslateService,
   AuthGuard,
+  CanDeactivateGuard,
   ...MODAL_BROWSER_PROVIDERS,
   provide(APP_CONFIG, { useValue: CONFIG }),
   {

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators } from '@angular/common';
-import { CanDeactivate, Router , ActivatedRoute } from '@angular/router';
+import { CanDeactivate, Router, ActivatedRoute } from '@angular/router';
+import { Observable }                   from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+
 import { NotificationsService } from 'angular2-notifications';
 
 import { BlogService } from '../blog-list/blog.service';
@@ -8,32 +11,34 @@ import { BlogService } from '../blog-list/blog.service';
 // import {UserService} from '../users/user.service';
 // import {User} from './user';
 import { BlogPostForm } from '../blog-list/blog';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { ModalService } from '../shared/modal.service';
 
 @Component({
 	template: require('./blog-form.component.html'),
-	providers: [BlogService]
+	providers: [BlogService, ModalService]
 
 })
 export class BlogFormComponent implements OnInit {
 
 	form: ControlGroup;
+	saving: boolean;
 	public heading: string = '';
 	// user = new User();
 	blog = new BlogPostForm();
-
+	lastModalResult: any;
 	constructor(fb: FormBuilder,
-		public modal: Modal,
 		private _router: Router,
 		private _route: ActivatedRoute,
 		private _blogService: BlogService,
-		private _notificationsService: NotificationsService
+		private _notificationsService: NotificationsService,
+		private _modalService: ModalService
 	) {
 
 		this.form = fb.group({
 			title: ['', Validators.required],
 			body: ['', Validators.required]
 		});
+		this.saving = false;
 	}
 
 	ngOnInit() {
@@ -48,43 +53,45 @@ export class BlogFormComponent implements OnInit {
 					return;
 				}
 			});
-	  /* let dialog =this.modal.confirm()
-                .size('sm')
-                .message('dd')
-                .title('A simple Alert style modal window')
-                .isBlocking(true)
-                .open();
-				
-				
-				dialog.then(
-                 res => console.log(res)
-                ).catch(
-					error => console.log(error)
-				);*/
 	}
 
-	routerCanDeactivate() {
+	canDeactivate(): Observable<boolean> | boolean {
+		// Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+		if (!this.form.dirty || this.form.pristine || this.saving) {
+			return true;
+		}
+		// Otherwise ask the user with the dialog service and return its
+		// promise which resolves to true or false when the user decides
+		let p = this._modalService.confirm('Discard changes?');
+		let o = Observable.fromPromise(p);
+		return o;
+	}
+
+	/*routerCanDeactivate() {
 		if (this.form.dirty)
 			return confirm('You have unsaved changes. Are you sure you want to navigate away?');
 		return true;
-	}
+	}*/
 
 	save() {
+		this.saving = true;
 		let self = this;
 		let result;
 		result = this._blogService.postBlog(this.blog);
-
+		
 		result.subscribe(
 			x => {
 				self._notificationsService.success('Create Blog', 'Blog has been created successfully');
 			},
 			error => {
+				self.saving = false;
 				self._notificationsService.error('Error creating blog', 'Creating blog has been failed');
 			},
 			() => {
 				this._router.navigate(['/home']);
 			}
 		);
+		
 
 	}
 }

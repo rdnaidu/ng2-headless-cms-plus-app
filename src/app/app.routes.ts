@@ -17,6 +17,7 @@ import { SolrComponent } from './solr/solr.component';
 import { NotificationsDemoComponent }
         from './library/notifications-demo/notifications-demo.component';
 import { AuthGuard } from './auth/auth-guard';
+import { CanDeactivateGuard }    from './shared/interfaces';
 
 export const routes: RouterConfig = [
     { path: '',      component: HomeComponent },
@@ -27,7 +28,11 @@ export const routes: RouterConfig = [
     { path: 'blog/:id',  component: BlogComponent},
     { path: 'blog-user/:name/:id' , component: BlogUserComponent},
     { path: 'login', component: LoginComponent },
-    { path: 'blog-form', component: BlogFormComponent , canActivate: [AuthGuard]},
+    { path: 'blog-form',
+            component: BlogFormComponent ,
+            canActivate: [AuthGuard],
+            canDeactivate: [CanDeactivateGuard]
+          },
     { path: 'blog-form/:id', component: BlogFormComponent , canActivate: [AuthGuard]},
     { path: 'blogusers', component: BlogUserListComponent },
     { path: 'omdb', component: OmdbComponent },
