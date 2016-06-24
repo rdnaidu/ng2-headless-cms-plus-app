@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
     template: `
    <!-- Logged in: {{ auth.loggedIn }}<br> -->
     <br>
-    <login-form [isLoading]="isLoading" (formEvent)="login($event)" *ngIf="!auth.loggedIn" [error]="error"></login-form>
+    <login-form 
+        [isLoading]="isLoading" 
+        (formEvent)="login($event)" 
+        *ngIf="!auth.loggedIn" 
+        [error]="error"></login-form>
     <div class="container" *ngIf="auth.loggedIn">
         <div class="row">
             <div>
@@ -49,7 +53,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 (token: any) => {
                     this.isLoading = false;
-                    this.router.navigate(['/home'])
+                    this.router.navigate(['/home']);
                 },
                 (error) => {
                     this.isLoading = false;

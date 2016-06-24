@@ -78,7 +78,7 @@ export class BlogFormComponent implements OnInit {
 		let self = this;
 		let result;
 		result = this._blogService.postBlog(this.blog);
-		
+
 		result.subscribe(
 			x => {
 				self._notificationsService.success('Create Blog', 'Blog has been created successfully');
@@ -91,7 +91,5 @@ export class BlogFormComponent implements OnInit {
 				this._router.navigate(['/home']);
 			}
 		);
-		
-
 	}
 }

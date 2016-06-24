@@ -78,12 +78,12 @@ export class BasicAuth {
 
         return false;
     }
-    
+
     getUser(name) {
         if (this._data[name]) {
             return this._data[name];
         }
-        
+
         return false;
     }
 }

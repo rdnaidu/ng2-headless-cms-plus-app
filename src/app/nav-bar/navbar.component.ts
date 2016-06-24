@@ -53,9 +53,7 @@ export class NavBarComponent implements OnInit {
         public searchService: SearchService,
         public auth: AuthService,
         private _router: Router,
-        private _route: ActivatedRoute) {
-           
-    }
+        private _route: ActivatedRoute) {}
 
     ngOnInit() {
 

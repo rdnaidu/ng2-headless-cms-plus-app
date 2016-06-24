@@ -18,12 +18,11 @@ export class SolrMultiselectComponent {
       {id: 'sport', text: 'Sports'},
       {id: 'comedy', text: 'Comedy'}
   ];
+  @Output() getData = new EventEmitter();
 
   private value: any = {id: 'music', text: 'Music'};
   private _disabledV: string = '0';
   private disabled: boolean = false;
-
-  @Output() getData = new EventEmitter();
 
   private get disabledV(): string {
     return this._disabledV;

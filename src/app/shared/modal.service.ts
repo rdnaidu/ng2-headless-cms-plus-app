@@ -26,10 +26,10 @@ export class ModalService {
     };
 
 
-    modalDialog(message?: string): Promise<boolean>{
+    modalDialog(message?: string): Promise<boolean> {
         let dialogResult: boolean;
         let dialog = this.modal.confirm()
-            //.size('sm')
+            // .size('sm')
             .message(message || 'Is it OK?')
             .title('Confirm')
             .isBlocking(true)

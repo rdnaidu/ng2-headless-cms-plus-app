@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ControlGroup, Validators, CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
+import {
+    FormBuilder,
+    ControlGroup,
+    Validators,
+    CORE_DIRECTIVES,
+    FORM_DIRECTIVES
+} from '@angular/common';
 
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
@@ -38,12 +44,12 @@ export class SolrComponent implements OnInit {
         size: 5
     };
     public typeaheadLoading: boolean = false;
-    public typeaheadNoResults:boolean = false;
-    
-    private _cache:any;
-    private _prevContext:any;
+    public typeaheadNoResults: boolean = false;
 
-    public getContext():any {
+    private _cache: any;
+    private _prevContext: any;
+
+    public getContext(): any {
         return this;
     }
     constructor(
@@ -54,27 +60,27 @@ export class SolrComponent implements OnInit {
             eventname: ['']
         });
     }
-    
+
     getData($event) {
         console.log('event', $event);
         this.data.category = $event;
     }
 
-    public getAsyncData(context:any):Function {
+    public getAsyncData(context: any): Function {
         let self = this;
         if (this._prevContext === context) {
             return this._cache;
         }
 
         this._prevContext = context;
-        let f:Function = function ():Promise<Object[]> {
-            let p:Promise<Object[]> = self.getEventnames();
+        let f: Function = function (): Promise<Object[]> {
+            let p: Promise<Object[]> = self.getEventnames();
             return p;
         };
         this._cache = f;
         return this._cache;
     }
-    
+
     getEventnames(): Promise<Object[]> {
         return this.solrService.solrAutoSuggest(this.data.eventname);
     }
@@ -86,25 +92,33 @@ export class SolrComponent implements OnInit {
     }
     typeaheadOnSelect($event) {
         console.log('Selected value: ', $event.item);
-        //this.data.category = $event.item;
+        // this.data.category = $event.item;
     }
-    
+
     search() {
         this.searchResult = false;
         this.isLoading = false;
         this.loadSearch(false);
     }
-    
+
     public pageChanged(event: any): void {
         this.data.page = event.page;
         this.data.start = (event.page - 1) * this.data.rows;
         this.loadSearch(true);
     }
-    
+    ngOnInit() {
+        this.loadSearch(false);
+    }
+
+    reset($event) {
+        $event.preventDefault();
+        this.data.category.length = 0;
+        this.data.eventname = '';
+    }
     private loadSearch(pageChanged: boolean) {
         this.isLoading = true;
         if (!pageChanged) {
-            this.data.page = 1
+            this.data.page = 1;
             this.data.start = 0;
         }
         this.solrService.getEvents(this.data)
@@ -121,15 +135,5 @@ export class SolrComponent implements OnInit {
             () => {
                 this.isLoading = false;
             });
-    }
-    
-    ngOnInit() {
-        this.loadSearch(false);
-    }
-    
-    reset($event) {
-        $event.preventDefault();
-        this.data.category.length = 0;
-        this.data.eventname = '';
     }
 }

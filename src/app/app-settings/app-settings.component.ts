@@ -66,7 +66,7 @@ export class AppSettingsComponent implements OnInit {
     }
 
     save() {
-        
+
         this.authService.setCSRFToken();
         this.settingsService.save(this.cmsSettings);
         if (this.prevType !== this.currType) {

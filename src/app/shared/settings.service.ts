@@ -81,12 +81,12 @@ export class SettingsService {
         return this.cmsSettings;
     }
     setCmsType(cmsType: any) {
-        this.cmsSettings.mode = cmsType;
+        this.cmsSettings.mode = parseInt(cmsType);
         this.store();
     }
 
     getCmsType(): any {
-        return this.cmsSettings.mode;
+        return parseInt(this.cmsSettings.mode);
     }
 
     setCmsHost(cmsHost: string) {

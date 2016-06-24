@@ -1,3 +1,4 @@
+import { provide, ViewContainerRef } from '@angular/core';
 import {
   MockApplicationRef,
   beforeEach,
@@ -54,12 +55,13 @@ describe('App', () => {
 
 });
 */
-
-import { provide } from '@angular/core';
+/*
+import { provide, ViewContainerRef } from '@angular/core';
 import { RootRouter } from 'angular2/src/router/router';
 import { Router, ROUTER_PROVIDERS, RouteRegistry } from '@angular/router-deprecated';
 import { AppState } from './app.service';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
+import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
 
 describe('app component', () => {
     let component: AppComponent;
@@ -70,7 +72,8 @@ describe('app component', () => {
         component = new AppComponent(
           CONFIG,
           new AppState(),
-          router
+          new Modal(),
+          new ViewContainerRef()
         );
     });
 
@@ -87,4 +90,35 @@ describe('app component', () => {
       };
       expect(component.notificationsOptions).toEqual(notificationsOptions);
     });
+});
+*/
+
+import { AppState } from './app.service';
+import { APP_CONFIG, CONFIG, Config } from './app.config';
+import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
+
+describe('App', () => {
+  // provide our implementations or mocks to the dependency injector
+  beforeEachProviders(() => [
+    BS_MODAL_PROVIDERS,
+    { provide: APP_CONFIG, useValue: CONFIG },
+    AppState,
+    Modal,
+    ViewContainerRef,
+    AppComponent
+  ]);
+
+  it('should be defined', inject([AppComponent], (app) => {
+    expect(app).toBeDefined();
+  }));
+
+  it('should have notifications options', inject([AppComponent], (app) => {
+    let notificationsOptions = {
+        timeOut: 3000,
+        showProgressBar: false,
+        pauseOnHover: false,
+        clickToClose: false
+    };
+    expect(app.notificationsOptions).toEqual(notificationsOptions);
+  }));
 });
