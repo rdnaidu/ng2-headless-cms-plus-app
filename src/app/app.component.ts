@@ -41,7 +41,6 @@ declare var jQuery: any;
  * App Component
  * Top Level Component
  */
-
 @Component({
     selector: 'app',
     templateUrl: './app.component.html',
