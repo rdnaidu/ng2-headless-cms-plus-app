@@ -36,6 +36,7 @@ import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
 declare var jQuery: any;
 
 
+
 /*
  * App Component
  * Top Level Component
@@ -56,6 +57,7 @@ declare var jQuery: any;
               ],
     directives: [ROUTER_DIRECTIVES, NavBarComponent, SimpleNotificationsComponent]
 })
+
 // TODO: Keep track of this issue for back button on IE11
 // https://github.com/angular/angular/issues/7873
 export class AppComponent implements OnInit {

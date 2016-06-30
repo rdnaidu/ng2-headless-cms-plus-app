@@ -19,6 +19,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
  * Webpack Constants
  */
 const METADATA = {
+
   title: 'Media Fest Frontend for Headless CMS',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
@@ -163,7 +164,7 @@ module.exports = {
        */
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['to-string-loader', 'css-loader']
       },
 
       /* Raw loader support for *.html
@@ -261,6 +262,7 @@ module.exports = {
       chunksSortMode: 'dependency'
     }),
 
+
     // var ProvidePlugin = require('webpack/lib/ProvidePlugin');
         // require the plugin
     new ProvidePlugin({
@@ -270,6 +272,7 @@ module.exports = {
             "Tether": 'tether',
             "window.Tether": "tether"
     }),
+
     /*
      * Plugin: HtmlHeadConfigPlugin
      * Description: Generate html tags based on javascript maps.

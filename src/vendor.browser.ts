@@ -38,7 +38,7 @@ import '@angular2-material/toolbar';
 
 import 'jquery';
 import 'bootstrap-loader';
-import 'font-awesome/css/font-awesome.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
 import 'font-awesome-webpack';
 // import 'angular2-google-maps/core';
 import 'ng2-translate/ng2-translate';
