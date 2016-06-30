@@ -21,7 +21,6 @@ import { AuthGuard } from './auth/auth-guard';
 import { CanDeactivateGuard }    from './shared/interfaces';
 
 export const routes: RouterConfig = [
-<<<<<<< HEAD
     { path: '',      component: HomeComponent },
     { path: 'home',  component: HomeComponent },
     { path: 'users',  component: UsersComponent , canActivate: [AuthGuard]},
