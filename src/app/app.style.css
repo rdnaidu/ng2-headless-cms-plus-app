@@ -1,7 +1,7 @@
 html, body{
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/assets/img/white-background.jpg');
+  background: url('/assets/img/movie.jpg');
 }
 button.active{
   background: #fff;
