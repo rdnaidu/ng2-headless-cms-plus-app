@@ -72,7 +72,7 @@ export class NavBarComponent implements OnInit {
         this.auth.logout()
             .subscribe(res => {
                 console.log(res);
-                this._router.navigate(['Home']);
+                this._router.navigate(['/home']);
             });
     }
 }
