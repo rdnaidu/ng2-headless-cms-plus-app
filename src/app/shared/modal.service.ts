@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // TODO: Disabled angular2-modal due to feature change in Rc4 for BROWSER_PROVIDERS 
-//import { Modal } from 'angular2-modal/plugins/bootstrap';
+// import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 /**
  * Async modal dialog service
