@@ -16,37 +16,49 @@ import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { OmdbComponent } from './omdb/omdb.component';
 import { SolrComponent } from './solr/solr.component';
 import { NotificationsDemoComponent }
-        from './library/notifications-demo/notifications-demo.component';
+from './library/notifications-demo/notifications-demo.component';
 import { AuthGuard } from './auth/auth-guard';
 import { CanDeactivateGuard }    from './shared/interfaces';
+import { DataResolver } from './app.resolver';
 
 export const routes: RouterConfig = [
-    { path: '',      component: HomeComponent },
-    { path: 'home',  component: HomeComponent },
-    { path: 'users',  component: UsersComponent , canActivate: [AuthGuard]},
-    { path: 'users/:name/:id',  component: UserFormComponent },
-    { path: 'users/new',  component: UserFormComponent },
-    { path: 'blog/:id',  component: BlogComponent},
-    { path: 'blog-user/:name/:id' , component: BlogUserComponent},
-    { path: 'login', component: LoginComponent },
-    { path: 'blog-form',
-            component: BlogFormComponent ,
-            canActivate: [AuthGuard],
-            canDeactivate: [CanDeactivateGuard]
-          },
-    { path: 'blog-form/:id', component: BlogFormComponent , canActivate: [AuthGuard]},
-    { path: 'blogusers', component: BlogUserListComponent },
-    { path: 'omdb', component: OmdbComponent },
-    { path: 'solr', component: SolrComponent },
-    { path: 'notifications', component: NotificationsDemoComponent },
-    // { path: '/contentful', component: ContentfulComponent },
-    { path: 'settings', component: AppSettingsComponent },
-    // make sure you match the component type string to the require in asyncRoutes
-    { path: 'about', component: 'About' },
-    // async components with children routes must use WebpackAsyncRoute
-    { path: 'detail', component: 'Detail', canActivate: [ WebpackAsyncRoute ] },
-    { path: '**',    component: NoContent },
-    { path: '*other', redirectTo: '/home' }
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'users/:name/:id', component: UserFormComponent },
+  { path: 'users/new', component: UserFormComponent },
+  { path: 'blog/:id', component: BlogComponent },
+  { path: 'blog-user/:name/:id', component: BlogUserComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'blog-form',
+    component: BlogFormComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard]
+  },
+  { path: 'blog-form/:id', component: BlogFormComponent, canActivate: [AuthGuard] },
+  { path: 'blogusers', component: BlogUserListComponent },
+  { path: 'omdb', component: OmdbComponent },
+  { path: 'solr', component: SolrComponent },
+  { path: 'notifications', component: NotificationsDemoComponent },
+  // { path: '/contentful', component: ContentfulComponent },
+  { path: 'settings', component: AppSettingsComponent },
+  // make sure you match the component type string to the require in asyncRoutes
+  {
+    path: 'about', component: 'About',
+    resolve: {
+      'yourData': DataResolver
+    }
+  },
+  {
+    path: 'detail', component: 'Detail',
+    canActivate: [WebpackAsyncRoute],
+    children: [
+      { path: '', component: 'Index' }  // must be included
+    ]
+  },
+  { path: '**', component: NoContent },
+  { path: '*other', redirectTo: '/home' }
 ];
 
 // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
@@ -57,6 +69,7 @@ export const asyncRoutes: AsyncRoutes = {
   // we have to use the alternative syntax for es6-promise-loader to grab the routes
   'About': require('es6-promise-loader!./about'),
   'Detail': require('es6-promise-loader!./+detail'),
+  'Index': require('es6-promise-loader!./+detail'), // must be exported with detail/index.ts
 };
 
 
@@ -65,7 +78,7 @@ export const asyncRoutes: AsyncRoutes = {
 export const prefetchRouteCallbacks: Array<IdleCallbacks> = [
   asyncRoutes['About'],
   asyncRoutes['Detail']
-   // es6-promise-loader returns a function
+  // es6-promise-loader returns a function
 ];
 
 
