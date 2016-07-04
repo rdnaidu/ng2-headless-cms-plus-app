@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-// TODO: Disabled angular2-modal due to feature change in Rc4 for BROWSER_PROVIDERS 
-// import { Modal } from 'angular2-modal/plugins/bootstrap';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 /**
  * Async modal dialog service
@@ -9,24 +8,26 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ModalService {
 
- /*   constructor(public modal: Modal) {
+    constructor(public modal: Modal) {
 
-    }*/
+    }
     /**
      * Ask user to confirm an action. `message` explains the action and choices.
      * Returns promise resolving to `true`=confirm or `false`=cancel
      */
     confirm(message?: string) {
-  //      return this.modalDialog(message);
+        return this.modalDialog(message);
+    };
+
+    simpleModalDialog(message?: string): Promise<boolean> {
         return new Promise<boolean>(resolve => {
             return resolve(
                 window.confirm(message || 'Is it OK?')
             );
         });
-    };
+    }
 
-
- /*   modalDialog(message?: string): Promise<boolean> {
+    modalDialog(message?: string): Promise<boolean> {
         let dialogResult: boolean;
         let dialog = this.modal.confirm()
             // .size('sm')
@@ -53,5 +54,5 @@ export class ModalService {
        );
 
        return res;
-    }*/
+    }
 }

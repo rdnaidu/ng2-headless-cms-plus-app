@@ -30,8 +30,7 @@ import { AppState } from './app.service';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { SimpleNotificationsComponent } from 'angular2-notifications';
 // import { ContentfulComponent } from './contentful/contentful.component';
-// TODO: Disabled angular2-modal due to feature change in Rc4 for BROWSER_PROVIDERS 
-//import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
+import { Modal, BS_MODAL_PROVIDERS } from 'angular2-modal/plugins/bootstrap';
 
 
 declare var jQuery: any;
@@ -45,7 +44,7 @@ declare var jQuery: any;
 @Component({
     selector: 'app',
     templateUrl: './app.component.html',
-//    viewProviders: [ ...BS_MODAL_PROVIDERS ],
+    viewProviders: [ ...BS_MODAL_PROVIDERS ],
     encapsulation: ViewEncapsulation.None,
     styles: [
               require('assets/css/bootstrap.css'),
@@ -72,11 +71,11 @@ export class AppComponent implements OnInit {
     constructor (
         @Inject(APP_CONFIG) private config: Config,
         public appState: AppState,
-  //      public modal: Modal,
+        public modal: Modal,
         viewContainer: ViewContainerRef
         ) {
             //  all ancestors of our root component have access to Modal via DI
-  //          modal.defaultViewContainer = viewContainer;
+            modal.defaultViewContainer = viewContainer;
     }
     ngOnInit() {
         console.log(this.config);

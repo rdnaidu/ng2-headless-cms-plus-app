@@ -28,8 +28,7 @@ import { APP_CONFIG, CONFIG, Config } from './app.config';
 import { provide } from '@angular/core';
 
 // Register providers for browser, this is mandatory.
-// TODO: Disabled angular2-modal due to feature change in Rc4 for BROWSER_PROVIDERS 
-//import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
+import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 
 // Application wide providers
 export const APP_PROVIDERS = [
@@ -46,7 +45,7 @@ export const APP_PROVIDERS = [
   TranslateService,
   AuthGuard,
   CanDeactivateGuard,
-//  ...MODAL_BROWSER_PROVIDERS,
+  ...MODAL_BROWSER_PROVIDERS,
   provide(APP_CONFIG, { useValue: CONFIG }),
   {
     provide: TranslateLoader,
