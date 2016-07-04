@@ -1,13 +1,9 @@
 import { provide, ViewContainerRef } from '@angular/core';
 import {
-  MockApplicationRef,
   beforeEach,
   beforeEachProviders,
   inject,
-  injectAsync,
-  it,
-  describe,
-  expect
+  it
 } from '@angular/core/testing';
 
 import { Modal } from 'angular2-modal/plugins/bootstrap';
