@@ -21,6 +21,7 @@ import { AuthGuard } from './auth/auth-guard';
 import { CanDeactivateGuard }    from './shared/interfaces';
 import { DataResolver } from './app.resolver';
 import { FirebaseDemoComponent } from './firebase/firebase-demo.component';
+import { PeopleComponent } from './firebase/people.component';
 
 export const routes: RouterConfig = [
   { path: '', component: HomeComponent },
@@ -42,7 +43,12 @@ export const routes: RouterConfig = [
   { path: 'omdb', component: OmdbComponent },
   { path: 'solr', component: SolrComponent },
   { path: 'notifications', component: NotificationsDemoComponent },
-  { path: 'firebase', component: FirebaseDemoComponent },
+  {
+    path: 'firebase', component: FirebaseDemoComponent,
+    children: [
+      { path: '', component: PeopleComponent}
+    ]
+  },
   // { path: '/contentful', component: ContentfulComponent },
   { path: 'settings', component: AppSettingsComponent },
   // make sure you match the component type string to the require in asyncRoutes

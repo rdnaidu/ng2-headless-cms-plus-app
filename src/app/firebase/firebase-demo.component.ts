@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   selector: 'firebase-demo',
+   directives: [
+    ...ROUTER_DIRECTIVES
+  ],
   templateUrl: './firebase-demo.component.html'
 }
 )

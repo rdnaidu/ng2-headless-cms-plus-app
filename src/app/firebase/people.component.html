@@ -1,0 +1,20 @@
+<h2> People List </h2>
+<form (submit)="people.push({name: newPerson.value})">
+        <label for="newPerson">Add</label>
+        <input #newPerson>
+</form>
+<ul>
+    <li *ngFor="let person of people |
+    async">
+        Worker: {{ person.name }}
+       <form (submit)="person.todos.push({text: newTodo.value})">
+        <label for="newTodo">Add</label>
+        <input #newTodo>
+        </form>
+        <ul>
+            <li *ngFor="let todo of person.todos | async">
+                {{ todo.text }}
+                </li>
+            </ul>
+    </li>
+</ul>
