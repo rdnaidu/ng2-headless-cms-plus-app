@@ -119,6 +119,8 @@
     "jquery": "^2.2.3",
     "less": "^2.5.1",
     "lodash": "^4.11.1",
+    "angularfire2": "^2.0.0-beta.2",
+    "firebase": "^3.1.0",
     
     "ng2-bootstrap": "^1.0.17",
     "ng2-select": "^1.0.3",

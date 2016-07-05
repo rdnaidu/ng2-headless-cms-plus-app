@@ -51,6 +51,9 @@ import 'bootstrap-material-design';
 // import 'assets/bootstrap-material-design/js/material.min.js';
 // import 'assets/bootstrap-material-design/js/ripples.min.js';
 
+import 'firebase';
+import 'angularfire2';
+
 if ('production' === ENV) {
   // Production
 

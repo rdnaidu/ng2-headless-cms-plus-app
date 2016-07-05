@@ -41,7 +41,8 @@ export class NavBarComponent implements OnInit {
         new MenuItem('users', '/users', 'Users', 'fa fa-users', true),
         new MenuItem('omdb', '/omdb', 'Omdb APIs', 'fa fa-video-camera', false),
         new MenuItem('solr', '/solr', 'Solr APIs', 'fa fa-search', false),
-        new MenuItem('blogusers', '/blogusers', 'Blog Users', 'fa fa-users', false)
+        new MenuItem('blogusers', '/blogusers', 'Blog Users', 'fa fa-users', false),
+        new MenuItem('firebase','/firebase', 'Firebase Demo','fa fa-bolt' , false)
         /*,
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),

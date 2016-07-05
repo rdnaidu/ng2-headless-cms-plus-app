@@ -1,0 +1,9 @@
+<div>
+        <span *ngIf="af.auth | async">
+            Logged in as {{ (af.auth | async).auth.displayName }} 
+            <button (click)="logout()">Log out</button>
+        </span>
+        <span *ngIf="!(af.auth | async)">
+            <button (click)="login()">Log in</button>
+        </span>
+</div>

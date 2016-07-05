@@ -30,6 +30,23 @@ import { provide } from '@angular/core';
 // Register providers for browser, this is mandatory.
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 
+import {
+    FIREBASE_PROVIDERS,
+    defaultFirebase,
+    FirebaseAppConfig,
+    firebaseAuthConfig,
+    AuthMethods,
+    AuthProviders,
+ } from 'angularfire2';
+
+export const fbConfig: FirebaseAppConfig = {
+    apiKey: 'AIzaSyDB80HQLA-MuGym6r1dIcQcdI67eE0DI3Q',
+    authDomain: 'xperience-f9109.firebaseapp.com',
+    databaseURL: 'https://xperience-f9109.firebaseio.com',
+    storageBucket: 'xperience-f9109.appspot.com',
+  };
+
+
 // Application wide providers
 export const APP_PROVIDERS = [
   AppState,
@@ -46,6 +63,12 @@ export const APP_PROVIDERS = [
   AuthGuard,
   CanDeactivateGuard,
   ...MODAL_BROWSER_PROVIDERS,
+  FIREBASE_PROVIDERS,
+  defaultFirebase(fbConfig),
+  firebaseAuthConfig( {
+    method: AuthMethods.Popup,
+    provider: AuthProviders.Google
+  }),
   provide(APP_CONFIG, { useValue: CONFIG }),
   {
     provide: TranslateLoader,
