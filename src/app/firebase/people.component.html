@@ -12,7 +12,7 @@
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let person of people | async">
                 Worker: {{ person.name }} 
-                <i (click)="javascript:void(0)" class="fa fa-trash clickable" aria-hidden="true"></i>
+                <i class="fa fa-trash clickable" aria-hidden="true"></i>
                 <div class="inputs col">
                     <form (submit)="person.todos.push({text: newTodo.value})">
                         <div class="form-group  label-floating">
