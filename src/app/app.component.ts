@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
             modal.defaultViewContainer = viewContainer;
     }
     ngOnInit() {
-        console.log(this.config);
+     //   console.log(this.config);
         jQuery.material.options.validate = false;
         jQuery.material.init();
         console.log('Initial App State', this.appState.state);

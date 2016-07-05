@@ -83,7 +83,7 @@ export class BlogAbstractListComponent implements OnInit, OnChanges {
           return true;
         });
 
-        console.log(tData);
+       // console.log(tData);
         return tData;
       })
       .subscribe(

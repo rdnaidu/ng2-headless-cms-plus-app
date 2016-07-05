@@ -1,10 +1,18 @@
-<div>
-        <span *ngIf="af.auth | async">
-            Logged in as {{ (af.auth | async).auth.displayName }} 
-            <button (click)="logout()">Log out</button>
-        </span>
-        <span *ngIf="!(af.auth | async)">
-            <button (click)="login()">Log in</button>
-        </span>
+<div class="row">
+    <md-card>
+        <img *ngIf="!(af.auth | async)" class="img-circle thumb" src="assets/img/default-avatar.png">
+        <img *ngIf="af.auth | async" class="img-circle thumb" [src]="(af.auth | async).auth.photoURL">
+        <md-card-title *ngIf="af.auth | async">{{ (af.auth | async).auth.displayName }} </md-card-title>
+        <md-card-content>
+            <p *ngIf="af.auth | async">{{ (af.auth | async).auth.email }}</p>
+            <p *ngIf="!(af.auth | async)">Firebase Auth Service based login</p>
+        </md-card-content>
+        <md-card-actions align="end">
+            <button *ngIf="af.auth | async" md-button (click)="logout()">Log out</button>
+            <button *ngIf="!(af.auth | async)" md-button (click)="login()">Log in</button>
+        </md-card-actions>
+    </md-card>
 </div>
-<router-outlet></router-outlet>
+<div class="row">
+    <router-outlet></router-outlet>
+</div>

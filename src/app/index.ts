@@ -39,14 +39,6 @@ import {
     AuthProviders,
  } from 'angularfire2';
 
-export const fbConfig: FirebaseAppConfig = {
-    apiKey: 'AIzaSyDB80HQLA-MuGym6r1dIcQcdI67eE0DI3Q',
-    authDomain: 'xperience-f9109.firebaseapp.com',
-    databaseURL: 'https://xperience-f9109.firebaseio.com',
-    storageBucket: 'xperience-f9109.appspot.com',
-  };
-
-
 // Application wide providers
 export const APP_PROVIDERS = [
   AppState,
@@ -64,7 +56,7 @@ export const APP_PROVIDERS = [
   CanDeactivateGuard,
   ...MODAL_BROWSER_PROVIDERS,
   FIREBASE_PROVIDERS,
-  defaultFirebase(fbConfig),
+  defaultFirebase(CONFIG.fbAppConfig),
   firebaseAuthConfig( {
     method: AuthMethods.Popup,
     provider: AuthProviders.Google
