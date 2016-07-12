@@ -42,7 +42,7 @@
     {
         "uid": 6,
         "name": "brian-ford",
-        "avatar": "https://angular.io/resources/images/bios/brian-ford.jpg",
+        "avatar": "assets/img/blogger_32.png",
         "mail": "brian-ford@xyz.com",
         "roles": "Oloo",
         "timezone": "US"
