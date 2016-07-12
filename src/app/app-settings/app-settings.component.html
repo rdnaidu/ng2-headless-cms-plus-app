@@ -2,15 +2,19 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 well inputs">
-            <form [ngFormModel]="form" (ngSubmit)="save()">
+            <form #settingsForm="ngForm" (ngSubmit)="save()">
                 <fieldset>
                     <legend>
                         CMS Settings
                     </legend>
                     <div class="form-group label-floating">
                         <label class="control-label" for="i1">Mode</label>
-                        <select class="form-control input-medium" (change)="onSelect($event.target.value)" 
-                        [(ngModel)]="cmsSettings.mode" id="i1" #mode="ngForm" ngControl="mode">
+                        <select class="form-control input-medium" 
+                            (change)="onSelect($event.target.value)" 
+                            [(ngModel)]="cmsSettings.mode" 
+                            id="i1" 
+                            name="mode" 
+                            #mode="ngModel">
                         <option *ngFor="let value of dropdownValues" [value]="value.value" 
                             selected={{value.selected}}>{{value.label}}</option>
                         </select>
@@ -20,17 +24,27 @@
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label" for="i2">Host Name</label>
-                        <input [(ngModel)]="cmsSettings.host" id="i2" #host="ngForm" ngControl="host" type="text" class="form-control">
+                        <input [(ngModel)]="cmsSettings.host" 
+                                id="i2" 
+                                name="host"
+                                #host="ngModel"
+                                type="text" 
+                                class="form-control">
                         <div *ngIf="host.touched && !host.valid" class="alert alert-danger">
                              Host Name is required.
                         </div>
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label" for="i3">Port</label>
-                        <input [(ngModel)]="cmsSettings.port" id="i3" ngControl="port" type="text" class="form-control">
+                        <input [(ngModel)]="cmsSettings.port" 
+                                id="i3" 
+                                name="port" 
+                                #port="ngModel" 
+                                type="text" 
+                                class="form-control">
                     </div>
                 </fieldset>
-                <button *ngIf="form.dirty" [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
+                <button *ngIf="settingsForm.form.dirty" [disabled]="!settingsForm.form.valid" type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>

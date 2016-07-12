@@ -16,7 +16,7 @@ import { DropdownValue } from './drop-downValue';
     <span class="sr-only">Toggle Dropdown</span>
   </button>
     <ul class="dropdown-menu">
-      <li *ngFor="#value of values" (click)="selectItem(value.value)">{{value.label}}</li>
+      <li *ngFor="let value of values" (click)="selectItem(value.value)">{{value.label}}</li>
       
     </ul>
     </div>
@@ -27,7 +27,7 @@ import { DropdownValue } from './drop-downValue';
     <div class="form-group">
       <label class="control-label" *ngIf="labelText">{{labelText}}</label>
       <select class="form-control input-medium" (change)="selectItem($event.target.value)">
-      <option *ngFor="#value of values" [value]="value.value" 
+      <option *ngFor="let value of values" [value]="value.value" 
           selected={{value.selected}}>{{value.label}}</option>
       </select>
     </div>

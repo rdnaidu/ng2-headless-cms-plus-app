@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { NgForm }    from '@angular/forms';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import { FormBuilder, ControlGroup, Validators } from '@angular/common';
 import { SessionService } from '../shared/services/session.service';
 import { DropdownComponent } from '../shared/drop-down.component';
 import { DropdownValue } from '../shared/drop-downValue';
@@ -13,13 +13,16 @@ import { APP_CONFIG, Config } from '../app.config';
 @Component({
     selector: 'app-settings',
     template: require('./app-settings.component.html'),
-    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES, MdButton, DropdownComponent]
+    directives: [ROUTER_DIRECTIVES,
+                MD_LIST_DIRECTIVES,
+                MdButton,
+                DropdownComponent]
 })
 export class AppSettingsComponent implements OnInit {
     public dropdownValues: DropdownValue[] = [];
     labelText: string = 'Select Mode';
     cmsSettings: CMSSettings;
-    form: ControlGroup;
+  //  settingsForm: FormGroup;
     prevType;
     currType;
 
@@ -27,17 +30,17 @@ export class AppSettingsComponent implements OnInit {
         public settingsService: SettingsService,
         public sessionService: SessionService,
         public authService: AuthService,
-        fb: FormBuilder,
+     //   fb: FormBuilder,
         private router: Router,
         @Inject(APP_CONFIG) private config: Config
     ) {
         this.prevType = this.settingsService.getCmsType();
         this.currType = this.settingsService.getCmsType();
-        this.form = fb.group({
+     /*   this.settingsForm = fb.group({
             mode: ['', Validators.required],
             host: ['', Validators.required],
             port: ['', Validators.required]
-        });
+        });*/
     }
 
     ngOnInit() {
