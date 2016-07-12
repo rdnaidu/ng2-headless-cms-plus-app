@@ -23,6 +23,7 @@ import { DataResolver } from './app.resolver';
 import { FirebaseDemoComponent } from './firebase/firebase-demo.component';
 import { PeopleComponent } from './firebase/people.component';
 
+
 export const routes: RouterConfig = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },

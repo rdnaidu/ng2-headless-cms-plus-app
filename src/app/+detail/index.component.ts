@@ -2,9 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'index',
-
+  styles: [`
+    md-card{
+      margin: 25px;
+    }
+  `],
   template: `
-    <h1>Hello from Index</h1>
+    <md-card>Hello from Index</md-card>
   `
 })
 export class Index {
