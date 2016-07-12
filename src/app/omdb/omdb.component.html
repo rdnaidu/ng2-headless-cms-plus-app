@@ -5,19 +5,24 @@
     </div>
     <div class="row">
         <div class="col well inputs">
-            <form class="form-search" id="search-by-title-form" [ngFormModel]="form" (ngSubmit)="search()">
+            <form class="form-search" id="search-by-title-form" [formGroup]="omdbForm" (ngSubmit)="search()">
                 <fieldset>
                     <!-- <legend>By Search</legend> -->
 
                     <div class="form-group label-floating">
                         <label class="control-label" for="s">Title</label>
-                        <input [(ngModel)]="params.s" type="text" id="s" name="s" #s="ngForm" ngControl="s" type="text" class="form-control">
-                        <div *ngIf="s.touched && !s.valid" class='alert alert-danger'>
+                        <input 
+                            [formControl]="omdbForm.controls['s']"
+                            type="text" 
+                            id="s" 
+                            type="text" 
+                            class="form-control">
+                        <div *ngIf="omdbForm.controls['s'].touched && !omdbForm.controls['s'].valid" class='alert alert-danger'>
                             Title is required.
                         </div>
                     </div>
                 </fieldset>
-                <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
+                <button [disabled]="!omdbForm.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
                 <button id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>&nbsp;&nbsp;
                 <spinner [visible]="isLoading"></spinner>
                 <p *ngIf="searchResult && !showDetail" class="text-primary text-right">{{result.totalResults}} entries found</p>

@@ -3,7 +3,7 @@
         <div class="inputs">
             <h4><b>{{ title }}</b></h4>
             <div>
-                <form class="form-search" id="search-by-title-form" #solrForm="ngForm" [ngFormModel]="form" (ngSubmit)="search()">
+                <form class="form-search" id="search-by-title-form" #solrForm="ngForm" (ngSubmit)="search()">
                     <div class="form-group label-floating">
                         <label class="control-label">Filter by Category</label>
                         <xp-solr-multiselect (getData)="getData($event)"></xp-solr-multiselect>
@@ -12,7 +12,8 @@
                         <label class="control-label">Filter by Event name</label>
                         <div class="input-group" style="width:100%">
                             <input [(ngModel)]="data.eventname"
-                                [typeahead]="getAsyncData(getContext())"
+                                name="eventname"
+                                [typeahead]="dataSource"
                                 [typeaheadAsync]="true" 
                                 (typeaheadLoading)="changeTypeaheadLoading($event)"
                                 (typeaheadNoResults)="changeTypeaheadNoResults($event)"
@@ -30,7 +31,7 @@
                          </div>
                     </div>
                     <div class="form-group label-floating">
-                        <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
+                        <button [disabled]="!solrForm.form.valid" type="submit" class="btn btn-primary btn-raised">Search</button>
                         <button (click)="reset($event)" id="search-by-title-reset" type="reset" class="btn btn-raised">Reset</button>&nbsp;&nbsp;
                     </div>
                 </form>

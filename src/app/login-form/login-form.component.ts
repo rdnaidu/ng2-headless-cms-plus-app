@@ -1,33 +1,42 @@
 import { Component, Output , Input, EventEmitter } from '@angular/core';
-import { ControlGroup, Control, Validators, FormBuilder } from '@angular/common';
 import { LoginValidators } from '../shared/loginValidators';
 import { MdCheckbox } from '@angular2-material/checkbox';
+import {
+  FORM_DIRECTIVES,
+  REACTIVE_FORM_DIRECTIVES,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
+
 
 @Component({
     selector: 'login-form',
     template: require('./login-form.component.html'),
-	directives: [MdCheckbox]
+	directives: [MdCheckbox, FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
 export class LoginFormComponent {
 		isIndeterminate: boolean = false;
   		isChecked: boolean = false;
   		isDisabled: boolean = false;
   		alignment: string = 'start';
-		form: ControlGroup;
+		loginForm: FormGroup;
         @Output() formEvent = new EventEmitter();
         @Input() error: boolean;
 		@Input() isLoading: boolean;
-		constructor(fb: FormBuilder) {
+		constructor(private fb: FormBuilder) {
 
-			this.form = fb.group ({
+			this.loginForm = fb.group ({
 				username: ['', Validators.compose(
 					[Validators.required, LoginValidators.cannotContainSpace]
-					), undefined
-					],
+					)],
 				password: ['', Validators.required],
-				remember: ['', undefined, undefined]
+				remember: ['']
 			});
 		}
+
 		login() {
 			/*var result = authService.login(this.form.value)
 
@@ -35,6 +44,6 @@ export class LoginFormComponent {
 				invalidLogin: true	
 			});
 			*/
-            this.formEvent.emit( { loginForm: this.form.value});
+            this.formEvent.emit( { loginForm: this.loginForm.value});
 		}
 }

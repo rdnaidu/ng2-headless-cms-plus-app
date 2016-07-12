@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ControlGroup, Validators } from '@angular/common';
+import {
+  FORM_DIRECTIVES,
+  REACTIVE_FORM_DIRECTIVES,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
 import { CanDeactivate, Router, ActivatedRoute } from '@angular/router';
-import { Observable }                   from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
 import { NotificationsService } from 'angular2-notifications';
@@ -15,12 +23,12 @@ import { ModalService } from '../shared/modal.service';
 
 @Component({
 	template: require('./blog-form.component.html'),
-	providers: [BlogService, ModalService]
-
+	providers: [ BlogService, ModalService],
+	directives: [ FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
 export class BlogFormComponent implements OnInit {
 
-	form: ControlGroup;
+	blogForm: FormGroup;
 	saving: boolean;
 	public heading: string = '';
 	// user = new User();
@@ -34,7 +42,7 @@ export class BlogFormComponent implements OnInit {
 		private _modalService: ModalService
 	) {
 
-		this.form = fb.group({
+		this.blogForm = fb.group({
 			title: ['', Validators.required],
 			body: ['', Validators.required]
 		});
@@ -57,7 +65,7 @@ export class BlogFormComponent implements OnInit {
 
 	canDeactivate(): Observable<boolean> | boolean {
 		// Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
-		if (!this.form.dirty || this.form.pristine || this.saving) {
+		if (!this.blogForm.dirty || this.blogForm.pristine || this.saving) {
 			return true;
 		}
 		// Otherwise ask the user with the dialog service and return its
@@ -77,6 +85,8 @@ export class BlogFormComponent implements OnInit {
 		this.saving = true;
 		let self = this;
 		let result;
+		this.blog = this.blogForm.value;
+		//console.log(this.blog);
 		result = this._blogService.postBlog(this.blog);
 
 		result.subscribe(

@@ -122,7 +122,7 @@
     "angularfire2": "^2.0.0-beta.2",
     "firebase": "^3.1.0",
     
-    "ng2-bootstrap": "^1.0.17",
+    "ng2-bootstrap": "^1.0.20",
     "ng2-select": "^1.0.3",
     "ng2-translate": "^1.11.3",
     "normalize.css": "^4.1.1",

@@ -101,8 +101,7 @@ export class SolrService {
                 });
 
                 return tmpData;
-            })
-            .toPromise();
+            });
     }
 
     solrAutoSuggest(str: string) {
@@ -116,17 +115,17 @@ export class SolrService {
 
         return this._http.get(url)
             .map(res => {
-                let data = res.json();
 
+                let data = res.json();
+           //     console.log(data);
                 let tmpData = [];
 
                 _.forEach(data.response.docs, function(v, i) {
                     let value = v.event_name[0];
                     tmpData.push({id: value, name: value});
                 });
-
+             //   console.log(tmpData);
                 return tmpData;
-            })
-            .toPromise();
+            });
     }
 }

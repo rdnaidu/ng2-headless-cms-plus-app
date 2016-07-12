@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import { FormBuilder, ControlGroup, Validators } from '@angular/common';
+import {
+  FORM_DIRECTIVES,
+  REACTIVE_FORM_DIRECTIVES,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
+
 import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import {
     Ng2BootstrapConfig, Ng2BootstrapTheme, PROGRESSBAR_DIRECTIVES, RatingComponent
@@ -26,13 +35,16 @@ import { MdProgressBar } from '@angular2-material/progress-bar/progress-bar';
         PAGINATION_DIRECTIVES,
         SpinnerComponent,
         PROGRESSBAR_DIRECTIVES,
-        RatingComponent],
+        RatingComponent,
+        FORM_DIRECTIVES,
+        REACTIVE_FORM_DIRECTIVES
+        ],
     providers: [OmdbService],
     pipes: [RottenTomatoImagePipe]
 })
 export class OmdbComponent implements OnInit {
     title = 'Search';
-    form: ControlGroup;
+    omdbForm: FormGroup;
     params = new OmdbSearchParams();
     searchParams = new OmdbIDSearchParams();
     result: OmdbBySearch;
@@ -50,7 +62,7 @@ export class OmdbComponent implements OnInit {
         private router: Router
     ) {
 
-        this.form = fb.group({
+        this.omdbForm = fb.group({
             s: ['', Validators.required]
         });
 
@@ -60,6 +72,7 @@ export class OmdbComponent implements OnInit {
         // console.log(this.params);
         this.searchResult = false;
         this.showDetail = false;
+        this.params.s = this.omdbForm.value.s;
         if (this.params.s.length === 0)
             return;
         this.loadSearch(false);

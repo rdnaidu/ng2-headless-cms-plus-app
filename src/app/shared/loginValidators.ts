@@ -1,8 +1,8 @@
-import { Control } from '@angular/common';
+import { FormControl } from '@angular/forms';
 
 export class LoginValidators {
 
-	static cannotContainSpace(control: Control) {
+	static cannotContainSpace(control: FormControl): { [s: string]: boolean }  {
 			if (control.value.indexOf(' ') >= 0) {
 				return { cannotContainSpace: true};
 			}

@@ -12,29 +12,43 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="inputs col-lg-12">
-                            <form id="login-form" [ngFormModel]="form" (ngSubmit)="login()">
-                                <div class="form-group  label-floating" [ngClass]="{'has-error': username.touched && username.errors }">
+                            <form id="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+                                <div class="form-group  label-floating" [ngClass]="{'has-error': loginForm.controls['username'].touched && !loginForm.controls['username'].valid }">
                                     <label for="u2" class="control-label">Username</label>
-                                    <input type="text" id="u2" tabindex="1" class="form-control" ngControl="username" #username="ngForm">
-                                    <div *ngIf="username.touched && username.errors">
-                                        <span *ngIf="username.errors.invalidLogin" class="help-block">Username or password is invalid.</span>
-                                        <span *ngIf="username.errors.required" class="help-block">Username is required.</span>
-                                        <span *ngIf="username.errors.cannotContainSpace" class="help-block">Username cannot contain space.</span>
+                                    <input type="text" 
+                                        id="u2" 
+                                        tabindex="1" 
+                                        class="form-control" 
+                                        [formControl]="loginForm.controls['username']"
+                                        >
+                                   <div *ngIf="loginForm.controls['username'].touched && !loginForm.controls['username'].valid">
+                                        <span *ngIf="loginForm.controls['username'].hasError('invalidLogin')" class="help-block">Username or password is invalid.</span>
+                                        <span *ngIf="loginForm.controls['username'].hasError('required')" class="help-block">Username is required.</span>
+                                        <span *ngIf="loginForm.controls['username'].hasError('cannotContainSpace')" class="help-block">Username cannot contain space.</span>
                                     </div>
                                 </div>
-                                <div class="form-group label-floating" [ngClass]="{'has-error': password.touched && !password.valid }">
+                                <div class="form-group label-floating" [ngClass]="{'has-error': loginForm.controls['password'].touched && !loginForm.controls['password'].valid }">
                                     <label for="p2" class="control-label">Password</label>
-                                    <input type="password" id="password" tabindex="2" class="form-control" ngControl="password" #password="ngForm">
-                                    <span *ngIf="password.touched && !password.valid" class="help-block">Password is required.</span>
+                                    <input type="password" 
+                                            id="password" 
+                                            tabindex="2" 
+                                            class="form-control" 
+                                            [formControl]="loginForm.controls['password']"
+                                            >
+                                    <span *ngIf="loginForm.controls['password'].touched && !loginForm.controls['password'].valid" class="help-block">Password is required.</span>
                                 </div>
                                 <div class="form-group text-center">
-                                    <md-checkbox [(ngModel)]="isChecked" (change)="isIndeterminate = false" [indeterminate]="isIndeterminate" [disabled]="isDisabled"
-                                        [align]="alignment">Remember me</md-checkbox>
+                                    <md-checkbox 
+                                        (change)="isIndeterminate = false" 
+                                        [indeterminate]="isIndeterminate" 
+                                        [disabled]="isDisabled"
+                                        [align]="alignment"
+                                        >Remember me</md-checkbox>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!form.valid || isLoading"
+                                            <button class="form-control btn btn-primary" name="login-submit" id="login-submit" type="submit" [disabled]="!loginForm.valid || isLoading"
                                                 tabindex="4"><i *ngIf="isLoading" class="fa fa-spinner fa-spin"> </i>Log In</button>
                                         </div>
                                     </div>

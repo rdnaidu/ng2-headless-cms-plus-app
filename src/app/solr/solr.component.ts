@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    ControlGroup,
-    Validators,
-    CORE_DIRECTIVES,
-    FORM_DIRECTIVES
-} from '@angular/common';
+import { NgForm, FORM_DIRECTIVES }    from '@angular/forms';
+import { CORE_DIRECTIVES } from '@angular/common';
+
 
 import { MdButton } from '@angular2-material/button';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
@@ -14,6 +10,7 @@ import { PAGINATION_DIRECTIVES, TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-b
 import { SpinnerComponent } from '../shared/spinner.component';
 import { SolrMultiselectComponent } from './solr-multiselect.component';
 import { SolrService } from './solr.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'solr-search',
@@ -31,7 +28,7 @@ import { SolrService } from './solr.service';
 })
 export class SolrComponent implements OnInit {
     public title: string = 'Solr Search';
-    public form: ControlGroup;
+    // public form: ControlGroup;
     public result: any = {};
     public searchResult: boolean = false;
     public isLoading: boolean = false;
@@ -45,7 +42,7 @@ export class SolrComponent implements OnInit {
     };
     public typeaheadLoading: boolean = false;
     public typeaheadNoResults: boolean = false;
-
+    public dataSource: Observable<any>;
     private _cache: any;
     private _prevContext: any;
 
@@ -53,12 +50,14 @@ export class SolrComponent implements OnInit {
         return this;
     }
     constructor(
-        private fb: FormBuilder,
+        //  private fb: FormBuilder,
         private solrService: SolrService) {
-        this.form = fb.group({
-            category: [''],
-            eventname: ['']
-        });
+        /*    this.form = fb.group({
+                category: [''],
+                eventname: ['']
+            });*/
+        this.dataSource = this.solrService.solrAutoSuggest(this.data.eventname);
+        
     }
 
     getData($event) {
@@ -66,22 +65,22 @@ export class SolrComponent implements OnInit {
         this.data.category = $event;
     }
 
-    public getAsyncData(context: any): Function {
+    public getAsyncData(context: any): Observable<any[]> {
         let self = this;
         if (this._prevContext === context) {
             return this._cache;
         }
 
         this._prevContext = context;
-        let f: Function = function (): Promise<Object[]> {
-            let p: Promise<Object[]> = self.getEventnames();
+        let f: Function = function (): Observable<any[]> {
+            let p: Observable<any[]> = self.getEventnames();
             return p;
         };
         this._cache = f;
         return this._cache;
     }
 
-    getEventnames(): Promise<Object[]> {
+    getEventnames() {
         return this.solrService.solrAutoSuggest(this.data.eventname);
     }
     changeTypeaheadLoading($event) {

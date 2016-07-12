@@ -33,8 +33,8 @@ export const APPLICATION_PROVIDERS = [
 
   // new Angular 2 forms TODO: Not sure what this is for but it is causing other errors
   // to diabled the next two lines
- // disableDeprecatedForms(),
- // provideForms(),
+  disableDeprecatedForms(),
+  provideForms(),
 
   ...APP_RESOLVER_PROVIDERS,
 
