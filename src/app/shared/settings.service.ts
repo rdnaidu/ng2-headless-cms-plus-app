@@ -28,20 +28,6 @@ export enum CMSTypes {
 export class SettingsService {
     name: string = 'cmssettings';
 
-    /*
-        contentfulSettings: ContentfulSettings = {
-            space: 'dmnelpd4oq3t',
-            accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6',
-            contenttype_post: '2wKn6yEnZewu2SCCkus4as',
-            contenttype_author: '1kUEViTN4EmGiEaaeC6ouY'
-        };
-    
-        contentfulClient = contentful.createClient({
-            space: 'dmnelpd4oq3t',
-            accessToken: '4b1aadad27a2a47ec2f95e956bd3969717495f37a7babce1e20ab8b997fea5d6'
-        });
-    */
-
     cmsSettings: CMSSettings = {
         mode: CMSTypes.Stub,
         host: 'localhost',

@@ -18,10 +18,10 @@ import { AuthGuard } from './auth/auth-guard';
 import { CanDeactivateGuard }    from './shared/interfaces';
 
 import { TRANSLATE_PROVIDERS,
-        TranslateService,
-        TranslatePipe,
-        TranslateLoader,
-        TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+  TranslateService,
+  TranslatePipe,
+  TranslateLoader,
+  TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 // Angular 2 Http
 import { Http } from '@angular/http';
 import { APP_CONFIG, CONFIG, Config } from './app.config';
@@ -31,13 +31,22 @@ import { provide } from '@angular/core';
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 
 import {
-    FIREBASE_PROVIDERS,
-    defaultFirebase,
-    FirebaseAppConfig,
-    firebaseAuthConfig,
-    AuthMethods,
-    AuthProviders,
- } from 'angularfire2';
+  FIREBASE_PROVIDERS,
+  defaultFirebase,
+  FirebaseAppConfig,
+  firebaseAuthConfig,
+  AuthMethods,
+  AuthProviders,
+} from 'angularfire2';
+
+const APP_FIREBASE_PROVIDERS =
+  (CONFIG.fbAppEnabled) ?
+    [FIREBASE_PROVIDERS,
+      defaultFirebase(CONFIG.fbAppConfig),
+      firebaseAuthConfig({
+        method: AuthMethods.Popup,
+        provider: AuthProviders.Google
+      })] : [];
 
 // Application wide providers
 export const APP_PROVIDERS = [
@@ -55,12 +64,7 @@ export const APP_PROVIDERS = [
   AuthGuard,
   CanDeactivateGuard,
   ...MODAL_BROWSER_PROVIDERS,
-  FIREBASE_PROVIDERS,
-  defaultFirebase(CONFIG.fbAppConfig),
-  firebaseAuthConfig( {
-    method: AuthMethods.Popup,
-    provider: AuthProviders.Google
-  }),
+  APP_FIREBASE_PROVIDERS,
   provide(APP_CONFIG, { useValue: CONFIG }),
   {
     provide: TranslateLoader,
@@ -68,3 +72,5 @@ export const APP_PROVIDERS = [
     deps: [Http]
   }
 ];
+
+

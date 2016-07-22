@@ -1,5 +1,6 @@
 import { Component,
     OnInit,
+    Inject,
     trigger,
     state,
     style,
@@ -14,6 +15,8 @@ import { MenuItem } from './menu-item';
 import { MdButton, MdAnchor } from '@angular2-material/button';
 import { BlogTypeaheadComponent } from '../blog-typeahead/blog-typeahead.component';
 import { SearchService } from '../shared/search.service';
+import { APP_CONFIG, CONFIG, Config } from '../app.config';
+
 declare var jQuery: any;
 
 
@@ -41,8 +44,7 @@ export class NavBarComponent implements OnInit {
         new MenuItem('users', '/users', 'Users', 'fa fa-users', true),
         new MenuItem('omdb', '/omdb', 'Omdb APIs', 'fa fa-video-camera', false),
         new MenuItem('solr', '/solr', 'Solr APIs', 'fa fa-search', false),
-        new MenuItem('blogusers', '/blogusers', 'Blog Users', 'fa fa-users', false),
-        new MenuItem('firebase','/firebase', 'Firebase Demo','fa fa-bolt' , false)
+        new MenuItem('blogusers', '/blogusers', 'Blog Users', 'fa fa-users', false)
         /*,
         new MenuItem("posts","Posts","Posts"),
         new MenuItem("phones","Phones","Phones"),
@@ -53,8 +55,14 @@ export class NavBarComponent implements OnInit {
     constructor(
         public searchService: SearchService,
         public auth: AuthService,
+        @Inject(APP_CONFIG) private config: Config,
         private _router: Router,
-        private _route: ActivatedRoute) {}
+        private _route: ActivatedRoute) {
+            if (this.config.fbAppEnabled)
+                this.menuItems.push( new MenuItem('firebase',
+                '/firebase', 'Firebase Demo',
+                'fa fa-bolt' , false));
+        }
 
     ngOnInit() {
 

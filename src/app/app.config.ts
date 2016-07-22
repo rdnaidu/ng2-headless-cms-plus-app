@@ -10,6 +10,7 @@ export interface Config {
     solrRootURL: string;
     stubURL: string;
     omdbURL: string;
+    fbAppEnabled: boolean;
     fbAppConfig: FirebaseAppConfig;
 }
 
@@ -21,11 +22,12 @@ export const CONFIG: Config = {
     solrRootURL: 'http://10.146.201.83:8080/solr/collection1',
     stubURL: '/assets/blogs-json',
     omdbURL: 'http://www.omdbapi.com/',
+    fbAppEnabled: false,
     fbAppConfig: {
-        apiKey: 'AIzaSyDB80HQLA-MuGym6r1dIcQcdI67eE0DI3Q',
-        authDomain: 'xperience-f9109.firebaseapp.com',
-        databaseURL: 'https://xperience-f9109.firebaseio.com',
-        storageBucket: 'xperience-f9109.appspot.com',
+        apiKey: 'Add Firebase key',
+        authDomain: 'Add Firebase Doman',
+        databaseURL: 'Firebase URL',
+        storageBucket: 'Firebase storage bucket',
     }
 };
 
