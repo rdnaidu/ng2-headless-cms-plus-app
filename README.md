@@ -1,4 +1,4 @@
-This is a fork from the [angular 2 webpack starter] seed project (https://github.com/angularclass/angular2-webpack-starter) , which serves as an excellent place to kick start your project on angular2.
+This is a fork from the [angular 2 webpack starter seed project] (https://github.com/angularclass/angular2-webpack-starter) , which serves as an excellent place to kick start your project on angular2.
 
 
 This sample app implements the following
