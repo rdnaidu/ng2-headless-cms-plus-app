@@ -1,4 +1,4 @@
-This is a fork from the [angular 2 webpack starter seed project] (https://github.com/angularclass/angular2-webpack-starter) , which serves as an excellent place to kick start your project on angular2.
+This is a fork from the [angular 2 webpack starter seed project] (https://github.com/angularclass/angular2-webpack-starter) , which serves as an excellent place to kick start your project on angular2. This app is themed on a movie blog post SPA plus has other features like OMDB API and Firebase database integration.
 
 
 This sample app implements the following
@@ -40,7 +40,12 @@ cd ng2-headless-cms-plus-app
 
 cd src/app.config.ts
 
-# fbAppEnabled: false, <-- Change to true
+# This file contains the configuration for all the external services accessed
+# including the Drupal 8 , Solr Search , OMDB APIs and Firebase
+# by default this will run in a stub mode for Drupal , Solr components and Firebase is disabled
+# provide your own firebase app keys and configuration details here.
+
+# fbAppEnabled: false, <-- Change to true for Firebase functionality
 #    fbAppConfig: { <-- update with your own firebase keys
 #        apiKey: 'Add Firebase key',
 #        authDomain: 'Add Firebase Doman',
