@@ -38,7 +38,7 @@ cd ng2-headless-cms-plus-app
 
 # update (optional) api keys for firebase and then enable it.
 
-cd src/app.config.ts
+cd src/app/app.config.ts
 
 # This file contains the configuration for all the external services accessed
 # including the Drupal 8 , Solr Search , OMDB APIs and Firebase
