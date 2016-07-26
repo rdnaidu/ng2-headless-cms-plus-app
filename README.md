@@ -26,7 +26,7 @@ This sample app implements the following
 
 ### Quick start
 **Make sure you have Node version >= 5.0 and NPM >= 3**
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
+> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.config.ts`](/src/app/app.config.ts)
 
 ```bash
 # clone the repo
