@@ -1,41 +1,55 @@
 /* tslint:disable */
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ControlGroup, Validators } from '@angular/common';
-import { CanDeactivate, Router, ActivatedRoute } from '@angular/router';
+import {
+  FORM_DIRECTIVES,
+  REACTIVE_FORM_DIRECTIVES,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
+
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { BasicValidators } from '../shared/basicValidators';
 import { UserService } from '../users/user.service';
 import { User, Address, UserClass } from './user';
 import { Publications } from '../blog-list/blog';
 import { SettingsService, CMSTypes } from '../shared/settings.service';
+import { ModalService } from '../shared/modal.service';
 
 @Component({
-	template: require('./user-form.component.html'),
-	providers: [UserService]
+	templateUrl: './user-form.component.html',
+	providers: [UserService , ModalService],
+	directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 
 })
-export class UserFormComponent implements OnInit { //, CanDeactivate {
+export class UserFormComponent implements OnInit { 
 
-	form: ControlGroup;
+	userForm: FormGroup;
 	title: string;
-
+	saving: boolean;
 	user: User = new UserClass();
 
-	constructor(fb: FormBuilder,
+	constructor(private fb: FormBuilder,
 		private _router: Router,
 		private _route: ActivatedRoute,
 		private _userService: UserService,
-		private settings: SettingsService
+		private settings: SettingsService,
+		private _modalService: ModalService
 	) {
-		this.form = fb.group({
+		this.saving = false;
+		this.userForm = this.fb.group({
 			name: ['', Validators.required],
 			mail: ['', BasicValidators.email],
-			phone: [],
-			address: fb.group({
-				street: [],
-				suite: [],
-				city: [],
-				zipcode: []
+			phone: [''],
+			address: this.fb.group({
+				street: [''],
+				suite: [''],
+				city: [''],
+				zipcode: ['']
 			})
 		});
 	}
@@ -71,10 +85,11 @@ export class UserFormComponent implements OnInit { //, CanDeactivate {
 						if (!this.user.uid) {
 							this._router.navigate(['NewUser']);
 						}
-						console.log('this', this.user);
+						// TODO: Future updates when feature is available
+						// this.userForm.updateValue(user);
+						this.populate(user);
 					},
 					response => {
-						console.log('hsdfsdf');
 						if (response.status === 404) {
 							this._router.navigate(['NotFound']);
 						}
@@ -85,16 +100,12 @@ export class UserFormComponent implements OnInit { //, CanDeactivate {
 
 	}
 
-	routerCanDeactivate() {
-		if (this.form.dirty)
-			return confirm('You have unsaved changes. Are you sure you want to navigate away?');
-		return true;
-	}
-
 	save() {
-
+		this.saving = true;
+		let self = this;
 		let result;
-
+		this.user = this.userForm.value;
+		console.log(this.user);
 		if (this.user.uid) {
 			result = this._userService.updateUser(this.user);
 		} else {
@@ -102,7 +113,41 @@ export class UserFormComponent implements OnInit { //, CanDeactivate {
 		}
 
 		result.subscribe(x => {
-			this._router.navigate(['Users']);
+			this._router.navigate(['/users']);
+			self.saving = false;
 		});
+	}
+
+	populate(user: User) {
+		(<FormControl>this.userForm.controls['name'])
+			.updateValue(user.name, { onlySelf: true });
+		(<FormControl>this.userForm.controls['mail'])
+			.updateValue(user.mail, { onlySelf: true });
+		(<FormControl>this.userForm.controls['phone'])
+			.updateValue(user.phone, { onlySelf: true });
+		(<FormControl>
+			(<FormGroup>this.userForm.controls['address']).controls['street'])
+				.updateValue(user.address.street,{ onlySelf: true });
+		(<FormControl>
+			(<FormGroup>this.userForm.controls['address']).controls['suite'])
+				.updateValue(user.address.suite,{ onlySelf: true });
+		(<FormControl>
+			(<FormGroup>this.userForm.controls['address']).controls['city'])
+				.updateValue(user.address.city,{ onlySelf: true });
+		(<FormControl>
+			(<FormGroup>this.userForm.controls['address']).controls['zipcode'])
+				.updateValue(user.address.zipcode,{ onlySelf: true });
+	}
+
+	canDeactivate(): Observable<boolean> | boolean {
+		// Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+		if (!this.userForm.dirty || this.userForm.pristine || this.saving) {
+			return true;
+		}
+		// Otherwise ask the user with the dialog service and return its
+		// promise which resolves to true or false when the user decides
+		let p = this._modalService.confirm('Discard changes?');
+		let o = Observable.fromPromise(p);
+		return o;
 	}
 }

@@ -106,21 +106,23 @@ export class UserService {
 	}
 
 	addUser(user) {
-		return this._http.post(this.getUrl(), JSON.stringify(user))
-			.map(res => res.json());
+		return Rx.Observable.of(true);
+/*		return this._http.post(this.getUrl(), JSON.stringify(user))
+			.map(res => res.json());*/
 	}
 
 	updateUser(user) {
-
-		return this._http.put(
+		return Rx.Observable.of(true);
+	/*	return this._http.put(
 				this.getUserUrl(user.id),
 				JSON.stringify(user))
-				.map(res => res.json());
+				.map(res => res.json());*/
 	}
 
 	deleteUser(user) {
-		return this._http.delete(this.getUserUrl(user.id))
-				.map(res => res.json());
+		return Rx.Observable.of(true);
+/*		return this._http.delete(this.getUserUrl(user.id))
+				.map(res => res.json());*/
 	}
 	private getUserUrl(userId) {
 		return this.getUrl() + '/' + userId;

@@ -2,52 +2,76 @@
     <h1>{{ title }}</h1>
     <div class="row">
         <div class="col-md-6 well inputs">
-            <form [ngFormModel]="form" (ngSubmit)="save()">
+            <form [formGroup]="userForm" novalidate (ngSubmit)="save()">
                 <fieldset>
                     <legend>
                         User
                     </legend>
-                    <div class="form-group label-floating">
+                    <div class="form-group label-floating" [ngClass]="{'has-error': userForm.controls['name'].touched && !userForm.controls['name'].valid}">
                         <label class="control-label" for="i1">Name</label>
-                        <input [(ngModel)]="user.name" id="i1" #name="ngForm" ngControl="name" type="text" class="form-control">
-                        <div *ngIf="name.touched && !name.valid" class="alert alert-danger">
-                            Name is required.
-                        </div>
+                        <input 
+                            id="i1" 
+                            [formControl]="userForm.controls['name']" 
+                            type="text" 
+                            class="form-control">
+                        <span *ngIf="userForm.controls['name'].touched && !userForm.controls['name'].valid" class="help-block">Name is required.</span>
                     </div>
-                    <div class="form-group label-floating">
+                    <div class="form-group label-floating" [ngClass]="{'has-error': userForm.controls['mail'].touched && !userForm.controls['mail'].valid}">
                         <label class="control-label" for="i2">Email</label>
-                        <input [(ngModel)]="user.mail" id="i2" #mail="ngForm" ngControl="mail" type="text" class="form-control">
-                        <div *ngIf="mail.touched && !mail.valid" class="alert alert-danger">
-                            Please type a valid email.
-                        </div>
+                        <input 
+                            id="i2" 
+                            [formControl]="userForm.controls['mail']" 
+                            type="text" 
+                            class="form-control">
+                        <span *ngIf="userForm.controls['mail'].touched && !userForm.controls['mail'].valid" class="help-block">Please type a valid email.</span>
                     </div>
                     <div class="form-group label-floating">
                         <label class="control-label" for="i3">Phone</label>
-                        <input [(ngModel)]="user.phone" id="i3" ngControl="phone" type="text" class="form-control">
+                        <input 
+                            id="i3" 
+                            [formControl]="userForm.controls['phone']" 
+                            type="text" 
+                            class="form-control">
                     </div>
                 </fieldset>
-                <fieldset ngControlGroup="address">
+                <fieldset formGroupName="address">
                     <legend>Address</legend>
                     <div>
                         <div class="form-group label-floating">
                             <label class="control-label" for="i4">Street</label>
-                            <input [(ngModel)]="user.address.street" id="i4" ngControl="street" type="text" class="form-control">
+                            <input 
+                                id="i4" 
+                                [formControl]="userForm.controls.address.controls['street']" 
+                                type="text" 
+                                class="form-control">
                         </div>
                         <div class="form-group label-floating">
                             <label class="control-label" for="i5">Suite</label>
-                            <input [(ngModel)]="user.address.suite" id="i5" ngControl="suite" type="text" class="form-control">
+                            <input 
+                                [formControl]="userForm.controls.address.controls['suite']" 
+                                id="i5" 
+                                type="text" 
+                                class="form-control">
                         </div>
                         <div class="form-group label-floating">
                             <label class="control-label" for="i6">City</label>
-                            <input [(ngModel)]="user.address.city" id="i6" ngControl="city" type="text" class="form-control">
+                            <input 
+                                [formControl]="userForm.controls.address.controls['city']" 
+                                id="i6" 
+                                type="text" 
+                                class="form-control">
                         </div>
                         <div class="form-group label-floating">
                             <label class="control-label" id="i7">ZipCode</label>
-                            <input [(ngModel)]="user.address.zipcode" id="i7" ngControl="zipcode" type="text" class="form-control">
+                            <input 
+                                [formControl]="userForm.controls.address.controls['zipcode']" 
+                                id="i7" 
+                                type="text" 
+                                class="form-control">
                         </div>
                     </div>
                 </fieldset>
-                <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
+                <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>

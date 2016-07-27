@@ -1,34 +1,36 @@
 <div class="container-fluid">
-<h1>Users</h1>
-<spinner [visible]="isLoading"></spinner>
-<p>
-	<a *ngIf="!isLoading  && !userServiceError" [routerLink]="['NewUser']" class="btn btn-primary">Add User</a>
-</p>
-<alert [visible]="userServiceError" [alert-message]="errorMessage"></alert>
-<table *ngIf="!isLoading && !userServiceError" class="table table-bordered">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Edit</th>
-			<th>Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let user of users">
-			<td>{{ user.name }}</td>
-			<td>{{ user.mail }}</td>
-			<td>
-                <!--a [routerLink]="['EditUser', {name: user.name, id: user.uid }]"-->
-				<a>
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-			</td>
-			<td>
-                <!--i (click)="deleteUser(user)" class="glyphicon glyphicon-remove"></i-->
-				<i class="glyphicon glyphicon-remove"></i>
-            </td>
-		</tr>
-	</tbody>
-</table>
+	<div class="row">
+		<div class="col well">
+			<h1>Users</h1>
+			<spinner [visible]="isLoading"></spinner>
+			<p>
+				<a *ngIf="!isLoading  && !userServiceError" [routerLink]="['/users/new']" class="btn btn-primary">Add User</a>
+			</p>
+			<alert [visible]="userServiceError" [alert-message]="errorMessage"></alert>
+			<table *ngIf="!isLoading && !userServiceError" class="table table-bordered table-hover super-centered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let user of users">
+						<td>{{ user.name }}</td>
+						<td>{{ user.mail }}</td>
+						<td>
+							<a [routerLink]="['/users', user.name,user.uid]">
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							</a>
+						</td>
+						<td>
+							<i (click)="deleteUser(user)" class="fa fa-trash-o" aria-hidden="true"></i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

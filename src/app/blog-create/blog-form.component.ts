@@ -22,7 +22,7 @@ import { BlogPostForm } from '../blog-list/blog';
 import { ModalService } from '../shared/modal.service';
 
 @Component({
-	template: require('./blog-form.component.html'),
+	templateUrl: './blog-form.component.html',
 	providers: [ BlogService, ModalService],
 	directives: [ FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
