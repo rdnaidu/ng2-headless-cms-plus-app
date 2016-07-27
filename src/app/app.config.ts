@@ -17,7 +17,7 @@ export interface Config {
 export const CONFIG: Config = {
     xpRootURL: 'http://10.146.201.41/Xperience',
     drupalRoot: 'http://10.146.201.41',
-    title: 'Xperience Platform',
+    title: 'Headless CMS Platform',
     xpLocalURL: 'http://10.146.201.41/Xperience',
     solrRootURL: 'http://10.146.201.83:8080/solr/collection1',
     stubURL: '/assets/blogs-json',
