@@ -114,7 +114,6 @@ export class UserFormComponent implements OnInit {
 
 		result.subscribe(x => {
 			this._router.navigate(['/users']);
-			self.saving = false;
 		});
 	}
 
