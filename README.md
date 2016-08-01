@@ -70,5 +70,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 # Project layout and further instructions
  Refer to the base seed project of [angular 2 webpack starter](https://github.com/angularclass/angular2-webpack-starter) for more details
 
+___
+
 # License
  [MIT](/LICENSE)
