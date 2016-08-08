@@ -23,9 +23,9 @@ describe('App', () => {
     expect(subject).toEqual(result);
   });
 
-  it('should have <footer>', () => {
-    let subject = element(by.css('app footer')).getText();
-    let result  = 'WebPack Angular 2 Starter with demo apps by Tarun Kumar Sukhu';
+  it('should have buttons', () => {
+    let subject = element(by.css('button')).getText();
+    let result  = 'Submit Value';
     expect(subject).toEqual(result);
   });
 */

@@ -140,8 +140,10 @@ module.exports = {
 
       /*
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
-       *
+       * Replace templateUrl and stylesUrl with require()
+       * 
        * See: https://github.com/s-panferov/awesome-typescript-loader
+       * See: https://github.com/TheLarkInn/angular2-template-loader
        */
       {
         test: /\.ts$/,
@@ -197,6 +199,14 @@ module.exports = {
       // Use one of these to serve jQuery for Bootstrap scripts:
       // Bootstrap 3
       { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' },
+
+      
+      /* File loader for supporting images, for example, in CSS files.
+      */
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file'
+      }
 
     ]
 
@@ -312,6 +322,7 @@ module.exports = {
   node: {
     global: 'window',
     crypto: 'empty',
+    process: true,
     module: false,
     clearImmediate: false,
     setImmediate: false
